@@ -1,0 +1,240 @@
+{
+  "__guid": "326dad48-6c85-4fe0-9a6b-0c0db2d57fd8",
+  "GameObjects": [
+    {
+      "__guid": "f8bb5eae-6760-4f69-8f56-7fd6daab2ab9",
+      "Flags": 0,
+      "Name": "Systems",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "71b8b38d-c960-462d-9b1a-a2f4e235fe8d",
+          "Flags": 0,
+          "Name": "Network",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.NetworkHelper",
+              "__guid": "fa4a9bb7-45cc-4923-9f81-8fdae0eee3a9",
+              "PlayerPrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/player.prefab"
+              },
+              "SpawnPoints": [
+                {
+                  "_type": "gameobject",
+                  "go": "d421cc0e-229f-4870-8d64-3109b2db3716"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "4a62b109-0119-4c15-a5f9-ee4adcf5a28a"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "ece09c66-8796-4150-89cb-dde127220165"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "bc5b712e-c11f-4049-9562-88954ecde428"
+                }
+              ],
+              "StartServer": true
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "d421cc0e-229f-4870-8d64-3109b2db3716",
+              "Flags": 0,
+              "Name": "Spawn",
+              "Position": "-32,0,32",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "8e49ce6a-f333-4a93-bb7b-ecd8ae191b58",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "4a62b109-0119-4c15-a5f9-ee4adcf5a28a",
+              "Flags": 0,
+              "Name": "Spawn",
+              "Position": "0,0,32",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "7fb973a9-0dda-462f-a3a3-8ad9e1521f5c",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "ece09c66-8796-4150-89cb-dde127220165",
+              "Flags": 0,
+              "Name": "Spawn",
+              "Position": "-64,0,32",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "b4be684c-c097-4230-868d-5eee660f0519",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "bc5b712e-c11f-4049-9562-88954ecde428",
+              "Flags": 0,
+              "Name": "Spawn",
+              "Position": "32,0,32",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "d9741c6b-d622-4420-9002-7ecc65a37e8b",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "f8b2a64d-c8bb-4fd9-9386-a8d031fa7b72",
+      "Flags": 0,
+      "Name": "UI",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "db3d75ff-1a6e-47de-876d-2a152aff2b79",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "ZIndex": 100
+        },
+        {
+          "__type": "Crosshair",
+          "__guid": "a8df0555-a1af-4bab-8cb1-3c7908fc8459"
+        }
+      ]
+    },
+    {
+      "__guid": "b928e07d-0197-43cf-9104-2c213199a765",
+      "Flags": 0,
+      "Name": "Environment",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+          "Flags": 0,
+          "Name": "Ground",
+          "Scale": "100,100,1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "0b6a18bf-fdb8-4661-970e-ef635bfa9baa",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/grass.vmat",
+              "Model": "models/dev/plane.vmdl",
+              "RenderType": "On",
+              "Tint": "0.39546,0.51163,0.27128,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "0715cb55-1733-4f5e-8560-c288b8695631",
+              "Center": "0,0,-5",
+              "IsTrigger": false,
+              "Scale": "100,100,10",
+              "Static": true
+            }
+          ]
+        },
+        {
+          "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+          "Flags": 0,
+          "Name": "Sun",
+          "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+          "Tags": "light_directional,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "d3659344-a90d-48fa-927a-095f70fe041f",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.94419,0.97767,1,1",
+              "Shadows": true,
+              "SkyColor": "0.2532,0.32006,0.35349,1"
+            }
+          ]
+        },
+        {
+          "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+          "Flags": 0,
+          "Name": "2D Skybox",
+          "Tags": "skybox",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkyBox2D",
+              "__guid": "de79e9e0-5c37-4c54-ac67-bfcdb1d5483b",
+              "SkyMaterial": "materials/skybox/skybox_sunrise_01.vmat",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.EnvmapProbe",
+              "__guid": "f3e304db-baab-4c1a-a4ec-8442585c2d62",
+              "Texture": "textures/cubemaps/default2.vtex",
+              "Bounds": {
+                "Mins": "-512,-512,-512",
+                "Maxs": "512,512,512"
+              },
+              "DelayBetweenUpdates": 0.1,
+              "Feathering": 0.02,
+              "FrameInterval": 5,
+              "MaxDistance": 512,
+              "Projection": "Sphere",
+              "RenderDynamically": false,
+              "TintColor": "1,1,1,1",
+              "UpdateStrategy": "OnEnabled",
+              "ZFar": 4096,
+              "ZNear": 16
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "minimal",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
