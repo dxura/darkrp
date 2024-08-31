@@ -6,7 +6,7 @@ public static class TraceUtils
 	/// Performs a forward line trace from the camera and returns the hit position.
 	/// </summary>
 	/// <returns>The position of the hit point, or Vector3.Zero if no hit is detected.</returns>
-	public static Vector3 ForwardLineTrace(Scene scene, GameTransform origin, int range)
+	public static Vector3? ForwardLineTrace(Scene scene, GameTransform origin, int range)
 	{
 		try
 		{
@@ -28,13 +28,13 @@ public static class TraceUtils
 				// Return the hit position
 				hitResult.EndPosition :
 				// Return a default value if no hit is detected
-				Vector3.Zero;
+				null;
 		}
 		catch (Exception e)
 		{
 			// Log any errors that occur during the line trace
 			Log.Error(e);
-			return Vector3.Zero;
+			return null;
 		}
 	}
 

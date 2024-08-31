@@ -57,16 +57,9 @@ public sealed class PropManager : SingletonComponent<PropManager>
 	        NotifyPropLimit();
 	        return;
 	    }
-
-	    var localPlayerCamera = PlayerState.Local?.Player?.CameraGameObject;
-	    if (localPlayerCamera == null)
-	    {
-	        Log.Warning("Local player camera not found.");
-	        return;
-	    }
-
+	    
 	    // Calculate spawn position based on the player's camera
-	    Vector3 spawnPosition = CalculateSpawnPosition(localPlayerCamera);
+	    var spawnPosition = CalculateSpawnPosition();
 
 	    // Clone the prop prefab at the calculated position
 	    var prop = PropPrefab.Clone(spawnPosition);
@@ -165,19 +158,19 @@ public sealed class PropManager : SingletonComponent<PropManager>
 		return thumbnailPath;
 	}
 	
-	private Vector3 CalculateSpawnPosition(GameObject camera)
+	private Vector3 CalculateSpawnPosition()
 	{
-		// Calculate spawn offset based on the player's camera position and orientation
-		var spawnOffset = camera.Transform.World.Forward * -50f;
+		var camera = Scene.Camera;
+		
+		var spawnPos = TraceUtils.ForwardLineTrace(Scene, camera.Transform, 500);
 
-		Vector3? nullablePlayerPos = TraceUtils.ForwardLineTrace(Scene, camera.Transform, 100);
-		var playerPos = nullablePlayerPos ?? Vector3.Zero;
-
-		if (playerPos == Vector3.Zero)
+		if (spawnPos == null)
 		{
-			playerPos = GameObject.Transform.World.Position + GameObject.Transform.Local.Forward * 150;
+			var start = camera.Transform.Position;
+			var direction = camera.Transform.World.Forward;
+			spawnPos = start + direction * 100;
 		}
 
-		return playerPos + spawnOffset;
+		return spawnPos.Value;
 	}
 }

@@ -102,13 +102,7 @@
 	    
        if ( Input.Pressed( "Menu" ) )
        {
-          IsActive = true;
-          StateHasChanged();
-       }
-
-       if ( Input.Released( "Menu" ) )
-       {
-          IsActive = false;
+          IsActive = !IsActive;
           StateHasChanged();
        }
     }

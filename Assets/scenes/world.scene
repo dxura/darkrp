@@ -90,7 +90,7 @@
           "__guid": "5a0d963a-ee8b-4b2b-bb46-4252a6d6269d",
           "Flags": 0,
           "Name": "Info",
-          "Position": "-3136,-672,224.2567",
+          "Position": "-3136,-672,224",
           "Enabled": true,
           "Components": [
             {
@@ -110,7 +110,7 @@
               "__guid": "115f5ef9-f1b1-440f-bbd7-0f2684fb053d",
               "Flags": 0,
               "Name": "desc",
-              "Position": "0,0,-78.26839",
+              "Position": "0,0,-77.74789",
               "Enabled": true,
               "Components": [
                 {
@@ -118,10 +118,10 @@
                   "__guid": "1fdb7064-10fa-40a0-bac7-5188161e35f6",
                   "Color": "1,1,1,1",
                   "FontFamily": "Poppins",
-                  "FontSize": 64,
+                  "FontSize": 46.05,
                   "FontWeight": 800,
                   "Scale": 0.15,
-                  "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
+                  "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nI am on holidays till 16 sept\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
                   "TextAlignment": "Center"
                 }
               ]

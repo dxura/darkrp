@@ -5,145 +5,165 @@
 @inherits Panel;
 
 <root>
-	<div class="prop-list">
-		<!-- Local Props -->
-		<button class="button" style="justify-content:center; margin-top:10px; margin-bottom:20px; background-color:maroon;" onclick=@RemoveAllProps>
-			Remove all my props (Press "Z" to undo props)
-		</button>
+    <div class="prop-list">
+        <button class="button" style="justify-content:center; margin-top:10px; margin-bottom:20px; background-color:maroon;" onclick=@RemoveAllProps>
+            Remove all my props (Press "Z" to undo props)
+        </button>
 
-		<div class="section-title">Props: @PropManager.Instance.PropCount() / @PropManager.Instance.PropLimit</div>
+        <div class="section-title">Props: @PropManager.Instance.PropCount() / @PropManager.Instance.PropLimit</div>
 
-		<div class="section-title">Local</div>
-		<div style="flex-direction: row; flex-wrap:wrap;">
-			@if ( PropManager.Instance.Props is { Count: > 0 } )
-			{
-				@foreach ( var model in PropManager.Instance.Props )
-				{
-					var propName = model.Name;
-					var displayName = Regex.Replace( model.ResourceName, @"0[1-99]", "" );
-					var propThumbnailPath =  PropManager.GetPropThumbnail(propName);
+        <div class="section-title">Local</div>
+        <div style="flex-direction: row; flex-wrap:wrap;">
+            @if (PropManager.Instance.Props is { Count: > 0 })
+            {
+                @foreach (var model in PropManager.Instance.Props)
+                {
+                    var propName = model.Name;
+                    var propThumbnailPath = PropManager.GetPropThumbnail(propName);
 
-					<div style="padding:8px;">
-						<div class="button" onclick=@( () => SpawnProp( propName ) ) style="background-image: url('@propThumbnailPath'); background-size: cover; width:150px; height:150px; margin: 10px;">
-						</div>
-					</div>
-				}
-			}
-			else
-			{
-				<div>No local props found (Coming soon)</div>
-			}
+                    <div style="padding:8px;">
+                        <div class="button" onclick=@(() => SpawnProp(propName)) 
+                             style="background-image: url('@propThumbnailPath'); background-size: cover; width:150px; height:150px; margin: 10px;">
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>No local props found</div>
+            }
+        </div>
 
-		</div>
+        <div class="section-title">Cloud</div>
+        <div style="margin-top: 10px; margin-bottom: 10px; width: 50%">
 
-		<div class="section-title">Cloud</div>
-		<div style="flex-direction: row; flex-wrap:wrap; margin-top: 20px;">
-			@if ( CloudPackages is { Count: > 0 } )
-			{
-				@foreach ( var package in CloudPackages )
-				{
-					var thumbnailPath = package.Thumb;
+	        <div style="width: 50%">
+		        <TextEntry placeholder="Query..."  Value:bind="@SearchQuery" />
+	        </div>
+	        <button class="button" onclick="@(() => PerformSearch(SearchQuery))">Search</button>
+        </div>
+        <p>(Click enter to escape textbox, click search to query)</p>
+        <div style="flex-direction: row; flex-wrap:wrap; margin-top: 20px;">
+            @if (CloudPackages is { Count: > 0 })
+            {
+                @foreach (var package in CloudPackages)
+                {
+                    var thumbnailPath = package.Thumb;
 
-					<div class="button" onclick=@( () => SpawnCloudProp( package.FullIdent ) ) style="background-image: url(@thumbnailPath); background-size: cover; width:150px; height:150px; margin: 10px;">
-					</div>
-				}
-			}
-			else
-			{
-				<div>Loading...</div>
-			}
-		</div>
-	</div>
+                    <div class="button" onclick=@(() => SpawnCloudProp(package.FullIdent)) 
+                         style="background-image: url(@thumbnailPath); background-size: cover; width:150px; height:150px; margin: 10px;">
+                    </div>
+                }
+            }
+            else
+            {
+                <h1>@(IsLoading ? "Loading..." : "No cloud models found")</h1>
+            }
+        </div>
+    </div>
 </root>
 
-@code
-{
-	private List<Package>? CloudPackages { get; set; } = new();
-	
-	
-	private async Task LoadCloudPackages(string query)
-	{
-		try
-		{
-			var result = await Package.FindAsync(query);
-			if (result is { Packages: not null })
-			{
-				CloudPackages = result.Packages.ToList();
+@code {
+    private List<Package> CloudPackages { get; set; } = new();
+    private string SearchQuery { get; set; } = "";
+    private bool IsLoading { get; set; }
 
-				StateHasChanged(); // Refresh the UI to show the packages
-			}
-			else
-			{
-				Log.Warning("No packages found matching the query.");
-			}
-		}
-		catch (Exception ex)
-		{
-			Log.Error($"Failed to load cloud packages: {ex.Message}");
-		}
-	}
-	
-	void SpawnProp(string modelName)
-	{
-		Log.Info( modelName );
-		PropManager.Instance.SpawnProp(modelName, false);
-	}
+    private async Task PerformSearch(string query)
+    {
+	    CloudPackages.Clear();
+        IsLoading = true;
+        StateHasChanged();
+        
+        if ( string.IsNullOrEmpty( query ) )
+        {
+	        return;
+        }
 
-	async Task SpawnCloudProp(string fullIdent)
-	{
-		try
-		{
-			var package = await Package.FetchAsync(fullIdent, true);
 
-			if (package != null)
-			{
-				Log.Info($"Package {package.Title} fetched successfully.");
+        try
+        {
+            var result = await Package.FindAsync(query);
+            if (result is { Packages: not null })
+            {
+                CloudPackages = result.Packages.ToList();
+            }
+            else
+            {
+                Log.Warning("No packages found matching the query.");
+                CloudPackages = new List<Package>();
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"Failed to load cloud packages: {ex.Message}");
+            CloudPackages = new List<Package>();
+        }
+        finally
+        {
+            IsLoading = false;
+            StateHasChanged();
+        }
+    }
 
-				var installedPackage = await package.MountAsync();
+    void SpawnProp(string modelName)
+    {
+        Log.Info(modelName);
+        PropManager.Instance.SpawnProp(modelName, false);
+    }
 
-				if (installedPackage != null)
-				{
-					Log.Info($"Package {package.Title} downloaded and mounted successfully.");
-					
-					PropManager.Instance.SpawnProp(fullIdent, true);
-					Log.Info($"Cloud model {fullIdent} spawned successfully.");
-				}
-				else
-				{
-					Log.Warning($"Failed to mount package: {fullIdent}");
-				}
-			}
-			else
-			{
-				Log.Warning($"Could not fetch package with identifier: {fullIdent}");
-			}
-		}
-		catch (Exception ex)
-		{
-			Log.Error($"Failed to spawn cloud model: {ex.Message}");
-		}
-	}
-	
-	void RemoveAllProps()
-	{
-		PropManager.Instance.RemoveAllProps();
-	}
+    async Task SpawnCloudProp(string fullIdent)
+    {
+        try
+        {
+            var package = await Package.FetchAsync(fullIdent, true);
 
-	protected override void OnAfterTreeRender( bool firstTime )
-	{
-		if ( !firstTime ) return;
+            if (package != null)
+            {
+                Log.Info($"Package {package.Title} fetched successfully.");
+
+                var installedPackage = await package.MountAsync();
+
+                if (installedPackage != null)
+                {
+                    Log.Info($"Package {package.Title} downloaded and mounted successfully.");
+                    PropManager.Instance.SpawnProp(fullIdent, true);
+                    Log.Info($"Cloud model {fullIdent} spawned successfully.");
+                }
+                else
+                {
+                    Log.Warning($"Failed to mount package: {fullIdent}");
+                }
+            }
+            else
+            {
+                Log.Warning($"Could not fetch package with identifier: {fullIdent}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"Failed to spawn cloud model: {ex.Message}");
+        }
+    }
+
+    void RemoveAllProps()
+    {
+        PropManager.Instance.RemoveAllProps();
+    }
+    
+    protected override void OnAfterTreeRender( bool firstTime )
+    {
+	    if ( !firstTime ) return;
 		
-		try
-		{
-			// Load Cloud Packages
-			_ = LoadCloudPackages("model");
-		}
-		catch (Exception ex)
-		{
-			Log.Error($"Failed to initialize: {ex.Message}");
-		}
-	}
-	
-	protected override int BuildHash() => System.HashCode.Combine(PropManager.Instance.PropCount());
+	    try
+	    {
+		    // Load Cloud Packages (Top)
+		    _ = PerformSearch("model");
+	    }
+	    catch (Exception ex)
+	    {
+		    Log.Error($"Failed to initialize: {ex.Message}");
+	    }
+    }
 
+    protected override int BuildHash() => System.HashCode.Combine(PropManager.Instance.PropCount());
 }
