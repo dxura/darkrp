@@ -1,10 +1,7 @@
 {
   "Name": "Spaghelli",
   "Description": "",
-  "Slot": "Primary",
-  "Team": "Unassigned",
-  "CanOtherTeamPickUp": true,
-  "DropOnDisconnect": false,
+  "Slot": "Secondary",
   "Icon": "ui/weapons/guns/spaghellim4_01.png",
   "IsPurchasable": true,
   "Price": 2000,

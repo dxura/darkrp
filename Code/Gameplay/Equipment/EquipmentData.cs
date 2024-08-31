@@ -11,12 +11,12 @@ public enum EquipmentSlot
 	Undefined = 0,
 
 	/// <summary>
-	/// Core
+	/// Core/essential items 
 	/// </summary>
 	Primary = 1,
 
 	/// <summary>
-	/// Pistols.
+	/// Everything else
 	/// </summary>
 	Secondary = 2,
 

@@ -1,10 +1,7 @@
 {
   "Name": "M4A1",
   "Description": "The best assault rifle money can buy.",
-  "Slot": "Primary",
-  "Team": "Unassigned",
-  "CanOtherTeamPickUp": true,
-  "DropOnDisconnect": false,
+  "Slot": "Secondary",
   "Icon": "ui/weapons/guns/m4_01.png",
   "IsPurchasable": true,
   "Price": 2900,
