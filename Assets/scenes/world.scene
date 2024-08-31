@@ -1,5 +1,5 @@
 {
-  "__guid": "326dad48-6c85-4fe0-9a6b-0c0db2d57fd8",
+  "__guid": "d5057927-686c-433d-92ff-3ab10865c303",
   "GameObjects": [
     {
       "__guid": "b928e07d-0197-43cf-9104-2c213199a765",
@@ -168,6 +168,19 @@
       "NetworkMode": 1,
       "OwnerTransfer": 0,
       "__Prefab": "gameplay/entities/printer/printer.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "07946b2a-5479-4434-a8b8-265fc3be1336",
+      "Flags": 0,
+      "Name": "jeep",
+      "Position": "-3004.102,398.1894,134.6528",
+      "Rotation": "0,0,-0.7071067,0.7071068",
+      "Tags": "vehicle",
+      "Enabled": true,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
+      "__Prefab": "prefabs/vehicles/jeep.prefab",
       "__PrefabVariables": {}
     }
   ],
