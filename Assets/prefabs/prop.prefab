@@ -6,7 +6,6 @@
     "Tags": "prop",
     "Enabled": true,
     "NetworkMode": 1,
-    "OwnerTransfer": 0,
     "Components": [
       {
         "__type": "Sandbox.Prop",
@@ -14,7 +13,7 @@
         "BodyGroups": 18446744073709551615,
         "Health": 100,
         "IsStatic": false,
-        "Model": "models/arrow.vmdl",
+        "Model": "models/citizen_props/sodacan01.vmdl",
         "Tint": "1,1,1,1"
       },
       {

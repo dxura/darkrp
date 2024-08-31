@@ -1,4 +1,5 @@
 using Dxura.Darkrp.UI;
+using Sandbox.Physics;
 
 namespace Dxura.Darkrp;
 
@@ -92,6 +93,12 @@ public sealed class PropManager : SingletonComponent<PropManager>
 	            prop.Destroy();
 	            return;
 	        }
+	    }
+	    
+	    // Freeze
+	    foreach (var rb in prop.Components.GetAll<Rigidbody>(FindMode.EverythingInSelfAndDescendants))
+	    {
+		    rb.PhysicsBody.BodyType = PhysicsBodyType.Static;
 	    }
 
 	    // Spawn the prop on all clients

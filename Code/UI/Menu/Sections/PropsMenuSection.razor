@@ -85,7 +85,7 @@
             var result = await Package.FindAsync(query);
             if (result is { Packages: not null })
             {
-                CloudPackages = result.Packages.ToList();
+                CloudPackages = result.Packages.Where( x => x.PackageType == Package.Type.Model ).ToList();
             }
             else
             {

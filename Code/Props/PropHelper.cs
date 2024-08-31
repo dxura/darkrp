@@ -23,7 +23,7 @@ public sealed class PropHelper : Component
 	/// <summary>
 	/// The identifier of the cloud model associated with this prop. When changed, the model is initialized.
 	/// </summary>
-	[Sync, Change("InitCloudModel")] string CloudModel { get; set; } = "";
+	[Sync] string CloudModel { get; set; } = "";
 
 	/// <summary>
 	/// Called when the component starts. Initializes the prop and its related components.
