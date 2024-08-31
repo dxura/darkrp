@@ -1,0 +1,27 @@
+@namespace Dxura.Darkrp.UI
+@using Sandbox;
+@inherits PanelComponent
+
+<root>
+	<p>BRUH</p>
+	<div class="title">$ @( NumberUtils.FormatNumberWithSuffix( PrinterEntity.PrinterCurrentMoney ) )</div>
+</root>
+
+@code
+{
+	PrinterEntity PrinterEntity { get; set; } = null!;
+
+    protected override void OnStart()
+    {
+	    PrinterEntity = GameObject.Parent.Components.Get<PrinterEntity>();
+        if (PrinterEntity == null)
+        {
+            Log.Warning("Printer Entity not found");
+        }
+    }
+    
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(PrinterEntity?.PrinterCurrentMoney);
+}

@@ -1,0 +1,47 @@
+@namespace Dxura.Darkrp.UI
+@attribute [StyleSheet]
+@inherits Panel
+
+<root class="">
+	@foreach ( var voice in VoiceList.Where( CanDisplay ) )
+	{
+		<div class="row">
+			<div class="item-row with-background">
+				@{
+					var player = GetPlayer( voice );
+				}
+
+				<Icon class="square rounded shrink-0" File="/ui/chat/radio.png" size="24" style="transform: scale( @GetAmplitudeScale( voice ) )"/>
+				<img class="avatar" src="avatar:@player.SteamId"/>
+				<PlayerPanel Player=@player/>
+			</div>
+		</div>
+	}
+
+</root>
+
+@code
+{
+	public IEnumerable<Voice> VoiceList => Scene.GetAllComponents<Voice>();
+	
+	private Player GetPlayer( Voice voice )
+	{
+		return voice.Components.Get<Player>();
+	}
+
+	private bool CanDisplay( Voice voice )
+	{
+		return voice.LastPlayed < 0.25f && voice.Transform.Position.Distance( PlayerState.Local.Player?.Transform.Position ?? Vector3.Zero ) <= 1000;
+	}
+
+	private string GetAmplitudeScale( Voice voice )
+	{
+		var scale = 0.5f + voice.Amplitude * 2.365f;
+		return (1f + scale).ToString( "0.#" );
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Time.Now );
+	}
+}

@@ -1,0 +1,34 @@
+MarkerSystem {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+Marker {
+  position: absolute;
+  transform: translateX(-50%);
+  transition: transform 0.01s ease;
+  gap: 8px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    color: white;
+    font-family: $main-font;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  InputHint {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+BaseMarkerPanel {
+}

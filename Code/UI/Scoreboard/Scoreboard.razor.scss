@@ -1,0 +1,102 @@
+﻿@import "/UI/Styles/Theme.scss";
+
+Scoreboard {
+  z-index: 100;
+  border-radius: $rounding;
+
+  &.visible {
+    pointer-events: all;
+  }
+
+  PlayerAvatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  separator {
+    flex-grow: 1;
+    height: 1px;
+    background-color: red;
+    margin: 0 4px;
+  }
+
+  table {
+    width: 960px;
+    flex-direction: column;
+    gap: 2px;
+    color: white;
+
+    .title {
+      flex-direction: row;
+      text-shadow: 0 0 4px rgba(black, 0.5);
+      justify-content: space-between;
+
+      label {
+        white-space: nowrap;
+        width: 33%;
+      }
+
+      .left {
+        text-align: left;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .right {
+        text-align: right;
+      }
+    }
+
+    .row {
+      background-color: rgba(black, 0.75);
+      width: 100%;
+      align-items: center;
+
+      &.dead {
+        .avatar {
+          filter: saturate(0.2) brightness(50%);
+        }
+      }
+
+      &.local {
+        background-color: rgba(white, 0.75);
+
+        text, label {
+          color: black;
+        }
+
+        Icon {
+          background-image-tint: black;
+        }
+      }
+
+      .col {
+        align-items: center;
+      }
+
+      .playername {
+        flex-basis: 500px;
+        gap: 8px;
+      }
+
+      .stat {
+        flex-basis: 75px;
+        flex-grow: 1;
+        text-align: right;
+      }
+
+      .stat-large {
+        flex-basis: 100px;
+        align-items: center;
+        text-align: right;
+      }
+
+      .stat-small {
+        flex-basis: 50px;
+        align-items: center;
+      }
+    }
+  }
+}

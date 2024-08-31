@@ -1,0 +1,49 @@
+{
+  "RootObject": {
+    "__guid": "24a5fb8f-1726-48e6-9130-850b222375a3",
+    "Flags": 0,
+    "Name": "mount_m4a1",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "04d2c293-9613-45a1-b24c-44c23144d4eb",
+        "Flags": 0,
+        "Name": "Model",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "f34d73ab-f5bb-4ab0-9d5e-bdcccfd245c7",
+            "BodyGroups": 171,
+            "CreateBoneObjects": false,
+            "Model": "models/weapons/sbox_assault_m4a1/w_m4a1.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "JiggleBone",
+            "__guid": "067cabf0-094a-4cdb-8fac-871011199923",
+            "__enabled": false,
+            "EndPoint": "0,0,0",
+            "StartPoint": "0,0,-5",
+            "Damping": 0.4,
+            "Mass": 88.1,
+            "Radius": 1,
+            "Speed": 0.38,
+            "Stiffness": 2
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.w_m4a1"
+  ],
+  "__version": 1
+}

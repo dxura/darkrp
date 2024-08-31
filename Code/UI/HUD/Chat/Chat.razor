@@ -1,0 +1,180 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Events;
+@using Dxura.Darkrp.UI;
+
+@inherits PanelComponent
+@implements Component.INetworkListener
+@implements IGameEventHandler<JobAssignedEvent>
+
+@attribute [StyleSheet]
+
+@if ( !MainHUD.IsHudEnabled )
+	return;
+
+<root class="absolute inset-0">
+	<canvas>
+		<div class="chat-container hud flex column with-deadzone bottom-left with-px">
+			<div class="hud flex column justify-start">
+				@foreach ( var entry in Entries )
+				{
+					<div class="hud flex row gap-sm align-center">
+						@if ( entry.steamid > 0 )
+						{
+							<div class="square rounded shrink-0" style="background-image: url( avatar:@entry.steamid )"></div>
+						}
+
+						@if ( entry.type == MessageType.Chat )
+						{
+							<span class="flex row w-full align-center shrink-0 gap-sm">
+								<span class="flex row gap-sm align-center shrink-0">
+
+									<label class="small no-shadow">[OOC]</label>
+									<label class="playername bold no-shadow" style="color: @entry.color.Hex">@entry.author: </label>
+								</span>
+
+								<label class="message no-shadow">@entry.message</label>
+							</span>
+						}
+						else
+						{
+							<span class="flex row gap-sm w-full align-center">
+								<label class="message no-shadow">@entry.message</label>
+							</span>
+						}
+					</div>
+				}
+			</div>
+
+			<div class="layout gap">
+				<div class="when-not-open flex align-center gap-sm shrink-0">
+					<InputHint Action="Chat" class="small" Size="@InputGlyphSize.Small"/>
+					<label>
+						Chat
+					</label>
+				</div>
+
+				<div class="when-not-open flex align-center gap-sm shrink-0">
+					<InputHint Action="Menu" class="small" Size="@InputGlyphSize.Small"/>
+					<label>
+						Menu
+					</label>
+				</div>
+
+				<ChatBox class="input" @ref=" InputBox" onsubmit="@ChatFinished"></ChatBox>
+			</div>
+		</div>
+	</canvas>
+</root>
+
+@code
+{
+	public enum MessageType
+	{
+		Chat,
+		System
+	}
+
+	private TextEntry InputBox { get; set; }
+
+	public record Entry( ulong steamid, string author, string message, RealTimeSince timeSinceAdded, MessageType type, Color color, string tags = null, string location = null );
+
+	private List<Entry> Entries = new();
+
+	private bool Open => InputBox?.HasFocus ?? false;
+
+	public static Chat Instance { get; set; }
+
+	public Chat()
+	{
+		Instance = this;
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Open, MainHUD.IsHudEnabled );
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( InputBox is null )
+			return;
+
+		Panel.AcceptsFocus = false;
+
+		if ( Input.Pressed( "chat" ) )
+		{
+			InputBox.Focus();
+		}
+
+		if ( Entries.RemoveAll( x => x.timeSinceAdded > 20.0f ) > 0 )
+		{
+			StateHasChanged();
+		}
+
+		// Limit to 10 messages
+		Entries = Entries.TakeLast( 10 ).ToList();
+
+		SetClass( "open", InputBox.HasFocus );
+	}
+
+	void ChatFinished()
+	{
+		var text = InputBox.Text;
+		InputBox.Text = "";
+
+		if ( string.IsNullOrWhiteSpace( text ) )
+			return;
+
+		AddText( text );
+	}
+
+	[Broadcast]
+	public void AddText( string message, string tags = null )
+	{
+		message = message.Truncate( 300 );
+
+		if ( string.IsNullOrWhiteSpace( message ) )
+			return;
+
+		var author = Rpc.Caller.DisplayName;
+		var steamid = Rpc.Caller.SteamId;
+
+		var player = GameUtils.AllPlayers.FirstOrDefault( x => x.Connection == Rpc.Caller );
+		var color = player.Job.Color;
+
+		Entries.Add( new Entry( steamid, author, message, 0.0f, MessageType.Chat, color, tags ) );
+
+		StateHasChanged();
+	}
+
+	[Broadcast( NetPermission.HostOnly )]
+	public void AddSystemText( string message )
+	{
+		message = message.Truncate( 300 );
+
+		if ( string.IsNullOrWhiteSpace( message ) )
+			return;
+
+		Entries.Add( new Entry( 0, "", message, 0.0f, MessageType.System, Color.White ) );
+		StateHasChanged();
+	}
+
+	void IGameEventHandler<JobAssignedEvent>.OnGameEvent( JobAssignedEvent eventArgs )
+	{
+		if ( IsProxy ) return;
+
+		AddSystemText( $"{eventArgs.Player.DisplayName} is now  {eventArgs.Job.Name}" );
+	}
+
+	void INetworkListener.OnDisconnected( Connection channel )
+	{
+		if ( IsProxy ) return;
+
+		// TODO: why would these events get fired with an empty guid in the first place?
+		if ( channel.Id == Guid.Empty )
+			return;
+
+		AddSystemText( $"{channel.DisplayName} has left the game" );
+	}
+}

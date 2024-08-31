@@ -1,0 +1,103 @@
+@import "/UI/Styles/Theme.scss";
+
+BuyMenu {
+  backdrop-filter: brightness(0.5);
+  z-index: 100;
+  position: absolute;
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 64px;
+    border-radius: 20px;
+    flex-direction: column;
+    gap: 32px;
+    pointer-events: none;
+  }
+
+  .section {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .options {
+    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgba(black, 0.5);
+  }
+
+  &.visible {
+    pointer-events: all;
+  }
+
+  .title {
+    font-size: 25px;
+    font-family: $main-font;
+    color: #fff;
+  }
+
+  .button {
+    position: relative;
+    font-size: 18px;
+    font-family: $main-font;
+    color: #fff;
+    background-color: rgba(black, 0.5);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid;
+    border-color: transparent;
+    transition: all 0.075s ease;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: $rounding;
+    height: 100px;
+    width: 200px;
+
+    &.primary {
+      height: 125px;
+      width: 250px;
+    }
+
+    &.equipment {
+      .gunicon {
+        width: 30%;
+        height: 100%;
+      }
+    }
+
+    label {
+      text-shadow: 2px 1px 0px rgba(black, 0.5);
+    }
+
+    &.unaffordable {
+      background-color: rgba($red, 0.5);
+      pointer-events: none;
+    }
+
+    &.owned {
+      background-color: rgba($yellow, 0.5);
+      border-color: $yellow;
+      pointer-events: none;
+    }
+
+    &:hover {
+      &:not(.unaffordable) {
+        cursor: pointer;
+        border-color: $yellow;
+      }
+    }
+  }
+
+  .gunicon {
+    position: absolute;
+    align-self: center;
+    width: 60%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+}

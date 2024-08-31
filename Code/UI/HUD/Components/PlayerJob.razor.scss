@@ -1,0 +1,24 @@
+﻿PlayerRole {
+
+  .line {
+    height: 1px;
+    width: 128px;
+  }
+
+  .circle {
+    flex-shrink: 0;
+    border-radius: 1000px;
+    padding: 8px;
+    background-color: rgba(black, 0.45);
+    backdrop-filter: blur(5px);
+  }
+
+  img {
+    flex-shrink: 0;
+    width: 128px;
+    height: 64px;
+
+    background-size: cover;
+    background-position: center;
+  }
+}

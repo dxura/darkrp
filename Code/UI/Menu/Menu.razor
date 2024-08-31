@@ -1,0 +1,35 @@
+﻿@using Sandbox.UI;
+
+@namespace Dxura.Darkrp.UI
+@inherits Panel
+
+@attribute [StyleSheet]
+
+<root class="hidden flex absolute inset-0 align-center justify-center">
+	<table class="with-background with-padding-lg layout color-borders">
+		<div class="title">
+			<label class="important uppercase left">Test</label>
+		</div>
+	</table>
+</root>
+
+@code
+{
+	public bool IsActive { get; set; }
+
+
+	public override void Tick()
+	{
+		if ( Input.Pressed( "Menu" ) )
+		{
+			IsActive = Input.Pressed( "Menu" );
+			SetClass( "visible", true );
+		}
+
+		if ( Input.Released( "Menu" ) )
+		{
+			SetClass( "visible", false );
+			IsActive = false;
+		}
+	}
+}

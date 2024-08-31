@@ -2,128 +2,6 @@
   "__guid": "326dad48-6c85-4fe0-9a6b-0c0db2d57fd8",
   "GameObjects": [
     {
-      "__guid": "f8bb5eae-6760-4f69-8f56-7fd6daab2ab9",
-      "Flags": 0,
-      "Name": "Systems",
-      "Enabled": true,
-      "Children": [
-        {
-          "__guid": "71b8b38d-c960-462d-9b1a-a2f4e235fe8d",
-          "Flags": 0,
-          "Name": "Network",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.NetworkHelper",
-              "__guid": "fa4a9bb7-45cc-4923-9f81-8fdae0eee3a9",
-              "PlayerPrefab": {
-                "_type": "gameobject",
-                "prefab": "prefabs/player.prefab"
-              },
-              "SpawnPoints": [
-                {
-                  "_type": "gameobject",
-                  "go": "d421cc0e-229f-4870-8d64-3109b2db3716"
-                },
-                {
-                  "_type": "gameobject",
-                  "go": "4a62b109-0119-4c15-a5f9-ee4adcf5a28a"
-                },
-                {
-                  "_type": "gameobject",
-                  "go": "ece09c66-8796-4150-89cb-dde127220165"
-                },
-                {
-                  "_type": "gameobject",
-                  "go": "bc5b712e-c11f-4049-9562-88954ecde428"
-                }
-              ],
-              "StartServer": true
-            }
-          ],
-          "Children": [
-            {
-              "__guid": "d421cc0e-229f-4870-8d64-3109b2db3716",
-              "Flags": 0,
-              "Name": "Spawn",
-              "Position": "-32,0,32",
-              "Enabled": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SpawnPoint",
-                  "__guid": "8e49ce6a-f333-4a93-bb7b-ecd8ae191b58",
-                  "Color": "0.8902,0.31765,0.05098,1"
-                }
-              ]
-            },
-            {
-              "__guid": "4a62b109-0119-4c15-a5f9-ee4adcf5a28a",
-              "Flags": 0,
-              "Name": "Spawn",
-              "Position": "0,0,32",
-              "Enabled": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SpawnPoint",
-                  "__guid": "7fb973a9-0dda-462f-a3a3-8ad9e1521f5c",
-                  "Color": "0.8902,0.31765,0.05098,1"
-                }
-              ]
-            },
-            {
-              "__guid": "ece09c66-8796-4150-89cb-dde127220165",
-              "Flags": 0,
-              "Name": "Spawn",
-              "Position": "-64,0,32",
-              "Enabled": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SpawnPoint",
-                  "__guid": "b4be684c-c097-4230-868d-5eee660f0519",
-                  "Color": "0.8902,0.31765,0.05098,1"
-                }
-              ]
-            },
-            {
-              "__guid": "bc5b712e-c11f-4049-9562-88954ecde428",
-              "Flags": 0,
-              "Name": "Spawn",
-              "Position": "32,0,32",
-              "Enabled": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SpawnPoint",
-                  "__guid": "d9741c6b-d622-4420-9002-7ecc65a37e8b",
-                  "Color": "0.8902,0.31765,0.05098,1"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "__guid": "f8b2a64d-c8bb-4fd9-9386-a8d031fa7b72",
-      "Flags": 0,
-      "Name": "UI",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "db3d75ff-1a6e-47de-876d-2a152aff2b79",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ScaleStrategy": "ConsistentHeight",
-          "ZIndex": 100
-        },
-        {
-          "__type": "Crosshair",
-          "__guid": "a8df0555-a1af-4bab-8cb1-3c7908fc8459"
-        }
-      ]
-    },
-    {
       "__guid": "b928e07d-0197-43cf-9104-2c213199a765",
       "Flags": 0,
       "Name": "Environment",
@@ -140,10 +18,10 @@
               "__type": "Sandbox.ModelRenderer",
               "__guid": "0b6a18bf-fdb8-4661-970e-ef635bfa9baa",
               "BodyGroups": 18446744073709551615,
-              "MaterialOverride": "materials/grass.vmat",
+              "MaterialOverride": "materials/default.vmat",
               "Model": "models/dev/plane.vmdl",
               "RenderType": "On",
-              "Tint": "0.39546,0.51163,0.27128,1"
+              "Tint": "0.26245,0.42791,0.08558,1"
             },
             {
               "__type": "Sandbox.BoxCollider",
@@ -207,8 +85,90 @@
               "ZNear": 16
             }
           ]
+        },
+        {
+          "__guid": "5a0d963a-ee8b-4b2b-bb46-4252a6d6269d",
+          "Flags": 0,
+          "Name": "Info",
+          "Position": "-3136,-672,239.8084",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.TextRenderer",
+              "__guid": "cf578722-29eb-43d5-9632-4d666d59da7f",
+              "Color": "0.66047,0.11366,0.11366,1",
+              "FontFamily": "Poppins",
+              "FontSize": 64,
+              "FontWeight": 800,
+              "Scale": 0.3,
+              "Text": "DarkRP 2\n(Preview)",
+              "TextAlignment": "Center"
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "115f5ef9-f1b1-440f-bbd7-0f2684fb053d",
+              "Flags": 0,
+              "Name": "desc",
+              "Position": "0,0,-95.92889",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "1fdb7064-10fa-40a0-bac7-5188161e35f6",
+                  "Color": "1,1,1,1",
+                  "FontFamily": "Poppins",
+                  "FontSize": 64,
+                  "FontWeight": 800,
+                  "Scale": 0.15,
+                  "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)      B: Buy gun\nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
+                  "TextAlignment": "Center"
+                }
+              ]
+            }
+          ]
         }
       ]
+    },
+    {
+      "__guid": "ea1c2d3d-9aa4-4559-9d9e-fddfba251f44",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "0,0,-704",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "1c987156-db52-4be9-9ea5-e597b621af1a",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/rp_downtown_v2.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "df865cd5-95fc-463d-ba20-220fcb7ee559",
+      "Flags": 0,
+      "Name": "darkrp",
+      "Position": "-3392,-640,160",
+      "Enabled": true,
+      "__Prefab": "gameplay/darkrp.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "7f6c6b74-b3e4-4d27-896e-c0c2cbb03ac2",
+      "Flags": 0,
+      "Name": "printer",
+      "Position": "-3136,-352,77.99997",
+      "Tags": "printer,interact,grab",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "gameplay/entities/printer/printer.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {

@@ -1,0 +1,38 @@
+@namespace Dxura.Darkrp.UI
+@attribute [StyleSheet]
+
+<root>
+	<div @ref=" Overlay" class="overlay mask-scope">
+		<h1>You are spawn protected</h1>
+	</div>
+</root>
+
+@code
+{
+	public Panel Overlay { get; set; }
+
+	float GetOpacity()
+	{
+		if ( !PlayerState.Local.IsValid() )
+			return 0f;
+
+		if ( !PlayerState.Local.Player.IsValid() )
+			return 0f;
+
+		if ( !PlayerState.Local.Player.HealthComponent.IsValid() )
+			return 0f;
+
+		if ( PlayerState.Local.Player.HealthComponent.IsGodMode )
+			return 1f;
+
+		return 0f;
+	}
+
+	public override void Tick()
+	{
+		if ( Overlay.IsValid() )
+		{
+			Overlay.Style.Opacity = GetOpacity();
+		}
+	}
+}

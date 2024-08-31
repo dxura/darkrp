@@ -1,0 +1,27 @@
+{
+  "Name": "Molotov Cocktail",
+  "Description": "",
+  "Slot": "Utility",
+  "Team": "Unassigned",
+  "CanOtherTeamPickUp": true,
+  "DropOnDisconnect": false,
+  "Icon": "ui/weapons/grenades/molotov_grenade_01.png",
+  "IsPurchasable": true,
+  "Price": 400,
+  "KillReward": 150,
+  "MainPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/throwables/molotov_cocktail/w_molotov_grenade.prefab"
+  },
+  "ViewModelPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/throwables/molotov_cocktail/vm_molotov_grenade.prefab"
+  },
+  "WorldModel": "models/dev/error.vmdl",
+  "DroppedSize": "8,2,8",
+  "DroppedCenter": "0,0,0",
+  "ArmorReduction": null,
+  "HelmetReduction": null,
+  "__references": [],
+  "__version": 0
+}

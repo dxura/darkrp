@@ -1,0 +1,53 @@
+@namespace Dxura.Darkrp.UI
+@inherits Panel
+
+@attribute [StyleSheet]
+
+<root class="@AvatarClasses">
+	<div class="avatar" style="@( PlayerState.IsValid() ? $"border: 0.5px solid {PlayerColor.Hex}" : "" )">
+		<img class="image" src="avatar:@PlayerState.SteamId"/>
+	</div>
+
+	@if ( !Player.IsValid() || IsDead )
+	{
+		<div style="background-image: url( ui/dead.png )" class="overlay"/>
+
+		return;
+	}
+
+	@if ( ShowHealth && Player.HealthComponent.State == LifeState.Alive )
+	{
+		<div class="health">
+			<div class="health-inner" style="width:@( PlayerState.Player.HealthComponent.Health )%"/>
+		</div>
+	}
+</root>
+
+@code
+{
+	public Player Player => PlayerState.IsValid() ? PlayerState.Player : null;
+	public PlayerState PlayerState { get; set; }
+	public Color PlayerColor => PlayerState.IsValid() ? PlayerState.PlayerColor : Color.White;
+	private bool IsDead => !Player.IsValid() || Player?.HealthComponent.State != LifeState.Alive;
+
+	public bool ShowHealth { get; set; } = true;
+
+	private string AvatarClasses
+	{
+		get
+		{
+			if ( IsDead ) return "dead";
+			return "";
+		}
+	}
+
+	protected override int BuildHash()
+	{
+		var hash = HashCode.Combine( PlayerState );
+
+		if ( Player.IsValid() )
+			hash = HashCode.Combine( hash, Player.HealthComponent.Health, Player.HealthComponent.State, PlayerState.PlayerColor );
+
+		return hash;
+	}
+}

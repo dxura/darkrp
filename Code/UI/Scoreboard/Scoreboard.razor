@@ -1,0 +1,96 @@
+﻿@using System;
+@using GameSystems.Jobs
+@using Sandbox.UI;
+
+@namespace Dxura.Darkrp.UI
+@inherits Panel
+
+@attribute [StyleSheet]
+
+<root class="hidden flex absolute inset-0 align-center justify-center">
+	<table class="with-background with-padding-lg layout color-borders">
+		<div class="title">
+			<label class="important uppercase left">DarkRP</label>
+		</div>
+
+		@for ( var i = 0; i < GroupedPlayers.Count(); i++ )
+		{
+			@{
+				var group = GroupedPlayers[i];
+			}
+
+			<span class ="flex align-center space-between gap-sm" style = "color: @group.Key.Color.Hex" >
+				<span class ="flex align-center gap-sm" >
+				<label class ="emphasis with-py" > @group.Key.Name </label >
+				</span >
+				<separator style = "background-color: @group.Key.Color.Hex" / >
+				</span >
+				<div class ="row header with-px-lg with-py-sm" >
+				<label class ="col stat-small small" ></label >
+				<label class ="col stat-small small" ></label >
+				<label class ="col playername small" ></label >
+				@foreach( var x in IScore.Find( PlayerState.Local ) )
+			{
+				<label class="col stat">@( x.Attribute.Name )</label>
+			}
+			</div >
+				@foreach( var player in group )
+			{
+				<ScoreboardRow PlayerState="@player"/>
+			}
+		}
+	</table>
+</root>
+
+@code
+{
+	public IEnumerable<PlayerState> PlayerStates => GameUtils.AllPlayers;
+
+	private List<IGrouping<JobGroupResource, PlayerState>> GroupedPlayers
+	{
+		get
+		{
+			var sortedPlayers = PlayerStates.OrderByDescending( x => x.Components.Get<PlayerScore>().Kills );
+			var groupedPlayers = sortedPlayers.GroupBy( x => x.Job.Group );
+			return groupedPlayers.ToList();
+		}
+	}
+
+	public bool IsActive { get; set; }
+
+	protected override int BuildHash()
+	{
+		if ( !IsActive ) return 0;
+
+		var hash = new HashCode();
+
+		hash.Add( IsActive );
+
+		foreach ( var team in GroupedPlayers )
+		{
+			hash.Add( team.Key );
+
+			foreach ( var player in team )
+			{
+				hash.Add( player.Id );
+			}
+		}
+
+		return hash.ToHashCode();
+	}
+
+	public override void Tick()
+	{
+		if ( Input.Pressed( "Score" ) )
+		{
+			IsActive = Input.Pressed( "Score" );
+			SetClass( "visible", true );
+		}
+
+		if ( Input.Released( "Score" ) )
+		{
+			SetClass( "visible", false );
+			IsActive = false;
+		}
+	}
+}

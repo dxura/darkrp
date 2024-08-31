@@ -1,0 +1,17 @@
+PrinterEntityDisplay {
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-color: #0d0d0d;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 5px;
+	font-family: 'DS-Digital', 'Arial';
+
+	.title {
+		font-size: 50px;
+		color: green;
+	}
+}

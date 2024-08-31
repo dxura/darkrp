@@ -1,0 +1,53 @@
+@namespace Dxura.Darkrp.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+@if ( !Player.IsValid() ) return;
+
+<root class="hud with-deadzone column">
+	@foreach ( var slotGroup in Inventory.Equipment.OrderBy( x => x.Resource.Slot ).GroupBy( x => x.Resource.Slot ) )
+	{
+		<div class="layout group @GroupClasses( slotGroup.Key )">
+			<div class="background"/>
+
+			<InputHint Action="Slot@( SlotIndex( slotGroup.Key ) )" class="small" Size="@InputGlyphSize.Small"/>
+
+			@foreach ( var equipment in slotGroup )
+			{
+				<EquipmentRow Equipment=@equipment/>
+			}
+		</div>
+	}
+</root>
+
+@code
+{
+	public Player Player => PlayerState.Local.Player;
+	public PlayerInventory Inventory => Player.Inventory;
+	public Equipment CurrentEquipment => Player?.CurrentEquipment;
+
+	public string GroupClasses( EquipmentSlot slot )
+	{
+		var wpn = CurrentEquipment;
+		if ( !wpn.IsValid() ) return "";
+
+		if ( wpn.Resource.Slot == slot ) return "active color-border-right";
+
+		return "";
+	}
+
+	public int SlotIndex( EquipmentSlot slot )
+	{
+		return (int)slot;
+	}
+
+	public int GetSlot( Equipment equipment )
+	{
+		return Inventory.Equipment.ToList().IndexOf( equipment );
+	}
+
+	protected override int BuildHash()
+	{
+		return !Player.IsValid() ? 0 : HashCode.Combine( Inventory.Equipment.Count(), CurrentEquipment );
+	}
+}

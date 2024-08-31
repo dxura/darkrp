@@ -1,0 +1,33 @@
+@namespace Dxura.Darkrp.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+@if ( !Player.IsValid() ) return;
+
+<root class="row" style="padding-top: 16px;">
+	<InputHint Action="BuyMenu" class="small" Size="@InputGlyphSize.Small"/>
+	<label class="important">�@PlayerState.Balance.ToString( "N0" )</label>
+</root>
+
+@code
+{
+	/// <summary>
+	/// The player's inventory
+	/// </summary>
+	public PlayerInventory Inventory => Player.IsValid() ? Player.Inventory : null;
+
+	/// The player
+	public Player Player => PlayerState.IsValid() ? PlayerState.Player : null;
+
+	/// The player state
+	public PlayerState PlayerState => PlayerState.Local;
+
+
+	protected override int BuildHash()
+	{
+		if ( !Player.IsValid() ) return 0;
+		if ( !PlayerState.IsValid() ) return 0;
+
+		return HashCode.Combine( PlayerState?.Balance );
+	}
+}

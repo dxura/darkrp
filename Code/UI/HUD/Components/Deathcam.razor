@@ -1,0 +1,69 @@
+﻿@namespace Dxura.Darkrp.UI
+@inherits Panel
+
+@attribute [StyleSheet]
+
+@if ( !Player.IsValid() || Player.HealthComponent.State == LifeState.Alive || LastDamageInfo is null )
+	return;
+
+@if ( GameUtils.GetPlayerFromComponent( LastDamageInfo.Attacker ) is not { } killerPlayer )
+	return;
+
+<root class="hud with-deadzone flex column gap-xs">
+	<div class="flex row">
+		<img class="image" src="avatar:@killerPlayer.SteamId"/>
+		<div class="flex column with-background with-padding h-full align-left justify-center" style="min-width: 275px;">
+			<label class="text small upper">KILLED BY</label>
+			<label>@killerPlayer.DisplayName</label>
+		</div>
+	</div>
+
+	@if ( DamageEntries is not null && DamageEntries.Count > 0 )
+	{
+		<div class="flex column layout with-background with-padding">
+			<label class="small slight">DAMAGE TAKEN</label>
+			@foreach ( var entry in DamageEntries )
+			{
+				<div class="flex row gap-xs">
+					<label>@( entry.Damage.CeilToInt() ) damage in @( entry.Count ) hits - </label>
+					<label>@entry.Attacker.DisplayName</label>
+				</div>
+			}
+		</div>
+	}
+
+	@if ( InflictedDamageEntries is not null && InflictedDamageEntries.Count > 0 )
+	{
+		<div class="flex column layout with-background with-padding">
+			<label class="small slight">INFLICTED DAMAGE</label>
+			@foreach ( var entry in InflictedDamageEntries )
+			{
+				<div class="flex row gap-xs">
+					<label>@( entry.Damage.CeilToInt() ) damage in @( entry.Count ) hits</label>
+				</div>
+			}
+		</div>
+	}
+</root>
+
+@code
+{
+	public Player Player => PlayerState.Local.Player;
+
+	public List<DamageTracker.GroupedDamage> DamageEntries => GameManager.Instance?.Get<DamageTracker>()?.GetGroupedDamage( PlayerState.Local );
+	public List<DamageTracker.GroupedDamage> InflictedDamageEntries => GameManager.Instance?.Get<DamageTracker>()?.GetGroupedInflictedDamage( PlayerState.Local );
+
+	public DamageInfo LastDamageInfo => PlayerState.Local.LastDamageInfo;
+
+	public string GetName( Component attacker )
+	{
+		var ply = GameUtils.GetDescription( attacker );
+
+		return ply.DisplayName;
+	}
+
+	protected override int BuildHash()
+	{
+		return !Player.IsValid() ? 0 : HashCode.Combine( Player.HealthComponent.State, Player, Time.Now );
+	}
+}

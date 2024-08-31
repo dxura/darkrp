@@ -1,42 +1,42 @@
-namespace Dxura.Darkrp.Player;
+using Dxura.Darkrp;
+using Dxura.Darkrp;
 
-[Group( "Player" )]
-[Title( "Player Footsteps" )]
+namespace Dxura.Darkrp;
+
+/// <summary>
+/// Produces footstep sounds for the player.
+/// </summary>
 public sealed class PlayerFootsteps : Component
 {
-	[Property] private SkinnedModelRenderer? Source { get; set; }
-	
-	private TimeSince _timeSinceStep;
+	[Property] public Player Player { get; set; }
+	[Property] public float FootstepBaseDecibels { get; set; } = 70f;
+	[Property] public float FootstepScale { get; set; } = 1f;
+	[Property] public float SprintFootstepScale { get; set; } = 2f;
 
-	protected override void OnEnabled()
+	private TimeSince timeSinceStep;
+
+	private bool flipFlop = false;
+
+	private float GetStepFrequency()
 	{
-		if ( Source is null )
+		if ( Player.IsSprinting )
 		{
-			return;
+			return 0.25f;
 		}
 
-		Source.OnFootstepEvent += OnEvent;
+		return 0.34f;
 	}
 
-	protected override void OnDisabled()
+	private void Footstep()
 	{
-		if ( Source is null )
-		{
-			return;
-		}
-
-		Source.OnFootstepEvent -= OnEvent;
-	}
-
-	private void OnEvent( SceneModel.FootstepEvent e )
-	{
-		if ( _timeSinceStep < 0.2f )
+		// Don't make footsteps sometimes
+		if ( Player.IsCrouching || Player.IsSlowWalking )
 		{
 			return;
 		}
 
 		var tr = Scene.Trace
-			.Ray( e.Transform.Position + Vector3.Up * 20, e.Transform.Position + Vector3.Up * -20 )
+			.Ray( Player.Transform.Position + Vector3.Up * 20, Player.Transform.Position + Vector3.Up * -20 )
 			.Run();
 
 		if ( !tr.Hit )
@@ -49,15 +49,53 @@ public sealed class PlayerFootsteps : Component
 			return;
 		}
 
-		_timeSinceStep = 0;
+		timeSinceStep = 0;
 
-		var sound = e.FootId == 0 ? tr.Surface.Sounds.FootLeft : tr.Surface.Sounds.FootRight;
+		flipFlop = !flipFlop;
+
+		var sound = flipFlop ? tr.Surface.Sounds.FootLeft : tr.Surface.Sounds.FootRight;
 		if ( sound is null )
 		{
 			return;
 		}
 
+		var scale = Player?.IsSprinting ?? false ? SprintFootstepScale : FootstepScale;
 		var handle = Sound.Play( sound, tr.HitPosition + tr.Normal * 5 );
-		handle.Volume *= e.Volume;
+		if ( !handle.IsValid() )
+		{
+			return;
+		}
+
+		handle.Occlusion = false;
+		handle.Decibels = FootstepBaseDecibels * scale;
+		handle.ListenLocal = !IsProxy;
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		if ( !Player.IsValid() )
+		{
+			return;
+		}
+
+		if ( Player.IsInVehicle )
+		{
+			return;
+		}
+
+		if ( Player.HealthComponent.State != LifeState.Alive )
+		{
+			return;
+		}
+
+		if ( timeSinceStep < GetStepFrequency() )
+		{
+			return;
+		}
+
+		if ( Player.CharacterController.Velocity.Length > 50f )
+		{
+			Footstep();
+		}
 	}
 }

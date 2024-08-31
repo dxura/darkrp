@@ -1,0 +1,294 @@
+{
+  "__guid": "a8d31f48-65d8-4c8a-9c66-616340ba4213",
+  "GameObjects": [
+    {
+      "__guid": "b2e7e684-83ce-498a-a376-2add6e90b79c",
+      "Flags": 0,
+      "Name": "Environment",
+      "Position": "-518.3613,-191.785,36.60261",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "928bc0fc-bc7f-41be-83d6-ef65bb0cc9c7",
+          "Flags": 0,
+          "Name": "Sun",
+          "Position": "309.0117,325.2531,32.7303",
+          "Rotation": "0.07304409,0.4341696,-0.1081741,0.8913248",
+          "Tags": "light_directional,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "009cfee9-49cb-4968-b159-727c3d637332",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "1,0.9476,0.75814,1",
+              "Shadows": true,
+              "SkyColor": "0.09767,0.09767,0.09767,1"
+            }
+          ]
+        },
+        {
+          "__guid": "82322bb9-65c8-4617-a536-3f2c4bc8c853",
+          "Flags": 0,
+          "Name": "Box",
+          "Position": "701.9158,-1791.355,-100.6026",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.MeshComponent",
+              "__guid": "7d7f5952-d6b9-4cff-94f5-df301351480d",
+              "Collision": "Mesh",
+              "Color": "1,1,1,1",
+              "HideInGame": false,
+              "IsTrigger": false,
+              "Mesh": {
+                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Positions": [
+                  "-1975.554,-2417.594,64",
+                  "1075.765,-2417.594,64",
+                  "1075.765,2417.594,64",
+                  "-1975.554,2417.594,64",
+                  "-1975.554,2417.594,-64",
+                  "1075.765,2417.594,-64",
+                  "1075.765,-2417.594,-64",
+                  "-1975.554,-2417.594,-64"
+                ],
+                "TextureCoord": [
+                  "8.404414,18.88745",
+                  "-15.43402,-0.5",
+                  "8.404414,-18.88745",
+                  "-18.88745,-0.5",
+                  "-15.43402,-18.88745",
+                  "-8.404414,-0.5",
+                  "-15.43402,18.88745",
+                  "-18.88745,-0.5",
+                  "8.404414,-18.88745",
+                  "15.43402,0.5",
+                  "8.404414,18.88745",
+                  "18.88745,0.5",
+                  "-15.43402,18.88745",
+                  "8.404414,0.5",
+                  "-15.43402,-18.88745",
+                  "18.88745,0.5",
+                  "18.88745,-0.5",
+                  "-15.43402,0.5",
+                  "-18.88745,0.5",
+                  "15.43402,-0.5",
+                  "-18.88745,0.5",
+                  "8.404414,-0.5",
+                  "18.88745,-0.5",
+                  "-8.404414,0.5"
+                ],
+                "TextureUAxis": [
+                  "1,0,0",
+                  "1,0,-0",
+                  "0,-1,0",
+                  "0,1,0",
+                  "-1,0,0",
+                  "1,-0,0"
+                ],
+                "TextureVAxis": [
+                  "0,-1,0",
+                  "0,-1,0",
+                  "0,0,-1",
+                  "-0,0,-1",
+                  "0,0,-1",
+                  "-0,0,-1"
+                ],
+                "TextureScale": [
+                  "0.2499999,0.25",
+                  "0.2499999,0.25",
+                  "0.2500001,0.25",
+                  "0.2500001,0.25",
+                  "0.2499999,0.25",
+                  "0.2499999,0.25"
+                ],
+                "TextureOffset": [
+                  "289.7822,259.4404",
+                  "289.7822,259.4417",
+                  "259.4415,256.0001",
+                  "252.5585,256.0001",
+                  "222.2188,256.0001",
+                  "289.7812,256.0001"
+                ],
+                "MaterialIndex": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "EdgeFlags": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "Materials": [
+                  "materials/dev/reflectivity_30.vmat",
+                  "materials/dev/reflectivity_90.vmat",
+                  "materials/dev/reflectivity_60.vmat",
+                  "materials/dev/reflectivity_90b.vmat",
+                  "dev/helper/reflectivity_90b.vmat"
+                ]
+              },
+              "SmoothingAngle": 40,
+              "Static": true
+            }
+          ]
+        },
+        {
+          "__guid": "4c5c8f01-4080-4057-8c27-ab104c8a2b11",
+          "Flags": 0,
+          "Name": "Envmap Probe",
+          "Position": "274.2582,317.9064,-13.17073",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.EnvmapProbe",
+              "__guid": "145aa785-7953-45f9-87d1-39b6357c5c50",
+              "Bounds": {
+                "Mins": "-1000,-1000,-1000",
+                "Maxs": "1000,1000,1000"
+              },
+              "DelayBetweenUpdates": 0.1,
+              "Feathering": 0.02,
+              "FrameInterval": 5,
+              "MaxDistance": 512,
+              "Projection": "Box",
+              "RenderDynamically": true,
+              "TintColor": "1,1,1,1",
+              "UpdateStrategy": "FrameInterval",
+              "ZFar": 4096,
+              "ZNear": 16
+            }
+          ]
+        },
+        {
+          "__guid": "5d8fba87-e4dc-4ef8-bb78-6b6222242a99",
+          "Flags": 0,
+          "Name": "Gradient Fog",
+          "Position": "264.8369,292.5444,63.54969",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.GradientFog",
+              "__guid": "d1f06fda-11b0-45f9-9bab-74f60b824242",
+              "Color": "0.88837,0.71152,0.44625,1",
+              "EndDistance": 16384,
+              "FalloffExponent": 1,
+              "Height": 128,
+              "StartDistance": 8192,
+              "VerticalFalloffExponent": 2
+            }
+          ]
+        },
+        {
+          "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+          "Flags": 0,
+          "Name": "2D Skybox",
+          "Position": "0,0,0",
+          "Tags": "skybox",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkyBox2D",
+              "__guid": "1547c864-ff73-42cf-8029-2510da54f185",
+              "SkyMaterial": "materials/sky/atmosphere_sky.vmat",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "e237b3b6-67f2-4a25-abba-103a472e15d2",
+      "Flags": 0,
+      "Name": "darkrp",
+      "Enabled": true,
+      "__Prefab": "gameplay/darkrp.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f5d3dc9d-b217-4927-a409-cc724335c351",
+      "Flags": 0,
+      "Name": "Door Testing",
+      "Position": "-2316.384,-1460.883,1159.216",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "36c2cbb4-0130-4ca5-8f20-6b37281dc207",
+          "Flags": 0,
+          "Name": "door (1)",
+          "Position": "1912.662,1281.718,-1158.216",
+          "Rotation": "0,0,-0.7071067,0.7071068",
+          "Tags": "noblockaudio",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "__Prefab": "prefabs/door.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "6eb7d363-e31d-4f51-80cc-b1b6e0ddc499",
+          "Flags": 0,
+          "Name": "door",
+          "Position": "1784.662,1281.718,-1158.216",
+          "Rotation": "0,0,-0.7071067,0.7071068",
+          "Tags": "noblockaudio",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "__Prefab": "prefabs/door.prefab",
+          "__PrefabVariables": {}
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "minimal",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

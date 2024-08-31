@@ -1,18 +1,17 @@
 {
-  "Title": "DarkRP",
+  "Title": "DarkRP (DEV)",
   "Type": "game",
   "Org": "dxura",
-  "Ident": "darkrp",
+  "Ident": "darkrp-dev",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": null,
+  "Resources": "/fonts/*\n/UI/*\nui/*.png",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,
   "Metadata": {
     "MaxPlayers": 64,
     "MinPlayers": 1,
-    "TickRate": 50,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Unrestricted",
     "MapList": [
@@ -21,8 +20,18 @@
     "RankType": "None",
     "PerMapRanking": false,
     "LeaderboardType": "None",
-    "CsProjName": "",
-    "StartupScene": "scenes/world.scene",
+    "Physics": {
+      "SubSteps": 2,
+      "TimeScale": 1,
+      "Gravity": "0,0,-800",
+      "AirDensity": 1.2,
+      "SleepingEnabled": true,
+      "SimulationMode": "Continuous",
+      "PositionIterations": 2,
+      "VelocityIterations": 8,
+      "SoftBodyIterations": 1,
+      "SoftBodySubsteps": 1
+    },
     "Compiler": {
       "RootNamespace": "Dxura.Darkrp",
       "DefineConstants": "SANDBOX;ADDON;DEBUG",
@@ -37,7 +46,191 @@
       ],
       "DistinctAssemblyReferences": []
     },
+    "GameCategory": "Shooter",
+    "ControlModes": {
+      "Keyboard": true,
+      "Gamepad": true
+    },
+    "ParentPackage": "",
+    "DefaultLeaderboards": [],
+    "GeneralExtensions": false,
+    "TargettedExtensions": true,
+    "ExtensionApiVersion": 1001,
+    "Summary": "DarkRP 2.0",
+    "Description": "",
+    "ReplaceTags": "firstperson thirdperson action fps shooter",
+    "Public": true,
+    "CsProjName": "",
+    "HttpAllowList": null,
+    "InputSettings": {
+      "Actions": [
+        {
+          "Name": "Forward",
+          "KeyboardCode": "W",
+          "GamepadCode": "None",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Backward",
+          "KeyboardCode": "S",
+          "GamepadCode": "None",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Left",
+          "KeyboardCode": "A",
+          "GamepadCode": "None",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Right",
+          "KeyboardCode": "D",
+          "GamepadCode": "None",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Jump",
+          "KeyboardCode": "space",
+          "GamepadCode": "None",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Run",
+          "KeyboardCode": "shift",
+          "GamepadCode": "LeftJoystickButton",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Walk",
+          "KeyboardCode": "alt",
+          "GamepadCode": "None",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Duck",
+          "KeyboardCode": "Ctrl",
+          "GamepadCode": "B",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "attack1",
+          "KeyboardCode": "mouse1",
+          "GamepadCode": "RightTrigger",
+          "GroupName": "Weapon Handling"
+        },
+        {
+          "Name": "attack2",
+          "KeyboardCode": "mouse2",
+          "GamepadCode": "LeftTrigger",
+          "GroupName": "Weapon Handling"
+        },
+        {
+          "Name": "reload",
+          "KeyboardCode": "r",
+          "GamepadCode": "X",
+          "GroupName": "Weapon Handling"
+        },
+        {
+          "Name": "Voice",
+          "KeyboardCode": "v",
+          "GamepadCode": "RightJoystickButton",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Drop",
+          "KeyboardCode": "g",
+          "GamepadCode": "DpadSouth",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Score",
+          "KeyboardCode": "tab",
+          "GamepadCode": "SwitchLeftMenu",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Chat",
+          "KeyboardCode": "enter",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Menu",
+          "KeyboardCode": "q",
+          "GamepadCode": "DpadNorth",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Noclip",
+          "KeyboardCode": "mouse3",
+          "GamepadCode": "None",
+          "GroupName": "Development"
+        },
+        {
+          "Name": "Slot1",
+          "KeyboardCode": "1",
+          "GamepadCode": "None",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot2",
+          "KeyboardCode": "2",
+          "GamepadCode": "None",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "DeveloperMenu",
+          "KeyboardCode": "\\",
+          "GamepadCode": "None",
+          "GroupName": "Development"
+        },
+        {
+          "Name": "Slot3",
+          "KeyboardCode": "3",
+          "GamepadCode": "None",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "BuyMenu",
+          "KeyboardCode": "B",
+          "GamepadCode": "DpadEast",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot4",
+          "KeyboardCode": "4",
+          "GamepadCode": "None",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot5",
+          "KeyboardCode": "5",
+          "GamepadCode": "None",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Use",
+          "KeyboardCode": "E",
+          "GamepadCode": "Y",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "FireMode",
+          "KeyboardCode": "m",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Flashlight",
+          "KeyboardCode": "F",
+          "GamepadCode": "None",
+          "GroupName": "Player"
+        }
+      ],
+      "__guid": "bcccc875-ac58-4719-a08e-4d5b3875734a"
+    },
+    "TickRate": 30,
     "LaunchMode": "Normal",
-    "__guid": "041acdc2-9e30-42d1-858c-f913d57d5e0d"
+    "StartupScene": "scenes/world.scene"
   }
 }

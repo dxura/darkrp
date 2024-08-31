@@ -1,0 +1,33 @@
+@namespace Dxura.Darkrp.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+@if ( PlayerState.RespawnState == RespawnState.Immediate )
+{
+	return;
+}
+
+@if ( !PlayerState.IsRespawning )
+{
+	return;
+}
+
+
+<root>
+	<div class="default-respawner">
+		<p class="label">Do not break NLR (Don't return to where you died for 120 seconds)</p>
+		<p class="label">Respawning in @Respawner.GetRespawnTime()</p>
+	</div>
+
+</root>
+
+@code
+{
+	public Respawner Respawner => Scene.GetAllComponents<Respawner>().FirstOrDefault();
+	public PlayerState PlayerState => PlayerState.Local;
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( PlayerState.IsRespawning, Respawner.GetRespawnTime() );
+	}
+}

@@ -1,0 +1,19 @@
+﻿@import "/UI/Styles/Theme.scss";
+
+Vitals {
+  position: relative;
+
+  &.low-health > .inner {
+    animation: LowHealth 1s linear infinite;
+  }
+}
+
+@keyframes LowHealth {
+  0% {
+    box-shadow: 0 0 0 0 rgba(red, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 0 10px rgba(red, 0);
+  }
+}

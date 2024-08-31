@@ -1,0 +1,53 @@
+﻿@namespace Dxura.Darkrp.UI
+@inherits Panel
+
+@attribute [StyleSheet]
+
+@using System.Text;
+@using Dxura.Darkrp.UI
+
+<root class="hud middle with-padding with-rounding with-px-lg with-background flex justify-center align-center column hidden @BuildClass()" style="top: 35%; @BuildStyle()">
+	<label class="emphasis">@Status</label>
+</root>
+
+@code
+{
+	public static Toast Instance { get; private set; }
+
+	public Toast()
+	{
+		Instance = this;
+	}
+
+	public void Show( string status, ToastType type = ToastType.Generic, float duration = 5f )
+	{
+		Status = status;
+		Type = type;
+		TimeUntilHide = duration;
+	}
+
+	private string Status { get; set; } = "";
+	private ToastType Type { get; set; } = ToastType.Generic;
+
+	private RealTimeUntil TimeUntilHide { get; set; }
+	private bool IsActive => TimeUntilHide > 0f && !string.IsNullOrEmpty( Status );
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Status, Type, IsActive );
+	}
+
+	private string BuildClass()
+	{
+		var sb = new StringBuilder();
+		sb.Append( IsActive ? "visible " : "" );
+		sb.Append( $"{Type} " );
+
+		return sb.ToString();
+	}
+
+	private string BuildStyle()
+	{
+		return "background-color: rgba( black, 0.25 );";
+	}
+}

@@ -1,0 +1,33 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if ( _showNameplate )
+	{
+		<div class="name">@Player.DisplayName.Truncate( 13 )</div>
+		<span class="job" style="color: @Player.Job.Color.Hex">@Player.Job.Name</span>
+	}
+</root>
+
+@code
+
+{
+    // Currently the nameplate doesn't adapt well with the player size, so we need to find a workaround //
+
+    [Property] Player Player { get; set; }
+
+    private bool _showNameplate;
+
+    protected override void OnStart()
+    {
+	    
+        // // we are not the local network player show the nameplate to everyone
+        if (IsProxy) { _showNameplate = true; } 
+    }
+    
+	/// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(Player.DisplayName);
+}

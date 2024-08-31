@@ -1,0 +1,48 @@
+﻿@namespace Dxura.Darkrp.UI
+@inherits Panel
+
+<root class="hud middle with-padding with-px-lg with-background flex justify-center align-center column @BuildClass()" style="top: 75%">
+	<label class="emphasis">@Status</label>
+	<ProgressBar Value="@( Progress * 100 )" width="100"/>
+</root>
+
+@code
+{
+	public Player Player => PlayerState.Local.Player;
+	public string Status { get; set; } = "";
+	public float Progress = 0.0f;
+
+	private bool IsActive { get; set; }
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Status, Progress, IsActive );
+	}
+
+	public override void Tick()
+	{
+		IsActive = false;
+
+		if ( !Player.IsValid() )
+			return;
+
+		// if ( Player.IsPlanting( out var plantable ) )
+		// {
+		//     IsActive = true;
+		//     Status = "Planting the bomb...";
+		//     Progress = plantable.Progress;
+		// }
+		//
+		// if ( Player.IsDefusing( out var planted ) )
+		// {
+		//     IsActive = true;
+		//     Status = "Defusing the bomb...";
+		//     Progress = planted.Progress;
+		// }
+	}
+
+	private string BuildClass()
+	{
+		return IsActive ? "visible" : "hidden";
+	}
+}

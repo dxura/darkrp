@@ -1,0 +1,169 @@
+{
+  "RootObject": {
+    "__guid": "d9722984-8e27-467c-bf69-0aed3358f138",
+    "Flags": 0,
+    "Name": "printer",
+    "Tags": "grab,interact,printer",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.PrinterEntity",
+        "__guid": "072aa8e3-63e3-4a4e-87aa-11dd5599a892",
+        "_printerConfig": {
+          "Bronze": {
+            "Material": "gameplay/entities/printer/materials/base/bronze/bronze_printer.vmat",
+            "Price": 5,
+            "Timer": 60
+          }
+        },
+        "CanBePickedUp": true,
+        "EntityName": "Printer",
+        "HealthComponent": {
+          "_type": "component",
+          "component_id": "da24a7a1-6110-4bf0-8c0c-f4e71549fb19",
+          "go": "d9722984-8e27-467c-bf69-0aed3358f138",
+          "component_type": "HealthComponent"
+        },
+        "ModelRenderer": {
+          "_type": "component",
+          "component_id": "26c609c0-2310-438a-83a3-14b8e2abfb0f",
+          "go": "d9722984-8e27-467c-bf69-0aed3358f138",
+          "component_type": "ModelRenderer"
+        },
+        "PrinterCurrentMoney": 0,
+        "PrinterFan": {
+          "_type": "gameobject",
+          "go": "77f52835-a0aa-4c30-be47-0bdf2d8d5133"
+        },
+        "PrinterFanSpeed": 1000,
+        "PrinterMaxMoney": 8000,
+        "PrinterTimerMoney": 25
+      },
+      {
+        "__type": "Dxura.Darkrp.HealthComponent",
+        "__guid": "da24a7a1-6110-4bf0-8c0c-f4e71549fb19",
+        "IsGodMode": false,
+        "MaxHealth": 100
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "e18c4834-4606-489e-b986-b64aedbad9bb",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.SoundPointComponent",
+        "__guid": "419ee3ac-e54c-45f6-91ec-ba30e3111c66",
+        "DistanceAttenuation": false,
+        "DistanceAttenuationOverride": false,
+        "Force2d": false,
+        "MaxRepeatTime": 1,
+        "MinRepeatTime": 1,
+        "Occlusion": false,
+        "OcclusionOverride": false,
+        "OcclusionRadius": 32,
+        "Pitch": 1,
+        "PlayOnStart": true,
+        "ReflectionOverride": false,
+        "Reflections": false,
+        "Repeat": true,
+        "SoundEvent": "gameplay/entities/printer/audio/printer.sound",
+        "SoundOverride": false,
+        "StopOnNew": false,
+        "TargetMixer": {
+          "Name": "game",
+          "Id": "5ee1f692-d498-44a8-a66e-451bb0ff3eeb"
+        },
+        "Volume": 1
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "d9246d7c-60a1-4680-9bac-d3a25ec8f36b",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Scale": "35,35,10",
+        "Static": false,
+        "Surface": "surfaces/plastic.surface"
+      },
+      {
+        "__type": "Sandbox.HighlightOutline",
+        "__guid": "4c520a1d-93e7-49e2-9816-231be2e085e5",
+        "Color": "1,1,1,0",
+        "InsideColor": "0,0,0,0",
+        "InsideObscuredColor": "0,0,0,0",
+        "ObscuredColor": "0,0,0,0",
+        "Width": 0.25
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "26c609c0-2310-438a-83a3-14b8e2abfb0f",
+        "BodyGroups": 18446744073709551615,
+        "MaterialOverride": "gameplay/entities/printer/materials/base/bronze/bronze_printer.vmat",
+        "Model": "gameplay/entities/printer/models/printer.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "a5cd5a30-2083-43c0-a2d7-a09c3e78d29d",
+        "Flags": 0,
+        "Name": "screen",
+        "Position": "5.243544,16.74292,-0.5807551",
+        "Rotation": "0,0,0.7071068,0.7071067",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "a9c13a9b-f6ae-4946-b39b-cd81796c72a7",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": false,
+            "PanelSize": "410,122",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.PrinterEntityDisplay",
+            "__guid": "62b6067a-e205-4be1-9f0e-7f3da2e254bc"
+          }
+        ]
+      },
+      {
+        "__guid": "77f52835-a0aa-4c30-be47-0bdf2d8d5133",
+        "Flags": 0,
+        "Name": "fan",
+        "Position": "-11.36446,16.90277,-0.6974952",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "5d4e6314-c428-4dd4-b064-b4b329fe93fb",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "gameplay/entities/printer/materials/fan/bronze/printer_fan_bronze.vmat",
+            "Model": "gameplay/entities/printer/models/printer_fan.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
