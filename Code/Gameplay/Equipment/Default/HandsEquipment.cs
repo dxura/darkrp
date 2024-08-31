@@ -117,7 +117,7 @@ public class HandsEquipment : InputWeaponComponent
 		var tr = Scene.Trace.Ray( start, end )
 			.UseHitboxes()
 			.IgnoreGameObject( GameObject )
-			.WithTag( "entity" )
+			.WithAnyTags( "entity", "pickup" )
 			.Run();
 
 		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.GameObject.Tags.Has( "map" ) || tr.StartedSolid ) return;
