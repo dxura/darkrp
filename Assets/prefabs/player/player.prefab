@@ -164,7 +164,7 @@
           "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
           "component_type": "SkinnedModelRenderer"
         },
-        "Volume": 15,
+        "Volume": 30,
         "WorldspacePlayback": true
       }
     ],
