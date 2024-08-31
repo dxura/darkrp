@@ -14,7 +14,7 @@ public class PrinterEntityConfiguration {
 
 [Title( "Printer" )]
 [Category( "Entities" )]
-public sealed class PrinterEntity : BaseEntity
+public sealed class PrinterEntity : BaseEntity, IDescription
 {
 	
 	[Property] private SoundEvent? WithdrawSound { get; set; }
@@ -121,4 +121,8 @@ public sealed class PrinterEntity : BaseEntity
 		ModelRenderer.Tint = newColor;
 		ModelRenderer.MaterialOverride = config?.Material;
 	}
+
+	public string DisplayName => _currentPrinterType + " Printer";
+
+	public Color Color => Color.Yellow;
 }

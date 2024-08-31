@@ -2,17 +2,17 @@
   "Name": "Physgun",
   "Description": "",
   "Slot": "Primary",
-  "Icon": "ui/weapons/guns/usp_01.png",
+  "Icon": "ui/equipment/physgun.png",
   "IsPurchasable": false,
   "Price": 0,
   "KillReward": 300,
   "MainPrefab": {
     "_type": "gameobject",
-    "prefab": "gameplay/equipment/core/physgun/w_physgun.prefab"
+    "prefab": "gameplay/equipment/default/physgun/w_physgun.prefab"
   },
   "ViewModelPrefab": {
     "_type": "gameobject",
-    "prefab": "gameplay/equipment/core/physgun/vm_physgun.prefab"
+    "prefab": "gameplay/equipment/default/physgun/vm_physgun.prefab"
   },
   "WorldModel": "weapons/rust_pistol/rust_pistol.vmdl",
   "DroppedSize": "8,2,8",
