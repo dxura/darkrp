@@ -1,5 +1,8 @@
 @import "/UI/Styles/Theme.scss";
 
 PropsMenuSection {
-
+  .prop-list{
+    display: flex;
+    flex-direction: column;
+  }
 }

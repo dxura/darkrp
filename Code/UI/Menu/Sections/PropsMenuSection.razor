@@ -1,11 +1,169 @@
 @namespace Dxura.Darkrp.UI
-@inherits Panel
+@using System.Text.RegularExpressions
+@using System.Threading.Tasks
+
+@inherits Panel;
 
 <root>
-	<h1>TODO Props</h1>
+	<div class="prop-list">
+		<!-- Local Props -->
+		<button class="button" style="justify-content:center; margin-top:10px; margin-bottom:20px; background-color:maroon;" onclick=@RemoveAllProps>
+			Remove all my props (Press "Z" to undo props)
+		</button>
+
+		<div class="section-title">Local</div>
+		<div style="flex-direction: row; flex-wrap:wrap;">
+			@if ( Props is { Count: > 0 } )
+			{
+				@foreach ( var model in Props )
+				{
+					var propName = model.Name;
+					var displayName = Regex.Replace( model.ResourceName, @"0[1-99]", "" );
+					var propThumbnailPath = ""; // PropManager.GetPropThumbnail(propName);
+
+					<div style="padding:8px;">
+						<div class="button" onclick=@( () => SpawnProp( propName ) ) style="background-image: url('@propThumbnailPath'); background-size: cover; width:150px; height:150px; margin: 10px;">
+						</div>
+					</div>
+				}
+			}
+			else
+			{
+				<div>No local props found (Coming soon)</div>
+			}
+
+		</div>
+
+		<div class="section-title">Cloud</div>
+		<div style="flex-direction: row; flex-wrap:wrap; margin-top: 20px;">
+			@if ( CloudPackages is { Count: > 0 } )
+			{
+				@foreach ( var package in CloudPackages )
+				{
+					var thumbnailPath = package.Thumb;
+
+					<div class="button" onclick=@( () => SpawnCloudProp( package.FullIdent ) ) style="background-image: url(@thumbnailPath); background-size: cover; width:150px; height:150px; margin: 10px;">
+					</div>
+				}
+			}
+			else
+			{
+				<div>Loading...</div>
+			}
+		</div>
+	</div>
 </root>
 
 @code
 {
+	[Property] public List<Model> Props { get; set; } = new();
+	private List<Package>? CloudPackages { get; set; } = new();
+	
+	private async Task LoadCloudPackages(string query)
+	{
+		try
+		{
+			var result = await Package.FindAsync(query);
+			if (result is { Packages: not null })
+			{
+				CloudPackages = result.Packages.ToList();
+
+				StateHasChanged(); // Refresh the UI to show the packages
+			}
+			else
+			{
+				Log.Warning("No packages found matching the query.");
+			}
+		}
+		catch (Exception ex)
+		{
+			Log.Error($"Failed to load cloud packages: {ex.Message}");
+		}
+	}
+	
+	void SpawnProp(string modelName)
+	{
+		// if (PropManager == null)
+		// {
+		// 	Log.Error("PropManager not found");
+		// 	return;
+		// }
+		// PropManager.SpawnProp(modelname);
+	}
+
+	async Task SpawnCloudProp(string fullIdent)
+	{
+		try
+		{
+			var package = await Package.FetchAsync(fullIdent, true);
+
+			if (package != null)
+			{
+				Log.Info($"Package {package.Title} fetched successfully.");
+
+				var installedPackage = await package.MountAsync();
+
+				if (installedPackage != null)
+				{
+					Log.Info($"Package {package.Title} downloaded and mounted successfully.");
+
+					// var propToolManager = GameObject.Components.Get<PropToolManager>() ??
+					//                       GameObject.Parent?.Components.Get<PropToolManager>();
+					//
+					// if (propToolManager != null)
+					// {
+					// 	Vector3 position = GameObject.Transform.Position + Vector3.Up * 50;
+					// 	Rotation rotation = Rotation.Identity;
+					//
+					// 	propToolManager.SpawnCloudModel(fullIdent, position, rotation);
+					// 	Log.Info($"Cloud model {fullIdent} spawned successfully.");
+					// }
+					// else
+					// {
+					// 	Log.Warning("PropToolManager not found on the game object or its parent.");
+					// }
+				}
+				else
+				{
+					Log.Warning($"Failed to mount package: {fullIdent}");
+				}
+			}
+			else
+			{
+				Log.Warning($"Could not fetch package with identifier: {fullIdent}");
+			}
+		}
+		catch (Exception ex)
+		{
+			Log.Error($"Failed to spawn cloud model: {ex.Message}");
+		}
+	}
+	
+	void RemoveAllProps()
+	{
+		// if (PropManager == null)
+		// {
+		// 	Log.Error("PropManager not found");
+		// 	return;
+		// }
+		// PropManager.RemoveAllProps();
+	}
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		if ( !firstTime ) return;
+		
+		try
+		{
+			// Load Cloud Packages
+			_ = LoadCloudPackages("model");
+		}
+		catch (Exception ex)
+		{
+			Log.Error($"Failed to initialize: {ex.Message}");
+		}
+	}
+	
+	// protected override int BuildHash() => System.HashCode.Combine(PropManager?.PropCount());
 
 }
