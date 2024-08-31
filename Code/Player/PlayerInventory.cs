@@ -423,9 +423,11 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 
 	public void OnGameEvent( PlayerSpawnedEvent eventArgs )
 	{
-		if ( eventArgs.Player.IsProxy )
+		
+		// Ignore if not for us
+		if ( eventArgs.Player != Player )
 		{
-			return;
+			return;	
 		}
 		
 		var isFirst = true;

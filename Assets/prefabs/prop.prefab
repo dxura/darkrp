@@ -14,8 +14,17 @@
         "BodyGroups": 18446744073709551615,
         "Health": 100,
         "IsStatic": false,
-        "Model": "models/citizen_props/concreteroaddivider01.vmdl",
+        "Model": "models/arrow.vmdl",
         "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Dxura.Darkrp.PropHelper",
+        "__guid": "d92d166d-e08a-41b7-8be8-b2b9b2b4ae7b"
+      },
+      {
+        "__type": "Dxura.Darkrp.PropLogic",
+        "__guid": "354aebb7-4988-4491-a5e5-06fb39e36e95",
+        "EntityName": "Prop"
       }
     ],
     "Children": [],

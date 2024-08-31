@@ -225,6 +225,12 @@
           "KeyboardCode": "F",
           "GamepadCode": "None",
           "GroupName": "Player"
+        },
+        {
+          "Name": "Undo",
+          "KeyboardCode": "z",
+          "GamepadCode": "None",
+          "GroupName": "Other"
         }
       ],
       "__guid": "bcccc875-ac58-4719-a08e-4d5b3875734a"

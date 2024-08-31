@@ -165,6 +165,7 @@ public class PhysGunEquipment : InputWeaponComponent
 
 		if ( !body.IsValid() )
 			return;
+		
 
 		//
 		// Don't move keyframed, unless it's a player
@@ -183,10 +184,14 @@ public class PhysGunEquipment : InputWeaponComponent
 		if ( rootEnt.Tags.Has( GrabbedTag ) )
 			return;
 
+		if ( !rootEnt.Network.IsOwner )
+		{
+			return;
+		}
+
 		GrabInit( body, eyePos, tr.EndPosition, eyeRot );
 
 		GrabbedObject = rootEnt;
-		GrabbedObject.Network.TakeOwnership();
 
 		GrabbedPos = tr.GameObject.Transform.World.PointToLocal( tr.EndPosition );
 

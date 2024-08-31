@@ -248,30 +248,6 @@
       "OwnerTransfer": 0,
       "__Prefab": "prefabs/vehicles/jeep.prefab",
       "__PrefabVariables": {}
-    },
-    {
-      "__guid": "1eede0dd-7a2b-40a6-af02-9d60a504874c",
-      "Flags": 0,
-      "Name": "prop",
-      "Position": "-2797.527,-320.6998,72.00006",
-      "Tags": "prop",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "prefabs/prop.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "9ac61527-c797-4f27-9973-fc97629d73ef",
-      "Flags": 0,
-      "Name": "prop (2)",
-      "Position": "-2894.03,-425.2894,72.00006",
-      "Tags": "prop",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "prefabs/prop.prefab",
-      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {

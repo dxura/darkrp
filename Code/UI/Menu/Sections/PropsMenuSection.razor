@@ -11,15 +11,17 @@
 			Remove all my props (Press "Z" to undo props)
 		</button>
 
+		<div class="section-title">Props: @PropManager.Instance.PropCount() / @PropManager.Instance.PropLimit</div>
+
 		<div class="section-title">Local</div>
 		<div style="flex-direction: row; flex-wrap:wrap;">
-			@if ( Props is { Count: > 0 } )
+			@if ( PropManager.Instance.Props is { Count: > 0 } )
 			{
-				@foreach ( var model in Props )
+				@foreach ( var model in PropManager.Instance.Props )
 				{
 					var propName = model.Name;
 					var displayName = Regex.Replace( model.ResourceName, @"0[1-99]", "" );
-					var propThumbnailPath = ""; // PropManager.GetPropThumbnail(propName);
+					var propThumbnailPath =  PropManager.GetPropThumbnail(propName);
 
 					<div style="padding:8px;">
 						<div class="button" onclick=@( () => SpawnProp( propName ) ) style="background-image: url('@propThumbnailPath'); background-size: cover; width:150px; height:150px; margin: 10px;">
@@ -56,8 +58,8 @@
 
 @code
 {
-	[Property] public List<Model> Props { get; set; } = new();
 	private List<Package>? CloudPackages { get; set; } = new();
+	
 	
 	private async Task LoadCloudPackages(string query)
 	{
@@ -83,12 +85,8 @@
 	
 	void SpawnProp(string modelName)
 	{
-		// if (PropManager == null)
-		// {
-		// 	Log.Error("PropManager not found");
-		// 	return;
-		// }
-		// PropManager.SpawnProp(modelname);
+		Log.Info( modelName );
+		PropManager.Instance.SpawnProp(modelName, false);
 	}
 
 	async Task SpawnCloudProp(string fullIdent)
@@ -106,22 +104,9 @@
 				if (installedPackage != null)
 				{
 					Log.Info($"Package {package.Title} downloaded and mounted successfully.");
-
-					// var propToolManager = GameObject.Components.Get<PropToolManager>() ??
-					//                       GameObject.Parent?.Components.Get<PropToolManager>();
-					//
-					// if (propToolManager != null)
-					// {
-					// 	Vector3 position = GameObject.Transform.Position + Vector3.Up * 50;
-					// 	Rotation rotation = Rotation.Identity;
-					//
-					// 	propToolManager.SpawnCloudModel(fullIdent, position, rotation);
-					// 	Log.Info($"Cloud model {fullIdent} spawned successfully.");
-					// }
-					// else
-					// {
-					// 	Log.Warning("PropToolManager not found on the game object or its parent.");
-					// }
+					
+					PropManager.Instance.SpawnProp(fullIdent, true);
+					Log.Info($"Cloud model {fullIdent} spawned successfully.");
 				}
 				else
 				{
@@ -141,12 +126,7 @@
 	
 	void RemoveAllProps()
 	{
-		// if (PropManager == null)
-		// {
-		// 	Log.Error("PropManager not found");
-		// 	return;
-		// }
-		// PropManager.RemoveAllProps();
+		PropManager.Instance.RemoveAllProps();
 	}
 
 	protected override void OnAfterTreeRender( bool firstTime )
@@ -164,6 +144,6 @@
 		}
 	}
 	
-	// protected override int BuildHash() => System.HashCode.Combine(PropManager?.PropCount());
+	protected override int BuildHash() => System.HashCode.Combine(PropManager.Instance.PropCount());
 
 }
