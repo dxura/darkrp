@@ -1,9 +1,10 @@
 using Dxura.Darkrp;
 using Dxura.Darkrp;
+using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
-public partial class Player
+public partial class Player : IGameEventHandler<JobChangedEvent>
 {
 	/// <summary>
 	/// What effect should we spawn when a player gets headshot?
@@ -46,6 +47,13 @@ public partial class Player
 	[Property]
 	[Group( "Effects" )]
 	public SoundEvent? BloodImpactSound { get; set; }
+	
+	/// <summary>
+	/// What sound should we play when we change jobs?
+	/// </summary>
+	[Property]
+	[Group( "Effects" )]
+	public SoundEvent? JobChangedSound { get; set; }
 
 	private bool IsOutlineVisible()
 	{
@@ -91,5 +99,10 @@ public partial class Player
 				? PlayerState.PlayerColor
 				: Color.Transparent;
 		}
+	}
+
+	public void OnGameEvent( JobChangedEvent eventArgs )
+	{
+		Sound.Play( JobChangedSound, Transform.Position);
 	}
 }

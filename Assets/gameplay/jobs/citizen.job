@@ -1,6 +1,6 @@
 {
   "Name": "Citizen",
-  "Description": "Be a normal person",
+  "Description": "As a citizen you are a standard member of the community. ",
   "Color": "0.06361,0.69302,0.0419,1",
   "Group": "gameplay/jobs/groups/civilian.group",
   "SortingLevel": 0,

@@ -89,6 +89,7 @@ public partial class PlayerState : Component
 		// todo: actually kick em
 	}
 
+	[Broadcast( NetPermission.OwnerOnly )]
 	public void AssignJob( JobResource job )
 	{
 		if ( !Networking.IsHost )
@@ -97,6 +98,8 @@ public partial class PlayerState : Component
 		}
 
 		Job = job;
+		Respawn(Random.Shared.FromList(Respawner.SpawnPoints), true );
+
 
 		Scene.Dispatch( new JobAssignedEvent( this, job ) );
 	}

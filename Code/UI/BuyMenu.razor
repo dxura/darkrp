@@ -4,7 +4,7 @@
 
 @if ( !Player.IsValid() ) return;
 
-<root class="flex absolute inset-0 align-center justify-center hidden @( IsOpen ? "visible" : "" )">
+<root class="flex absolute inset-0 align-center justify-center">
 	<div class="flex column with-padding gap-sm">
 
 		<div class="with-background with-padding">
@@ -107,24 +107,9 @@
 	{
 		return PlayerState.Balance >= buyMenuItem.GetPrice( Player );
 	}
-
-	private bool IsOpen = false;
-
-	void Toggle()
-	{
-		IsOpen = !IsOpen;
-	}
-
-	public override void Tick()
-	{
-		if ( Input.Pressed( "BuyMenu" ) )
-		{
-			Toggle();
-		}
-	}
-
+	
 	protected override int BuildHash()
 	{
-		return !Player.IsValid() ? 0 : HashCode.Combine( Inventory.Equipment.Count(), IsOpen );
+		return !Player.IsValid() ? 0 : HashCode.Combine( Inventory.Equipment.Count() );
 	}
 }

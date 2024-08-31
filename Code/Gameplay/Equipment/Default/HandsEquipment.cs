@@ -147,7 +147,6 @@ public class HandsEquipment : InputWeaponComponent
 
 	public void Grab( GameObject target, PhysicsBody targetBody )
 	{
-
 		target.Network.TakeOwnership();
 
 		var bounds = target.GetBounds();

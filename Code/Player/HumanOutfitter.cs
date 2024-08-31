@@ -10,10 +10,9 @@ public sealed class HumanOutfitter : Component,
 {
 	[Property] public Player Player { get; set; } = null!;
 	[Property] public SkinnedModelRenderer Renderer { get; set; } = null!;
-
+	
 	void IGameEventHandler<JobChangedEvent>.OnGameEvent( JobChangedEvent eventArgs )
 	{
-		Log.Info( "job" );
 		UpdateFromJob( eventArgs.After );
 	}
 

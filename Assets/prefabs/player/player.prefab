@@ -48,6 +48,7 @@
           "component_type": "HealthComponent"
         },
         "Height": 64,
+        "JobChangedSound": "sounds/job-switch.sound",
         "LandSound": "sounds/footsteps/footstep-concrete-land.sound",
         "LockCamera": false,
         "MinimumFallSoundVelocity": 250,

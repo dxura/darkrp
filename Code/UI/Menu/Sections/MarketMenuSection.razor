@@ -3,9 +3,19 @@
 
 <root>
 	<h1>TODO Market</h1>
+	
+	@if ( PlayerState.Local?.Job.Name == "Gun Dealer" )
+	{
+		<BuyMenu></BuyMenu>
+	}
 </root>
 
 @code
 {
 
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( PlayerState.Local?.Job.Name );
+
+	}
 }

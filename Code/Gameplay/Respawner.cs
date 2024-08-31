@@ -7,7 +7,7 @@ public class Respawner : Component
 {
 	[Property] [HostSync] public float RespawnDelaySeconds { get; set; } = 3f;
 
-	private readonly List<SpawnPointInfo> _spawnPointInfos = new();
+	public static readonly List<SpawnPointInfo> SpawnPoints = new();
 
 	/// <summary>
 	/// How long until respawn?
@@ -25,7 +25,7 @@ public class Respawner : Component
 
 		foreach ( var spawnPoint in spawnPoints )
 		{
-			_spawnPointInfos.Add( new SpawnPointInfo(new Transform(spawnPoint.Transform.Position, spawnPoint.Transform.Rotation), Array.Empty<string>() ));
+			SpawnPoints.Add( new SpawnPointInfo(new Transform(spawnPoint.Transform.Position, spawnPoint.Transform.Rotation), Array.Empty<string>() ));
 		}
 	}
 
@@ -63,7 +63,7 @@ public class Respawner : Component
 					break;
 
 				case RespawnState.Immediate:
-					player.Respawn(Random.Shared.FromList(_spawnPointInfos), true );
+					player.Respawn(Random.Shared.FromList(SpawnPoints), true );
 					break;
 			}
 		}

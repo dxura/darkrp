@@ -1,4 +1,5 @@
 @namespace Dxura.Darkrp.UI
+@using GameSystems.Jobs
 @inherits Panel
 
 <root>
@@ -10,7 +11,7 @@
 				<div class="job-list">
 					@foreach ( var job in JobProvider.Jobs.Values.Where( x => x.Group == group ) )
 					{
-						<div class="job-entry button">
+						<div class="job-entry button" onclick="@(() => SelectJob(job))">
 							<div class="icon"></div>
 							<div class="label-container">
 								<div class="label">@job.Name</div>
@@ -29,5 +30,24 @@
 	protected override int BuildHash()
 	{
 		return HashCode.Combine( JobProvider.Jobs );
+	}
+
+	private void SelectJob( JobResource job )
+	{
+		var localPlayerState = PlayerState.Local;
+
+		if ( localPlayerState == null )
+		{
+			return;
+		}
+
+		if ( localPlayerState.Job == job )
+		{
+			return;
+		}
+		
+		PlayerState.Local?.AssignJob( job );
+		PlaySound( "sounds/job-switch" );
+
 	}
 }

@@ -428,6 +428,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 		// Give default equipment (Citizen)
 		foreach (var equipmentResource in JobProvider.Default().Equipment)
 		{
+			equipmentResource.CanDrop = false; // Prevent dropping default
 			Give( equipmentResource, isFirst);
 			isFirst = false;
 		}
@@ -435,6 +436,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 		// Then any job-specific equipment
 		foreach (var equipmentResource in eventArgs.Player.Job.Equipment)
 		{
+			equipmentResource.CanDrop = false; // Prevent dropping job-specific equipment
 			Give( equipmentResource );
 		}
 	}

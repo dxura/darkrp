@@ -1,5 +1,5 @@
 {
-  "__guid": "d5057927-686c-433d-92ff-3ab10865c303",
+  "__guid": "d76aee93-9284-4ae5-bd05-6a4b9b0852cc",
   "GameObjects": [
     {
       "__guid": "b928e07d-0197-43cf-9104-2c213199a765",
@@ -121,7 +121,7 @@
                   "FontSize": 64,
                   "FontWeight": 800,
                   "Scale": 0.15,
-                  "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)      B: Buy gun\nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
+                  "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
                   "TextAlignment": "Center"
                 }
               ]

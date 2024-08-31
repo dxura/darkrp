@@ -1,0 +1,20 @@
+{
+  "Name": "Police Officer",
+  "Description": "You follow the orders of the Chief \u0026 Mayor and keep peace \u0026 order to the community.",
+  "Color": "0.19639,0.34374,0.82791,1",
+  "Group": "gameplay/jobs/groups/goverment.group",
+  "SortingLevel": 1,
+  "Models": [
+    "models/player/ct_side/ct_side_player_01/ct_side_player_01_v2.vmdl"
+  ],
+  "Salary": 10,
+  "MaxWorkers": 0,
+  "Equipment": [
+    "gameplay/equipment/default/hands/hands.equip",
+    "gameplay/equipment/default/physgun/physgun.equip",
+    "gameplay/equipment/weapons/usp/usp.equip"
+  ],
+  "Vote": true,
+  "__references": [],
+  "__version": 0
+}

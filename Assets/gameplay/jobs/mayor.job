@@ -1,6 +1,6 @@
 {
   "Name": "Mayor",
-  "Description": "Lead your people",
+  "Description": "As the mayor it is your job to keep the city in safe hands and to keep the police force at work.",
   "Color": "0.48627,0.24706,0,1",
   "Group": "gameplay/jobs/groups/goverment.group",
   "SortingLevel": 0,
