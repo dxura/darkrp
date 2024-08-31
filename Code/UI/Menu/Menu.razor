@@ -92,6 +92,14 @@
     
     public override void Tick()
     {
+	    
+	    // Hide when deead
+	    if ( IsActive && (PlayerState.Local?.Player == null || PlayerState.Local.Player.HealthComponent.State == LifeState.Dead))
+	    {
+		    IsActive = false;
+		    StateHasChanged();
+	    }
+	    
        if ( Input.Pressed( "Menu" ) )
        {
           IsActive = true;

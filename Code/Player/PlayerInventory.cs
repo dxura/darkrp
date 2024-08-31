@@ -423,6 +423,11 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 
 	public void OnGameEvent( PlayerSpawnedEvent eventArgs )
 	{
+		if ( eventArgs.Player.IsProxy )
+		{
+			return;
+		}
+		
 		var isFirst = true;
 		
 		// Give default equipment (Citizen)

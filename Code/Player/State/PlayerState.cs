@@ -97,6 +97,13 @@ public partial class PlayerState : Component
 			return;
 		}
 
+		
+		// Respect job caps
+		if ( job.MaxWorkers != 0 && GameUtils.GetPlayersByJob( job ).Count() >= job.MaxWorkers )
+		{
+			return;
+		}
+
 		Job = job;
 		Respawn(Random.Shared.FromList(Respawner.SpawnPoints), true );
 

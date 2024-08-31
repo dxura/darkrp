@@ -3,7 +3,7 @@
     "__guid": "a4f94dfd-8684-4032-89b1-b08190beab32",
     "Flags": 0,
     "Name": "player",
-    "Tags": "player,noblockaudio",
+    "Tags": "noblockaudio,player",
     "Enabled": true,
     "Components": [
       {
