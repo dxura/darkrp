@@ -5,7 +5,7 @@
   "Group": "gameplay/jobs/groups/civilian.group",
   "SortingLevel": 2,
   "Models": [
-    "models/citizen_human/citizen_human_male.vmdl"
+    "models/player/hazmatsuit/hazmatsuit.vmdl"
   ],
   "Salary": 10,
   "MaxWorkers": 4,
@@ -14,6 +14,8 @@
     "gameplay/equipment/default/physgun/physgun.equip"
   ],
   "Vote": false,
-  "__references": [],
+  "__references": [
+    "sboxmp.hazmatsuit"
+  ],
   "__version": 0
 }

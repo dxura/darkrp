@@ -244,37 +244,6 @@
                 },
                 "Volume": 1
               }
-            ],
-            "Children": [
-              {
-                "__guid": "1f7cfcf0-b14f-491c-9195-eb901708ca3f",
-                "Flags": 0,
-                "Name": "Nameplate",
-                "Position": "0,0,18.53927",
-                "Enabled": true,
-                "Components": [
-                  {
-                    "__type": "Sandbox.WorldPanel",
-                    "__guid": "b454679b-d370-490c-a434-b634eeaf6b0c",
-                    "HorizontalAlign": "Center",
-                    "InteractionRange": 1000,
-                    "LookAtCamera": false,
-                    "PanelSize": "500,200",
-                    "RenderScale": 1,
-                    "VerticalAlign": "Center"
-                  },
-                  {
-                    "__type": "PlayerNameplate",
-                    "__guid": "9f5526d9-0e0a-43df-80be-94fbf0c05e99",
-                    "Player": {
-                      "_type": "component",
-                      "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
-                      "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
-                      "component_type": "Player"
-                    }
-                  }
-                ]
-              }
             ]
           }
         ]
@@ -1275,6 +1244,35 @@
         "Flags": 0,
         "Name": "GameObject",
         "Enabled": true
+      },
+      {
+        "__guid": "1f7cfcf0-b14f-491c-9195-eb901708ca3f",
+        "Flags": 0,
+        "Name": "Nameplate",
+        "Position": "0,0,78.53927",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "b454679b-d370-490c-a434-b634eeaf6b0c",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": true,
+            "PanelSize": "500,200",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "PlayerNameplate",
+            "__guid": "9f5526d9-0e0a-43df-80be-94fbf0c05e99",
+            "Player": {
+              "_type": "component",
+              "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
+              "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
+              "component_type": "Player"
+            }
+          }
+        ]
       }
     ],
     "__variables": []
