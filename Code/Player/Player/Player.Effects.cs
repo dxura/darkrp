@@ -49,37 +49,16 @@ public partial class Player
 
 	private bool IsOutlineVisible()
 	{
-		if ( !HealthComponent.IsValid() )
+		var localPlayerState = PlayerState.Local;
+		if ( localPlayerState.IsValid() && localPlayerState.Player.IsValid() &&
+		     localPlayerState.Player.HealthComponent.State == LifeState.Dead )
 		{
-			return false;
-		}
-
-		if ( HealthComponent.State != LifeState.Alive )
-		{
-			return false;
-		}
-
-		if ( HealthComponent.IsGodMode )
-		{
-			return true;
-		}
-
-		var playerState = PlayerState.Local;
-		if ( playerState.IsValid() && playerState.Player.IsValid() &&
-		     playerState.Player.HealthComponent.State == LifeState.Dead )
-		{
-			if ( playerState.GetLastKiller() == this )
+			if ( localPlayerState.GetLastKiller() == this )
 			{
 				return true;
 			}
 		}
-
-		var viewer = PlayerState.Local;
-		if ( viewer.IsValid() )
-		{
-			return Job == viewer.Job;
-		}
-
+		
 		return false;
 	}
 

@@ -90,7 +90,7 @@
           "__guid": "5a0d963a-ee8b-4b2b-bb46-4252a6d6269d",
           "Flags": 0,
           "Name": "Info",
-          "Position": "-3136,-672,239.8084",
+          "Position": "-3136,-672,215.8738",
           "Enabled": true,
           "Components": [
             {
@@ -101,7 +101,7 @@
               "FontSize": 64,
               "FontWeight": 800,
               "Scale": 0.3,
-              "Text": "DarkRP 2\n(Preview)",
+              "Text": "DarkRP (DEV)\n",
               "TextAlignment": "Center"
             }
           ],
@@ -110,7 +110,7 @@
               "__guid": "115f5ef9-f1b1-440f-bbd7-0f2684fb053d",
               "Flags": 0,
               "Name": "desc",
-              "Position": "0,0,-95.92889",
+              "Position": "0,0,-78.26839",
               "Enabled": true,
               "Components": [
                 {

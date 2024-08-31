@@ -17,7 +17,7 @@ public partial class PlayerState
 	public GameObject PlayerPrefab { get; set; }
 
 	public TimeSince TimeSinceRespawnStateChanged { get; private set; }
-	public DamageInfo LastDamageInfo { get; private set; }
+	public DamageInfo? LastDamageInfo { get; private set; }
 
 	/// <summary>
 	/// Are we ready to respawn?
@@ -75,8 +75,13 @@ public partial class PlayerState
 		TimeSinceRespawnStateChanged = 0f;
 	}
 
-	public Player GetLastKiller()
+	public Player? GetLastKiller()
 	{
-		return GameUtils.GetPlayerFromComponent( LastDamageInfo?.Attacker );
+		if ( LastDamageInfo == null )
+		{
+			return null;
+		}
+		
+		return GameUtils.GetPlayerFromComponent( LastDamageInfo.Attacker );
 	}
 }
