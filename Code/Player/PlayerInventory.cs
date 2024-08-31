@@ -23,15 +23,11 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 	public GameObject WeaponGameObject { get; set; } = null!;
 
 	/// <summary>
-	/// Can we unequip the current weapon so we have no equipment out?
-	/// </summary>
-	[Property]
-	public bool CanUnequipCurrentWeapon { get; set; } = false;
-
-	/// <summary>
 	/// Gets the player's current weapon.
 	/// </summary>
 	private Equipment? Current => Player?.CurrentEquipment;
+
+	public bool CantSwitch = false;
 
 	public void Clear()
 	{
@@ -128,6 +124,11 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
+		if ( CantSwitch )
+		{
+			return;
+		}
+
 		foreach ( var slot in Enum.GetValues<EquipmentSlot>() )
 		{
 			if ( slot == EquipmentSlot.Undefined )
@@ -210,7 +211,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		if ( equipment.Length == 1 && Current == equipment[0] && CanUnequipCurrentWeapon )
+		if ( equipment.Length == 1 && Current == equipment[0])
 		{
 			HolsterCurrent();
 			return;
@@ -355,15 +356,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 
 	public PickupResult CanTake( EquipmentResource resource )
 	{
-		switch ( resource.Slot )
-		{
-			case EquipmentSlot.Utility:
-				var can = !Has( resource );
-				return can ? PickupResult.Pickup : PickupResult.Swap;
-
-			default:
-				return !HasInSlot( resource.Slot ) ? PickupResult.Pickup : PickupResult.Swap;
-		}
+		return Has( resource ) ? PickupResult.Swap : PickupResult.Pickup;
 	}
 
 	public void TryPurchaseBuyMenuItem( string equipmentId )
@@ -430,10 +423,13 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 
 	public void OnGameEvent( PlayerSpawnedEvent eventArgs )
 	{
+		var isFirst = true;
+		
 		// Give default equipment (Citizen)
 		foreach (var equipmentResource in JobProvider.Default().Equipment)
 		{
-			Give( equipmentResource );
+			Give( equipmentResource, isFirst);
+			isFirst = false;
 		}
 		
 		// Then any job-specific equipment

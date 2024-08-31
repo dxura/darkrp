@@ -1,0 +1,30 @@
+{
+  "RootObject": {
+    "__guid": "8676f7c3-01c6-49a1-b2c7-178caea4b47c",
+    "Flags": 0,
+    "Name": "prop",
+    "Tags": "prop",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "425108ac-ddcb-4209-b7ad-7f98d448a8cc",
+        "BodyGroups": 18446744073709551615,
+        "Health": 100,
+        "IsStatic": false,
+        "Model": "models/citizen_props/concreteroaddivider01.vmdl",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

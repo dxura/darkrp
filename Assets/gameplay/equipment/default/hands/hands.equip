@@ -1,0 +1,24 @@
+{
+  "Name": "Hands",
+  "Description": "Interact with the world",
+  "Slot": "Primary",
+  "Icon": "ui/equipment/hands.png",
+  "IsPurchasable": false,
+  "Price": 0,
+  "KillReward": 300,
+  "MainPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/default/hands/w_hands.prefab"
+  },
+  "ViewModelPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/default/hands/vm_hands.prefab"
+  },
+  "WorldModel": "models/hands/human_hand_left.vmdl",
+  "DroppedSize": "8,2,8",
+  "DroppedCenter": "0,0,0",
+  "ArmorReduction": null,
+  "HelmetReduction": null,
+  "__references": [],
+  "__version": 0
+}

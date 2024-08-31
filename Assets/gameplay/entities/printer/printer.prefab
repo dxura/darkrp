@@ -3,7 +3,7 @@
     "__guid": "d9722984-8e27-467c-bf69-0aed3358f138",
     "Flags": 0,
     "Name": "printer",
-    "Tags": "grab,interact,printer",
+    "Tags": "entity,printer",
     "Enabled": true,
     "NetworkMode": 1,
     "OwnerTransfer": 0,
@@ -15,7 +15,7 @@
           "Bronze": {
             "Material": "gameplay/entities/printer/materials/base/bronze/bronze_printer.vmat",
             "Price": 5,
-            "Timer": 60
+            "Timer": 1
           }
         },
         "EntityName": "Printer",
@@ -38,7 +38,8 @@
         },
         "PrinterFanSpeed": 1000,
         "PrinterMaxMoney": 8000,
-        "PrinterTimerMoney": 25
+        "PrinterTimerMoney": 1,
+        "WithdrawSound": "sounds/money.sound"
       },
       {
         "__type": "Dxura.Darkrp.HealthComponent",

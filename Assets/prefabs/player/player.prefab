@@ -49,6 +49,7 @@
         },
         "Height": 64,
         "LandSound": "sounds/footsteps/footstep-concrete-land.sound",
+        "LockCamera": false,
         "MinimumFallSoundVelocity": 250,
         "MinimumFallVelocity": 500,
         "NoclipSpeed": 1000,
@@ -111,7 +112,6 @@
       {
         "__type": "Dxura.Darkrp.PlayerInventory",
         "__guid": "7514a6eb-1688-4ac1-818e-5fd8ade159b6",
-        "CanUnequipCurrentWeapon": true,
         "WeaponGameObject": {
           "_type": "gameobject",
           "go": "54431291-2c92-4075-bf87-882481574799"
@@ -163,7 +163,7 @@
           "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
           "component_type": "SkinnedModelRenderer"
         },
-        "Volume": 5,
+        "Volume": 15,
         "WorldspacePlayback": true
       }
     ],

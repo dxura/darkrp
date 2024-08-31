@@ -92,12 +92,12 @@ public partial class Equipment : Component, Component.INetworkListener, IEquipme
 	/// <summary>
 	/// Cached version of the owner once we fetch it.
 	/// </summary>
-	private Player owner;
+	private Player? _owner;
 
 	/// <summary>
 	/// Who owns this gun?
 	/// </summary>
-	public Player Owner => owner ??= Scene.Directory.FindComponentByGuid( OwnerId ) as Player;
+	public Player Owner => (_owner ??= Scene.Directory.FindComponentByGuid( OwnerId ) as Player)!;
 
 	/// <summary>
 	/// The Guid of the owner's <see cref="Player"/>
@@ -172,19 +172,15 @@ public partial class Equipment : Component, Component.INetworkListener, IEquipme
 		{
 			return;
 		}
-
-		if ( !Resource.DropOnDisconnect )
-		{
-			return;
-		}
-
-		var player = GameUtils.Players.FirstOrDefault( x => x.Network.OwnerConnection == connection );
-		if ( !player.IsValid() )
-		{
-			return;
-		}
-
-		DroppedEquipment.Create( Resource, player.Transform.Position + Vector3.Up * 32f, Rotation.Identity, this );
+		
+		// TODO:  Drop printers e.g?
+		// var player = GameUtils.Players.FirstOrDefault( x => x.Network.OwnerConnection == connection );
+		// if ( !player.IsValid() )
+		// {
+		// 	return;
+		// }
+		//
+		// DroppedEquipment.Create( Resource, player.Transform.Position + Vector3.Up * 32f, Rotation.Identity, this );
 	}
 
 	/// <summary>

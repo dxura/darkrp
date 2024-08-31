@@ -10,7 +10,8 @@
   "Salary": 10,
   "MaxWorkers": 0,
   "Equipment": [
-    "gameplay/equipment/core/physgun/physgun.equip"
+    "gameplay/equipment/default/hands/hands.equip",
+    "gameplay/equipment/default/physgun/physgun.equip"
   ],
   "Vote": false,
   "__references": [],

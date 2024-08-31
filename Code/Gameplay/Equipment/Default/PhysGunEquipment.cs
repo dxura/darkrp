@@ -1,6 +1,6 @@
 namespace Dxura.Darkrp;
 
-public class PhysGunComponent : InputWeaponComponent
+public class PhysGunEquipment : InputWeaponComponent
 {
 	[Property] public float MinTargetDistance { get; set; } = 0.0f;
 	[Property] public float MaxTargetDistance { get; set; } = 10000.0f;
@@ -129,7 +129,10 @@ public class PhysGunComponent : InputWeaponComponent
 			Input.MouseWheel = 0;
 		}
 
-		// TODO: Equipment.Owner.Inventory.cantSwitch = GrabbedObject != null;
+		if ( Equipment.Owner != null )
+		{
+			Equipment.Owner.Inventory.CantSwitch = GrabbedObject != null;
+		}
 	}
 
 	private void TryStartGrab( Vector3 eyePos, Rotation eyeRot, Vector3 eyeDir )
@@ -137,7 +140,7 @@ public class PhysGunComponent : InputWeaponComponent
 
 		var tr = Scene.Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
 			.UseHitboxes()
-			.WithAnyTags( "solid", "player", "debris", "nocollide" )
+			.WithAnyTags( "prop" )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
 			.Run();
 

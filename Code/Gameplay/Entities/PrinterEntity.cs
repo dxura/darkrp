@@ -16,6 +16,9 @@ public class PrinterEntityConfiguration {
 [Category( "Entities" )]
 public sealed class PrinterEntity : BaseEntity
 {
+	
+	[Property] private SoundEvent? WithdrawSound { get; set; }
+
 	[Property] private GameObject PrinterFan { get; set; } = null!;
 	[Property] private float PrinterFanSpeed { get; set; } = 1000f;
 
@@ -38,7 +41,7 @@ public sealed class PrinterEntity : BaseEntity
 	{
 		Log.Info( "Interacting with printer" );
 
-		if ( PrinterCurrentMoney <= 0 || player.PlayerState == null )
+		if ( PrinterCurrentMoney <= 0 )
 		{
 			return;
 		}
@@ -46,8 +49,12 @@ public sealed class PrinterEntity : BaseEntity
 		player.PlayerState?.GiveMoney(  PrinterCurrentMoney );
 			
 		ResetPrinterMoney();
-			
-		Sound.Play( "audio/money.sound" );
+
+
+		if ( WithdrawSound != null )
+		{
+			Sound.Play( WithdrawSound );
+		}
 	}
 	
 	protected override void OnFixedUpdate()

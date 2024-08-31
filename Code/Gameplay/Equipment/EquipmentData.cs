@@ -11,7 +11,7 @@ public enum EquipmentSlot
 	Undefined = 0,
 
 	/// <summary>
-	/// Non-pistol guns.
+	/// Core
 	/// </summary>
 	Primary = 1,
 
@@ -49,19 +49,6 @@ public class EquipmentResource : GameResource
 	[Category( "Base" )] public string Description { get; set; } = "";
 
 	[Category( "Base" )] public EquipmentSlot Slot { get; set; }
-
-	/// <summary>
-	/// If set, only this job can use this equipment.
-	/// </summary>
-	[Category( "Base" )]
-	public JobResource Job { get; set; }
-
-
-	/// <summary>
-	/// If true, owner will drop this equipment if they disconnect.
-	/// </summary>
-	[Category( "Base" )]
-	public bool DropOnDisconnect { get; set; } = false;
 
 	/// <summary>
 	/// The equipment's icon
