@@ -97,7 +97,7 @@ public partial class Equipment : Component, Component.INetworkListener, IEquipme
 	/// <summary>
 	/// Who owns this gun?
 	/// </summary>
-	public Player Owner => (_owner ??= Scene.Directory.FindComponentByGuid( OwnerId ) as Player)!;
+	public Player? Owner => _owner ??= Scene.Directory.FindComponentByGuid( OwnerId ) as Player;
 
 	/// <summary>
 	/// The Guid of the owner's <see cref="Player"/>

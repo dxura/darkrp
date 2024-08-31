@@ -31,7 +31,7 @@ public class PhysGunEquipment : InputWeaponComponent
 	/// <summary>
 	/// Accessor for the aim ray.
 	/// </summary>
-	private Ray WeaponRay => Equipment.Owner.AimRay;
+	private Ray WeaponRay => Equipment.Owner?.AimRay ?? new Ray( );
 	
 	private Beam _beam = null!;
 	bool _rotating;
@@ -44,6 +44,11 @@ public class PhysGunEquipment : InputWeaponComponent
 
 	protected override void OnUpdate()
 	{
+		if ( Equipment.Owner == null )
+		{
+			return;
+		}
+		
 		if ( _rotating )
 		{
 			_rotating = GrabbedObject != null;
