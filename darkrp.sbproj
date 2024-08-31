@@ -4,7 +4,7 @@
   "Org": "dxura",
   "Ident": "darkrp-dev",
   "Schema": 1,
-  "IncludeSourceFiles": true,
+  "IncludeSourceFiles": false,
   "Resources": "/fonts/*\n/UI/*\nui/*.png",
   "PackageReferences": [],
   "EditorReferences": null,
@@ -12,6 +12,7 @@
   "Metadata": {
     "MaxPlayers": 64,
     "MinPlayers": 1,
+    "TickRate": 50,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Unrestricted",
     "MapList": [
@@ -20,18 +21,6 @@
     "RankType": "None",
     "PerMapRanking": false,
     "LeaderboardType": "None",
-    "Physics": {
-      "SubSteps": 2,
-      "TimeScale": 1,
-      "Gravity": "0,0,-800",
-      "AirDensity": 1.2,
-      "SleepingEnabled": true,
-      "SimulationMode": "Continuous",
-      "PositionIterations": 2,
-      "VelocityIterations": 8,
-      "SoftBodyIterations": 1,
-      "SoftBodySubsteps": 1
-    },
     "Compiler": {
       "RootNamespace": "Dxura.Darkrp",
       "DefineConstants": "SANDBOX;ADDON;DEBUG",
@@ -46,22 +35,10 @@
       ],
       "DistinctAssemblyReferences": []
     },
-    "GameCategory": "Shooter",
-    "ControlModes": {
-      "Keyboard": true,
-      "Gamepad": true
-    },
-    "ParentPackage": "",
-    "DefaultLeaderboards": [],
-    "GeneralExtensions": false,
-    "TargettedExtensions": true,
-    "ExtensionApiVersion": 1001,
-    "Summary": "DarkRP 2.0",
-    "Description": "",
-    "ReplaceTags": "firstperson thirdperson action fps shooter",
-    "Public": true,
     "CsProjName": "",
-    "HttpAllowList": null,
+    "StartupScene": "scenes/world.scene",
+    "LaunchMode": "QuickPlay",
+    "ControlModes": {},
     "InputSettings": {
       "Actions": [
         {
@@ -233,10 +210,7 @@
           "GroupName": "Other"
         }
       ],
-      "__guid": "bcccc875-ac58-4719-a08e-4d5b3875734a"
-    },
-    "TickRate": 30,
-    "LaunchMode": "QuickPlay",
-    "StartupScene": "scenes/world.scene"
+      "__guid": "bascc875-ac58-4719-a308e-4d5b3875734a"
+    }
   }
 }
