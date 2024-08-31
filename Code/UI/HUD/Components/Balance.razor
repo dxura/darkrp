@@ -4,18 +4,12 @@
 
 @if ( !Player.IsValid() ) return;
 
-<root class="row" style="padding-top: 16px;">
-	<InputHint Action="BuyMenu" class="small" Size="@InputGlyphSize.Small"/>
-	<label class="important">�@PlayerState.Balance.ToString( "N0" )</label>
+<root>
+	<label class="important">$@PlayerState.Balance.ToString( "N0" )</label>
 </root>
 
 @code
 {
-	/// <summary>
-	/// The player's inventory
-	/// </summary>
-	public PlayerInventory Inventory => Player.IsValid() ? Player.Inventory : null;
-
 	/// The player
 	public Player Player => PlayerState.IsValid() ? PlayerState.Player : null;
 

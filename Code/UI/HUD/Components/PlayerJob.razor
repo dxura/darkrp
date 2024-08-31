@@ -5,13 +5,13 @@
 
 @attribute [StyleSheet]
 
-<root class="flex justify-center align-center row ">
+<root>
 	<p style="color: @Job.Color.Hex">@Job.Name</p>
 </root>
 
 @code
 {
-	public JobResource Job => PlayerState.Local.Player.Job;
+	private static JobResource Job => PlayerState.Local.Player?.Job ?? JobProvider.Default();
 
 	protected override int BuildHash()
 	{

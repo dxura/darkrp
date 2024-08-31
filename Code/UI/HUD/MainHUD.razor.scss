@@ -30,3 +30,10 @@ MainHUD {
   height: 6px;
   background-color: white;
 }
+
+.centerHud {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
