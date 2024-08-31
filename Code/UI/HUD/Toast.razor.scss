@@ -1,5 +1,7 @@
 ﻿Toast {
   pointer-events: none;
+  position: absolute;
+  top: 10%;
 
   .background {
     position: absolute;
@@ -7,11 +9,6 @@
   }
 
   text-transform: uppercase;
-
-  &.terroristswin, &.counterterroristswin {
-    width: 50%;
-    padding: 32px;
-  }
 
   overflow: hidden;
   z-index: 25;

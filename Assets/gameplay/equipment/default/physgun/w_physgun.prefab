@@ -22,8 +22,8 @@
           "_type": "gameobject",
           "go": "93b70621-3326-4689-b0dd-82371b9b8594"
         },
+        "OnlyShowCrosshairDot": false,
         "Resource": "gameplay/equipment/default/physgun/physgun.equip",
-        "SimpleCrosshair": true,
         "SpeedPenalty": 20,
         "UseCrosshair": true
       },
@@ -78,7 +78,7 @@
             "MinTargetDistance": 0,
             "RequiresAllInputActions": true,
             "RotateSnapAt": 45,
-            "RotateSpeed": 0.125,
+            "RotateSpeed": 0.35,
             "TargetDistanceSpeed": 25
           },
           {

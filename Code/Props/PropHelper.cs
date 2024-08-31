@@ -16,26 +16,20 @@ public sealed class PropHelper : Component
 	[Sync] public Guid CreatorId { get; set; } = Guid.Empty;
 
 	/// <summary>
-	/// The health of the prop.
-	/// </summary>
-	[Sync] public float Health { get; set; } = 1;
-
-	/// <summary>
 	/// The identifier of the cloud model associated with this prop. When changed, the model is initialized.
 	/// </summary>
 	[Sync] string CloudModel { get; set; } = "";
-
+	
 	/// <summary>
 	/// Called when the component starts. Initializes the prop and its related components.
 	/// </summary>
 	protected override void OnStart()
 	{
 		_prop = Components.Get<Prop>();
-		Health = _prop?.Health ?? 0;
 
 		InitCloudModel();
 	}
-
+	
 	/// <summary>
 	/// Initializes the cloud model for the prop by fetching and loading it from the cloud.
 	/// </summary>

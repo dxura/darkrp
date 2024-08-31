@@ -119,20 +119,7 @@
 
             if (package != null)
             {
-                Log.Info($"Package {package.Title} fetched successfully.");
-
-                var installedPackage = await package.MountAsync();
-
-                if (installedPackage != null)
-                {
-                    Log.Info($"Package {package.Title} downloaded and mounted successfully.");
-                    PropManager.Instance.SpawnProp(fullIdent, true);
-                    Log.Info($"Cloud model {fullIdent} spawned successfully.");
-                }
-                else
-                {
-                    Log.Warning($"Failed to mount package: {fullIdent}");
-                }
+	            PropManager.Instance.SpawnProp(fullIdent, true);
             }
             else
             {

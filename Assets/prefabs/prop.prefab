@@ -13,7 +13,7 @@
         "BodyGroups": 18446744073709551615,
         "Health": 100,
         "IsStatic": false,
-        "Model": "models/citizen_props/sodacan01.vmdl",
+        "Model": "models/loading.vmdl",
         "Tint": "1,1,1,1"
       },
       {
