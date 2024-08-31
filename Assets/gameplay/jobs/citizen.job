@@ -10,7 +10,7 @@
   "Salary": 10,
   "MaxWorkers": 0,
   "Equipment": [
-    "gameplay/equipment/weapons/knife/knife.equip"
+    "gameplay/equipment/core/physgun/physgun.equip"
   ],
   "Vote": false,
   "__references": [],

@@ -26,4 +26,10 @@ public static class JobProvider
 			Jobs[job.Name] = job;
 		}
 	}
+	
+	// Get default job when player spawns
+	public static JobResource Default()
+	{
+		return ResourceLibrary.Get<JobResource>( "gameplay/jobs/citizen.job" ); ;
+	}
 }

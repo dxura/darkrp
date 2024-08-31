@@ -430,10 +430,16 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 
 	public void OnGameEvent( PlayerSpawnedEvent eventArgs )
 	{
+		// Give default equipment (Citizen)
+		foreach (var equipmentResource in JobProvider.Default().Equipment)
+		{
+			Give( equipmentResource );
+		}
+		
+		// Then any job-specific equipment
 		foreach (var equipmentResource in eventArgs.Player.Job.Equipment)
 		{
 			Give( equipmentResource );
-			
 		}
 	}
 }

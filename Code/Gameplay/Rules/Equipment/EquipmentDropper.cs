@@ -48,59 +48,63 @@ public partial class EquipmentDropper : Component,
 
 	void IGameEventHandler<KillEvent>.OnGameEvent( KillEvent eventArgs )
 	{
-		if ( !Networking.IsHost )
-		{
-			return;
-		}
-
-		var player = GameUtils.GetPlayerFromComponent( eventArgs.DamageInfo.Victim );
-		if ( !player.IsValid() )
-		{
-			return;
-		}
-
-		var droppable = player.Inventory.Equipment
-			.Where( x => CanDrop( player, x ) )
-			.OrderByDescending( x => x.Resource.Price )
-			.ToArray();
-
-		if ( LimitedDropOnDeath )
-		{
-			// One weapon, one util, all special
-
-			var weapon = droppable
-				.FirstOrDefault( x =>
-					x.Resource.Slot is EquipmentSlot.Primary or EquipmentSlot.Secondary or EquipmentSlot.Melee );
-
-			var util = droppable
-				.FirstOrDefault( x => x.Resource.Slot is EquipmentSlot.Utility );
-
-			var special = droppable
-				.Where( x => x.Resource.Slot is EquipmentSlot.Special );
-
-			if ( weapon is not null )
-			{
-				player.Inventory.Drop( weapon );
-			}
-
-			if ( util is not null )
-			{
-				player.Inventory.Drop( util );
-			}
-
-			foreach ( var equipment in special )
-			{
-				player.Inventory.Drop( equipment );
-			}
-		}
-		else
-		{
-			foreach ( var equipment in droppable )
-			{
-				player.Inventory.Drop( equipment );
-			}
-		}
-
-		player.Inventory.Clear();
+		return;
+		
+		// We don't want to drop anything on death I assume. TODO: Drop stashed entities 
+		
+		// if ( !Networking.IsHost )
+		// {
+		// 	return;
+		// }
+		//
+		// var player = GameUtils.GetPlayerFromComponent( eventArgs.DamageInfo.Victim );
+		// if ( !player.IsValid() )
+		// {
+		// 	return;
+		// }
+		//
+		// var droppable = player.Inventory.Equipment
+		// 	.Where( x => CanDrop( player, x ) )
+		// 	.OrderByDescending( x => x.Resource.Price )
+		// 	.ToArray();
+		//
+		// if ( LimitedDropOnDeath )
+		// {
+		// 	// One weapon, one util, all special
+		//
+		// 	var weapon = droppable
+		// 		.FirstOrDefault( x =>
+		// 			x.Resource.Slot is EquipmentSlot.Primary or EquipmentSlot.Secondary or EquipmentSlot.Melee );
+		//
+		// 	var util = droppable
+		// 		.FirstOrDefault( x => x.Resource.Slot is EquipmentSlot.Utility );
+		//
+		// 	var special = droppable
+		// 		.Where( x => x.Resource.Slot is EquipmentSlot.Special );
+		//
+		// 	if ( weapon is not null )
+		// 	{
+		// 		player.Inventory.Drop( weapon );
+		// 	}
+		//
+		// 	if ( util is not null )
+		// 	{
+		// 		player.Inventory.Drop( util );
+		// 	}
+		//
+		// 	foreach ( var equipment in special )
+		// 	{
+		// 		player.Inventory.Drop( equipment );
+		// 	}
+		// }
+		// else
+		// {
+		// 	foreach ( var equipment in droppable )
+		// 	{
+		// 		player.Inventory.Drop( equipment );
+		// 	}
+		// }
+		//
+		// player.Inventory.Clear();
 	}
 }

@@ -13,6 +13,11 @@ public partial class Player
 	/// </summary>
 	[Property]
 	public BoxCollider PlayerBoxCollider { get; set; } = null!;
+	
+	/// <summary>
+	/// Should camera be locked
+	/// </summary>
+	[Property] public bool LockCamera { get; set; }
 
 	[RequireComponent] public TagBinder TagBinder { get; set; } = null!;
 
@@ -190,7 +195,7 @@ public partial class Player
 		// Eye input
 		if ( !IsProxy && cc.IsValid() )
 		{
-			if ( !IsProxy && HealthComponent.State == LifeState.Alive )
+			if ( !IsProxy && HealthComponent.State == LifeState.Alive && !LockCamera )
 			{
 				EyeAngles += Input.AnalogLook * AimDampening;
 				EyeAngles = EyeAngles.WithPitch( EyeAngles.pitch.Clamp( -90, 90 ) );
