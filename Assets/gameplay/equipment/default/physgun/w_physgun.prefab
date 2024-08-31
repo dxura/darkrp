@@ -23,6 +23,7 @@
           "go": "93b70621-3326-4689-b0dd-82371b9b8594"
         },
         "Resource": "gameplay/equipment/default/physgun/physgun.equip",
+        "SimpleCrosshair": true,
         "SpeedPenalty": 20,
         "UseCrosshair": true
       },

@@ -18,9 +18,10 @@
           "go": "537a3752-47c2-491f-b7a8-84d06247b15b",
           "component_type": "SkinnedModelRenderer"
         },
+        "OnlyShowCrosshairDot": true,
         "Resource": "gameplay/equipment/default/hands/hands.equip",
         "SpeedPenalty": 20,
-        "UseCrosshair": false
+        "UseCrosshair": true
       },
       {
         "__type": "Dxura.Darkrp.TagBinder",

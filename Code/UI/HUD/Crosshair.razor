@@ -16,10 +16,14 @@
 	}
 	else
 	{
-		<div @ref=" Left" class="left element"></div>
-		<div @ref=" Right" class="right element"></div>
-		<div @ref=" Top" class="top element"></div>
-		<div @ref=" Bottom" class="bottom element"></div>
+		
+		@if ( !Equipment?.OnlyShowCrosshairDot ?? true )
+		{
+			<div @ref=" Left" class="left element"></div>
+			<div @ref=" Right" class="right element"></div>
+			<div @ref=" Top" class="top element"></div>
+			<div @ref=" Bottom" class="bottom element"></div>
+		}
 
 		@if ( GameSettingsSystem.Current.ShowCrosshairDot )
 		{
@@ -72,7 +76,7 @@
 
 	public void Trigger( DamageInfo damageInfo )
 	{
-		if ( Equipment is not { UseCrosshair: true } )
+		if ( Equipment is not { UseCrosshair: true } || Equipment.OnlyShowCrosshairDot )
 		{
 			return;
 		}
