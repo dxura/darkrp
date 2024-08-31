@@ -42,7 +42,20 @@
         "__guid": "6a5b70e8-f9db-4408-b52a-b13eacbede77",
         "Flags": 0,
         "Name": "Functions",
-        "Enabled": true
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Dxura.Darkrp.HandsEquipment",
+            "__guid": "86906f60-d220-43f1-a3a3-66c744db10f7",
+            "HoldDistance": 55,
+            "InputActions": [],
+            "InteractRange": 150,
+            "MaxReleaseVelocity": 500,
+            "RequiresAllInputActions": true,
+            "RotateSpeed": 1,
+            "ThrowForce": 450
+          }
+        ]
       }
     ],
     "__variables": []
