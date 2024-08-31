@@ -18,14 +18,6 @@ public partial class EquipmentDropper : Component,
 	public List<EquipmentSlot> Categories { get; set; } = new();
 
 	/// <summary>
-	/// If true, only drop at most one weapon and one item of utility on death,
-	/// preferring most expensive. All special items are dropped, if allowed in
-	/// <see cref="Categories"/>.
-	/// </summary>
-	[Property]
-	public bool LimitedDropOnDeath { get; set; } = true;
-
-	/// <summary>
 	/// Can we drop this weapon?
 	/// </summary>
 	/// <param name="player"></param>
@@ -33,7 +25,7 @@ public partial class EquipmentDropper : Component,
 	/// <returns></returns>
 	public bool CanDrop( Player player, Equipment weapon )
 	{
-		if ( weapon.Resource.Slot == EquipmentSlot.Melee )
+		if (!weapon.Resource.CanDrop || weapon.Resource.Slot == EquipmentSlot.Melee )
 		{
 			return false;
 		}

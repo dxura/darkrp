@@ -70,12 +70,6 @@ public class EquipmentResource : GameResource
 	public int Price { get; set; } = 0;
 
 	/// <summary>
-	/// How much money do you get per kill with this equipment?
-	/// </summary>
-	[Category( "Economy" )]
-	public int KillReward { get; set; } = 300;
-
-	/// <summary>
 	/// The prefab to create and attach to the player when spawning it in.
 	/// </summary>
 	[Category( "Prefabs" )]
@@ -96,7 +90,7 @@ public class EquipmentResource : GameResource
 	[Category( "Dropping" )] public Vector3 DroppedSize { get; set; } = new(8, 2, 8);
 
 	[Category( "Dropping" )] public Vector3 DroppedCenter { get; set; } = new(0, 0, 0);
-
+	[Category( "Dropping" )] public bool CanDrop { get; set; } = true;
 	[Category( "Damage" )] public float? ArmorReduction { get; set; }
 
 	[Category( "Damage" )] public float? HelmetReduction { get; set; }

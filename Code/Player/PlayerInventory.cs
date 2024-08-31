@@ -413,7 +413,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		if ( Give( resource ) is null )
+		if ( Give( resource, false ) is null )
 		{
 			return;
 		}

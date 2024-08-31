@@ -5,7 +5,6 @@
   "Icon": "ui/equipment/hands.png",
   "IsPurchasable": false,
   "Price": 0,
-  "KillReward": 300,
   "MainPrefab": {
     "_type": "gameobject",
     "prefab": "gameplay/equipment/default/hands/w_hands.prefab"
@@ -17,6 +16,7 @@
   "WorldModel": "models/hands/human_hand_left.vmdl",
   "DroppedSize": "8,2,8",
   "DroppedCenter": "0,0,0",
+  "CanDrop": false,
   "ArmorReduction": null,
   "HelmetReduction": null,
   "__references": [],

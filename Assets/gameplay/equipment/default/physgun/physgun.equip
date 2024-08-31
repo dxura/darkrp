@@ -5,7 +5,6 @@
   "Icon": "ui/equipment/physgun.png",
   "IsPurchasable": false,
   "Price": 0,
-  "KillReward": 300,
   "MainPrefab": {
     "_type": "gameobject",
     "prefab": "gameplay/equipment/default/physgun/w_physgun.prefab"
@@ -17,6 +16,7 @@
   "WorldModel": "weapons/rust_pistol/rust_pistol.vmdl",
   "DroppedSize": "8,2,8",
   "DroppedCenter": "0,0,0",
+  "CanDrop": false,
   "ArmorReduction": null,
   "HelmetReduction": null,
   "__references": [
