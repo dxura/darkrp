@@ -4,11 +4,11 @@ namespace Dxura.Darkrp;
 
 public sealed class VehicleSeat : Component
 {
-	[Property] public Vehicle Vehicle { get; set; }
+	[Property] public Vehicle? Vehicle { get; set; }
 	[Property] public bool HasInput { get; set; } = true;
-	[Property] public List<VehicleExitVolume> ExitVolumes { get; set; }
+	[Property] public List<VehicleExitVolume>? ExitVolumes { get; set; }
 
-	[HostSync] public Player Player { get; private set; }
+	[HostSync] public Player? Player { get; private set; }
 
 	public bool CanEnter( Player player )
 	{

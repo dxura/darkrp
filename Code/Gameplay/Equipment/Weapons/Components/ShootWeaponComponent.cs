@@ -14,7 +14,7 @@ public enum FireMode
 [Icon( "track_changes" )]
 [Title( "Bullet" )]
 [Group( "Weapon Components" )]
-public partial class ShootWeaponComponent : InputWeaponComponent,
+public class ShootWeaponComponent : InputWeaponComponent,
 	IGameEventHandler<EquipmentHolsteredEvent>
 {
 	[Property]
@@ -52,22 +52,22 @@ public partial class ShootWeaponComponent : InputWeaponComponent,
 
 	[Property] [Group( "Penetration" )] public float PenetrationThickness { get; set; } = 32f;
 
-	[Property] [Group( "Effects" )] public GameObject MuzzleFlashPrefab { get; set; }
-	[Property] [Group( "Effects" )] public GameObject EjectionPrefab { get; set; }
+	[Property] [Group( "Effects" )] public GameObject? MuzzleFlashPrefab { get; set; }
+	[Property] [Group( "Effects" )] public GameObject? EjectionPrefab { get; set; }
 
 	/// <summary>
 	/// What sound should we play when we fire?
 	/// </summary>
 	[Property]
 	[Group( "Effects" )]
-	public SoundEvent ShootSound { get; set; }
+	public SoundEvent? ShootSound { get; set; }
 
 	/// <summary>
 	/// What sound should we play when we dry fire?
 	/// </summary>
 	[Property]
 	[Group( "Effects" )]
-	public SoundEvent DryFireSound { get; set; }
+	public SoundEvent? DryFireSound { get; set; }
 
 	/// <summary>
 	/// Tracer for the first bullet in a shot.
@@ -90,7 +90,7 @@ public partial class ShootWeaponComponent : InputWeaponComponent,
 	/// </summary>
 	[Property]
 	[Category( "Ammo" )]
-	public AmmoComponent AmmoComponent { get; set; }
+	public AmmoComponent? AmmoComponent { get; set; }
 
 	/// <summary>
 	/// Does this weapon require an ammo container to fire its bullets?

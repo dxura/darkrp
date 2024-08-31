@@ -33,27 +33,27 @@ public partial class RecoilWeaponComponent : EquipmentComponent
 
 	internal Angles Current { get; private set; }
 
-	private TimeSince TimeSinceLastShot;
-	private int currentFrame = 0;
+	private TimeSince _timeSinceLastShot;
+	private int _currentFrame;
 
 	internal void Shoot()
 	{
-		if ( TimeSinceLastShot > ResetTime )
+		if ( _timeSinceLastShot > ResetTime )
 		{
-			currentFrame = 0;
+			_currentFrame = 0;
 		}
 
-		TimeSinceLastShot = 0;
+		_timeSinceLastShot = 0;
 
 		var timeDelta = Time.Delta;
 
 		if ( UseRecoilPattern )
 		{
-			var point = RecoilPattern.GetPoint( ref currentFrame );
+			var point = RecoilPattern.GetPoint( ref _currentFrame );
 
 			var newAngles = new Angles( -point.y * Scale.y, -point.x * Scale.x, 0 ) * timeDelta;
 			Current = Current + newAngles;
-			currentFrame++;
+			_currentFrame++;
 		}
 		else
 		{

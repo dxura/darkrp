@@ -5,7 +5,7 @@ namespace Dxura.Darkrp;
 
 public partial class Player
 {
-	[HostSync] [Property] [JsonIgnore] public VehicleSeat CurrentSeat { get; set; }
+	[HostSync] [Property] [JsonIgnore] public VehicleSeat? CurrentSeat { get; set; }
 
 	public TimeSince TimeSinceSeatChanged { get; set; } = 0;
 
@@ -23,13 +23,13 @@ public partial class Player
 		// Improve this later
 		if ( CurrentSeat.HasInput )
 		{
-			CurrentSeat.Vehicle.InputState.UpdateFromLocal();
+			CurrentSeat?.Vehicle?.InputState.UpdateFromLocal();
 		}
 
 		if ( Input.Pressed( "Use" ) )
 		{
 			// Try leaving the seat
-			CurrentSeat.Leave( this );
+			CurrentSeat?.Leave( this );
 		}
 	}
 }

@@ -18,7 +18,6 @@
             "Timer": 60
           }
         },
-        "CanBePickedUp": true,
         "EntityName": "Printer",
         "HealthComponent": {
           "_type": "component",
@@ -45,7 +44,7 @@
         "__type": "Dxura.Darkrp.HealthComponent",
         "__guid": "da24a7a1-6110-4bf0-8c0c-f4e71549fb19",
         "IsGodMode": false,
-        "MaxHealth": 100
+        "MaxHealth": 50
       },
       {
         "__type": "Sandbox.Rigidbody",

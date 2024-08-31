@@ -6,15 +6,15 @@ public partial class Player
 	/// Called when the player jumps.
 	/// </summary>
 	[Property]
-	public Action OnJump { get; set; }
+	public Action? OnJump { get; set; }
 
 	/// <summary>
 	/// The player's box collider, so people can jump on other people.
 	/// </summary>
 	[Property]
-	public BoxCollider PlayerBoxCollider { get; set; }
+	public BoxCollider? PlayerBoxCollider { get; set; }
 
-	[RequireComponent] public TagBinder TagBinder { get; set; }
+	[RequireComponent] public TagBinder TagBinder { get; set; } = null!;
 
 	/// <summary>
 	/// How tall are we?
@@ -50,11 +50,11 @@ public partial class Player
 				_smoothEyeAngles = value;
 			}
 
-			_rawEyeAngles = value;
+			RawEyeAngles = value;
 		}
 	}
 
-	[Sync] private Angles _rawEyeAngles { get; set; }
+	[Sync] private Angles RawEyeAngles { get; set; }
 	private Angles _smoothEyeAngles;
 
 	/// <summary>
@@ -132,7 +132,7 @@ public partial class Player
 	private bool _isTouchingLadder;
 	private Vector3 _ladderNormal;
 
-	[Sync] private float _eyeHeightOffset { get; set; }
+	[Sync] private float EyeHeightOffset { get; set; }
 
 	private void UpdateEyes()
 	{
@@ -153,7 +153,7 @@ public partial class Player
 				eyeHeightOffset = target;
 			}
 
-			_eyeHeightOffset = eyeHeightOffset;
+			EyeHeightOffset = eyeHeightOffset;
 		}
 
 		if ( PlayerBoxCollider.IsValid() )
@@ -184,7 +184,7 @@ public partial class Player
 
 		if ( IsProxy )
 		{
-			_smoothEyeAngles = Angles.Lerp( _smoothEyeAngles, _rawEyeAngles, Time.Delta / Scene.NetworkRate );
+			_smoothEyeAngles = Angles.Lerp( _smoothEyeAngles, RawEyeAngles, Time.Delta / Scene.NetworkRate );
 		}
 
 		// Eye input
@@ -474,7 +474,7 @@ public partial class Player
 		}
 	}
 
-	[Property] [Group( "Effects" )] public SoundEvent LandSound { get; set; }
+	[Property] [Group( "Effects" )] public SoundEvent? LandSound { get; set; }
 
 	[Broadcast]
 	private void PlayFallSound()

@@ -95,6 +95,8 @@ public partial class HealthComponent : Component, IRespawnable
 
 		Health = 0f;
 		State = LifeState.Dead;
+		
+		return;
 
 		Kill( damageInfo );
 	}

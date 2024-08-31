@@ -8,11 +8,12 @@ namespace Dxura.Darkrp;
 public sealed class HumanOutfitter : Component,
 	IGameEventHandler<JobChangedEvent>
 {
-	[Property] public Player Player { get; set; }
-	[Property] public SkinnedModelRenderer Renderer { get; set; }
+	[Property] public Player Player { get; set; } = null!;
+	[Property] public SkinnedModelRenderer Renderer { get; set; } = null!;
 
 	void IGameEventHandler<JobChangedEvent>.OnGameEvent( JobChangedEvent eventArgs )
 	{
+		Log.Info( "job" );
 		UpdateFromJob( eventArgs.After );
 	}
 
@@ -24,6 +25,6 @@ public sealed class HumanOutfitter : Component,
 	public void UpdateFromJob( JobResource job )
 	{
 		Renderer.Model = Game.Random.FromList( job.Models );
-		Player.Body.Refresh();
+		Player.Body?.Refresh();
 	}
 }

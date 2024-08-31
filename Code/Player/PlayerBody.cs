@@ -2,7 +2,7 @@
 
 namespace Dxura.Darkrp;
 
-public partial class PlayerBody : Component
+public class PlayerBody : Component
 {
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
 	[Property] public ModelPhysics Physics { get; set; }

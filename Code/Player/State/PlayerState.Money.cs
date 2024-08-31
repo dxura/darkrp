@@ -1,4 +1,3 @@
-using Dxura.Darkrp;
 using Sandbox.Diagnostics;
 
 namespace Dxura.Darkrp;
@@ -13,27 +12,27 @@ public partial class PlayerState : IScore
 	[Score( "Balance", Format = "${0:N0}" )]
 	public int Balance { get; set; } = 16_000;
 
-	public void SetCash( int amount )
+	public void SetBalance( int amount )
 	{
 		using var _ = Rpc.FilterInclude( Connection.Host );
-		SetCashHost( amount );
+		SetBalanceHost( amount );
 	}
 
 	[Broadcast]
-	private void SetCashHost( int amount )
+	private void SetBalanceHost( int amount )
 	{
 		Assert.True( Networking.IsHost );
 		Balance = amount;
 	}
 
-	public void GiveCash( int amount )
+	public void GiveMoney( int amount )
 	{
 		using var _ = Rpc.FilterInclude( Connection.Host );
-		GiveCashHost( amount );
+		GiveMoneyHost( amount );
 	}
 
 	[Broadcast]
-	private void GiveCashHost( int amount )
+	private void GiveMoneyHost( int amount )
 	{
 		Assert.True( Networking.IsHost );
 		Balance += amount;

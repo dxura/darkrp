@@ -15,17 +15,12 @@ public class BaseEntity : Component, IUse, IDamageListener
 	/// Gets or sets the owner of the entity.
 	/// </summary>
 	 public PlayerState? Owner { get; set; }
-
-	/// <summary>
-	/// Gets or sets whether the entity can be picked up by players.
-	/// </summary>
-	[Property] public bool CanBePickedUp { get; set; } = true;
 	
 	/// <summary>
 	/// Health component (If we have one)
 	/// </summary>
 	[Property]
-	public virtual HealthComponent? HealthComponent { get; set; }
+	public HealthComponent? HealthComponent { get; set; }
 
 	/// <summary>
 	/// Called when the component is first created and added to a GameObject.
@@ -42,18 +37,17 @@ public class BaseEntity : Component, IUse, IDamageListener
 	}
 
 	/// <summary>
-	/// Called when the entity's health reaches zero. Disables the component.
+	/// Called when the entity's health reaches zero. Destroy it
 	/// </summary>
-	[Broadcast]
-	protected void OnDestroyed()
+	protected virtual void OnDestroyed()
 	{
 		Log.Info( $"{EntityName} has been destroyed." );
-		Destroy();
+		GameObject.Destroy();
 	}
 
 	public void OnDamaged( DamageInfo damageInfo )
 	{
-		if ( HealthComponent is { Health: <= 0 } )
+		if ( HealthComponent?.State == LifeState.Dead )
 		{
 			OnDestroyed();
 		}

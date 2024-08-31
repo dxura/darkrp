@@ -9,7 +9,7 @@ public struct RecoilPattern
 	public static Vector2 RangeX => new(-5, -5);
 	public static Vector2 RangeY => new(0, 5);
 
-	public List<Vector2> Points { get; set; } = new();
+	public List<Vector2>? Points { get; set; } = new();
 
 	/// <summary>
 	/// Should we be using loop points?
@@ -32,10 +32,15 @@ public struct RecoilPattern
 	/// </summary>
 	public bool IsLooping { get; set; }
 
-	[JsonIgnore] public int Count => Points.Count;
+	[JsonIgnore] public int Count => Points?.Count ?? 0;
 
 	public Vector2? FetchPoint( int index )
 	{
+		if ( Points == null )
+		{
+			return null;
+		}
+		
 		var pointCount = Points.Count;
 		if ( index + 1 > pointCount )
 		{
@@ -55,7 +60,7 @@ public struct RecoilPattern
 	/// <returns></returns>
 	public Vector2 GetPoint( ref int index )
 	{
-		var pointCount = Points.Count;
+		var pointCount = Points!.Count;
 
 		var loopStart = LoopStart == 0 ? 0 : LoopStart;
 		var loopEnd = LoopEnd == 0 ? 0 : pointCount - 1;

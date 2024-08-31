@@ -16,7 +16,7 @@ public class PrinterEntityConfiguration {
 [Category( "Entities" )]
 public sealed class PrinterEntity : BaseEntity
 {
-	[Property] public GameObject PrinterFan { get; set; } = null!;
+	[Property] private GameObject PrinterFan { get; set; } = null!;
 	[Property] private float PrinterFanSpeed { get; set; } = 1000f;
 
 	[Property] private ModelRenderer ModelRenderer { get; set; } = null!;
@@ -43,7 +43,7 @@ public sealed class PrinterEntity : BaseEntity
 			return;
 		}
 
-		player.PlayerState?.GiveCash(  PrinterCurrentMoney );
+		player.PlayerState?.GiveMoney(  PrinterCurrentMoney );
 			
 		ResetPrinterMoney();
 			

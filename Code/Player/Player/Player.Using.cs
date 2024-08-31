@@ -20,7 +20,7 @@ partial class Player
 	/// <summary>
 	/// Which object did the player last press use on?
 	/// </summary>
-	public GameObject LastUsedObject { get; private set; }
+	public GameObject? LastUsedObject { get; private set; }
 
 	private void UpdateUse()
 	{
@@ -69,9 +69,9 @@ partial class Player
 	}
 
 	[Broadcast( NetPermission.HostOnly )]
-	private void UpdateLastUsedObject( Component component )
+	private void UpdateLastUsedObject( Component? component )
 	{
-		if ( !component.IsValid() )
+		if ( component == null || !component.IsValid() )
 		{
 			return;
 		}

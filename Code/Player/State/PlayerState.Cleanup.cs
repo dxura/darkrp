@@ -10,7 +10,7 @@ public partial class PlayerState : Component.INetworkListener
 	/// <summary>
 	/// How long does it take to clean up a player once they disconnect?
 	/// </summary>
-	public static float DisconnectCleanupTime { get; set; } = 120f;
+	public static float DisconnectCleanupTime { get; set; } = 30f;
 
 	void INetworkListener.OnDisconnected( Connection channel )
 	{

@@ -38,12 +38,6 @@ public partial class PlayerState : Component
 	public string DisplayName => $"{Name}{(!IsConnected ? " (Disconnected)" : "")}";
 
 	/// <summary>
-	/// What's our loadout?
-	/// </summary>
-	[RequireComponent]
-	public PlayerLoadout Loadout { get; private set; } = null!;
-
-	/// <summary>
 	/// The job this player belongs to.
 	/// </summary>
 	[Property]
@@ -95,16 +89,16 @@ public partial class PlayerState : Component
 		// todo: actually kick em
 	}
 
-	public void AssignJob( JobResource team )
+	public void AssignJob( JobResource job )
 	{
 		if ( !Networking.IsHost )
 		{
 			return;
 		}
 
-		Job = team;
+		Job = job;
 
-		Scene.Dispatch( new JobAssignedEvent( this, team ) );
+		Scene.Dispatch( new JobAssignedEvent( this, job ) );
 	}
 
 	/// <summary>
@@ -114,7 +108,7 @@ public partial class PlayerState : Component
 	{
 		GameObject.Root.Dispatch( new JobChangedEvent( before, after ) );
 
-		// Send this to the pawn too
+		// Send this to the player too
 		if ( Player.IsValid() )
 		{
 			Player.GameObject.Root.Dispatch( new JobChangedEvent( before, after ) );

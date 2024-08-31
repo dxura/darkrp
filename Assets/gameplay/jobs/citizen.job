@@ -9,7 +9,9 @@
   ],
   "Salary": 10,
   "MaxWorkers": 0,
-  "Equipment": [],
+  "Equipment": [
+    "gameplay/equipment/weapons/knife/knife.equip"
+  ],
   "Vote": false,
   "__references": [],
   "__version": 0

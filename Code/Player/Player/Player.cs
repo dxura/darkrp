@@ -12,31 +12,31 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	/// A reference to the player's head (the GameObject)
 	/// </summary>
 	[Property]
-	public GameObject Head { get; set; }
+	public GameObject? Head { get; set; }
 
 	/// <summary>
 	/// A reference to the animation helper (normally on the Body GameObject)
 	/// </summary>
 	[Property]
-	public AnimationHelper AnimationHelper { get; set; }
+	public AnimationHelper? AnimationHelper { get; set; }
 
 	/// <summary>
 	/// The current character controller for this player.
 	/// </summary>
 	[RequireComponent]
-	public CharacterController CharacterController { get; set; }
+	public CharacterController CharacterController { get; set; } = null!;
 
 	/// <summary>
 	/// The current camera controller for this player.
 	/// </summary>
 	[RequireComponent]
-	public CameraController CameraController { get; set; }
+	public CameraController CameraController { get; set; } = null!;
 
 	/// <summary>
 	/// The outline effect for this player.
 	/// </summary>
 	[RequireComponent]
-	public HighlightOutline Outline { get; set; }
+	public HighlightOutline? Outline { get; set; }
 
 	/// <summary>
 	/// Get a quick reference to the real Camera GameObject.
@@ -46,7 +46,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	/// <summary>
 	/// Finds the first <see cref="SkinnedModelRenderer"/> on <see cref="Body"/>
 	/// </summary>
-	public SkinnedModelRenderer BodyRenderer => Body?.Components?.Get<SkinnedModelRenderer>();
+	public SkinnedModelRenderer? BodyRenderer => Body?.Components?.Get<SkinnedModelRenderer>();
 
 	// IDescription
 	string IDescription.DisplayName => DisplayName;
@@ -72,7 +72,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 
 		GameObject.Name = $"Player ({DisplayName})";
 
-		CameraController.SetActive( !IsProxy );
+		CameraController?.SetActive( !IsProxy );
 	}
 
 	public SceneTraceResult CachedEyeTrace { get; private set; }
@@ -88,7 +88,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 
 		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * CrouchLerpSpeed() );
 		_smoothEyeHeight =
-			_smoothEyeHeight.LerpTo( _eyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
+			_smoothEyeHeight.LerpTo( EyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
 		CharacterController.Height = Height + _smoothEyeHeight;
 
 		if ( !IsProxy )

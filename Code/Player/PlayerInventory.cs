@@ -452,9 +452,6 @@ public partial class PlayerInventory : Component
 			return;
 		}
 
-		// Update the player's loadout
-		Player.PlayerState.Loadout.SetFrom( Player );
-
 		Player.PlayerState.Balance -= resource.Price;
 	}
 }

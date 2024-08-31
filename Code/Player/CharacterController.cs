@@ -43,8 +43,8 @@ public class CharacterController : Component
 
 	[Sync] public bool IsOnGround { get; set; }
 
-	public GameObject GroundObject { get; set; }
-	public Collider GroundCollider { get; set; }
+	public GameObject? GroundObject { get; set; }
+	public Collider? GroundCollider { get; set; }
 
 	protected override void DrawGizmos()
 	{
@@ -149,9 +149,9 @@ public class CharacterController : Component
 
 	private void CategorizePosition()
 	{
-		var Position = Transform.Position;
-		var point = Position + Vector3.Down * 2;
-		var vBumpOrigin = Position;
+		var position = Transform.Position;
+		var point = position + Vector3.Down * 2;
+		var vBumpOrigin = position;
 		var wasOnGround = IsOnGround;
 
 		// We're flying upwards too fast, never land on ground

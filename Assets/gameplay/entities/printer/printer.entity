@@ -1,0 +1,13 @@
+{
+  "Prefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/entities/printer/printer.prefab"
+  },
+  "Price": 0,
+  "Name": "Printer",
+  "Description": "A money making machine",
+  "Color": "0,0,0,0",
+  "Whitelist": [],
+  "__references": [],
+  "__version": 0
+}

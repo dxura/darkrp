@@ -34,7 +34,7 @@ public abstract class BuyMenuItem
 		}
 
 		var price = GetPrice( player );
-		player.PlayerState.GiveCash( -price );
+		player.PlayerState.GiveMoney( -price );
 		OnPurchase( player );
 	}
 

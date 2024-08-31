@@ -68,7 +68,7 @@ public partial class Player
 			return;
 		}
 
-		player.PlayerState.GiveCash( 1000 );
+		player.PlayerState.GiveMoney( 1000 );
 	}
 
 	[Authority]

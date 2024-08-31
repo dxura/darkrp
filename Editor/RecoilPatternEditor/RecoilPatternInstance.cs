@@ -10,7 +10,7 @@ public partial class RecoilPatternInstance : GraphicsItem
 	public Vector2 RangeX { get; init; }
 	public Vector2 RangeY { get; init; }
 	public RecoilPatternEditor Editor { get; init; }
-	public SerializedProperty Property { get; init; }
+	public SerializedProperty Property { get; init; } = null!;
 	public List<RecoilPatternKey> Keys { get; private set; } = new();
 
 	public RecoilPatternInstance( RecoilPatternEditor editor ) : base( null )

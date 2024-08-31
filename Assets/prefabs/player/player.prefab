@@ -208,6 +208,7 @@
               {
                 "__type": "Sandbox.SpotLight",
                 "__guid": "028e3e07-adef-4fbf-8883-137dbac9da13",
+                "__enabled": false,
                 "Attenuation": 1,
                 "ConeInner": 15,
                 "ConeOuter": 30,
