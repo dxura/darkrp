@@ -9,7 +9,7 @@
     <div class="main">
        <div class="side-bar">
           <div class="player-container">
-             <div class="name">@(Rpc.Caller.DisplayName.Truncate(13))</div>
+             <div class="name">@PlayerState.Local?.DisplayName</div>
              <Balance></Balance>
              <div class="sub">Salary: <span>$@(PlayerState.Local?.Job.Salary ?? 0)</span></div>
           </div>
