@@ -4,7 +4,7 @@
   "Org": "dxura",
   "Ident": "darkrp-dev",
   "Schema": 1,
-  "IncludeSourceFiles": false,
+  "IncludeSourceFiles": true,
   "Resources": "/fonts/*\n/UI/*\nui/*.png",
   "PackageReferences": [],
   "EditorReferences": null,

@@ -22,18 +22,19 @@ MainHUD {
       opacity: 0;
     }
   }
+
+  .crosshair {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+  }
+
+  .centerHud {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
 }
 
-.crosshair {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background-color: white;
-}
-
-.centerHud {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-}

@@ -8,7 +8,7 @@ public partial class PlayerState : Component
 	/// <summary>
 	/// Our local player on this client.
 	/// </summary>
-	public static PlayerState Local { get; private set; } = null!;
+	public static PlayerState? Local { get; private set; }
 
 	/// <summary>
 	/// Who owns this player state?

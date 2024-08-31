@@ -1,0 +1,33 @@
+@namespace Dxura.Darkrp.UI
+@inherits Panel
+
+<root>
+	<div class="job-group-list">
+		@foreach ( var group in JobProvider.JobGroups.Values )
+		{
+			<div class="job-group">
+				<div class="job-group-title" style="background-color: @group.Color.Hex">@group.Name</div>
+				<div class="job-list">
+					@foreach ( var job in JobProvider.Jobs.Values.Where( x => x.Group == group ) )
+					{
+						<div class="job-entry button">
+							<div class="icon"></div>
+							<div class="label-container">
+								<div class="label">@job.Name</div>
+								<div class="description">@job.Description</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		}
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( JobProvider.Jobs );
+	}
+}

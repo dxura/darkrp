@@ -5,31 +5,114 @@
 
 @attribute [StyleSheet]
 
-<root class="hidden flex absolute inset-0 align-center justify-center">
-	<table class="with-background with-padding-lg layout color-borders">
-		<div class="title">
-			<label class="important uppercase left">Test</label>
-		</div>
-	</table>
+<root class="@(IsActive ? "visible" : "hidden")">
+    <div class="main">
+       <div class="side-bar">
+          <div class="player-container">
+             <div class="name">@(Rpc.Caller.DisplayName.Truncate(13))</div>
+             <Balance></Balance>
+             <div class="sub">Salary: <span>$@(PlayerState.Local?.Job.Salary ?? 0)</span></div>
+          </div>
+          <div class="navigation">
+             
+	          <div class="button-container">
+		          <button class="button @(SelectedSection == MenuSection.Overview ? "active" : "")" @onclick="@(() => SetSelectedSection(MenuSection.Overview))">
+			          <i class="icon">work</i> Overview
+		          </button>
+		          <button class="button @( SelectedSection == MenuSection.Jobs ? "active" : "" )" @onclick="@( () => SetSelectedSection( MenuSection.Jobs ) )">
+			          <i class="icon">work</i> Jobs
+		          </button>
+		          <button class="button @( SelectedSection == MenuSection.Market ? "active" : "" )" @onclick="@( () => SetSelectedSection( MenuSection.Market ) )">
+			          <i class="icon">store</i> Market
+		          </button>
+		          <button class="button @( SelectedSection == MenuSection.Props ? "active" : "" )" @onclick="@( () => SetSelectedSection( MenuSection.Props ) )">
+			          <i class="icon">folder</i> Props
+		          </button>
+	          </div>
+
+	          <div class="button-container">
+		          @if ( Networking.IsHost )
+		          {
+			          <button class="button @( SelectedSection == MenuSection.Admin ? "active" : "" )" @onclick="@( () => SetSelectedSection( MenuSection.Admin ) )">
+				          <i class="icon">local_police</i> Admin
+			          </button>
+		          }
+		          <button class="button" style="color:#4078c0;">
+			          <i class="icon">web</i> Github todo
+		          </button>
+		          <button class="button" style="color:#7289da;">
+			          <i class="icon">discord</i> Discord todo
+		          </button>
+	          </div>
+          </div>
+       </div>
+       
+       <div class="main-container">
+          <div class="section">
+             <div class="section-title">@SelectedSection</div>
+             <div class="section-contents">
+                
+                @switch ( SelectedSection )
+                {
+	                case MenuSection.Overview:
+		                <OverviewMenuSection></OverviewMenuSection>
+		                break;
+                   case MenuSection.Jobs:
+                      <JobMenuSection></JobMenuSection>
+                      break;
+                   case MenuSection.Market:
+		                <MarketMenuSection></MarketMenuSection>
+	                   break;
+                   case MenuSection.Props:
+		                <PropsMenuSection></PropsMenuSection>
+	                   break;
+                   case MenuSection.Admin:
+		                <AdminMenuSection></AdminMenuSection>
+	                   break;
+                }
+             </div>
+          </div>
+       </div>
+    </div>
 </root>
 
 @code
 {
-	public bool IsActive { get; set; }
+	enum MenuSection
+    {
+       Overview,
+       Jobs,
+       Market,
+       Props,
+       Admin
+    }
 
+    private MenuSection SelectedSection { get; set; } = MenuSection.Overview;
+    private bool IsActive { get; set; }
+    
+    public override void Tick()
+    {
+       if ( Input.Pressed( "Menu" ) )
+       {
+          IsActive = true;
+          StateHasChanged();
+       }
 
-	public override void Tick()
-	{
-		if ( Input.Pressed( "Menu" ) )
-		{
-			IsActive = Input.Pressed( "Menu" );
-			SetClass( "visible", true );
-		}
+       if ( Input.Released( "Menu" ) )
+       {
+          IsActive = false;
+          StateHasChanged();
+       }
+    }
 
-		if ( Input.Released( "Menu" ) )
-		{
-			SetClass( "visible", false );
-			IsActive = false;
-		}
-	}
+    private void SetSelectedSection(MenuSection section)
+    {
+        SelectedSection = section;
+        StateHasChanged();
+    }
+
+    protected override int BuildHash()
+    {
+       return HashCode.Combine( SelectedSection );
+    }
 }

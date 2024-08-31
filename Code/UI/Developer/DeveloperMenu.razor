@@ -35,6 +35,11 @@
 	
 	protected override void OnUpdate()
 	{
+		if ( PlayerState.Local == null )
+		{
+			return;
+		}
+		
 		if ( PlayerState.Local.SteamId != 76561198047807813 ) return;
 		
 		if ( Input.Pressed( "DeveloperMenu" ) )
