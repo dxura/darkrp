@@ -90,7 +90,7 @@
           "__guid": "5a0d963a-ee8b-4b2b-bb46-4252a6d6269d",
           "Flags": 0,
           "Name": "Info",
-          "Position": "-3136,-672,215.8738",
+          "Position": "-3136,-672,224.2567",
           "Enabled": true,
           "Components": [
             {
@@ -123,6 +123,24 @@
                   "Scale": 0.15,
                   "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)      B: Buy gun\nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
                   "TextAlignment": "Center"
+                }
+              ]
+            },
+            {
+              "__guid": "ed56a27d-2d44-449e-8ed4-a84a0754e7c5",
+              "Flags": 0,
+              "Name": "Cube",
+              "Position": "11.26025,0,-65.6946",
+              "Scale": "0.1999999,3.8,3.799999",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "43393c2c-b16f-4034-b423-1899503d6151",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderType": "On",
+                  "Tint": "0,0,0,1"
                 }
               ]
             }

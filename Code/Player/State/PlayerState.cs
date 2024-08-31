@@ -26,7 +26,7 @@ public partial class PlayerState : Component
 	/// <summary>
 	/// The connection of this player
 	/// </summary>
-	public Connection Connection => Network.OwnerConnection;
+	public Connection? Connection => Network.OwnerConnection;
 
 	public bool IsConnected => Connection is not null && (Connection.IsActive || Connection.IsHost); //smh
 
@@ -68,8 +68,8 @@ public partial class PlayerState : Component
 	{
 		RespawnState = RespawnState.Immediate;
 
-		SteamId = Connection.SteamId;
-		SteamName = Connection.DisplayName;
+		SteamId = Connection?.SteamId ?? 0;
+		SteamName = Connection?.DisplayName;
 	}
 
 	[Authority]

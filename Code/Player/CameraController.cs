@@ -37,29 +37,30 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	}
 	
 	// These components are cached.
-	public CameraComponent Camera { get; set; }
-	public AudioListener AudioListener { get; set; }
-	public ColorAdjustments ColorAdjustments { get; set; }
-	public ScreenShaker ScreenShaker { get; set; }
-	public ChromaticAberration ChromaticAberration { get; set; }
-	public Pixelate Pixelate { get; set; }
+	public CameraComponent Camera { get; set; } = null!;
+	public AudioListener AudioListener { get; set; } = null!;
+	public ColorAdjustments ColorAdjustments { get; set; } = null!;
+	public ScreenShaker ScreenShaker { get; set; } = null!;
+	public ChromaticAberration ChromaticAberration { get; set; } = null!;
+	public Pixelate Pixelate { get; set; } = null!;
 
 	/// <summary>
 	/// The default player camera prefab.
 	/// </summary>
 	[Property]
-	public GameObject DefaultPlayerCameraPrefab { get; set; }
+	[RequireComponent]
+	public GameObject DefaultPlayerCameraPrefab { get; set; } = null!;
 
 	/// <summary>
 	/// The boom for this camera.
 	/// </summary>
 	[Property]
-	public GameObject Boom { get; set; }
+	public GameObject Boom { get; set; } = null!;
 
 	/// <summary>
 	/// See <see cref="DefaultPlayerCameraPrefab"/>, this is the instance of this.
 	/// </summary>
-	public GameObject PlayerCameraGameObject { get; set; }
+	public GameObject PlayerCameraGameObject { get; set; } = null!;
 
 	public bool IsActive { get; private set; }
 
@@ -86,12 +87,12 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	{
 	}
 
-	private float FieldOfViewOffset = 0f;
-	private float TargetFieldOfView = 90f;
+	private float _fieldOfViewOffset = 0f;
+	private float _targetFieldOfView = 90f;
 
 	public void AddFieldOfViewOffset( float degrees )
 	{
-		FieldOfViewOffset -= degrees;
+		_fieldOfViewOffset -= degrees;
 	}
 
 	private void UpdateRotation()
@@ -238,17 +239,17 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		    { } scope )
 		{
 			var fov = scope.GetFOV();
-			FieldOfViewOffset -= fov;
+			_fieldOfViewOffset -= fov;
 		}
 	}
 
-	private bool fetchedInitial = false;
-	private float defaultSaturation = 1f;
+	private bool _fetchedInitial = false;
+	private float _defaultSaturation = 1f;
 
 	private void Update( float eyeHeight )
 	{
 		var baseFov = GameSettingsSystem.Current.FieldOfView;
-		FieldOfViewOffset = 0;
+		_fieldOfViewOffset = 0;
 
 		if ( !Player.IsValid() )
 		{
@@ -259,27 +260,27 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		{
 			if ( Player.CurrentEquipment?.Tags.Has( "aiming" ) ?? false )
 			{
-				FieldOfViewOffset += AimFovOffset;
+				_fieldOfViewOffset += AimFovOffset;
 			}
 		}
 
 		// deathcam, "zoom" at target.
 		if ( Player.HealthComponent.State == LifeState.Dead )
 		{
-			FieldOfViewOffset += AimFovOffset;
+			_fieldOfViewOffset += AimFovOffset;
 		}
 
 		if ( ColorAdjustments.IsValid() )
 		{
-			if ( !fetchedInitial )
+			if ( !_fetchedInitial )
 			{
-				defaultSaturation = ColorAdjustments.Saturation;
-				fetchedInitial = true;
+				_defaultSaturation = ColorAdjustments.Saturation;
+				_fetchedInitial = true;
 			}
 
 			ColorAdjustments.Saturation = Player.HealthComponent.IsGodMode
 				? RespawnProtectionSaturation
-				: ColorAdjustments.Saturation.MoveToLinear( defaultSaturation, 1f );
+				: ColorAdjustments.Saturation.MoveToLinear( _defaultSaturation, 1f );
 		}
 
 		ApplyRecoil();
@@ -290,20 +291,20 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		ApplyCameraEffects();
 		ScreenShaker?.Apply( Camera );
 
-		TargetFieldOfView = TargetFieldOfView.LerpTo( baseFov + FieldOfViewOffset, Time.Delta * 5f );
-		Camera.FieldOfView = TargetFieldOfView;
+		_targetFieldOfView = _targetFieldOfView.LerpTo( baseFov + _fieldOfViewOffset, Time.Delta * 5f );
+		Camera.FieldOfView = _targetFieldOfView;
 	}
 
-	private RealTimeSince TimeSinceDamageTaken = 1;
+	private RealTimeSince _timeSinceDamageTaken = 1;
 
 	void IGameEventHandler<DamageTakenEvent>.OnGameEvent( DamageTakenEvent eventArgs )
 	{
-		TimeSinceDamageTaken = 0;
+		_timeSinceDamageTaken = 0;
 	}
 
 	private void ApplyCameraEffects()
 	{
-		var timeSinceDamage = TimeSinceDamageTaken.Relative;
+		var timeSinceDamage = _timeSinceDamageTaken.Relative;
 		var shortDamageUi = timeSinceDamage.LerpInverse( 0.1f, 0.0f, true );
 		ChromaticAberration.Scale = shortDamageUi * 1f;
 		Pixelate.Scale = shortDamageUi * 0.2f;

@@ -10,21 +10,21 @@ public partial class Player
 	/// </summary>
 	[Property]
 	[Group( "Effects" )]
-	public GameObject HeadshotEffect { get; set; }
+	public GameObject? HeadshotEffect { get; set; }
 
 	/// <summary>
 	/// What effect should we spawn when a player gets headshot while wearing a helmet?
 	/// </summary>
 	[Property]
 	[Group( "Effects" )]
-	public GameObject HeadshotWithHelmetEffect { get; set; }
+	public GameObject? HeadshotWithHelmetEffect { get; set; }
 
 	/// <summary>
 	/// What effect should we spawn when we hit a player?
 	/// </summary>
 	[Property]
 	[Group( "Effects" )]
-	public GameObject BloodEffect { get; set; }
+	public GameObject? BloodEffect { get; set; }
 
 	/// <summary>
 	/// What sound should we play when a player gets headshot?
@@ -87,7 +87,7 @@ public partial class Player
 		}
 		else
 		{
-			Outline.ObscuredColor = PlayerState.Local.Job == Job
+			Outline.ObscuredColor = PlayerState.Local.Job == Job && PlayerState != null
 				? PlayerState.PlayerColor
 				: Color.Transparent;
 		}

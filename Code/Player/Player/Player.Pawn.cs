@@ -8,7 +8,7 @@ public partial class Player
 	/// The player state ID
 	/// </summary>
 	[HostSync]
-	public PlayerState? PlayerState { get; set; }
+	public PlayerState PlayerState { get; set; } = null!;
 
 	/// <summary>
 	/// The position this player last spawned at.

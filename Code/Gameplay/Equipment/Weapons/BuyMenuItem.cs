@@ -48,7 +48,7 @@ public abstract class BuyMenuItem
 		};
 	}
 
-	public static BuyMenuItem GetById( string id )
+	public static BuyMenuItem? GetById( string id )
 	{
 		return GetAll().FirstOrDefault( x => x.Id == id );
 	}

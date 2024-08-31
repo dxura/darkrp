@@ -1,13 +1,14 @@
 using Sandbox.Diagnostics;
+using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
 /// <summary>
 /// The player's inventory.
 /// </summary>
-public partial class PlayerInventory : Component
+public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 {
-	[RequireComponent] private Player Player { get; set; }
+	[RequireComponent] private Player Player { get; set; } = null!;
 
 	/// <summary>
 	/// What equipment do we have right now?
@@ -19,7 +20,7 @@ public partial class PlayerInventory : Component
 	/// A <see cref="GameObject"/> that will hold all of our equipment.
 	/// </summary>
 	[Property]
-	public GameObject WeaponGameObject { get; set; }
+	public GameObject WeaponGameObject { get; set; } = null!;
 
 	/// <summary>
 	/// Can we unequip the current weapon so we have no equipment out?
@@ -30,7 +31,7 @@ public partial class PlayerInventory : Component
 	/// <summary>
 	/// Gets the player's current weapon.
 	/// </summary>
-	private Equipment Current => Player.CurrentEquipment;
+	private Equipment? Current => Player?.CurrentEquipment;
 
 	public void Clear()
 	{
@@ -189,35 +190,7 @@ public partial class PlayerInventory : Component
 
 		Switch( weaponToSwitchTo );
 	}
-
-	public void SwitchToBest()
-	{
-		if ( !Equipment.Any() )
-		{
-			return;
-		}
-
-		if ( HasInSlot( EquipmentSlot.Primary ) )
-		{
-			SwitchToSlot( EquipmentSlot.Primary );
-			return;
-		}
-
-		if ( HasInSlot( EquipmentSlot.Secondary ) )
-		{
-			SwitchToSlot( EquipmentSlot.Secondary );
-			return;
-		}
-
-		if ( HasInSlot( EquipmentSlot.Melee ) )
-		{
-			SwitchToSlot( EquipmentSlot.Melee );
-			return;
-		}
-
-		Switch( Equipment.FirstOrDefault() );
-	}
-
+	
 	public void HolsterCurrent()
 	{
 		Assert.True( !IsProxy || Networking.IsHost );
@@ -251,7 +224,7 @@ public partial class PlayerInventory : Component
 	/// Tries to set the player's current weapon to a specific one, which has to be in the player's inventory.
 	/// </summary>
 	/// <param name="equipment"></param>
-	public void Switch( Equipment equipment )
+	public void Switch( Equipment? equipment )
 	{
 		Assert.True( !IsProxy || Networking.IsHost );
 
@@ -305,7 +278,7 @@ public partial class PlayerInventory : Component
 		RemoveWeapon( equipment );
 	}
 
-	public Equipment Give( EquipmentResource resource, bool makeActive = true )
+	public Equipment? Give( EquipmentResource? resource, bool makeActive = true )
 	{
 		Assert.True( Networking.IsHost );
 
@@ -453,5 +426,14 @@ public partial class PlayerInventory : Component
 		}
 
 		Player.PlayerState.Balance -= resource.Price;
+	}
+
+	public void OnGameEvent( PlayerSpawnedEvent eventArgs )
+	{
+		foreach (var equipmentResource in eventArgs.Player.Job.Equipment)
+		{
+			Give( equipmentResource );
+			
+		}
 	}
 }

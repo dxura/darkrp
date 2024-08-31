@@ -1,5 +1,3 @@
-using Dxura.Darkrp;
-using Dxura.Darkrp;
 using Sandbox.Events;
 
 namespace Dxura.Darkrp;

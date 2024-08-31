@@ -10,24 +10,25 @@ public record OnPlayerRagdolledEvent : IGameEvent
 
 public partial class Player
 {
-	
+
 	/// <summary>
 	/// An accessor for health component if we have one.
 	/// </summary>
 	[Property]
-	public HealthComponent HealthComponent { get; set; }
+	[RequireComponent]
+	public HealthComponent HealthComponent { get; set; } = null!;
 	
 	/// <summary>
 	/// The player's health component
 	/// </summary>
 	[RequireComponent]
-	public ArmorComponent ArmorComponent { get; private set; }
+	public ArmorComponent ArmorComponent { get; private set; } = null!;
 
 	/// <summary>
 	/// The player's inventory, items, etc.
 	/// </summary>
 	[RequireComponent]
-	public PlayerInventory Inventory { get; private set; }
+	public PlayerInventory Inventory { get; private set; } = null!;
 
 	/// <summary>
 	/// How long since the player last respawned?

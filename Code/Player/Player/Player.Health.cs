@@ -43,8 +43,8 @@ public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHan
 			DamageIndicator.Current?.OnHit( position );
 		}
 
-		TimeUntilAccelerationRecovered = Global.TakeDamageAccelerationDampenTime;
-		AccelerationAddedScale = Global.TakeDamageAccelerationOffset;
+		_timeUntilAccelerationRecovered = Global.TakeDamageAccelerationDampenTime;
+		_accelerationAddedScale = Global.TakeDamageAccelerationOffset;
 
 		if ( attacker != victim && Body != null )
 		{

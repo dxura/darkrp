@@ -15,7 +15,7 @@ partial class Player
 	/// </summary>
 	[Property]
 	[Group( "Interaction" )]
-	public float UseDistance { get; set; } = 72f;
+	private float UseDistance { get; set; } = 72f;
 
 	/// <summary>
 	/// Which object did the player last press use on?

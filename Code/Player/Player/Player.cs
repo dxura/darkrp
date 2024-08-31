@@ -36,7 +36,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	/// The outline effect for this player.
 	/// </summary>
 	[RequireComponent]
-	public HighlightOutline? Outline { get; set; }
+	public HighlightOutline Outline { get; set; } = null!;
 
 	/// <summary>
 	/// Get a quick reference to the real Camera GameObject.

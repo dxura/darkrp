@@ -12,7 +12,7 @@ public partial class Player
 	/// The player's box collider, so people can jump on other people.
 	/// </summary>
 	[Property]
-	public BoxCollider? PlayerBoxCollider { get; set; }
+	public BoxCollider PlayerBoxCollider { get; set; } = null!;
 
 	[RequireComponent] public TagBinder TagBinder { get; set; } = null!;
 
@@ -164,15 +164,15 @@ public partial class Player
 		}
 	}
 
-	private TimeUntil TimeUntilAccelerationRecovered = 0;
-	private float AccelerationAddedScale = 0;
+	private TimeUntil _timeUntilAccelerationRecovered = 0;
+	private float _accelerationAddedScale = 0;
 
 	private void ApplyAcceleration()
 	{
-		var relative = TimeUntilAccelerationRecovered.Fraction.Clamp( 0, 1 );
+		var relative = _timeUntilAccelerationRecovered.Fraction.Clamp( 0, 1 );
 		var acceleration = GetAcceleration();
 
-		acceleration *= (relative + AccelerationAddedScale).Clamp( 0, 1 );
+		acceleration *= (relative + _accelerationAddedScale).Clamp( 0, 1 );
 
 		CharacterController.Acceleration = acceleration;
 	}
@@ -316,12 +316,12 @@ public partial class Player
 		cc.Move();
 	}
 
-	private TimeSince TimeSinceCrouchPressed = 10f;
-	private TimeSince TimeSinceCrouchReleased = 10f;
+	private TimeSince _timeSinceCrouchPressed = 10f;
+	private TimeSince _timeSinceCrouchReleased = 10f;
 
 	private float CrouchLerpSpeed()
 	{
-		if ( TimeSinceCrouchPressed < 1f && TimeSinceCrouchReleased < 1f )
+		if ( _timeSinceCrouchPressed < 1f && _timeSinceCrouchReleased < 1f )
 		{
 			return Global.SlowCrouchLerpSpeed;
 		}
@@ -362,12 +362,12 @@ public partial class Player
 
 		if ( Input.Pressed( "Duck" ) )
 		{
-			TimeSinceCrouchPressed = 0;
+			_timeSinceCrouchPressed = 0;
 		}
 
 		if ( Input.Released( "Duck" ) )
 		{
-			TimeSinceCrouchReleased = 0;
+			_timeSinceCrouchReleased = 0;
 		}
 
 		// Check if our current weapon has the planting tag and if so force us to crouch.
@@ -463,8 +463,8 @@ public partial class Player
 			{
 				var velPastAmount = vel - minimumVelocity;
 
-				TimeUntilAccelerationRecovered = 1f;
-				AccelerationAddedScale = 0f;
+				_timeUntilAccelerationRecovered = 1f;
+				_accelerationAddedScale = 0f;
 
 				using ( Rpc.FilterInclude( Connection.Host ) )
 				{

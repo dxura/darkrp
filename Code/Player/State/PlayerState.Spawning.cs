@@ -14,7 +14,8 @@ public partial class PlayerState
 	/// The prefab to spawn when we want to make a player pawn for the player.
 	/// </summary>
 	[Property]
-	public GameObject PlayerPrefab { get; set; }
+	[RequireComponent]
+	public GameObject PlayerPrefab { get; set; } = null!;
 
 	public TimeSince TimeSinceRespawnStateChanged { get; private set; }
 	public DamageInfo? LastDamageInfo { get; private set; }
