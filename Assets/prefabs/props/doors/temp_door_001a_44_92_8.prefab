@@ -1,0 +1,47 @@
+{
+  "RootObject": {
+    "__guid": "d7d25bd2-c2d0-428b-aace-bd4af65c0891",
+    "Flags": 0,
+    "Name": "temp_door_001a_44_92_8",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "62968aa7-6ea8-4523-ad60-8ad2b70442af",
+        "BodyGroups": 18446744073709551615,
+        "Health": 0,
+        "IsStatic": true,
+        "Model": "models/props/doors/temp_door_001a_44_92_8.vmdl",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Dxura.Darkrp.Door",
+        "__guid": "92f66c14-2ad3-4db7-a4d3-f154296045fe",
+        "AnimationCurve": [
+          {},
+          {
+            "x": 1,
+            "y": 1
+          }
+        ],
+        "CloseSound": "sound/hl2_door_soft_close.sound",
+        "OpenAwayFromPlayer": true,
+        "OpenSound": "sound/hl2_door_open.sound",
+        "OpenTime": 0.35,
+        "TargetAngle": 90
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "viasoundcorner.hl2_door_open",
+    "viasoundcorner.hl2_door_soft_close"
+  ],
+  "__version": 1
+}
