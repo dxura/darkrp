@@ -10,7 +10,7 @@ public partial class PlayerState : IScore
 	[HostSync]
 	[Order( -100 )]
 	[Score( "Balance", Format = "${0:N0}" )]
-	public int Balance { get; set; } = 16_000;
+	public int Balance { get; set; } = 1000;
 
 	public void SetBalance( int amount )
 	{
