@@ -444,7 +444,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 		foreach (var equipmentResource in eventArgs.Player.Job.Equipment)
 		{
 			equipmentResource.CanDrop = false; // Prevent dropping job-specific equipment
-			Give( equipmentResource );
+			Give( equipmentResource, isFirst);
 		}
 	}
 }

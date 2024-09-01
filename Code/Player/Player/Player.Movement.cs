@@ -485,7 +485,10 @@ public partial class Player
 	private void PlayFallSound()
 	{
 		var handle = Sound.Play( LandSound, Transform.Position );
-		handle.ListenLocal = !IsProxy;
+		if ( handle.IsValid )
+		{
+			handle.ListenLocal = !IsProxy;
+		}
 	}
 
 	[Broadcast]

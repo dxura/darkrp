@@ -5,7 +5,7 @@
   "Ident": "darkrp-dev",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "/fonts/*\n/UI/*\nui/*.png",
+  "Resources": "/fonts/*\nui/*.png\n",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,

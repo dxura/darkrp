@@ -67,7 +67,10 @@ public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHan
 			if ( headshotSound is not null )
 			{
 				var handle = Sound.Play( headshotSound, position );
-				handle.ListenLocal = attacker is { IsProxy: false } ||  victim is { IsProxy: false };
+				if ( handle.IsValid )
+				{
+					handle.ListenLocal = attacker is { IsProxy: false } ||  victim is { IsProxy: false };
+				}
 			}
 		}
 		else
