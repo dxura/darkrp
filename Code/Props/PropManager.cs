@@ -94,12 +94,6 @@ public sealed class PropManager : SingletonComponent<PropManager>
 	            return;
 	        }
 	    }
-	    
-	    // Freeze
-	    foreach (var rb in prop.Components.GetAll<Rigidbody>(FindMode.EverythingInSelfAndDescendants))
-	    {
-		    rb.PhysicsBody.BodyType = PhysicsBodyType.Static;
-	    }
 
 	    // Spawn the prop on all clients
 	    if (prop.NetworkSpawn())

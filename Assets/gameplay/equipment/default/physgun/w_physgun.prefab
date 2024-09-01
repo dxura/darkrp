@@ -69,16 +69,12 @@
           {
             "__type": "Dxura.Darkrp.PhysGunEquipment",
             "__guid": "f9b6f475-abca-4e67-b548-aea159159606",
-            "AngularDampingRatio": 1,
-            "AngularFrequency": 20,
             "InputActions": [],
-            "LinearDampingRatio": 1,
-            "LinearFrequency": 20,
-            "MaxTargetDistance": 10000,
-            "MinTargetDistance": 0,
+            "MaxTargetDistance": 300,
+            "MinTargetDistance": 50,
             "RequiresAllInputActions": true,
             "RotateSnapAt": 45,
-            "RotateSpeed": 0.35,
+            "RotateSpeed": 0.25,
             "TargetDistanceSpeed": 25
           },
           {

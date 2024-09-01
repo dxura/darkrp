@@ -117,7 +117,7 @@ public class HandsEquipment : InputWeaponComponent
 		var tr = Scene.Trace.Ray( start, end )
 			.UseHitboxes()
 			.IgnoreGameObject( GameObject )
-			.WithAnyTags( "entity", "pickup" )
+			.WithAnyTags( "entity", "pickup", "prop" )
 			.Run();
 
 		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.GameObject.Tags.Has( "map" ) || tr.StartedSolid ) return;
@@ -140,8 +140,14 @@ public class HandsEquipment : InputWeaponComponent
 		if ( !body.IsValid() ) return;
 
 		// Don't move keyframed
-		if ( body.BodyType == PhysicsBodyType.Keyframed ) return;
-
+		if ( body.BodyType == PhysicsBodyType.Keyframed) return;
+		
+		// PROPs: Don't allow holding other people's props OR frozen props
+		if ( rootObject.Tags.Contains( "prop" ) && (!rootObject.Network.IsOwner || body.BodyType == PhysicsBodyType.Static) )
+		{
+			return;
+		}
+		
 		Grab( tr.GameObject, tr.Body );
 	}
 
@@ -156,6 +162,8 @@ public class HandsEquipment : InputWeaponComponent
 
 		_held = target;
 		_heldBody = targetBody;
+
+		_heldBody.BodyType = PhysicsBodyType.Dynamic;
 
 		Player.Inventory.CantSwitch = true;
 		
