@@ -5,12 +5,7 @@
     "Name": "jeep_fire",
     "Tags": "particles",
     "Enabled": true,
-    "Components": [
-      {
-        "__type": "DestroyBetweenRounds",
-        "__guid": "280d1089-68c9-42cf-9d05-8a4894257600"
-      }
-    ],
+    "Components": [],
     "Children": [
       {
         "__guid": "2122c87b-e746-4a10-a345-ffe8c396e414",

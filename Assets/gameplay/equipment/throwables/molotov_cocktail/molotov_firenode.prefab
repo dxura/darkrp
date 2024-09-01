@@ -165,10 +165,6 @@
         "Texture": "materials/particles/smoke1/smoke1.vtex"
       },
       {
-        "__type": "DestroyBetweenRounds",
-        "__guid": "01c6c4b3-b03a-4dd1-844c-d31c92c2e46a"
-      },
-      {
         "__type": "Dxura.Darkrp.SoundEmitter",
         "__guid": "678520c5-6fd9-4c54-831e-3612a9ae1bb2",
         "DestroyOnFinish": false,

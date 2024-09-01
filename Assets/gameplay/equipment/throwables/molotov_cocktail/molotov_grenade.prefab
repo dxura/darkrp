@@ -28,10 +28,6 @@
         "Surface": "weapons/throwable/molotov_cocktail/molotov_grenade.surface"
       },
       {
-        "__type": "DestroyBetweenRounds",
-        "__guid": "1437420e-c288-4150-a4a7-837a64cf9409"
-      },
-      {
         "__type": "Dxura.Darkrp.MolotovGrenade",
         "__guid": "ea642f20-616b-48e9-b93e-493023acb2ba",
         "CanDealDamage": true,

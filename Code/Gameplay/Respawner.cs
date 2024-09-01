@@ -15,8 +15,14 @@ public class Respawner : Component
 	/// <returns></returns>
 	public int GetRespawnTime()
 	{
-		return (RespawnDelaySeconds - PlayerState.Local.TimeSinceRespawnStateChanged).Clamp( 0f, RespawnDelaySeconds )
-			.CeilToInt();
+		if ( PlayerState.Local != null )
+		{
+			return (RespawnDelaySeconds - PlayerState.Local.TimeSinceRespawnStateChanged)
+				.Clamp( 0f, RespawnDelaySeconds )
+				.CeilToInt();
+		}
+
+		return 10;
 	}
 
 	protected override void OnStart()
