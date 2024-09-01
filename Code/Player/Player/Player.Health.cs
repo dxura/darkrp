@@ -85,7 +85,11 @@ public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHan
 			if ( BloodImpactSound is not null )
 			{
 				var snd = Sound.Play( BloodImpactSound, position );
-				snd.ListenLocal = !IsProxy;
+
+				if ( snd != null )
+				{
+					snd.ListenLocal = !IsProxy;
+				}
 			}
 		}
 	}
