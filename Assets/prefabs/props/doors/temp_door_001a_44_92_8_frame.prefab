@@ -1,0 +1,38 @@
+{
+  "RootObject": {
+    "__guid": "6f9f7d93-1be2-431e-affb-8b77f5a25c2b",
+    "Flags": 0,
+    "Name": "temp_door_001a_44_92_8_frame",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "df1e7b95-db66-4624-8d45-b7b5dec763c3",
+        "BodyGroups": 18446744073709551615,
+        "Health": 0,
+        "IsStatic": true,
+        "Model": "models/props/doors/temp_door_001a_44_92_8_frame.vmdl",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "98fc3c5d-d90a-4b20-9238-076d933b3634",
+        "Flags": 0,
+        "Name": "temp_door_001a_44_92_8 (2)",
+        "Position": "0,4,0",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/props/doors/temp_door_001a_44_92_8.prefab",
+        "__PrefabVariables": {}
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
