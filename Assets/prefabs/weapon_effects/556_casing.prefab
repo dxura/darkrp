@@ -5,16 +5,14 @@
     "Name": "556_casing",
     "Tags": "magazine",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
     "Components": [
       {
         "__type": "Dxura.Darkrp.TimedDestroyComponent",
         "__guid": "18aee328-4ecf-42dd-8039-ef7591b215a4",
         "Time": 15,
         "TimeUntilDestroy": {
-          "Relative": -7310.956,
-          "Passed": 7310.956,
+          "Relative": -105.45087,
+          "Passed": 105.45087,
           "Fraction": 1
         }
       }
@@ -27,8 +25,6 @@
         "Rotation": "-0.4460149,0.8567867,0.2295753,0.1195093",
         "Tags": "particles",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "Sandbox.LegacyParticleSystem",
@@ -53,8 +49,6 @@
         "Flags": 0,
         "Name": "ejectionport_gas",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "__Prefab": "prefabs/weapon_effects/ejectionport_gas.prefab",
         "__PrefabVariables": {}
       }
