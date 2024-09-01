@@ -1,7 +1,4 @@
-﻿using Dxura.Darkrp;
-using Dxura.Darkrp;
-
-namespace Dxura.Darkrp;
+﻿namespace Dxura.Darkrp;
 
 public abstract class BuyMenuItem
 {
@@ -42,9 +39,8 @@ public abstract class BuyMenuItem
 	{
 		return new List<BuyMenuItem>
 		{
-			new ArmorEquipment( "kevlar", "Kevlar", "/ui/equipment/armor.png" ),
-			new ArmorWithHelmetEquipment( "kevlar_helmet", "Kevlar + Helmet", "/ui/equipment/helmet.png" ),
-			new DefuseKitEquipment( "defuse_kit", "Defuse Kit", "/ui/equipment/defusekit.png" )
+			new ArmorEquipment( "kevlar", "Kevlar", "ui/equipment/armor.png" ),
+			new ArmorWithHelmetEquipment( "kevlar_helmet", "Kevlar + Helmet", "ui/equipment/helmet.png" ),
 		};
 	}
 
@@ -107,34 +103,5 @@ public class ArmorWithHelmetEquipment : BuyMenuItem
 	public override bool IsOwned( Player player )
 	{
 		return player.ArmorComponent.Armor == player.ArmorComponent.MaxArmor && player.ArmorComponent.HasHelmet;
-	}
-}
-
-public class DefuseKitEquipment : BuyMenuItem
-{
-	public DefuseKitEquipment( string id, string name, string icon )
-	{
-		Id = id;
-		Name = name;
-		Icon = icon;
-	}
-
-	public override int GetPrice( Player player )
-	{
-		return 400;
-	}
-
-	protected override void OnPurchase( Player player )
-	{
-	}
-
-	public override bool IsVisible( Player player )
-	{
-		return true;
-	}
-
-	public override bool IsOwned( Player player )
-	{
-		return false;
 	}
 }
