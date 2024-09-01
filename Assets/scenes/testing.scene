@@ -265,14 +265,15 @@
       ]
     },
     {
-      "__guid": "4e585503-50c3-4ff0-b2de-587793b4249a",
+      "__guid": "2f69e818-a8fe-4faa-be8d-9d86ebdf4d3c",
       "Flags": 0,
       "Name": "Spawn",
+      "Position": "-103.9082,100.0653,32",
       "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.SpawnPoint",
-          "__guid": "c4961a01-33ec-4a81-a9de-2a83cd2c8b4f",
+          "__guid": "6e8312e2-b1dd-4c73-8679-f328edbe0bc9",
           "Color": "0.8902,0.31765,0.05098,1"
         }
       ]
