@@ -139,7 +139,7 @@ public class PhysGunEquipment : InputWeaponComponent
 
 		var tr = Scene.Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
 			.UseHitboxes()
-			.WithAnyTags( "solid", "player", "debris", "nocollide" )
+			.WithAnyTags( "prop" )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
 			.Run();
 
