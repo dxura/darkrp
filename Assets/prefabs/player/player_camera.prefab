@@ -2,7 +2,7 @@
   "RootObject": {
     "__guid": "91c92300-c9e5-4a0d-b4ae-d26a91936fc8",
     "Flags": 0,
-    "Name": "default_player_camera",
+    "Name": "player_camera",
     "Enabled": true,
     "Components": [
       {
@@ -59,18 +59,6 @@
         "Strength": 0.15,
         "Threshold": 0.66,
         "ThresholdWidth": 1.65
-      },
-      {
-        "__type": "Sandbox.Tonemapping",
-        "__guid": "84567d97-73e3-488c-9ec1-ecfea74f2603",
-        "__version": 1,
-        "ExposureBias": 2,
-        "ExposureCompensation": 0,
-        "ExposureMethod": "RGB",
-        "MaximumExposure": 2,
-        "MinimumExposure": 1,
-        "Mode": "HableFilmic",
-        "Rate": 1
       },
       {
         "__type": "Sandbox.Sharpen",

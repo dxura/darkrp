@@ -4,7 +4,7 @@ namespace Dxura.Darkrp;
 /// Represents a generic base component that provides common functionality 
 /// for various types of interactable entities such as dropped money, printers, food, etc.
 /// </summary>
-public class BaseEntity : Component, IUse, IDamageListener
+public class BaseEntity : Component, IUse, IRespawnable
 {
 	/// <summary>
 	/// Gets or sets the name of the entity.
@@ -45,12 +45,9 @@ public class BaseEntity : Component, IUse, IDamageListener
 		GameObject.Destroy();
 	}
 
-	public void OnDamaged( DamageInfo damageInfo )
+	public void OnKill( DamageInfo damageInfo )
 	{
-		if ( HealthComponent?.State == LifeState.Dead )
-		{
-			OnDestroyed();
-		}
+		OnDestroyed();
 	}
 
 	/// <summary>

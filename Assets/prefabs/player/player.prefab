@@ -74,7 +74,7 @@
         },
         "DefaultPlayerCameraPrefab": {
           "_type": "gameobject",
-          "prefab": "prefabs/player/cameras/default_player_camera.prefab"
+          "prefab": "prefabs/player/player_camera.prefab"
         },
         "Player": {
           "_type": "component",
@@ -1238,12 +1238,6 @@
             "Static": false
           }
         ]
-      },
-      {
-        "__guid": "43a37d6a-0d13-4ada-a2f0-47c509b642e3",
-        "Flags": 0,
-        "Name": "GameObject",
-        "Enabled": true
       },
       {
         "__guid": "1f7cfcf0-b14f-491c-9195-eb901708ca3f",
