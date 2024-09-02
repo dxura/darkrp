@@ -16,7 +16,7 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "textures/props/street/urban_bench001a_poles.png"
+	TextureColor "textures/models/props/street/urban_bench001a_poles.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -25,14 +25,14 @@ Layer0
 	g_bFogEnabled "1"
 
 	//---- Metalness ----
-	TextureMetalness "textures/props/street/urban_bench001a_poles_metal.png"
+	TextureMetalness "textures/models/props/street/urban_bench001a_poles_metal.png"
 
 	//---- Normal ----
-	TextureNormal "textures/props/street/urban_bench001a_poles_normal.png"
+	TextureNormal "textures/models/props/street/urban_bench001a_poles_normal.png"
 
 	//---- Roughness ----
 	g_flRoughnessScaleFactor "1.000"
-	TextureRoughness "textures/props/street/urban_bench001a_poles_rough.png"
+	TextureRoughness "textures/models/props/street/urban_bench001a_poles_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
