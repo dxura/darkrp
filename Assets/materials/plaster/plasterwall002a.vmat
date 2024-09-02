@@ -4,18 +4,15 @@ Layer0
 {
 	shader "shaders/complex.shader"
 
-	//---- PBR ----
-	F_SPECULAR 1
-
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "textures/metal/metalwall002a_ao.png"
+	TextureAmbientOcclusion "textures/plaster/plasterwall002a_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "textures/metal/metalwall002b.png"
+	TextureColor "textures/plaster/plasterwall002a.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -27,11 +24,11 @@ Layer0
 	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "textures/metal/metalwall002a_normal.png"
+	TextureNormal "textures/plaster/plasterwall002a_normal.png"
 
 	//---- Roughness ----
 	g_flRoughnessScaleFactor "1.000"
-	TextureRoughness "textures/metal/metalwall002a_rough.png"
+	TextureRoughness "textures/plaster/plasterwall002a_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
@@ -42,8 +39,8 @@ Layer0
 
 	SystemAttributes
 	{
-		PhysicsSurfaceProperties "metal"
-		WorldMappingWidth "1024"
-		WorldMappingHeight "512"
+		WorldMappingWidth "2048"
+		WorldMappingHeight "1024"
+		PhysicsSurfaceProperties "plaster"
 	}
 }
