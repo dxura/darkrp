@@ -15,11 +15,11 @@
 						[
 							{
 								from = "back.vmat"
-								to = "materials/props/street/urban_bench001a_back.vmat"
+								to = "materials/models/props/street/urban_bench001a_back.vmat"
 							},
 							{
 								from = "poles.vmat"
-								to = "materials/props/street/urban_bench001a_poles.vmat"
+								to = "materials/models/props/street/urban_bench001a_poles.vmat"
 							},
 						]
 						use_global_default = false
