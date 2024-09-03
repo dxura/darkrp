@@ -5,18 +5,17 @@ Layer0
 	shader "shaders/complex.shader"
 
 	//---- PBR ----
-	F_METALNESS_TEXTURE 1
 	F_SPECULAR 1
 
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "materials/default/default_ao.tga"
+	TextureAmbientOcclusion "textures/asphalt/asphaltfloor001a_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "textures/props/street/urban_bench001a_poles.png"
+	TextureColor "textures/asphalt/asphaltfloor001b.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -25,14 +24,14 @@ Layer0
 	g_bFogEnabled "1"
 
 	//---- Metalness ----
-	TextureMetalness "textures/props/street/urban_bench001a_poles_metal.png"
+	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "textures/props/street/urban_bench001a_poles_normal.png"
+	TextureNormal "textures/asphalt/asphaltfloor001a_normal.png"
 
 	//---- Roughness ----
 	g_flRoughnessScaleFactor "1.000"
-	TextureRoughness "textures/props/street/urban_bench001a_poles_rough.png"
+	TextureRoughness "textures/asphalt/asphaltfloor001a_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

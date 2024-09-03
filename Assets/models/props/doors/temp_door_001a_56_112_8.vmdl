@@ -83,6 +83,9 @@
 							[
 								"Door",
 								"Handle_Back",
+								"Door_Col",
+								"Door_001",
+								"Door_002",
 							]
 						}
 					},

@@ -149,6 +149,193 @@
       ]
     },
     {
+      "__guid": "d5353cef-ec78-47be-a06c-a18f521c71e8",
+      "Flags": 0,
+      "Name": "Map_Props",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "aeb26e95-944d-4b43-af0f-f8e3536a6e96",
+          "Flags": 0,
+          "Name": "Props_Police",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "edd37096-e099-45cd-9e34-d1e4209925e8",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame",
+              "Position": "-3387,755,72",
+              "Rotation": "0,-0,-0.7071068,0.7071068",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "bc5fbb92-9b0d-4252-b0c2-e02fbbcf025d",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (1)",
+              "Position": "-3387,915,72",
+              "Rotation": "0,-0,-0.7071068,0.7071068",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "b0d08368-df6e-44c5-aef0-fe8b78423b7e",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (9)",
+              "Position": "-2512,1031,72",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "e88da62c-ef66-4405-9307-bcfa4e60e944",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (8)",
+              "Position": "-2627,1031,72",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        },
+        {
+          "__guid": "daaea500-961c-43de-8975-86811800a19a",
+          "Flags": 0,
+          "Name": "Props_Hotel01",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "a64b6cad-be1b-41c5-8f05-4a4f2693c198",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (5)",
+              "Position": "-1931,-1249,350.7917",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "a42206d6-522e-4338-8352-0246e5d37e70",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (4)",
+              "Position": "-1931,-865,350.7917",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "b715bd20-cc16-4352-94ca-194bbe6a4293",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame",
+              "Position": "-2099,-1359,72",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "85092d96-b50a-4c84-836f-fe76e7255df0",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (1)",
+              "Position": "-2099,-825,72",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "7bfce8ba-c93e-4108-b71f-47b23026402b",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (3)",
+              "Position": "-1931,-865,200",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "b45e9745-6d96-40c8-af8f-2033e26d5c09",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (2)",
+              "Position": "-1931,-1249,200",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        },
+        {
+          "__guid": "52a39828-b18c-4c56-b63a-a201d267b9a1",
+          "Flags": 0,
+          "Name": "Props_Hotel02",
+          "Enabled": true
+        },
+        {
+          "__guid": "68e1cfdb-075f-4130-a964-1008e57581a2",
+          "Flags": 0,
+          "Name": "Props_House01",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "a4b9ca94-6e28-487d-a205-16f2888d2f50",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (7)",
+              "Position": "-2763,634.9998,228",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        },
+        {
+          "__guid": "37546db9-0166-4916-a585-08689bd12d63",
+          "Flags": 0,
+          "Name": "Props_Garage01",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "dc8150ae-dd92-435d-a62e-398a8293221a",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (6)",
+              "Position": "-2719,-1549,72",
+              "Rotation": "0,0,-0.7071067,0.7071068",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        },
+        {
+          "__guid": "80afcaff-36c6-4af2-a1d0-c7280e5c53a4",
+          "Flags": 0,
+          "Name": "Props_CornerStore",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "b809d9f1-471d-4561-a4dc-d2ca1b077946",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame",
+              "Position": "-2065.459,1192.889,72",
+              "Rotation": "0,0,-0.3826834,0.9238796",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "74ac2b23-35a7-49f5-af5c-af9dc669689f",
+              "Flags": 0,
+              "Name": "temp_door_001a_56_112_8_frame (1)",
+              "Position": "-1835,1025,464",
+              "Enabled": true,
+              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__guid": "ea1c2d3d-9aa4-4559-9d9e-fddfba251f44",
       "Flags": 0,
       "Name": "Map",
@@ -274,6 +461,8 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "based.guerrilla"
+  ],
   "__version": 1
 }
