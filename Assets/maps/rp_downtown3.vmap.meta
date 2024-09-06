@@ -10,7 +10,9 @@
       "IncludeSourceFiles": false,
       "Resources": null,
       "PackageReferences": [],
-      "EditorReferences": [],
+      "EditorReferences": [
+        "based.guerrilla#62188"
+      ],
       "IsWhitelistDisabled": false,
       "Metadata": {
         "SingleAssetSource": "maps/rp_downtown3.vmap"
