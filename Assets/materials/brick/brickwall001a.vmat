@@ -7,7 +7,7 @@ Layer0
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "textures/brick/brickfloor001a_ao.png"
+	TextureAmbientOcclusion "textures/brick/brickwall001a_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
@@ -24,11 +24,11 @@ Layer0
 	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "textures/brick/brickfloor001a_normal.png"
+	TextureNormal "textures/brick/brickwall001a_normal.png"
 
 	//---- Roughness ----
 	g_flRoughnessScaleFactor "1.000"
-	TextureRoughness "textures/brick/brickfloor001a_rough.png"
+	TextureRoughness "textures/brick/brickwall001a_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
