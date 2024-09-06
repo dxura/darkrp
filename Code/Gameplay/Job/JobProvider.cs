@@ -11,6 +11,11 @@ public static class JobProvider
 	static JobProvider()
 	{
 		Log.Info( "Loading groups..." );
+
+		// Due to them being static, we need to clear them first incase of any changes.
+		// I don't know if this is necessary, but it's better to be safe than sorry.
+		Jobs.Clear();
+		JobGroups.Clear();
 		
 		// Get all JobGroup resources
 		foreach ( var group in ResourceLibrary.GetAll<JobGroupResource>() )
