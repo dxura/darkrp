@@ -2,6 +2,27 @@
   "__guid": "d76aee93-9284-4ae5-bd05-6a4b9b0852cc",
   "GameObjects": [
     {
+      "__guid": "ea1c2d3d-9aa4-4559-9d9e-fddfba251f44",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "0,0,-704",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "1c987156-db52-4be9-9ea5-e597b621af1a",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/rp_downtown_v2.vmap",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
       "__guid": "b928e07d-0197-43cf-9104-2c213199a765",
       "Flags": 0,
       "Name": "Environment",
@@ -77,6 +98,7 @@
               "Feathering": 0.02,
               "FrameInterval": 5,
               "MaxDistance": 512,
+              "MultiBounce": false,
               "Projection": "Sphere",
               "RenderDynamically": false,
               "TintColor": "1,1,1,1",
@@ -336,23 +358,32 @@
       ]
     },
     {
-      "__guid": "ea1c2d3d-9aa4-4559-9d9e-fddfba251f44",
+      "__guid": "f8bf0c81-0da5-498c-9d4a-f704c1925129",
       "Flags": 0,
-      "Name": "Map",
-      "Position": "0,0,-704",
+      "Name": "Vending",
       "Enabled": true,
-      "Components": [
+      "Children": [
         {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "1c987156-db52-4be9-9ea5-e597b621af1a",
-          "__version": 1,
-          "EnableCollision": true,
-          "MapName": "maps/rp_downtown_v2.vmap",
-          "NoOrigin": false,
-          "UseMapFromLaunch": false
+          "__guid": "c8275057-ac8f-449e-9066-9c0dfec68f62",
+          "Flags": 0,
+          "Name": "tempvending_snackmachine001a",
+          "Position": "-2806,214.9998,72",
+          "Rotation": "0,-0,-0.7071068,0.7071068",
+          "Enabled": true,
+          "__Prefab": "prefabs/props/vending/tempvending_snackmachine001a.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "fbfb7cc6-800c-4376-afcb-d7d65301fe67",
+          "Flags": 0,
+          "Name": "tempvending_drinksmachine001a",
+          "Position": "-2855,209,72",
+          "Rotation": "0,-0,-0.7071068,0.7071068",
+          "Enabled": true,
+          "__Prefab": "prefabs/props/vending/tempvending_drinksmachine001a.prefab",
+          "__PrefabVariables": {}
         }
-      ],
-      "Children": []
+      ]
     },
     {
       "__guid": "df865cd5-95fc-463d-ba20-220fcb7ee559",

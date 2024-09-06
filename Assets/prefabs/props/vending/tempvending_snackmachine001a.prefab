@@ -1,0 +1,27 @@
+{
+  "RootObject": {
+    "__guid": "c8275057-ac8f-449e-9066-9c0dfec68f62",
+    "Flags": 0,
+    "Name": "tempvending_snackmachine001a",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "b999a852-18d8-4694-beff-980d2f9ad114",
+        "BodyGroups": 18446744073709551615,
+        "Health": 0,
+        "IsStatic": true,
+        "Model": "models/props/vending/tempvending_snackmachine001a.vmdl",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

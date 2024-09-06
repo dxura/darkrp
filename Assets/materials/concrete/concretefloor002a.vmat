@@ -44,6 +44,6 @@ Layer0
 	{
 		PhysicsSurfaceProperties "concrete"
 		WorldMappingWidth "512"
-		WorldMappingHeight "1024"
+		WorldMappingHeight "512"
 	}
 }
