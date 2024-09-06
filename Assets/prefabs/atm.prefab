@@ -1,0 +1,92 @@
+{
+  "RootObject": {
+    "__guid": "8f677542-e3a1-4bc6-b956-e159917a85c6",
+    "Flags": 0,
+    "Name": "atm",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.AtmEntity",
+        "__guid": "8a22a112-2075-4bdb-84bc-81bf37d3031a",
+        "EntityName": "Atm",
+        "HealthComponent": {
+          "_type": "component",
+          "component_id": "cfdac04e-fe58-462a-8a60-991dc40f842a",
+          "go": "8f677542-e3a1-4bc6-b956-e159917a85c6",
+          "component_type": "HealthComponent"
+        },
+        "MainMenu": {
+          "_type": "component",
+          "component_id": "552dee40-68a9-42be-9f8a-baee3f548ebf",
+          "go": "8f677542-e3a1-4bc6-b956-e159917a85c6",
+          "component_type": "AtmMainMenu"
+        }
+      },
+      {
+        "__type": "Sandbox.ScreenPanel",
+        "__guid": "4a50024f-cfff-498b-b6e0-dde273f75a37",
+        "AutoScreenScale": true,
+        "Opacity": 1,
+        "Scale": 1,
+        "ScaleStrategy": "ConsistentHeight",
+        "ZIndex": 100
+      },
+      {
+        "__type": "Dxura.Darkrp.UI.AtmMainMenu",
+        "__guid": "552dee40-68a9-42be-9f8a-baee3f548ebf",
+        "IsAtmOpen": false
+      },
+      {
+        "__type": "Dxura.Darkrp.HealthComponent",
+        "__guid": "cfdac04e-fe58-462a-8a60-991dc40f842a",
+        "IsGodMode": true,
+        "MaxHealth": 100
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "6f7968b6-49bd-43af-b3a9-eea271d17ba9",
+        "Flags": 0,
+        "Name": "Model",
+        "Scale": "2.2,2.2,2.2",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "230aa5ba-27e2-417f-8413-3a371f4651a2",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/3dmodelscc0/cityenvpack1/atm/atm.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.HighlightOutline",
+            "__guid": "88c71760-a77a-467d-b64b-8ac7616d58ee",
+            "Color": "1,1,1,0",
+            "InsideColor": "0,0,0,0",
+            "InsideObscuredColor": "0,0,0,0",
+            "ObscuredColor": "0,0,0,0",
+            "Width": 0.25
+          },
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "7e9dbd14-9ee3-4b03-aad2-1ddecbd92705",
+            "Center": "0,0,7.840005",
+            "IsTrigger": false,
+            "Scale": "16.39999,16.79992,38.31997",
+            "Static": false
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "titanovsky.sbox_atm"
+  ],
+  "__version": 1
+}

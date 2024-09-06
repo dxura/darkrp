@@ -12,6 +12,26 @@ public partial class PlayerState : IScore
 	[Score( "Balance", Format = "${0:N0}" )]
 	public int Balance { get; set; } = 1000;
 
+	/// <summary>
+	/// Players bank account balance
+	/// </summary>
+	[HostSync]
+	[Order( -100 )]
+	public int DepositedBalance { get; set; } = 0;
+
+	public void SetDepositedBalance( int amount )
+	{
+		using var _ = Rpc.FilterInclude( Connection.Host );
+		SetDepositedBalanceHost( amount );
+	}
+
+	[Broadcast]
+	private void SetDepositedBalanceHost( int amount )
+	{
+		Assert.True( Networking.IsHost );
+		DepositedBalance = amount;
+	}
+
 	public void SetBalance( int amount )
 	{
 		using var _ = Rpc.FilterInclude( Connection.Host );

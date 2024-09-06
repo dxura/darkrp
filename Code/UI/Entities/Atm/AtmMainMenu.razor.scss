@@ -1,0 +1,136 @@
+AtmMainMenu {  
+    .main-frame {
+		pointer-events: all;
+		position: absolute;
+		top: 150;
+		left: 400;
+		right: 400;
+		bottom: 150;
+		background-color: #24292ff7;
+		color: #c9c9c9;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
+		border-radius: 10px;
+		box-shadow: 2px 2px 30px 1px #000000;
+
+		.header{
+			position: absolute;
+			width: 100%;
+			justify-content: space-around;
+			align-items: center;
+			height: 150px;
+
+			.title{
+				margin-right: 1000px;
+				margin-left: 0;
+				font-size: 50px;
+				font-weight: 800;
+			}
+
+			.close-button{
+				padding: 10px;
+				font-size: 30px;
+				color: #c9c9c9;
+				border: 1px solid #c9c9c9;
+				border-radius: 5px;
+				left: 100px;
+				cursor: pointer;
+			
+				&:hover{
+					background: linear-gradient(0deg, rgb(171, 62, 62) 0%, rgb(222, 3, 3) 100%);
+					color: white;
+				}
+			}
+     
+			
+		}
+		
+		.buttons-section {
+			margin: auto;
+			height: 450px;
+			gap: 20px;
+			display: flex;
+			justify-content: space-around;
+			flex-direction: column;
+			flex-wrap: wrap;
+
+			.button{
+				font-size: 30px;
+				color: #c9c9c9;
+				font-weight: 600;
+				border: 2px solid #c9c9c9;
+				border-radius: 5px;
+				padding: 60px;
+				cursor: pointer;
+				box-shadow: 2px 2px 30px 5px #000000;
+
+				&:hover{
+					background: linear-gradient(0deg, rgba(50,125,179,1) 0%, rgba(0,99,176,1) 100%);
+					color: white;
+				}
+			}
+		}
+
+		.right-section {
+			display: flex;
+			height: 400px;
+			flex-direction: column;
+			margin-top: 100px;
+	
+			.label{				
+				padding-left: 20px;
+			}
+
+			.big{
+				font-size: 45px;
+				font-weight: 600;
+				padding-top: 30px;
+				align-content: center;
+			}
+
+			.small {
+				color: rgb(107, 182, 235);
+				font-size: 30px;
+				font-weight: 400;
+				padding-top: 100px;
+				
+			}
+
+		}
+
+		.panel{
+			position: absolute;
+			margin-top: 320px;
+			margin-left: 450px;
+			height: auto;
+		
+			.textentry {
+				width: 250px;
+				height: 80px;
+				border: 1px solid #c9c9c9;
+				font-size: 40px;
+				font-weight: 700;
+				margin-right: 100px;
+			}
+
+
+			.button{
+				font-size: 30px;
+				align-items: center;
+				padding: 20px;
+				color: #c9c9c9;
+				font-weight: 600;
+				border: 1px solid #c9c9c9;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			.title{
+				font-size: 60px;
+			}
+
+		}
+    }
+
+
+}

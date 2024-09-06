@@ -1,0 +1,146 @@
+@namespace Dxura.Darkrp.UI
+@using Sandbox;
+@inherits PanelComponent
+
+@inherits PanelComponent;
+ 
+<root>
+	@if(IsAtmOpen)
+	{
+	<div class="main-frame">
+		<div class="header">
+			<span class="title">ATM</span>
+			<button class="close-button" onclick=@(() => CloseTab())>Close</button>
+		</div>
+ 
+		<div class="right-section">
+			<span class="label small">Welcome</span>
+			<span class="label big">@(PlayerState.Local?.DisplayName)</span>
+			<span class="label small">Money</span>
+			<span class="label big">@(PlayerState.Balance.ToString( "N0" ))</span>
+			<span class="label small">Account Balance</span>
+			<span class="label big">@(PlayerState.DepositedBalance.ToString( "N0" ))</span>
+		</div>
+
+		@if (IsMainFrameVisible)
+		{
+			<div class="buttons-section">
+				<button class="button" onclick="@(DisplayWithdraw)">Withdraw</button>
+				<button class="button" onclick="@(DisplayDeposit)">Deposit</button>
+				<button class="button">Payments</button>
+				<button class="button">Transfer</button>
+			</div>
+		}
+
+		@if (IsWithdrawVisible)
+		{
+			<div class="panel">
+				<div class="withdraw menu">
+					<TextEntry Numeric="@true" @ref="InputBoxWithdraw" onsubmit=""></TextEntry>
+					<button class="button" onclick=@(() => WithdrawMoney())>Withdraw Money</button>
+				</div>
+			</div>
+		}
+
+		@if (IsDepositVisible)
+		{
+			<div class="panel">
+				<div class="withdraw menu">
+					<TextEntry Numeric="@true" @ref="InputBoxDeposit" onsubmit=""></TextEntry>
+					<button class="button" onclick=@(() => DepositMoney())>Deposit Money</button>
+				</div>
+			</div>
+		}
+	</div>
+	}
+
+</root>
+
+@code {
+	bool IsMainFrameVisible = true;
+	bool IsWithdrawVisible = false;
+	bool IsDepositVisible = false;
+	[Property] public bool IsAtmOpen { get; set; } = false;
+	public TextEntry InputBoxWithdraw;
+	public TextEntry InputBoxDeposit;
+
+	/// The player
+	public Player Player => PlayerState.IsValid() ? PlayerState.Player : null;
+
+	/// The player state
+	public PlayerState PlayerState => PlayerState.Local;
+
+	void CloseTab()
+	{
+		IsAtmOpen = false;
+		IsWithdrawVisible = false;
+		IsDepositVisible = false;
+		IsMainFrameVisible = true;
+	}
+
+	void DisplaySection(string section)
+	{
+		IsWithdrawVisible = section == "Withdraw";
+		IsDepositVisible = section == "Deposit";
+		Sound.Play("audio/select.sound");
+		IsMainFrameVisible = false;
+	}
+
+	void DisplayWithdraw() { DisplaySection("Withdraw"); }
+	void DisplayDeposit() { DisplaySection("Deposit"); }
+
+	void WithdrawMoney()
+	{
+		var amount = Int32.Parse(InputBoxWithdraw.Value);
+
+		if (amount <= 0)
+		{
+			Log.Info("Invalid amount");
+			return;
+		}
+		else if (amount > PlayerState.DepositedBalance)
+		{
+			Log.Info("[ATM] You don't have that much money!");
+			Toast.Instance.Show( "[ATM] You don't have that much money!" );
+			return;
+		}
+		else
+		{
+			PlayerState.GiveMoney(+amount);
+			PlayerState.SetDepositedBalance(PlayerState.DepositedBalance - amount);
+			Log.Info("You have withdrawn $" + amount);
+			Toast.Instance.Show( "[ATM] You have withdrawn $" + amount );
+
+		}
+	}
+
+	void DepositMoney()
+	{
+		var amount = Int32.Parse(InputBoxDeposit.Value);
+
+		if (amount <= 0)
+		{
+			Log.Info("Invalid amount");
+			return;
+		}
+		else if(amount > PlayerState.Balance)
+		{
+			Log.Info("You don't have enough money");
+			Toast.Instance.Show( "You don't have enough money" );
+			return;
+		}
+		else
+		{
+			PlayerState.GiveMoney(-amount);
+			PlayerState.SetDepositedBalance(PlayerState.DepositedBalance + amount);
+			//TODO: ADD DEPOSITED MONEY TO DATABSE
+			Log.Info("You have deposited $" + amount);
+			Toast.Instance.Show( "[ATM] You have deposited $" + amount );
+		}
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(IsAtmOpen,IsWithdrawVisible, IsMainFrameVisible);
+	}
+}
