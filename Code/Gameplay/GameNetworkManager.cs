@@ -45,7 +45,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// </summary>
 	/// <param name="channel"></param>
 	/// <returns></returns>
-	private PlayerState? GetOrCreatePlayerState( Connection channel = null )
+	private PlayerState GetOrCreatePlayerState( Connection channel = null )
 	{
 		Assert.True( PlayerStatePrefab.IsValid(), "Could not spawn player as no PlayerStatePrefab assigned." );
 
