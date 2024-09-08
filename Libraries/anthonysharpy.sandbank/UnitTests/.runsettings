@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <!-- MSTest specific run settings -->
+  <MSTest>
+    <!-- Disable parallel test execution -->
+    <Parallelize Workers="1" Scope="MethodLevel"/>
+  </MSTest>
+</RunSettings>
