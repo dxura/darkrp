@@ -19,7 +19,7 @@ static class Config
 	/// (that's not what it's designed to do). But there might be some situations where you
 	/// want to store data on the client for some reason.
 	/// </summary>
-	public static bool CLIENTS_CAN_USE = false;
+	public static bool CLIENTS_CAN_USE = true;
 	/// <summary>
 	/// This controls whether the written JSON files are indented or not.
 	/// Indentation makes them more human-readable, but probably makes saving
