@@ -47,10 +47,11 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// <returns></returns>
 	private PlayerState GetOrCreatePlayerState( Connection channel = null )
 	{
+		// A candidate player state has no owner.
 		var playerState = Scene.GetAllComponents<PlayerState>()
 			.FirstOrDefault(x => x.Connection is null && x.UID == channel.SteamId.ToString());
 
-		if (playerState.IsValid())
+		if ( playerState.IsValid() )
 		{
 			Log.Warning(
 				$"Found existing player state for {channel.SteamId} that we can re-use. {playerState}");
