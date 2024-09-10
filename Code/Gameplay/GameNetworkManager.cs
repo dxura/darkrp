@@ -49,7 +49,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	{
 		// A candidate player state has no owner.
 		var playerState = Scene.GetAllComponents<PlayerState>()
-			.FirstOrDefault(x => x.Connection is null && x.UID == channel.SteamId.ToString());
+			.FirstOrDefault( x => x.Connection is null && x.UID == channel.SteamId.ToString() );
 
 		if ( playerState.IsValid() )
 		{
