@@ -47,13 +47,23 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// <returns></returns>
 	private PlayerState GetOrCreatePlayerState( Connection channel = null )
 	{
+		var playerState = Scene.GetAllComponents<PlayerState>()
+			.FirstOrDefault(x => x.Connection is null && x.UID == channel.SteamId.ToString());
+
+		if (playerState.IsValid())
+		{
+			Log.Warning(
+				$"Found existing player state for {channel.SteamId} that we can re-use. {playerState}");
+			return playerState;
+		}
+
 		Assert.True( PlayerStatePrefab.IsValid(), "Could not spawn player as no PlayerStatePrefab assigned." );
 
 		var player = PlayerStatePrefab.Clone();
 		player.BreakFromPrefab();
 		player.Name = $"PlayerState ({channel.DisplayName})";
 		player.Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
-		var playerState = player.Components.Get<PlayerState>();
+		playerState = player.Components.Get<PlayerState>();
 
 		var playerData = Sandbank.SelectOneWithID<PlayerState>("players", channel.SteamId.ToString());
 
