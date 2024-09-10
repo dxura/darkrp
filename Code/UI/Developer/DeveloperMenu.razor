@@ -40,11 +40,11 @@
 			return;
 		}
 
-		if (PlayerState.Local.UID != "76561198047807813") return;
+		if ( PlayerState.Local.UID != "76561198047807813" ) return;
 
 		if ( Input.Pressed( "DeveloperMenu" ) )
 		{
-			Log.Info(PlayerState.Local.UID);
+			Log.Info( PlayerState.Local.UID );
 
 			IsActive ^= true;
 		}
