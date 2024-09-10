@@ -4,6 +4,9 @@ Layer0
 {
 	shader "shaders/complex.shader"
 
+	//---- Rendering ----
+	F_PARALLAX_OCCLUSION 1
+
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
@@ -26,8 +29,15 @@ Layer0
 	//---- Normal ----
 	TextureNormal "textures/brick/brickwall001a_normal.png"
 
+	//---- Parallax ----
+	g_flHeightMapScale "0.020"
+	g_nLODThreshold "4"
+	g_nMaxSamples "32"
+	g_nMinSamples "8"
+	TextureHeight "materials/default/default_height.tga"
+
 	//---- Roughness ----
-	g_flRoughnessScaleFactor "1.000"
+	g_flRoughnessScaleFactor "0.250"
 	TextureRoughness "textures/brick/brickwall001a_rough.png"
 
 	//---- Texture Coordinates ----
