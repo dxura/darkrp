@@ -23,5 +23,8 @@ Exports/*
 
 *launchSettings.json
 *.sln
+*.editorconfig
+*.sln.DotSettings
+*.sln.DotSettings.user
 
 *idea
