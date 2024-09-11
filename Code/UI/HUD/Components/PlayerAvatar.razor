@@ -5,7 +5,7 @@
 
 <root class="@AvatarClasses">
 	<div class="avatar" style="@( PlayerState.IsValid() ? $"border: 0.5px solid {PlayerColor.Hex}" : "" )">
-		<img class="image" src="avatar:@PlayerState.SteamId"/>
+		<img class="image" src="avatar:@PlayerState.UID"/>
 	</div>
 
 	@if ( !Player.IsValid() || IsDead )

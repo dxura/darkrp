@@ -1,0 +1,15 @@
+{
+  "Title": "Sandbank",
+  "Type": "library",
+  "Org": "anthonysharpy",
+  "Ident": "sandbank",
+  "Schema": 1,
+  "IncludeSourceFiles": false,
+  "Resources": null,
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "IsWhitelistDisabled": false,
+  "Metadata": {
+    "CsProjName": ""
+  }
+}
