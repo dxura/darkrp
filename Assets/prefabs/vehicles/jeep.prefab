@@ -48,10 +48,10 @@
           {
             "__type": "Dxura.Darkrp.Vehicle",
             "__guid": "d2e07c0a-b998-4a78-b8d4-ce1331b115dc",
-            "AccelerationRate": 3,
-            "BoostTorque": 37500,
-            "BrakingRate": 2,
-            "DecelerationRate": 0.5,
+            "AccelerationRate": 1,
+            "BoostTorque": 45000,
+            "BrakingRate": 0.8,
+            "DecelerationRate": 0.9,
             "DisplayName": "Jeep",
             "Explosion": {
               "_type": "gameobject",
@@ -68,7 +68,6 @@
               "go": "9a7510c4-7e94-4beb-a2f1-90decce4fc28",
               "component_type": "HealthComponent"
             },
-            "MarkerIcon": "ui/jeep.png",
             "Model": {
               "_type": "component",
               "component_id": "62cfb8fa-49db-4bcd-a116-6b9c549657f4",
@@ -95,7 +94,7 @@
                 "component_type": "VehicleSeat"
               }
             ],
-            "Torque": 30000,
+            "Torque": 40000,
             "Wheels": [
               {
                 "_type": "component",
@@ -129,6 +128,7 @@
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "props/willies_jeep/willies_jeep.vmdl",
+            "Morphs": {},
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -237,20 +237,20 @@
                       "ExtremumSlip": 1,
                       "ExtremumValue": 20000,
                       "AsymptoteSlip": 2,
-                      "AsymptoteValue": 10000,
-                      "Stiffness": 1
+                      "AsymptoteValue": 8000,
+                      "Stiffness": 1.5
                     },
                     "MaxSuspensionLength": 12,
                     "MinSuspensionLength": 6,
                     "SideFriction": {
                       "ExtremumSlip": 1,
-                      "ExtremumValue": 30000,
+                      "ExtremumValue": 25000,
                       "AsymptoteSlip": 2,
-                      "AsymptoteValue": 20000,
+                      "AsymptoteValue": 18000,
                       "Stiffness": 2
                     },
-                    "SuspensionDamping": 75,
-                    "SuspensionStiffness": 3500,
+                    "SuspensionDamping": 85,
+                    "SuspensionStiffness": 3000,
                     "WheelRadius": 15
                   }
                 ],
