@@ -2,6 +2,7 @@ using Dxura.Darkrp;
 using Dxura.Darkrp;
 using Dxura.Darkrp;
 using Dxura.Darkrp;
+using SandbankDatabase;
 using Sandbox.Diagnostics;
 using Sandbox.Events;
 using Sandbox.Network;
@@ -46,19 +47,15 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// <returns></returns>
 	private PlayerState GetOrCreatePlayerState( Connection channel = null )
 	{
-		var playerStates = Scene.GetAllComponents<PlayerState>();
+		// A candidate player state has no owner.
+		var playerState = Scene.GetAllComponents<PlayerState>()
+			.FirstOrDefault( x => x.Connection is null && x.UID == channel.SteamId.ToString() );
 
-		var possiblePlayerState = playerStates.FirstOrDefault( x =>
-		{
-			// A candidate player state has no owner.
-			return x.Connection is null && x.SteamId == channel.SteamId;
-		} );
-
-		if ( possiblePlayerState.IsValid() )
+		if ( playerState.IsValid() )
 		{
 			Log.Warning(
-				$"Found existing player state for {channel.SteamId} that we can re-use. {possiblePlayerState}" );
-			return possiblePlayerState;
+				$"Found existing player state for {channel.SteamId} that we can re-use. {playerState}");
+			return playerState;
 		}
 
 		Assert.True( PlayerStatePrefab.IsValid(), "Could not spawn player as no PlayerStatePrefab assigned." );
@@ -67,11 +64,19 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 		player.BreakFromPrefab();
 		player.Name = $"PlayerState ({channel.DisplayName})";
 		player.Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
+		playerState = player.Components.Get<PlayerState>();
 
-		var playerState = player.Components.Get<PlayerState>();
-		if ( !playerState.IsValid() )
+		var playerData = Sandbank.SelectOneWithID<PlayerState>("players", channel.SteamId.ToString());
+
+		if ( playerData != null )
 		{
-			return null;
+			Log.Warning($"Found existing player data for {channel.SteamId} that we can re-use.");
+			Sandbank.CopySavedData(playerData, playerState);
+		}
+		else
+		{
+			playerState.UID = channel.SteamId.ToString();
+			playerState.SteamName = channel.DisplayName;
 		}
 
 		return playerState;

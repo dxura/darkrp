@@ -1,4 +1,5 @@
 using GameSystems.Jobs;
+using SandbankDatabase;
 using Sandbox.Events;
 
 namespace Dxura.Darkrp;
@@ -11,17 +12,19 @@ public partial class PlayerState : Component
 	public static PlayerState? Local { get; private set; }
 
 	/// <summary>
-	/// Who owns this player state?
+	/// The player's ID. This is their SteamID.
 	/// </summary>
 	[HostSync]
 	[Property]
-	public ulong SteamId { get; set; }
+	[Saved]
+	public string UID { get; set; } = "";
 
 	/// <summary>
 	/// The player's name, which might have to persist if they leave
 	/// </summary>
 	[HostSync]
-	private string? SteamName { get; set; }
+	[Saved]
+	public string? SteamName { get; set; }
 
 	/// <summary>
 	/// The connection of this player
@@ -30,12 +33,10 @@ public partial class PlayerState : Component
 
 	public bool IsConnected => Connection is not null && (Connection.IsActive || Connection.IsHost); //smh
 
-	private string Name => SteamName ?? "";
-
 	/// <summary>
 	/// Name of this player
 	/// </summary>
-	public string DisplayName => $"{Name}{(!IsConnected ? " (Disconnected)" : "")}";
+	public string DisplayName => $"{SteamName}{(!IsConnected ? " (Disconnected)" : "")}";
 
 	/// <summary>
 	/// The job this player belongs to.
@@ -67,9 +68,6 @@ public partial class PlayerState : Component
 	public void HostInit()
 	{
 		RespawnState = RespawnState.Immediate;
-
-		SteamId = Connection?.SteamId ?? 0;
-		SteamName = Connection?.DisplayName;
 	}
 
 	[Authority]
@@ -123,5 +121,13 @@ public partial class PlayerState : Component
 		{
 			Player.GameObject.Root.Dispatch( new JobChangedEvent( before, after ) );
 		}
+	}
+
+	/// <summary>
+	/// Save this player's data.
+	/// </summary>
+	public void Save()
+	{
+		Sandbank.Insert("players", this);
 	}
 }

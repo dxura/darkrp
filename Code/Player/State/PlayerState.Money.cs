@@ -1,3 +1,4 @@
+using SandbankDatabase;
 using Sandbox.Diagnostics;
 
 namespace Dxura.Darkrp;
@@ -10,6 +11,7 @@ public partial class PlayerState : IScore
 	[HostSync]
 	[Order( -100 )]
 	[Score( "Balance", Format = "${0:N0}" )]
+	[Saved]
 	public int Balance { get; set; } = 1000;
 
 	/// <summary>
@@ -36,6 +38,7 @@ public partial class PlayerState : IScore
 	{
 		using var _ = Rpc.FilterInclude( Connection.Host );
 		SetBalanceHost( amount );
+		Save();
 	}
 
 	[Broadcast]
@@ -43,12 +46,14 @@ public partial class PlayerState : IScore
 	{
 		Assert.True( Networking.IsHost );
 		Balance = amount;
+		Save();
 	}
 
 	public void GiveMoney( int amount )
 	{
 		using var _ = Rpc.FilterInclude( Connection.Host );
 		GiveMoneyHost( amount );
+		Save();
 	}
 
 	[Broadcast]
@@ -56,5 +61,6 @@ public partial class PlayerState : IScore
 	{
 		Assert.True( Networking.IsHost );
 		Balance += amount;
+		Save();
 	}
 }
