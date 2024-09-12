@@ -395,66 +395,6 @@
       "__PrefabVariables": {}
     },
     {
-      "__guid": "7f6c6b74-b3e4-4d27-896e-c0c2cbb03ac2",
-      "Flags": 0,
-      "Name": "printer",
-      "Position": "-3136,-352,77.99997",
-      "Tags": "entity,printer,interact,grab",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "gameplay/entities/printer/printer.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "e43d4714-bb1c-4bd2-b986-946bfa94d546",
-      "Flags": 0,
-      "Name": "printer (1)",
-      "Position": "-3136,-352,93.32664",
-      "Tags": "entity,printer,interact,grab",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "gameplay/entities/printer/printer.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "07a78a97-6a0f-4905-a486-86d8e03e0a73",
-      "Flags": 0,
-      "Name": "printer (2)",
-      "Position": "-3136,-352,109.6402",
-      "Tags": "entity,printer,interact,grab",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "gameplay/entities/printer/printer.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "461b5328-a49d-4a11-b1e0-26e126c49bbc",
-      "Flags": 0,
-      "Name": "printer (3)",
-      "Position": "-3136,-352,126.2079",
-      "Tags": "entity,printer,interact,grab",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "gameplay/entities/printer/printer.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "779f9e14-f3cb-4084-a7d5-46b3b32cd2f0",
-      "Flags": 0,
-      "Name": "printer (4)",
-      "Position": "-3136,-352,142.9862",
-      "Tags": "entity,printer,interact,grab",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "gameplay/entities/printer/printer.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "07946b2a-5479-4434-a8b8-265fc3be1336",
       "Flags": 0,
       "Name": "jeep",
@@ -465,6 +405,16 @@
       "NetworkOrphaned": 3,
       "OwnerTransfer": 0,
       "__Prefab": "prefabs/vehicles/jeep.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "52ad3322-735b-4cf9-9f25-6842aa5912d4",
+      "Flags": 0,
+      "Name": "atm",
+      "Position": "-3074.29,-347.8866,97.00003",
+      "Rotation": "-0,0,-1,-0.00000004371139",
+      "Enabled": true,
+      "__Prefab": "prefabs/atm.prefab",
       "__PrefabVariables": {}
     }
   ],
@@ -492,8 +442,6 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [
-    "based.guerrilla"
-  ],
+  "__references": [],
   "__version": 1
 }

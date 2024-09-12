@@ -19,12 +19,14 @@ public partial class PlayerState : IScore
 	/// </summary>
 	[HostSync]
 	[Order( -100 )]
+	[Saved]
 	public int DepositedBalance { get; set; } = 0;
 
 	public void SetDepositedBalance( int amount )
 	{
 		using var _ = Rpc.FilterInclude( Connection.Host );
 		SetDepositedBalanceHost( amount );
+		Save();
 	}
 
 	[Broadcast]
@@ -32,6 +34,7 @@ public partial class PlayerState : IScore
 	{
 		Assert.True( Networking.IsHost );
 		DepositedBalance = amount;
+		Save();
 	}
 
 	public void SetBalance( int amount )
