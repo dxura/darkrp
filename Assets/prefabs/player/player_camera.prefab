@@ -87,6 +87,12 @@
         "Intensity": 8,
         "Quality": "High",
         "Radius": 32
+      },
+      {
+        "__type": "Sandbox.WorldInput",
+        "__guid": "3fb3a996-b4c8-4c7b-abb4-07b6bba72dd0",
+        "LeftMouseAction": "use",
+        "RightMouseAction": "Attack2"
       }
     ],
     "Children": [],

@@ -41,6 +41,12 @@
               "BodyGroups": 18446744073709551615,
               "MaterialOverride": "materials/default.vmat",
               "Model": "models/dev/plane.vmdl",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderType": "On",
               "Tint": "0.26245,0.42791,0.08558,1"
             },
@@ -122,6 +128,12 @@
               "FontFamily": "Poppins",
               "FontSize": 64,
               "FontWeight": 800,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "Scale": 0.3,
               "Text": "DarkRP (DEV)\n",
               "TextAlignment": "Center"
@@ -142,6 +154,12 @@
                   "FontFamily": "Poppins",
                   "FontSize": 46.05,
                   "FontWeight": 800,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
                   "Scale": 0.15,
                   "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nI am on holidays till 16 sept\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
                   "TextAlignment": "Center"
@@ -161,6 +179,12 @@
                   "__guid": "43393c2c-b16f-4034-b423-1899503d6151",
                   "BodyGroups": 18446744073709551615,
                   "Model": "models/dev/box.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
                   "RenderType": "On",
                   "Tint": "0,0,0,1"
                 }
@@ -364,23 +388,25 @@
       "Enabled": true,
       "Children": [
         {
-          "__guid": "c8275057-ac8f-449e-9066-9c0dfec68f62",
+          "__guid": "855bfb1c-5f20-47ab-ba61-2ed927c761c9",
           "Flags": 0,
-          "Name": "tempvending_snackmachine001a",
-          "Position": "-2806,214.9998,72",
+          "Name": "drinks_machine",
+          "Position": "-2857.703,199.843,72.47958",
           "Rotation": "0,-0,-0.7071068,0.7071068",
           "Enabled": true,
-          "__Prefab": "prefabs/props/vending/tempvending_snackmachine001a.prefab",
+          "NetworkMode": 1,
+          "__Prefab": "gameplay/nourishments/prefabs/drinks_machine.prefab",
           "__PrefabVariables": {}
         },
         {
-          "__guid": "fbfb7cc6-800c-4376-afcb-d7d65301fe67",
+          "__guid": "5145d327-4b45-477f-b743-58c0271f9cd1",
           "Flags": 0,
-          "Name": "tempvending_drinksmachine001a",
-          "Position": "-2855,209,72",
+          "Name": "snack_machine",
+          "Position": "-2803.387,205.0222,67.91567",
           "Rotation": "0,-0,-0.7071068,0.7071068",
           "Enabled": true,
-          "__Prefab": "prefabs/props/vending/tempvending_drinksmachine001a.prefab",
+          "NetworkMode": 1,
+          "__Prefab": "gameplay/nourishments/prefabs/snack_machine.prefab",
           "__PrefabVariables": {}
         }
       ]
@@ -492,8 +518,6 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [
-    "based.guerrilla"
-  ],
+  "__references": [],
   "__version": 1
 }

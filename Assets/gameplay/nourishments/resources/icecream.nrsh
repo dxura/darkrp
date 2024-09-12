@@ -1,0 +1,12 @@
+{
+  "Name": "Ice Cream",
+  "ModelColor": "0,0,0,0",
+  "Model": "models/citizen_props/icecreamcone01.vmdl",
+  "ModelMaterial": null,
+  "NourishmentType": "Food",
+  "Price": 200,
+  "UseSound": "sounds/kenney/ui/ui.favourite.sound",
+  "HealAmount": 50,
+  "__references": [],
+  "__version": 0
+}

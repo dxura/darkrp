@@ -1,0 +1,78 @@
+{
+  "RootObject": {
+    "__guid": "fbfb7cc6-800c-4376-afcb-d7d65301fe67",
+    "Flags": 0,
+    "Name": "drinks_machine",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.VendingMachine",
+        "__guid": "7d1dd28e-2a88-4c27-a26e-89ba7d6eb8ca",
+        "BuySound": "sounds/ui/buy.sound",
+        "EntityName": "Base Entity",
+        "NourishmentItemPrefab": {
+          "_type": "gameobject",
+          "prefab": "gameplay/nourishments/prefabs/nourishment.prefab"
+        },
+        "NourishmentType": "Drink"
+      },
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "109e3ab6-1177-477b-8fc3-7d0c69afcb5d",
+        "BodyGroups": 18446744073709551615,
+        "Health": 0,
+        "IsStatic": true,
+        "Model": "models/props/vending/tempvending_drinksmachine001a.vmdl",
+        "StartAsleep": false,
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "dbe2f145-12bc-4ce1-b237-6822bb0e5e81",
+        "Center": "-4.099998,0,35.79999",
+        "IsTrigger": false,
+        "Scale": "31.40003,37.30013,72.2998",
+        "Static": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "014361cb-4dc8-4354-993f-ae9af2f98a57",
+        "Flags": 0,
+        "Name": "display",
+        "Position": "4.727566,15.67382,37.97077",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "f06e3478-bc9b-45a6-a3fb-3b166c948cf5",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": false,
+            "PanelSize": "128,512",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.VendingMachineDisplay",
+            "__guid": "cde121cf-efa4-40c5-8dad-46b04931721c"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

@@ -1,0 +1,40 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Dxura.Darkrp.UI
+
+@namespace Dxura.Darkrp.UI
+@inherits PanelComponent
+
+<root>
+  @foreach ( var nourishment in NourishmentProvider.GetNourishmentByType(VendingMachine.NourishmentType) )
+    {
+      <div onclick="@(() => OnBuy(PlayerState.Local.Player, nourishment))">
+        <p class="label">@( nourishment.Name )</p>
+        <ModelIcon ref=@ModelIcon ModelPath=@nourishment.Model.ResourcePath />
+        <p class="price">$ @( NumberUtils.FormatNumberWithSuffix( nourishment.Price ) )</p>
+      </div>
+    }
+</root>
+
+@code
+{
+   ModelIcon ModelIcon { get; set; } = null!;
+  VendingMachine VendingMachine { get; set; } = null!;
+
+  protected override void OnStart()
+  {
+    VendingMachine = GameObject.Parent.Components.Get<VendingMachine>();
+      if (VendingMachine == null)
+      {
+          Log.Warning("Vending Machine Entity not found");
+      }
+  }
+  protected override int BuildHash() => System.HashCode.Combine(VendingMachine.NourishmentType);
+
+  private void OnBuy(Player player, NourishmentResource nourishment)
+  {
+    Log.Info($"Player {player.DisplayName} bought {nourishment.Name}");
+    Log.Info(nourishment.Model.ResourcePath);
+    VendingMachine.OnItemBought(player, nourishment);
+  }
+}
