@@ -13,6 +13,17 @@ public sealed class VendingMachine: BaseEntity, IDescription
 
     public void OnItemBought( Player player, NourishmentResource item )
     {
+
+        var _playerCurrentBalance = player.PlayerState.Balance;
+        if (_playerCurrentBalance < item.Price)
+        {
+            Toast.Instance.Show( $"You don't have enough money to purchase {item.Name}", ToastType.Error );
+            return;
+        }
+
+        player.PlayerState.SetBalance( player.PlayerState.Balance - item.Price );
+        Toast.Instance.Show( $"You bought {item.Name} for ${item.Price}", ToastType.Generic );
+
         GameObject itemEntity = NourishmentItemPrefab.Clone(this.Transform.Position);
 
         itemEntity.Transform.Position = this.Transform.Position + (Vector3.Up * Math.Min(10, itemEntity.GetBounds().Size.z)) + Vector3.Right * Math.Min(25, itemEntity.GetBounds().Size.y);
@@ -24,9 +35,5 @@ public sealed class VendingMachine: BaseEntity, IDescription
         {
             Sound.Play(BuySound);
         }
-
-        player.PlayerState.SetBalance( player.PlayerState.Balance - item.Price );
-
-        Toast.Instance.Show( $"You bought {item.Name} for ${item.Price}", ToastType.Generic );
     }
 }
