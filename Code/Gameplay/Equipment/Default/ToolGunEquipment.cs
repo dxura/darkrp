@@ -16,10 +16,8 @@ public class ToolGunEquipment : InputWeaponComponent
             SceneTraceResult tr = Scene.Trace.Ray( WeaponRay, 2000 )
 				.Run();
 
-            // If we hit, draw a sphere
             if ( tr.Hit )
             {
-                Gizmo.Draw.SolidSphere( tr.HitPosition, 10.0f );
                 if ( TextScreenPrefab != null && TimeSinceLastScreen > ScreenCooldown )
                 {
                     TimeSinceLastScreen = 0;
@@ -27,8 +25,8 @@ public class ToolGunEquipment : InputWeaponComponent
                     var eyePos = WeaponRay.Position;
 		            var eyeDir = WeaponRay.Forward;
 		            var eyeRot = Rotation.From( new Angles( 0.0f, Equipment.Owner?.EyeAngles.yaw ?? 0f, 0.0f ) );
-                    GameObject itemEntity = TextScreenPrefab.Clone(tr.HitPosition - Vector3.Forward * 2);
-                    itemEntity.Transform.Rotation *= eyeRot * Rotation.From( new Angles( 0.0f, 180.0f, 0.0f ) );
+                    GameObject itemEntity = TextScreenPrefab.Clone(tr.HitPosition + (tr.Normal * 2));
+                    itemEntity.Transform.Rotation *=  Rotation.From(tr.Normal.EulerAngles);
 
                     TextScreen TextScreen = itemEntity.Components.Get<TextScreen>();
                     TextScreen.Text = "Hello World!";
