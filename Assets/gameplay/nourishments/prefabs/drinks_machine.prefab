@@ -23,17 +23,9 @@
         "BodyGroups": 18446744073709551615,
         "Health": 0,
         "IsStatic": true,
-        "Model": "models/props/vending/tempvending_drinksmachine001a.vmdl",
+        "Model": "models/props/vending/tempvending_snackmachine001a.vmdl",
         "StartAsleep": false,
         "Tint": "1,1,1,1"
-      },
-      {
-        "__type": "Sandbox.BoxCollider",
-        "__guid": "dbe2f145-12bc-4ce1-b237-6822bb0e5e81",
-        "Center": "-4.099998,0,35.79999",
-        "IsTrigger": false,
-        "Scale": "31.40003,37.30013,72.2998",
-        "Static": false
       }
     ],
     "Children": [
@@ -41,7 +33,7 @@
         "__guid": "014361cb-4dc8-4354-993f-ae9af2f98a57",
         "Flags": 0,
         "Name": "display",
-        "Position": "4.727566,15.67382,37.97077",
+        "Position": "13.88154,-3.155577,50.13579",
         "Enabled": true,
         "Components": [
           {
@@ -50,7 +42,7 @@
             "HorizontalAlign": "Center",
             "InteractionRange": 1000,
             "LookAtCamera": false,
-            "PanelSize": "128,512",
+            "PanelSize": "590,1000",
             "RenderOptions": {
               "GameLayer": true,
               "OverlayLayer": false,

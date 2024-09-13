@@ -7,15 +7,15 @@ VendingMachineDisplay {
   flex-direction: row;
   pointer-events: all;
   padding: 10px;
+  gap: 5px;
 
   div {
-    //justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: #343b43;
     border: 1px solid #c9c9c9;
     border-radius: 5px;
-    width: 25%;
+    width: 23.5%;
     height: 20%;
     color: white;
     margin-top: 10px;

@@ -1,5 +1,6 @@
 namespace Dxura.Darkrp;
 using Sandbox;
+using Dxura.Darkrp.UI;
 
 [Title( "Vending Machine" )]
 [Category( "Entities" )]
@@ -12,8 +13,9 @@ public sealed class VendingMachine: BaseEntity, IDescription
 
     public void OnItemBought( Player player, NourishmentResource item )
     {
-        GameObject itemEntity = NourishmentItemPrefab.Clone(this.Transform.Position + (Vector3.Right * 10) + (Vector3.Backward * 7) + (Vector3.Up * 10));
-        itemEntity.Transform.Rotation *= new Angles(90,0,0);
+        GameObject itemEntity = NourishmentItemPrefab.Clone(this.Transform.Position);
+
+        itemEntity.Transform.Position = this.Transform.Position + (Vector3.Up * Math.Min(10, itemEntity.GetBounds().Size.z)) + Vector3.Right * Math.Min(25, itemEntity.GetBounds().Size.y);
         itemEntity.Components.Get<NourishmentItem>().CurrentNourishmentResource = item;
 
         itemEntity.NetworkSpawn();
@@ -23,6 +25,8 @@ public sealed class VendingMachine: BaseEntity, IDescription
             Sound.Play(BuySound);
         }
 
-        // TODO: handle player money
+        player.PlayerState.SetBalance( player.PlayerState.Balance - item.Price );
+
+        Toast.Instance.Show( $"You bought {item.Name} for ${item.Price}", ToastType.Generic );
     }
 }

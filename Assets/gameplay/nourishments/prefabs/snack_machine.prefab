@@ -26,14 +26,6 @@
           "prefab": "gameplay/nourishments/prefabs/nourishment.prefab"
         },
         "NourishmentType": "Food"
-      },
-      {
-        "__type": "Sandbox.BoxCollider",
-        "__guid": "15d70e64-8ab0-4e0e-bc6b-889947d8c380",
-        "Center": "0,0,38.40002",
-        "IsTrigger": false,
-        "Scale": "31.20019,40.90009,76.5998",
-        "Static": false
       }
     ],
     "Children": [

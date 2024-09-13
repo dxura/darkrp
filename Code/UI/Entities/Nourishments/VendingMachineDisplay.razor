@@ -8,7 +8,7 @@
 <root>
   @foreach ( var nourishment in NourishmentProvider.GetNourishmentByType(VendingMachine.NourishmentType) )
     {
-      <div onclick="@(() => OnBuy(PlayerState.Local.Player, nourishment))">
+      <div onclick="@(() => VendingMachine.OnItemBought(PlayerState.Local.Player, nourishment))">
         <p class="label">@( nourishment.Name )</p>
         <ModelIcon ref=@ModelIcon ModelPath=@nourishment.Model.ResourcePath />
         <p class="price">$ @( NumberUtils.FormatNumberWithSuffix( nourishment.Price ) )</p>
@@ -30,11 +30,4 @@
       }
   }
   protected override int BuildHash() => System.HashCode.Combine(VendingMachine.NourishmentType);
-
-  private void OnBuy(Player player, NourishmentResource nourishment)
-  {
-    Log.Info($"Player {player.DisplayName} bought {nourishment.Name}");
-    Log.Info(nourishment.Model.ResourcePath);
-    VendingMachine.OnItemBought(player, nourishment);
-  }
 }

@@ -1,4 +1,6 @@
 namespace Dxura.Darkrp;
+
+using Dxura.Darkrp.UI;
 using Sandbox;
 
 [Title( "Nourishment" )]
@@ -18,11 +20,11 @@ public sealed class NourishmentItem: BaseEntity, IDescription
     ModelCollider.Model = CurrentNourishmentResource.Model;
     ModelRenderer.Model = CurrentNourishmentResource.Model;
 
-    //if (CurrentNourishmentResource.ModelColor != null)
-    //{
-    //    Log.Info(CurrentNourishmentResource.ModelColor);
-    //    ModelRenderer.Tint = CurrentNourishmentResource.ModelColor;
-    //}
+    if ( CurrentNourishmentResource.ModelColor != Color.Transparent )
+    {
+      Log.Info( $"NourishmentItem: {CurrentNourishmentResource.ModelColor}" );
+      ModelRenderer.Tint = CurrentNourishmentResource.ModelColor;
+    }
 
     UseSound = CurrentNourishmentResource.UseSound;
 
@@ -30,6 +32,7 @@ public sealed class NourishmentItem: BaseEntity, IDescription
     {
       ModelRenderer.MaterialOverride = CurrentNourishmentResource.ModelMaterial;
     }
+
   }
 
   public override void OnUse( Player player )
@@ -39,6 +42,7 @@ public sealed class NourishmentItem: BaseEntity, IDescription
     {
       Sound.Play( UseSound );
     }
+
     player.HealthComponent.Health = Math.Min( player.HealthComponent.Health + CurrentNourishmentResource.HealAmount, 100 );
   }
 }

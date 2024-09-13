@@ -64,6 +64,12 @@
         "__type": "Sandbox.ModelRenderer",
         "__guid": "63e868d0-7116-4133-adc3-a76b6f7d2979",
         "BodyGroups": 18446744073709551615,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
         "Tint": "1,1,1,1"
       }
