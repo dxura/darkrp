@@ -3,7 +3,7 @@
   "Description": "",
   "Slot": "Primary",
   "Icon": "ui/equipment/physgun.png",
-  "IsPurchasable": false,
+  "IsPurchasable": true,
   "Price": 0,
   "MainPrefab": {
     "_type": "gameobject",
