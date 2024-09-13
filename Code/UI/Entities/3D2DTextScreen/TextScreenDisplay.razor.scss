@@ -1,0 +1,15 @@
+TextScreenDisplay
+{
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+
+	.title
+	{
+		font-size: 100px;
+		font-family: 'Times New Roman', Times, serif;
+		color: red;
+	}
+}

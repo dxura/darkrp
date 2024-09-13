@@ -1,0 +1,30 @@
+@namespace Dxura.Darkrp.UI
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="title">@TextScreen.Text</div>
+</root>
+
+@code
+{
+
+	TextScreen TextScreen { get; set; } = null!;
+
+	protected override void OnStart()
+	{
+	    TextScreen = GameObject.Parent.Components.Get<TextScreen>();
+		if (TextScreen == null)
+		{
+			Log.Warning("TextScreen not found");
+		}
+
+		Log.Info("TextScreenDisplay.OnStart + " + TextScreen.Text);
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(TextScreen);
+}

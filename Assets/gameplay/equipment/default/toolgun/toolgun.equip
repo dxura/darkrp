@@ -1,0 +1,26 @@
+{
+  "Name": "Toolgun",
+  "Description": "",
+  "Slot": "Primary",
+  "Icon": "ui/equipment/physgun.png",
+  "IsPurchasable": false,
+  "Price": 0,
+  "MainPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/default/toolgun/w_toolgun.prefab"
+  },
+  "ViewModelPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/default/toolgun/vm_toolgun.prefab"
+  },
+  "WorldModel": "weapons/rust_pistol/rust_pistol.vmdl",
+  "DroppedSize": "8,2,8",
+  "DroppedCenter": "0,0,0",
+  "CanDrop": false,
+  "ArmorReduction": null,
+  "HelmetReduction": null,
+  "__references": [
+    "rust.rust_pistol"
+  ],
+  "__version": 0
+}
