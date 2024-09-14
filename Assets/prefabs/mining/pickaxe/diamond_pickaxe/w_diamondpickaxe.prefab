@@ -1,0 +1,77 @@
+{
+  "RootObject": {
+    "__guid": "542a178a-1292-4fbb-b29d-ed097de58a6d",
+    "Flags": 0,
+    "Name": "w_diamondpickaxe",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "9bf93170-218a-46d2-9058-b4771ac2dd49",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/pickaxe/pickaxe.vmdl",
+        "Morphs": {},
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Dxura.Darkrp.TagBinder",
+        "__guid": "7bb67672-fe35-4e69-b1fc-c5b26569b5a4"
+      },
+      {
+        "__type": "Dxura.Darkrp.Equipment",
+        "__guid": "10cdbd6d-0c15-4b15-9727-641cf04e6210",
+        "DeploySound": "sounds/guns/switch/weapon_switch.sound",
+        "Handedness": "Right",
+        "HoldType": "None",
+        "ModelRenderer": {
+          "_type": "component",
+          "component_id": "9bf93170-218a-46d2-9058-b4771ac2dd49",
+          "go": "542a178a-1292-4fbb-b29d-ed097de58a6d",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "OnlyShowCrosshairDot": true,
+        "Resource": "prefabs/mining/pickaxe/diamond_pickaxe/diamond_pickaxe.pcx",
+        "SpeedPenalty": 0,
+        "UseCrosshair": true
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "99142ae0-0224-41d8-ac7b-c9b82a8bd35b",
+        "Flags": 0,
+        "Name": "Functions",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Dxura.Darkrp.PickaxeEquipment",
+            "__guid": "6afee866-fb2d-418f-938e-24d2986f4ec0",
+            "CurrentPickaxeResource": "prefabs/mining/pickaxe/diamond_pickaxe/diamond_pickaxe.pcx",
+            "InputActions": [
+              "Attack1"
+            ],
+            "InteractRange": 60,
+            "RequiresAllInputActions": false
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "wujekfoliarz.pickaxe"
+  ],
+  "__version": 1
+}

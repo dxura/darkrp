@@ -1,0 +1,95 @@
+{
+  "RootObject": {
+    "__guid": "08647004-c35e-4fea-a8cb-0cb1236b717e",
+    "Flags": 0,
+    "Name": "rock1",
+    "Tags": "rock",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.Rock1Entity",
+        "__guid": "b15d34ee-f0a1-4816-b94c-3b6874632d63",
+        "EntityName": "Rock",
+        "HealthComponent": {
+          "_type": "component",
+          "component_id": "12629458-21c8-4c1e-b334-1f6b0438a8ee",
+          "go": "08647004-c35e-4fea-a8cb-0cb1236b717e",
+          "component_type": "HealthComponent"
+        }
+      },
+      {
+        "__type": "Dxura.Darkrp.HealthComponent",
+        "__guid": "12629458-21c8-4c1e-b334-1f6b0438a8ee",
+        "IsGodMode": false,
+        "MaxHealth": 100
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "33593fb3-ab6c-4152-8d2c-150e43ffbdea",
+        "Flags": 0,
+        "Name": "model",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "6b519251-2e12-4ef3-a5e2-fae23921688c",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/mining/rocks/rock1.vmdl",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "2b4b1a73-03ad-4379-bd07-56cbe77877a5",
+            "IsTrigger": false,
+            "Model": "models/mining/rocks/rock1.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "ef21e5a1-5663-437b-b9cd-e72e049453b5",
+        "Flags": 0,
+        "Name": "worldpanel",
+        "Position": "0,0,30.54881",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "ad1f4883-eba5-4a0a-a3f8-729b93edaf3b",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": false,
+            "PanelSize": "1040,317.0401",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.RockWorldPanel",
+            "__guid": "0bdfba24-17fd-471f-b416-6ba5c77d7751"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

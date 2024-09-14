@@ -1,0 +1,27 @@
+{
+  "PickaxeDamage": 60,
+  "Name": "Diamond Pickaxe",
+  "Description": "The Diamond!!!",
+  "Slot": "Secondary",
+  "Icon": "ui/equipment/pickaxe.png",
+  "IsPurchasable": false,
+  "Price": 0,
+  "MainPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/mining/pickaxe/diamond_pickaxe/w_diamondpickaxe.prefab"
+  },
+  "ViewModelPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/mining/pickaxe/diamond_pickaxe/vm_diamondpickaxe.prefab"
+  },
+  "WorldModel": "models/pickaxe/pickaxe.vmdl",
+  "DroppedSize": "8,2,8",
+  "DroppedCenter": "0,0,0",
+  "CanDrop": true,
+  "ArmorReduction": null,
+  "HelmetReduction": null,
+  "__references": [
+    "wujekfoliarz.pickaxe"
+  ],
+  "__version": 0
+}
