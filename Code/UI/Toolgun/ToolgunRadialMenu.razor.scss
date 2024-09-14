@@ -1,0 +1,95 @@
+ToolgunRadialMenu {
+  pointer-events: none;
+  display: none;
+  opacity: 0;
+  z-index: 9999;
+
+  .options {
+    pointer-events: none;
+    display: none;
+    opacity: 0;
+  }
+
+  &.active {
+    pointer-events: all;
+    display: flex;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+
+    .radial-menu {
+      position: relative;
+      background-color: #343b43;
+      border-radius: 50%;
+      border: 2px solid #c9c9c9;
+      color: white;
+      width: 125px;
+      height: 125px;
+      font-weight: bold;
+      font-size: 22px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  &.radial-active {
+    .options {
+      pointer-events: all;
+      display: flex;
+      opacity: 1;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .btn {
+        width: 50px;
+        height: 50px;
+        background-color: #343b43;
+        border-radius: 50%;
+        border: 2px solid #c9c9c9;
+        font-size: 25px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: absolute;
+      }
+
+      .btn:nth-child(1) {
+        top: -150px;
+      }
+      .btn:nth-child(2) {
+        top: -125px;
+        left: 75px;
+      }
+      .btn:nth-child(3) {
+        left: 100px;
+      }
+      .btn:nth-child(4) {
+        top: 75px;
+        left: 75px;
+      }
+      .btn:nth-child(5) {
+        top: 100px;
+      }
+      .btn:nth-child(6) {
+        top: 75px;
+        left: -125px;
+      }
+      .btn:nth-child(7) {
+        left: -150px;
+      }
+      .btn:nth-child(8) {
+        top: -125px;
+        left: -125px;
+      }
+    }
+  }
+}

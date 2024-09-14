@@ -39,10 +39,6 @@
             "__guid": "e69403c8-b887-42f7-aced-1d2b3c2f2b2d"
           },
           {
-            "__type": "Dxura.Darkrp.UI.DeveloperMenu",
-            "__guid": "6e1b4dee-d79e-429b-875f-21fd1bc4ec65"
-          },
-          {
             "__type": "Sandbox.ScreenPanel",
             "__guid": "f9bfa9c6-31d1-43c1-b7ea-873aac74f34b",
             "AutoScreenScale": true,
@@ -50,6 +46,12 @@
             "Scale": 1,
             "ScaleStrategy": "ConsistentHeight",
             "ZIndex": 100
+          },
+          {
+            "__type": "ToolgunRadialMenu",
+            "__guid": "e4299bbb-b182-4206-a4e2-555d9b449cc3",
+            "MyStringValue": "Hello World!",
+            "Toolgun": "gameplay/equipment/default/toolgun/toolgun.equip"
           }
         ]
       },
