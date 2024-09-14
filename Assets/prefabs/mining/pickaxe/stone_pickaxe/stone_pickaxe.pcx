@@ -1,7 +1,7 @@
 {
   "PickaxeDamage": 10,
   "Name": "Stone Pickaxe",
-  "Description": "The stoen!!!",
+  "Description": "Stoneee",
   "Slot": "Secondary",
   "Icon": "ui/equipment/pickaxe.png",
   "IsPurchasable": false,

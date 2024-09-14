@@ -1,7 +1,7 @@
 {
-  "PickaxeDamage": 60,
+  "PickaxeDamage": 50,
   "Name": "Diamond Pickaxe",
-  "Description": "The Diamond!!!",
+  "Description": "The diamond one",
   "Slot": "Secondary",
   "Icon": "ui/equipment/pickaxe.png",
   "IsPurchasable": false,

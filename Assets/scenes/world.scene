@@ -41,6 +41,12 @@
               "BodyGroups": 18446744073709551615,
               "MaterialOverride": "materials/default.vmat",
               "Model": "models/dev/plane.vmdl",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderType": "On",
               "Tint": "0.26245,0.42791,0.08558,1"
             },
@@ -122,6 +128,12 @@
               "FontFamily": "Poppins",
               "FontSize": 64,
               "FontWeight": 800,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "Scale": 0.3,
               "Text": "DarkRP (DEV)\n",
               "TextAlignment": "Center"
@@ -142,6 +154,12 @@
                   "FontFamily": "Poppins",
                   "FontSize": 46.05,
                   "FontWeight": 800,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
                   "Scale": 0.15,
                   "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nI am on holidays till 16 sept\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
                   "TextAlignment": "Center"
@@ -161,6 +179,12 @@
                   "__guid": "43393c2c-b16f-4034-b423-1899503d6151",
                   "BodyGroups": 18446744073709551615,
                   "Model": "models/dev/box.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
                   "RenderType": "On",
                   "Tint": "0,0,0,1"
                 }
@@ -415,6 +439,66 @@
       "Rotation": "-0,0,-1,-0.00000004371139",
       "Enabled": true,
       "__Prefab": "prefabs/atm.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "dad3b602-c20b-4675-b804-4b30784951ef",
+      "Flags": 0,
+      "Name": "rock1",
+      "Position": "-3341.029,-396.4888,96.00003",
+      "Tags": "rock",
+      "Enabled": true,
+      "__Prefab": "prefabs/mining/rocks/rock1.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "373d8547-0580-4f2b-a93e-72fedccb8743",
+      "Flags": 0,
+      "Name": "rock1 (2)",
+      "Position": "-3341.029,-534.5256,96.00003",
+      "Tags": "rock",
+      "Enabled": true,
+      "__Prefab": "prefabs/mining/rocks/rock1.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "c775b723-be5f-4e02-be60-73a86163a3ef",
+      "Flags": 0,
+      "Name": "rock1 (3)",
+      "Position": "-3218.781,-534.5256,96.00003",
+      "Tags": "rock",
+      "Enabled": true,
+      "__Prefab": "prefabs/mining/rocks/rock1.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "0cdccd19-1e7e-42a1-a818-c2ad73916393",
+      "Flags": 0,
+      "Name": "rock1 (4)",
+      "Position": "-3218.781,-667.8145,96.00003",
+      "Tags": "rock",
+      "Enabled": true,
+      "__Prefab": "prefabs/mining/rocks/rock1.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "3d2782b8-cedf-4a5e-b509-7351d48c0676",
+      "Flags": 0,
+      "Name": "rock1 (5)",
+      "Position": "-3351.189,-667.8145,96.00003",
+      "Tags": "rock",
+      "Enabled": true,
+      "__Prefab": "prefabs/mining/rocks/rock1.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "be2228ca-182c-4fcb-89f6-4bbc6338700b",
+      "Flags": 0,
+      "Name": "rock1 (1)",
+      "Position": "-3247.995,-413.0005,99.81593",
+      "Tags": "rock",
+      "Enabled": true,
+      "__Prefab": "prefabs/mining/rocks/rock1.prefab",
       "__PrefabVariables": {}
     }
   ],
