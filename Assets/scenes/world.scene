@@ -432,16 +432,6 @@
       "__PrefabVariables": {}
     },
     {
-      "__guid": "52ad3322-735b-4cf9-9f25-6842aa5912d4",
-      "Flags": 0,
-      "Name": "atm",
-      "Position": "-3074.29,-347.8866,97.00003",
-      "Rotation": "-0,0,-1,-0.00000004371139",
-      "Enabled": true,
-      "__Prefab": "prefabs/atm.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "dad3b602-c20b-4675-b804-4b30784951ef",
       "Flags": 0,
       "Name": "rock1",
