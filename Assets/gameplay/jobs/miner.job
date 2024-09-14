@@ -1,0 +1,21 @@
+{
+  "Name": "Miner",
+  "Description": "As a citizen you are a standard member of the community. ",
+  "Color": "0.06361,0.69302,0.0419,1",
+  "Group": "gameplay/jobs/groups/civilian.group",
+  "SortingLevel": 1,
+  "Models": [
+    "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
+  ],
+  "Salary": 10,
+  "MaxWorkers": 0,
+  "Equipment": [
+    "gameplay/equipment/default/hands/hands.equip",
+    "gameplay/equipment/default/physgun/physgun.equip",
+    "prefabs/mining/pickaxe/stone_pickaxe/stone_pickaxe.pcx",
+    "prefabs/mining/pickaxe/diamond_pickaxe/diamond_pickaxe.pcx"
+  ],
+  "Vote": false,
+  "__references": [],
+  "__version": 0
+}
