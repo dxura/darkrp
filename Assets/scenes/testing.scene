@@ -177,6 +177,7 @@
               "Feathering": 0.02,
               "FrameInterval": 5,
               "MaxDistance": 512,
+              "MultiBounce": false,
               "Projection": "Box",
               "RenderDynamically": true,
               "TintColor": "1,1,1,1",
@@ -277,6 +278,18 @@
           "Color": "0.8902,0.31765,0.05098,1"
         }
       ]
+    },
+    {
+      "__guid": "1f5d88f1-baf7-4293-93a6-2da901650bff",
+      "Flags": 0,
+      "Name": "jeep",
+      "Position": "-984.7927,-120.3347,22.6981",
+      "Tags": "vehicle",
+      "Enabled": true,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
+      "__Prefab": "prefabs/vehicles/jeep.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
