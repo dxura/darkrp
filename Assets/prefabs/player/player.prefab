@@ -3,7 +3,7 @@
     "__guid": "a4f94dfd-8684-4032-89b1-b08190beab32",
     "Flags": 0,
     "Name": "player",
-    "Tags": "noblockaudio,player",
+    "Tags": "player,noblockaudio",
     "Enabled": true,
     "Components": [
       {
@@ -95,7 +95,7 @@
         "Height": 64,
         "IgnoreLayers": "ragdoll,invis,pickup,no_player,fire",
         "Radius": 12,
-        "StepHeight": 15.46,
+        "StepHeight": 42.65,
         "UseCollisionRules": false
       },
       {
@@ -282,6 +282,13 @@
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": true,
             "Model": "models/player/ct_side/ct_side_riot_player/ct_side_riot_player.vmdl",
+            "Morphs": {},
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -906,8 +913,8 @@
                                 "__guid": "663e9cf1-6919-4058-84bf-53c4ad2aad2b",
                                 "Flags": 4,
                                 "Name": "r_upperarm",
-                                "Position": "-5.831271,0.0164032,-0.003117919",
-                                "Rotation": "-0.05197336,-0.05124055,-0.3945363,0.9159772",
+                                "Position": "-5.831304,0.01631927,-0.003136635",
+                                "Rotation": "-0.0519735,-0.05124088,-0.3945363,0.9159772",
                                 "Enabled": true,
                                 "Children": [
                                   {
@@ -1093,6 +1100,12 @@
                                                         "__guid": "0bf8d9cf-7225-4bba-9388-62864e2ed3c2",
                                                         "BodyGroups": 9493,
                                                         "Model": "models/dev/error.vmdl",
+                                                        "RenderOptions": {
+                                                          "GameLayer": true,
+                                                          "OverlayLayer": false,
+                                                          "BloomLayer": false,
+                                                          "AfterUILayer": false
+                                                        },
                                                         "RenderType": "On",
                                                         "Tint": "1,1,1,1"
                                                       }
@@ -1226,6 +1239,7 @@
         "__guid": "3e4e2095-635e-4b89-a9c9-fc3b4d321b84",
         "Flags": 0,
         "Name": "Collider",
+        "Scale": "1.087335,1.087335,1.087335",
         "Tags": "movement",
         "Enabled": true,
         "Components": [
@@ -1253,6 +1267,12 @@
             "InteractionRange": 1000,
             "LookAtCamera": true,
             "PanelSize": "500,200",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderScale": 1,
             "VerticalAlign": "Center"
           },
