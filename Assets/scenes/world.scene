@@ -367,7 +367,7 @@
                   "__guid": "a30ebec6-0ff2-4e3c-b781-c86005736e27",
                   "BodyGroups": 18446744073709551615,
                   "Health": 0,
-                  "IsStatic": false,
+                  "IsStatic": true,
                   "Model": "models/3dmodelscc0/cityenvpack1/atm/atm.vmdl",
                   "StartAsleep": false,
                   "Tint": "1,1,1,1"
@@ -388,7 +388,7 @@
                   "__guid": "d105f134-39d4-4767-8ef8-8188ad7611b8",
                   "BodyGroups": 18446744073709551615,
                   "Health": 0,
-                  "IsStatic": false,
+                  "IsStatic": true,
                   "Model": "models/3dmodelscc0/cityenvpack1/atm/atm.vmdl",
                   "StartAsleep": false,
                   "Tint": "1,1,1,1"
