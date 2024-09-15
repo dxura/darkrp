@@ -1,0 +1,9 @@
+{
+  "Name": "Stone Rock",
+  "Description": null,
+  "Health": 100,
+  "Model": "models/mining/rocks/rock1.vmdl",
+  "HitSound": null,
+  "__references": [],
+  "__version": 0
+}

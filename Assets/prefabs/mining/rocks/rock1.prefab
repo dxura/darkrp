@@ -9,6 +9,7 @@
       {
         "__type": "Dxura.Darkrp.Rock1Entity",
         "__guid": "b15d34ee-f0a1-4816-b94c-3b6874632d63",
+        "CurrentRockResource": "prefabs/mining/rocks/stone_rock.rck",
         "EntityName": "Rock",
         "HealthComponent": {
           "_type": "component",
