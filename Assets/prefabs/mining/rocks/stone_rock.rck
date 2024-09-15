@@ -3,7 +3,8 @@
   "Description": null,
   "Health": 100,
   "Model": "models/mining/rocks/rock1.vmdl",
-  "HitSound": null,
+  "RespawnTime": 2,
+  "HitSound": "sounds/mining/rock_chop.sound",
   "__references": [],
   "__version": 0
 }

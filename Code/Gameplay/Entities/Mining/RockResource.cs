@@ -6,5 +6,6 @@ public class RockResource : GameResource
 	[Category( "General" )] public string? Description { get; set; }
 	[Category( "General" )] public float Health { get; set; }
 	[Category( "General" )] public Model? Model { get; set; }
+	[Category( "General" )] public int RespawnTime { get; set; }
 	[Category( "General" )] public SoundEvent? HitSound { get; set; }
 }

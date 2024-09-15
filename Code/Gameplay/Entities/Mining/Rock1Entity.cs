@@ -1,6 +1,7 @@
 using Dxura.Darkrp.UI;
 using Sandbox;
 using GameSystems.Jobs;
+using System.Threading.Tasks;
 namespace Dxura.Darkrp;
 
 [Title("Rock")]
@@ -8,6 +9,7 @@ namespace Dxura.Darkrp;
 public sealed class Rock1Entity : BaseEntity
 {
     [Property] public RockResource CurrentRockResource { get; set; } = null!;
+    private int _respawnTime = 2;
     protected override void OnStart()
     {
         if (HealthComponent == null)
@@ -24,6 +26,7 @@ public sealed class Rock1Entity : BaseEntity
 
         HealthComponent.Health = CurrentRockResource.Health;
         GameObject.Components.GetInChildren<ModelRenderer>().Model = CurrentRockResource.Model;
+        _respawnTime = CurrentRockResource.RespawnTime;
 
 
     }
@@ -40,6 +43,19 @@ public sealed class Rock1Entity : BaseEntity
     private void DestroyRock()
     {
         Sound.Play("kill_sound");
+        _ = RespawningRock();
+        GameObject.Enabled = false;
+        
+    }
+
+    async Task RespawningRock()
+    {
+        // wait for this amount of seconds
+	    await GameTask.DelayRealtimeSeconds( _respawnTime );
+
+        
+        GameObject.Clone(Transform.Position);
         GameObject.Destroy();
+
     }
 }
