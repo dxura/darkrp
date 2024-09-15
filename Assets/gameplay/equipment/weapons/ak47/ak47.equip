@@ -1,0 +1,26 @@
+{
+  "Name": "AK47",
+  "Description": "The best assault rifle money can buy.",
+  "Slot": "Secondary",
+  "Icon": "ui/weapons/guns/m4_01.png",
+  "IsPurchasable": true,
+  "Price": 2900,
+  "MainPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/weapons/ak47/w_ak47.prefab"
+  },
+  "ViewModelPrefab": {
+    "_type": "gameobject",
+    "prefab": "gameplay/equipment/weapons/ak47/vm_ak47.prefab"
+  },
+  "WorldModel": "models/weapons/sbox_assault_m4a1/w_m4a1.vmdl",
+  "DroppedSize": "33.10006,2.500002,5",
+  "DroppedCenter": "3.5,0,6.2",
+  "CanDrop": true,
+  "ArmorReduction": null,
+  "HelmetReduction": null,
+  "__references": [
+    "facepunch.w_m4a1"
+  ],
+  "__version": 0
+}

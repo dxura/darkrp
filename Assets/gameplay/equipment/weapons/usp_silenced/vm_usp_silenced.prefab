@@ -2,7 +2,7 @@
   "RootObject": {
     "__guid": "a1738cd9-71d8-4459-9255-aa68ff8e2b7a",
     "Flags": 0,
-    "Name": "vm_usp",
+    "Name": "vm_usp_silenced",
     "Tags": "player,viewmodel",
     "Enabled": true,
     "NetworkMode": 0,
@@ -38,7 +38,7 @@
       {
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "29fa1c9f-4f24-4026-995d-3085b7034937",
-        "BodyGroups": 18583,
+        "BodyGroups": 20679,
         "CreateBoneObjects": true,
         "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
         "Morphs": {},
