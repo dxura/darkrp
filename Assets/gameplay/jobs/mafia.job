@@ -1,0 +1,19 @@
+{
+  "Name": "Mafia",
+  "Description": "Mafia",
+  "Color": "1,0.17209,0.9862,1",
+  "Group": "gameplay/jobs/groups/illegal.group",
+  "SortingLevel": 0,
+  "Models": [
+    "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
+  ],
+  "Salary": 10,
+  "MaxWorkers": 24,
+  "Equipment": [
+    "gameplay/equipment/default/physgun/physgun.equip",
+    "gameplay/equipment/default/hands/hands.equip"
+  ],
+  "Vote": false,
+  "__references": [],
+  "__version": 0
+}

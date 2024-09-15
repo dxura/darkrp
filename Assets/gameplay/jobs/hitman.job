@@ -1,0 +1,21 @@
+{
+  "Name": "Hitman",
+  "Description": "Hitamn",
+  "Color": "0.43333,0,1,1",
+  "Group": "gameplay/jobs/groups/illegal.group",
+  "SortingLevel": 0,
+  "Models": [
+    "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
+  ],
+  "Salary": 10,
+  "MaxWorkers": 0,
+  "Equipment": [
+    "gameplay/equipment/weapons/usp_silenced/usp_silenced.equip",
+    "gameplay/equipment/default/physgun/physgun.equip",
+    "gameplay/equipment/default/hands/hands.equip",
+    "gameplay/equipment/weapons/sniper/sniper.equip"
+  ],
+  "Vote": false,
+  "__references": [],
+  "__version": 0
+}

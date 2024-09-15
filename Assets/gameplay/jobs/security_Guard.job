@@ -1,17 +1,18 @@
 {
-  "Name": "Gun Dealer",
-  "Description": "Gun dealers can sell guns to the public they must have a public gun store and can sell guns with/without a license. ",
-  "Color": "1,0.64706,0,1",
+  "Name": "Security Guard",
+  "Description": "Security Guard",
+  "Color": "0.56145,0.9814,0.77842,1",
   "Group": "gameplay/jobs/groups/civilian.group",
-  "SortingLevel": 2,
+  "SortingLevel": 0,
   "Models": [
     "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
   ],
   "Salary": 10,
-  "MaxWorkers": 4,
+  "MaxWorkers": 0,
   "Equipment": [
     "gameplay/equipment/default/hands/hands.equip",
-    "gameplay/equipment/default/physgun/physgun.equip"
+    "gameplay/equipment/default/physgun/physgun.equip",
+    "gameplay/equipment/weapons/usp/usp.equip"
   ],
   "Vote": false,
   "__references": [],
