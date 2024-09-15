@@ -1,7 +1,7 @@
 {
   "PickaxeDamage": 10,
   "Name": "Stone Pickaxe",
-  "Description": "Stoneee",
+  "Description": "",
   "Slot": "Secondary",
   "Icon": "ui/equipment/pickaxe.png",
   "IsPurchasable": false,
@@ -14,14 +14,12 @@
     "_type": "gameobject",
     "prefab": "prefabs/mining/pickaxe/stone_pickaxe/vm_pickaxe.prefab"
   },
-  "WorldModel": "models/items/tools/pickaxe/stone_pickaxe.vmdl",
+  "WorldModel": "models/props/street/fountain_001a.vmdl",
   "DroppedSize": "8,2,8",
   "DroppedCenter": "0,0,0",
   "CanDrop": true,
   "ArmorReduction": null,
   "HelmetReduction": null,
-  "__references": [
-    "apetavern.stone_pickaxe"
-  ],
+  "__references": [],
   "__version": 0
 }

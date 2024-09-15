@@ -516,6 +516,8 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "based.guerrilla"
+  ],
   "__version": 1
 }

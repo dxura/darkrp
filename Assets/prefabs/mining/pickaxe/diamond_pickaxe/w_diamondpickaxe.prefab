@@ -39,7 +39,7 @@
           "component_type": "SkinnedModelRenderer"
         },
         "OnlyShowCrosshairDot": true,
-        "Resource": "prefabs/mining/pickaxe/diamond_pickaxe/diamond_pickaxe.pcx",
+        "Resource": "prefabs/mining/pickaxe/diamond_pickaxe/diamondpickaxe.pcx",
         "SpeedPenalty": 0,
         "UseCrosshair": true
       }
@@ -54,7 +54,7 @@
           {
             "__type": "Dxura.Darkrp.PickaxeEquipment",
             "__guid": "6afee866-fb2d-418f-938e-24d2986f4ec0",
-            "CurrentPickaxeResource": "prefabs/mining/pickaxe/diamond_pickaxe/diamond_pickaxe.pcx",
+            "CurrentPickaxeResource": "prefabs/mining/pickaxe/diamond_pickaxe/diamondpickaxe.pcx",
             "InputActions": [
               "Attack1"
             ],

@@ -43,6 +43,7 @@ public sealed class Rock1Entity : BaseEntity
     private void DestroyRock()
     {
         Sound.Play("kill_sound");
+        Toast.Instance?.Show("Rock destroyed", ToastType.Error);
         _ = RespawningRock();
         GameObject.Enabled = false;
         

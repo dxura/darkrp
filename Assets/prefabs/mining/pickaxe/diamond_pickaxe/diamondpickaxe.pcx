@@ -1,7 +1,7 @@
 {
   "PickaxeDamage": 50,
   "Name": "Diamond Pickaxe",
-  "Description": "The diamond one",
+  "Description": "diamond",
   "Slot": "Secondary",
   "Icon": "ui/equipment/pickaxe.png",
   "IsPurchasable": false,
@@ -14,14 +14,12 @@
     "_type": "gameobject",
     "prefab": "prefabs/mining/pickaxe/diamond_pickaxe/vm_diamondpickaxe.prefab"
   },
-  "WorldModel": "models/pickaxe/pickaxe.vmdl",
+  "WorldModel": "models/props/street/fountain_001a.vmdl",
   "DroppedSize": "8,2,8",
   "DroppedCenter": "0,0,0",
-  "CanDrop": true,
+  "CanDrop": false,
   "ArmorReduction": null,
   "HelmetReduction": null,
-  "__references": [
-    "wujekfoliarz.pickaxe"
-  ],
+  "__references": [],
   "__version": 0
 }
