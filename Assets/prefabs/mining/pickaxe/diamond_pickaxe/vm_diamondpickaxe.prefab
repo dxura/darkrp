@@ -2,7 +2,8 @@
   "RootObject": {
     "__guid": "c9f42db9-0802-4eda-971c-a929f737b496",
     "Flags": 0,
-    "Name": "vm_pickaxe",
+    "Name": "vm_diamondpickaxe",
+    "Position": "0,0,-15.43999",
     "Tags": "viewmodel",
     "Enabled": true,
     "Components": [

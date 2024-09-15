@@ -28,17 +28,17 @@
       },
       {
         "__type": "Dxura.Darkrp.Equipment",
-        "__guid": "10cdbd6d-0c15-4b15-9727-641cf04e6210",
+        "__guid": "a99fde08-5768-49b0-b235-660383710804",
         "DeploySound": "sounds/guns/switch/weapon_switch.sound",
         "Handedness": "Right",
-        "HoldType": "None",
+        "HoldType": "Rifle",
         "ModelRenderer": {
           "_type": "component",
           "component_id": "9bf93170-218a-46d2-9058-b4771ac2dd49",
           "go": "542a178a-1292-4fbb-b29d-ed097de58a6d",
           "component_type": "SkinnedModelRenderer"
         },
-        "OnlyShowCrosshairDot": true,
+        "OnlyShowCrosshairDot": false,
         "Resource": "prefabs/mining/pickaxe/stone_pickaxe/stonepickaxe.pcx",
         "SpeedPenalty": 0,
         "UseCrosshair": true

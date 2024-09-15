@@ -6,6 +6,23 @@
     "Enabled": true,
     "Components": [
       {
+        "__type": "Dxura.Darkrp.Equipment",
+        "__guid": "9abf1325-08a7-40fe-b33f-6fc7243f0968",
+        "DeploySound": "sounds/guns/switch/weapon_switch.sound",
+        "Handedness": "Right",
+        "HoldType": "None",
+        "ModelRenderer": {
+          "_type": "component",
+          "component_id": "9bf93170-218a-46d2-9058-b4771ac2dd49",
+          "go": "542a178a-1292-4fbb-b29d-ed097de58a6d",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "OnlyShowCrosshairDot": false,
+        "Resource": "prefabs/mining/pickaxe/diamond_pickaxe/diamondpickaxe.pcx",
+        "SpeedPenalty": 0,
+        "UseCrosshair": true
+      },
+      {
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "9bf93170-218a-46d2-9058-b4771ac2dd49",
         "BodyGroups": 18446744073709551615,
@@ -20,28 +37,11 @@
         },
         "RenderType": "On",
         "Tint": "1,1,1,1",
-        "UseAnimGraph": true
+        "UseAnimGraph": false
       },
       {
         "__type": "Dxura.Darkrp.TagBinder",
         "__guid": "7bb67672-fe35-4e69-b1fc-c5b26569b5a4"
-      },
-      {
-        "__type": "Dxura.Darkrp.Equipment",
-        "__guid": "10cdbd6d-0c15-4b15-9727-641cf04e6210",
-        "DeploySound": "sounds/guns/switch/weapon_switch.sound",
-        "Handedness": "Right",
-        "HoldType": "None",
-        "ModelRenderer": {
-          "_type": "component",
-          "component_id": "9bf93170-218a-46d2-9058-b4771ac2dd49",
-          "go": "542a178a-1292-4fbb-b29d-ed097de58a6d",
-          "component_type": "SkinnedModelRenderer"
-        },
-        "OnlyShowCrosshairDot": true,
-        "Resource": "prefabs/mining/pickaxe/diamond_pickaxe/diamondpickaxe.pcx",
-        "SpeedPenalty": 0,
-        "UseCrosshair": true
       }
     ],
     "Children": [
