@@ -1,10 +1,10 @@
 {
-  "Title": "DarkRP 2",
+  "Title": "DarkRP",
   "Type": "game",
   "Org": "dxura",
-  "Ident": "darkrp-dev",
+  "Ident": "darkrp",
   "Schema": 1,
-  "IncludeSourceFiles": false,
+  "IncludeSourceFiles": true,
   "Resources": "/fonts/*\nui/*.png\n",
   "PackageReferences": [],
   "EditorReferences": null,
