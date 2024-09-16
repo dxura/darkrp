@@ -26,33 +26,43 @@
 
 @code
 {
-    [Property] public EquipmentResource Toolgun { get; set; } = null!;
-
-    public Player Player => PlayerState.Local.Player;
+    private Player Player => PlayerState.Local.Player;
     protected bool IsActive { get; set; }
 
     protected override void OnTreeFirstBuilt()
-	{
-		BindClass( "active", () => IsActive );
-	}
+    {
+        BindClass( "active", () => IsActive );
+    }
 
-	/// <summary>
-	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
-	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine(IsActive);
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(IsActive);
 
 
     protected override void OnUpdate()
-	{
+    {
         base.OnUpdate();
 
-        if ( !Player.IsValid() ^ Player.CurrentEquipment.Resource != Toolgun )
-            return;
+        if(Player.CurrentEquipment.Resource.Name != "Toolgun") return;
 
-        if ( Input.Pressed( "Use" ) )
+        Log.Info("test");
+
+        if (Input.Pressed("Use") && !IsActive)
         {
-            Log.Info("Toggling Toolgun Radial Menu");
-            IsActive ^= true;
+            // Reset the mouse position to the center of the screen
+            Mouse.Position = new(Screen.Width / 2, Screen.Height / 2);
+        }
+
+
+        if ( Input.Down("Use") )
+        {
+            IsActive = true;
+        }
+
+        if ( Input.Released("Use") )
+        {
+            IsActive = false;
         }
 	}
 }

@@ -74,17 +74,45 @@
         "Enabled": true,
         "Components": [
           {
-            "__type": "Dxura.Darkrp.ToolGunEquipment",
-            "__guid": "39c2463b-80d9-4a9d-a3ad-8d66eb3bb541",
+            "__type": "Dxdua.Darkrp.ToolGunEquipment",
+            "__guid": "667eef1a-93e3-4860-beb5-3b6bd0eda96a",
             "InputActions": [
               "Attack1"
             ],
             "RequiresAllInputActions": false,
-            "ScreenCooldown": 3,
-            "TextScreenPrefab": {
-              "_type": "gameobject",
-              "prefab": "gameplay/entities/textscreen/textscreen.prefab"
-            }
+            "Tools": [
+              {
+                "_type": "component",
+                "component_id": "ea0e5fc7-ba1d-42d0-a5bb-5626c6a9c1d3",
+                "go": "2611b608-4dd6-4484-9ca7-12267d6cc29c",
+                "component_type": "TextScreenTool"
+              }
+            ]
+          },
+          {
+            "__type": "Dxdua.Darkrp.TextScreenTool",
+            "__guid": "ea0e5fc7-ba1d-42d0-a5bb-5626c6a9c1d3"
+          }
+        ]
+      },
+      {
+        "__guid": "3b9c0305-bce6-4a55-8447-ff9050ce91a6",
+        "Flags": 0,
+        "Name": "Menu",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "0f6f98d4-a4ae-4fe7-86c6-41d2b231a5bf",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
+            "ZIndex": 100
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.ToolgunRadialMenu",
+            "__guid": "316a18bc-176e-4376-b192-56cf480de845"
           }
         ]
       }

@@ -46,11 +46,6 @@
             "Scale": 1,
             "ScaleStrategy": "ConsistentHeight",
             "ZIndex": 100
-          },
-          {
-            "__type": "Dxura.Darkrp.UI.ToolgunRadialMenu",
-            "__guid": "cb96ef41-a6b1-4fc3-834f-112789d9dfb3",
-            "Toolgun": "gameplay/equipment/default/toolgun/toolgun.equip"
           }
         ]
       },
