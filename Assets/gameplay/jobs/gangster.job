@@ -1,0 +1,18 @@
+{
+  "Name": "Gangster",
+  "Description": "The lowest person in crime. Generally works for the Mob boss who runs the crime family.",
+  "Color": "0,0,0,0.67",
+  "Group": "gameplay/jobs/groups/gangster.group",
+  "SortingLevel": 0,
+  "Models": [
+    "models/player/stalker_dolg/stalker_dolg.vmdl"
+  ],
+  "Salary": 50,
+  "MaxWorkers": 9,
+  "Equipment": [],
+  "Vote": false,
+  "__references": [
+    "sboxmp.stalker_dolg"
+  ],
+  "__version": 0
+}

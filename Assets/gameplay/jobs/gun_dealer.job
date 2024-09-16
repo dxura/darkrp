@@ -1,14 +1,14 @@
 {
   "Name": "Gun Dealer",
-  "Description": "Gun dealers can sell guns to the public they must have a public gun store and can sell guns with/without a license. ",
+  "Description": "The only person who can sell guns to others. Must avoid getting caught selling illegal firearms.",
   "Color": "1,0.64706,0,1",
-  "Group": "gameplay/jobs/groups/civilian.group",
+  "Group": "gameplay/jobs/groups/citizen.group",
   "SortingLevel": 2,
   "Models": [
     "models/player/hazmatsuit/hazmatsuit.vmdl"
   ],
-  "Salary": 10,
-  "MaxWorkers": 4,
+  "Salary": 50,
+  "MaxWorkers": 2,
   "Equipment": [
     "gameplay/equipment/default/hands/hands.equip",
     "gameplay/equipment/default/physgun/physgun.equip"
