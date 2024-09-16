@@ -1,18 +1,15 @@
 {
   "Name": "Mayor",
-  "Description": "Creates laws to govern the city. Can create and accept warrants.",
+  "Description": "As the mayor it is your job to keep the city in safe hands and to keep the police force at work.",
   "Color": "0.48627,0.24706,0,1",
   "Group": "gameplay/jobs/groups/goverment.group",
   "SortingLevel": 0,
   "Models": [
     "models/citizen_human/citizen_human_male.vmdl"
   ],
-  "Salary": 94,
+  "Salary": 10,
   "MaxWorkers": 1,
-  "Equipment": [
-    "gameplay/equipment/default/hands/hands.equip",
-    "gameplay/equipment/default/physgun/physgun.equip"
-  ],
+  "Equipment": [],
   "Vote": false,
   "__references": [],
   "__version": 0
