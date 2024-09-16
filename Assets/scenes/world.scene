@@ -29,38 +29,6 @@
       "Enabled": true,
       "Children": [
         {
-          "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
-          "Flags": 0,
-          "Name": "Ground",
-          "Scale": "100,100,1",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.ModelRenderer",
-              "__guid": "0b6a18bf-fdb8-4661-970e-ef635bfa9baa",
-              "BodyGroups": 18446744073709551615,
-              "MaterialOverride": "materials/default.vmat",
-              "Model": "models/dev/plane.vmdl",
-              "RenderOptions": {
-                "GameLayer": true,
-                "OverlayLayer": false,
-                "BloomLayer": false,
-                "AfterUILayer": false
-              },
-              "RenderType": "On",
-              "Tint": "0.26245,0.42791,0.08558,1"
-            },
-            {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "0715cb55-1733-4f5e-8560-c288b8695631",
-              "Center": "0,0,-5",
-              "IsTrigger": false,
-              "Scale": "100,100,10",
-              "Static": true
-            }
-          ]
-        },
-        {
           "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
           "Flags": 0,
           "Name": "Sun",
@@ -161,7 +129,7 @@
                     "AfterUILayer": false
                   },
                   "Scale": 0.15,
-                  "Text": "Just fuck around for now,\n actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nI am on holidays till 16 sept\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
+                  "Text": "Actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
                   "TextAlignment": "Center"
                 }
               ]
@@ -378,6 +346,570 @@
               "__PrefabVariables": {}
             }
           ]
+        },
+        {
+          "__guid": "0ebe2278-ffb9-4a66-9076-783eb0ff8294",
+          "Flags": 0,
+          "Name": "ATM",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "e771304c-3d9e-4fd8-9898-588e6fc3bdef",
+              "Flags": 0,
+              "Name": "atm (1)",
+              "Position": "-1720.616,1277.379,83.13252",
+              "Rotation": "0,0,-0.7071069,-0.7071066",
+              "Scale": "2.486845,2.486845,2.486845",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "a30ebec6-0ff2-4e3c-b781-c86005736e27",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "Model": "models/3dmodelscc0/cityenvpack1/atm/atm.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "0b7f30fd-4042-47e6-9f5d-107a67073a70",
+              "Flags": 0,
+              "Name": "atm",
+              "Position": "-2125.48,-596.5647,83.13252",
+              "Rotation": "0,0,-1,0.0000001947072",
+              "Scale": "2.486845,2.486845,2.486845",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "d105f134-39d4-4767-8ef8-8188ad7611b8",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "Model": "models/3dmodelscc0/cityenvpack1/atm/atm.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "f5e2eabc-701d-4335-9bf4-33e5c3fd8b4d",
+          "Flags": 0,
+          "Name": "Tunnel Fences",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "fd1ad9a8-fd8b-41cf-97ba-319bf2f9ee24",
+              "Flags": 0,
+              "Name": "fence_panel_large (24)",
+              "Position": "575.1168,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "b32822f4-c872-44cd-b1d1-181090def3e6",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "2771df3e-0d70-4520-898d-1b82e21cd003",
+              "Flags": 0,
+              "Name": "fence_panel_large (23)",
+              "Position": "501.1048,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "68db11fa-323d-477d-aafa-69d7c0c479a2",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "2bf0d38f-de67-4835-8103-df2030d5de4a",
+              "Flags": 0,
+              "Name": "fence_panel_large (22)",
+              "Position": "426.9068,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "d5d62b42-9fcd-4df5-9306-9fa8e6105a5c",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "fc7a6b34-6baf-4f92-a0b0-8913c3b372e7",
+              "Flags": 0,
+              "Name": "fence_panel_large (21)",
+              "Position": "352.5899,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "6de8e88e-5c9e-4782-a204-00526deacffa",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "024ab05f-b1b2-4438-808a-ce265936723c",
+              "Flags": 0,
+              "Name": "fence_panel_large (20)",
+              "Position": "277.9739,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "20925435-29da-428c-9636-3a8fc4173f77",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "4a8d2d3e-cba0-4e4b-89a9-39c11900c7aa",
+              "Flags": 0,
+              "Name": "fence_panel_large (19)",
+              "Position": "203.2979,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "64482a1f-9103-466e-9d1d-1b4373117fd3",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "e447b04e-430e-4538-827d-ac457a556e62",
+              "Flags": 0,
+              "Name": "fence_panel_large (18)",
+              "Position": "129.0328,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "720331c9-7266-4a8e-85c3-50436f4b37fc",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "8d69215d-9a88-4a51-9100-3bb6da26c50b",
+              "Flags": 0,
+              "Name": "fence_panel_large (17)",
+              "Position": "-139.0522,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "c16100f2-b8c3-4eae-97ed-f85bb0ab00c5",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "a6836acb-072b-4566-ad46-37c4e4e1cc0c",
+              "Flags": 0,
+              "Name": "fence_panel_large (16)",
+              "Position": "-214.6181,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "8c6242e7-d901-483c-bb43-0e5fb0e37284",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "8ac7a50d-b6a5-48fc-9824-541207687345",
+              "Flags": 0,
+              "Name": "fence_panel_large (15)",
+              "Position": "-288.9641,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "6254aac5-8fdd-4464-b471-45e382dc07f7",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "c208a87a-9f15-458f-8999-277f070a5c48",
+              "Flags": 0,
+              "Name": "fence_panel_large (14)",
+              "Position": "-363.2041,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "a87e0d96-f9b3-4a9d-8ec2-ec721167c5e2",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "f8ea0e08-c74b-4060-8fa1-2ca02231af26",
+              "Flags": 0,
+              "Name": "fence_panel_large (13)",
+              "Position": "-437.7302,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "b43e0fc2-8b93-4489-9cbe-3b631ec9b13c",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "3ee9b2dc-465d-46b6-ad6c-2382486f6458",
+              "Flags": 0,
+              "Name": "fence_panel_large (12)",
+              "Position": "-512.0561,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "5d5b9c8b-5dd6-46ae-9c87-8adb1adc5633",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "cac28a1f-757e-49f5-a5f9-80d718398620",
+              "Flags": 0,
+              "Name": "fence_panel_large (11)",
+              "Position": "-586.2741,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "6ea46d0d-0f98-4bb0-9614-91be821e81da",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "0613a6ad-2def-4e00-9a3c-ff315fcdaea2",
+              "Flags": 0,
+              "Name": "fence_panel_large (10)",
+              "Position": "-660.9971,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "ce5259c8-0733-4abc-9bcf-e12d3f1633ff",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "6ac52356-850e-4675-a9e3-d041a08830bd",
+              "Flags": 0,
+              "Name": "fence_panel_large (9)",
+              "Position": "-735.6171,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "7da124a2-ddc9-461d-9a47-e74168fbc0ed",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "2ff65a34-17da-4e07-91c6-067fc58213d5",
+              "Flags": 0,
+              "Name": "fence_panel_large (8)",
+              "Position": "-810.4571,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "20132b2e-96e2-4927-a7c2-8db5614b6d36",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "01e0f637-ae12-4a63-89c9-0aa628762b33",
+              "Flags": 0,
+              "Name": "fence_panel_large (7)",
+              "Position": "-885.1331,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "1e14e5e9-5138-4f9d-a7a3-1c8d9735ac91",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "058c33af-ee0d-4e0e-99b8-310678f9e3c7",
+              "Flags": 0,
+              "Name": "fence_panel_large (6)",
+              "Position": "-959.8091,-776.1543,71.64631",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "a5e4ef12-0446-407c-8577-50c619f80dc2",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "c5c994ea-1fd8-429b-994b-52e0a52dea2c",
+              "Flags": 0,
+              "Name": "fence_panel_large (5)",
+              "Position": "-961.4841,-849.4503,71.64631",
+              "Rotation": "0,0,0.7071067,0.7071068",
+              "Scale": "0.5621191,0.6519614,0.5621191",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "fdd32442-b98f-4619-9456-abfc52db83ed",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "5616660b-6a0b-4959-8286-66c0ff1a57ab",
+              "Flags": 0,
+              "Name": "fence_panel_large (4)",
+              "Position": "-961.4841,-924.4873,71.64631",
+              "Rotation": "0,0,0.7071067,0.7071068",
+              "Scale": "0.5692485,0.6590909,0.5692485",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "ab17597c-2185-4344-831b-56459abc9a72",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "bef56815-22e3-44d5-8748-f3a053226558",
+              "Flags": 0,
+              "Name": "fence_panel_large (3)",
+              "Position": "-961.4841,-999.7593,71.64631",
+              "Rotation": "0,0,0.7071067,0.7071068",
+              "Scale": "0.5692485,0.6590909,0.5692485",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "4b7b1303-9b5d-45ef-863c-0d7ad3aa4bff",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "d06db82a-a822-405b-aa86-23c02fb9401e",
+              "Flags": 0,
+              "Name": "fence_panel_large (2)",
+              "Position": "-961.4841,-1074.791,71.64631",
+              "Rotation": "0,0,0.7071067,0.7071068",
+              "Scale": "0.5692485,0.6590909,0.5692485",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "6f4f96c8-9ebb-4ca5-8be6-e271d61f1000",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "387f41ce-406c-4a82-8739-fa1d68b123c1",
+              "Flags": 0,
+              "Name": "fence_panel_large (1)",
+              "Position": "-961.4841,-1149.96,71.64631",
+              "Rotation": "0,0,0.7071067,0.7071068",
+              "Scale": "0.5692485,0.6590909,0.5692485",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "a15a7e47-963e-4e2a-8545-31339aa18251",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "0d68c467-f3e2-49a8-954e-d4d25d52045d",
+              "Flags": 0,
+              "Name": "fence_panel_large",
+              "Position": "-961.4841,-1225.36,71.64631",
+              "Rotation": "0,0,0.7071067,0.7071068",
+              "Scale": "0.5692485,0.6590909,0.5692485",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "3c1b8799-19d9-401a-9f96-ac4dfec792bb",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 100,
+                  "IsStatic": true,
+                  "Model": "models/props/temporary_fencing/fence_panel_large.vmdl",
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -526,6 +1058,10 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "based.guerrilla",
+    "facepunch.fence_panel_large",
+    "titanovsky.sbox_atm"
+  ],
   "__version": 1
 }
