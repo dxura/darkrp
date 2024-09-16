@@ -21,7 +21,7 @@
           "go": "38b6ec59-6293-4ece-901a-0868678dcd2c"
         },
         "IronsightsFireScale": 0.2,
-        "IsThrowable": false,
+        "IsThrowable": true,
         "ModelRenderer": {
           "_type": "component",
           "component_id": "29fa1c9f-4f24-4026-995d-3085b7034937",
