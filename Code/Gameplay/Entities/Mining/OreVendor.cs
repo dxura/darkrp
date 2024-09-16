@@ -9,9 +9,23 @@ public sealed class AtmEntity : BaseEntity
 {
 
 	[Property] public OreVendorMenu? _oreVendorMenu { get; set; }
+
+	/// The player state
+	public PlayerState PlayerState => PlayerState.Local;
+
 	public override void OnUse( Player player )
-	{   
-		_oreVendorMenu.IsVendorOpen = true;
+	{  
+		if(PlayerState.Local?.Job.Name != "Miner")
+		{
+        	Toast.Instance.Show($"[Ore Vendor] You must be a miner to sell ores!");
+        	return; 
+		}
+		else
+		{
+			_oreVendorMenu.IsVendorOpen = true;
+		}
+
+		
 	}
 
 }

@@ -57,7 +57,7 @@ public sealed class Rock1Entity : BaseEntity
 
     private void GiveOre()
     {
-        PlayerState.RockCount = PlayerState.RockCount + (int)_givenRocks;
+        PlayerState.SetRockAmount(PlayerState.RockCount + (int)_givenRocks);
         Log.Info(PlayerState.DisplayName + " has gained " + _givenRocks + " rocks" + " and has " + PlayerState.RockCount + " rocks in total");
 
     }

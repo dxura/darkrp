@@ -14,14 +14,14 @@
             <div class="content">
                 <div class="player-info">
                     <h2>Player Info</h2>
-                    <p>Money: $1000</p>
-                    <p>Ore: 0/10</p>
+                    <p>Money: $@(PlayerState.Balance.ToString( "N0" ))</p>
+                    <p>Your Ore: @(PlayerState.RockCount)</p>
                 </div>
                 <div class="selling">
-                    <h2>Selling</h2>
+               
                     <div class="ore">
                         <p>Diamond Ore</p>
-                        <button>Sell</button>
+                        <button class="sell-button" onclick=@(() => SellOres())>Sell</button>
                     </div>
                 </div>
  
@@ -34,11 +34,34 @@
 {
     [Property] public bool IsVendorOpen { get; set; } = false;
 
+	/// The player state
+	public PlayerState PlayerState => PlayerState.Local;
+
 	void CloseTab()
 	{
         Log.Info("Closing tab");
 		IsVendorOpen = false;
 	}
+
+    void SellOres()
+    {
+        int amount;
+
+        if (PlayerState.RockCount > 0)
+        {
+            amount = PlayerState.RockCount * 100;
+            PlayerState.GiveMoney(+amount);
+            Log.Info($"You have sold {PlayerState.RockCount} ores for ${amount}");
+            Toast.Instance.Show($"[Ore Vendor] You have sold {PlayerState.RockCount} ores for ${amount}");
+            PlayerState.SetRockAmount(0);
+        }
+        else
+        {
+            var message = "[Ore Vendor] You don't have any ores to sell!";
+            Log.Info(message);
+            Toast.Instance.Show(message);
+        }			
+    }
 
     protected override int BuildHash()
 	{
