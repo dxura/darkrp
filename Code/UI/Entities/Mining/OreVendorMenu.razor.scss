@@ -1,0 +1,78 @@
+OreVendorMenu{
+    .main-frame {
+		pointer-events: all;
+		display: flex;
+		flex-direction: column;
+
+        
+        width: 50%;
+        height: 50%;
+		background-color: #24292ff7;
+		color: #c9c9c9;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
+		border-radius: 10px;
+		box-shadow: 2px 2px 30px 1px #000000;
+
+        
+		.header{
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+
+            .title{
+                margin-left: 12px;
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+			.close-button{
+				padding: 10px;
+                margin: 14px;
+				font-size: 25px;
+				color: #c9c9c9;
+				border: 1px solid #c9c9c9;
+				border-radius: 5px;
+				cursor: pointer;
+			
+				&:hover{
+					background: linear-gradient(0deg, rgb(171, 62, 62) 0%, rgb(222, 3, 3) 100%);
+					color: white;
+				}
+			}
+     
+			
+		}
+
+        .content{
+            height: 100%;
+            width: auto;
+            display: flex;
+            flex-direction: row;            
+            background-color: red;
+            // align-items: center;
+            // justify-content: center;
+
+            .player-info{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 100px;
+                width: 50%;
+                height: auto;
+                background-color: black;
+            }
+
+            .selling{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                background-color: blue;
+            }
+        }
+    }
+}
+

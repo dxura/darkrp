@@ -1,0 +1,47 @@
+@namespace Dxura.Darkrp.UI
+@using Sandbox;
+@inherits PanelComponent
+
+
+<root>
+    @if(IsVendorOpen)
+    {
+        <div class="main-frame">
+            <div class="header">
+                <h1 class="title">Ore Vendor</h1>
+                <button class="close-button" onclick=@(() => CloseTab())>Close</button>
+            </div>
+            <div class="content">
+                <div class="player-info">
+                    <h2>Player Info</h2>
+                    <p>Money: $1000</p>
+                    <p>Ore: 0/10</p>
+                </div>
+                <div class="selling">
+                    <h2>Selling</h2>
+                    <div class="ore">
+                        <p>Diamond Ore</p>
+                        <button>Sell</button>
+                    </div>
+                </div>
+ 
+            </div>
+        </div>
+    }
+</root>
+
+@code
+{
+    [Property] public bool IsVendorOpen { get; set; } = false;
+
+	void CloseTab()
+	{
+        Log.Info("Closing tab");
+		IsVendorOpen = false;
+	}
+
+    protected override int BuildHash()
+	{
+		return HashCode.Combine(IsVendorOpen);
+	}
+}

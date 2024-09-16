@@ -95,6 +95,13 @@ public class EquipmentResource : GameResource
 
 	[Category( "Damage" )] public float? HelmetReduction { get; set; }
 
+	/// <summary>
+	/// Mining system pickaxe damage
+	/// </summary>
+	[Category( "Mining" )] public float PickaxeDamage { get; set; }
+
+
+
 	protected override void PostLoad()
 	{
 		if ( All.Contains( this ) )

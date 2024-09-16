@@ -490,6 +490,16 @@
       "Enabled": true,
       "__Prefab": "prefabs/mining/rocks/rock1.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "923eb8bb-e57c-49ef-9523-609867545804",
+      "Flags": 0,
+      "Name": "ore_vendor",
+      "Position": "-3282.531,-275.082,72.11343",
+      "Tags": "entity,interact",
+      "Enabled": true,
+      "__Prefab": "prefabs/mining/vendor/ore_vendor.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
@@ -516,8 +526,6 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [
-    "based.guerrilla"
-  ],
+  "__references": [],
   "__version": 1
 }

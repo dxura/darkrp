@@ -7,7 +7,7 @@ public class PickaxeEquipment : InputWeaponComponent
 
     // The damage the pickaxe does to rocks
     private float PickaxeDamage { get; set; } = 10f;
-    [Property] public PickaxeResource CurrentPickaxeResource { get; set; } = null!;
+    [Property] public EquipmentResource CurrentPickaxeResource { get; set; } = null!;
     private float _lastPickupTime;
     private const float DeltaPickupTime = 0.90f;
     protected override void OnStart()

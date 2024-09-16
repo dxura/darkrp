@@ -12,8 +12,8 @@
   "Equipment": [
     "gameplay/equipment/default/hands/hands.equip",
     "gameplay/equipment/default/physgun/physgun.equip",
-    "prefabs/mining/pickaxe/diamond_pickaxe/diamondpickaxe.pcx",
-    "prefabs/mining/pickaxe/stone_pickaxe/stonepickaxe.pcx"
+    "prefabs/mining/pickaxe/stone_pickaxe/stone_pickaxe.equip",
+    "prefabs/mining/pickaxe/diamond_pickaxe/dia_pickaxe.equip"
   ],
   "Vote": false,
   "__references": [],

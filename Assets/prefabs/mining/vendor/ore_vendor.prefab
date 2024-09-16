@@ -1,0 +1,148 @@
+{
+  "RootObject": {
+    "__guid": "2707b9ca-fc66-41b6-8e32-f340a2f77e7c",
+    "Flags": 0,
+    "Name": "ore_vendor",
+    "Tags": "entity,interact",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.AtmEntity",
+        "__guid": "13b1c816-3bfd-4ec5-8ba5-7e39e64a54d3",
+        "_oreVendorMenu": {
+          "_type": "component",
+          "component_id": "f7c6e237-ee95-4684-98ee-c2ecead5eaa1",
+          "go": "2707b9ca-fc66-41b6-8e32-f340a2f77e7c",
+          "component_type": "OreVendorMenu"
+        },
+        "EntityName": "Ore Vendor",
+        "HealthComponent": {
+          "_type": "component",
+          "component_id": "b96d0167-71a7-4a14-b74f-0bdf1de44a93",
+          "go": "2707b9ca-fc66-41b6-8e32-f340a2f77e7c",
+          "component_type": "HealthComponent"
+        }
+      },
+      {
+        "__type": "Dxura.Darkrp.HealthComponent",
+        "__guid": "b96d0167-71a7-4a14-b74f-0bdf1de44a93",
+        "IsGodMode": true,
+        "MaxHealth": 100
+      },
+      {
+        "__type": "Dxura.Darkrp.UI.OreVendorMenu",
+        "__guid": "f7c6e237-ee95-4684-98ee-c2ecead5eaa1",
+        "IsVendorOpen": false
+      },
+      {
+        "__type": "Sandbox.ScreenPanel",
+        "__guid": "28dc161f-7db4-4b5a-b686-470e5faaea6d",
+        "AutoScreenScale": true,
+        "Opacity": 1,
+        "Scale": 1,
+        "ScaleStrategy": "ConsistentHeight",
+        "ZIndex": 100
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "c68f8452-e30a-4b6f-b963-6c52807434a6",
+        "Flags": 0,
+        "Name": "Model",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "a7656fd5-1ae3-4225-87f3-6373901ec455",
+            "AnimationGraph": "animgraphs/human_player.vanmgrph",
+            "BodyGroups": 341,
+            "CreateBoneObjects": false,
+            "MaterialGroup": "Skin02",
+            "Model": "models/citizen_human/citizen_human_male.vmdl",
+            "Morphs": {
+              "browDown_L": 1,
+              "browDown_R": 1,
+              "browInnerUp": 1,
+              "eyeBlink_L": 0,
+              "eyeBlink_R": 0,
+              "eyeLookDown_L": 0,
+              "eyeLookDown_R": 0,
+              "cheekPuff": 0,
+              "cheekSquint_L": 0.36479998,
+              "cheekSquint_R": 0.38,
+              "noseSneer_L": 0.66,
+              "noseSneer_R": 0.66,
+              "jawForward": 1,
+              "jawLeft": 0,
+              "jawOpen": 0.23,
+              "jawRight": 0,
+              "mouthClose": 0.86
+            },
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "ed008914-42eb-43fe-95d4-b0c642205b24",
+            "Center": "0,0,32.71999",
+            "IsTrigger": false,
+            "Scale": "20.63992,32.63994,63.60006",
+            "Static": false
+          },
+          {
+            "__type": "Sandbox.HighlightOutline",
+            "__guid": "4c520a1d-93e7-49e2-9816-231be2e085e5",
+            "Color": "1,1,1,0",
+            "InsideColor": "0,0,0,0",
+            "InsideObscuredColor": "0,0,0,0",
+            "ObscuredColor": "0,0,0,0",
+            "Width": 0.25
+          }
+        ]
+      },
+      {
+        "__guid": "766e7119-8faf-4a95-8ed4-9ed474e85bc8",
+        "Flags": 0,
+        "Name": "NamePlate",
+        "Position": "0,0,76.8277",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "ad1f4883-eba5-4a0a-a3f8-729b93edaf3b",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": false,
+            "PanelSize": "900,218.3201",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.OreVendorNamePlate",
+            "__guid": "8ffc907c-284b-4e34-8cdb-b1ad19207653"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
