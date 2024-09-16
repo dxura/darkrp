@@ -43,6 +43,5 @@ To ensure code quality and maintainability, please adhere to the following guide
 - Grepid : Flashlight system
 - Fnasp : Door radial menu and title system
 ## Links
-- S&Box Page: https://sbox.game/sousoup/darkrp
+- S&Box Page: https://sbox.game/dxura/darkrp
 - Discord: https://discord.com/invite/yBDk9Xr6VB
-- GitHub (Orginial): https://github.com/sousou63/DarkRP 
