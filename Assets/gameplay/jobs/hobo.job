@@ -1,6 +1,6 @@
 {
   "Name": "Hobo",
-  "Description": "The lowest member of society. Begs for food and money, and builds makeshift homes.",
+  "Description": "Hobo",
   "Color": "0,0,0,1",
   "Group": "gameplay/jobs/groups/civilian.group",
   "SortingLevel": 0,
