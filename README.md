@@ -12,7 +12,8 @@ This open-source project aims to bring the popular **DarkRP gamemode** to the **
 ## Useful Links
 - [S&Box Page](https://sbox.game/dxura/darkrp)
 - [Discord](https://discord.com/invite/yBDk9Xr6VB)
-
+- [Project Board](https://github.com/orgs/dxura/projects/5)
+  
 ## Roadmap
 - **Milestone 1**: Full port of orginial DarkRP mechanics and jobs to S&Box.
 - **Milestone 2**: TBD
