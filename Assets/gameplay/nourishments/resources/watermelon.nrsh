@@ -1,0 +1,14 @@
+{
+  "Name": "Watermelon",
+  "ModelColor": "0,0,0,0",
+  "Model": "models/sbox_props/watermelon/watermelon.vmdl",
+  "ModelMaterial": null,
+  "NourishmentType": "Food",
+  "Price": 1,
+  "UseSound": "sounds/kenney/ui/ui.favourite.sound",
+  "HealAmount": 100,
+  "__references": [
+    "facepunch.watermelon"
+  ],
+  "__version": 0
+}
