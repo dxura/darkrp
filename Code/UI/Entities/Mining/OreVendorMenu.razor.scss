@@ -1,20 +1,22 @@
 OreVendorMenu{
+    height: 100%;
+    margin: 0;
+
     .main-frame {
 		pointer-events: all;
 		display: flex;
 		flex-direction: column;
-
-        
-        width: 50%;
+        margin-top: 200px;
+        margin-left: 470px;
         height: 50%;
+        width: 1200px;
 		background-color: #24292ff7;
 		color: #c9c9c9;
 		font-family: 'Roboto', sans-serif;
 		font-weight: 400;
 		border-radius: 10px;
 		box-shadow: 2px 2px 30px 1px #000000;
-
-        
+   
 		.header{
             justify-content: space-between;
             align-items: center;
