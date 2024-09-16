@@ -1,0 +1,70 @@
+{
+  "RootObject": {
+    "__guid": "c8275057-ac8f-449e-9066-9c0dfec68f62",
+    "Flags": 0,
+    "Name": "snack_machine",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "b999a852-18d8-4694-beff-980d2f9ad114",
+        "BodyGroups": 18446744073709551615,
+        "Health": 0,
+        "IsStatic": true,
+        "Model": "models/props/vending/tempvending_snackmachine001a.vmdl",
+        "StartAsleep": false,
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Dxura.Darkrp.VendingMachine",
+        "__guid": "6027a13a-4ee3-4bfb-9339-90c1415b12f8",
+        "BuySound": "sounds/ui/buy.sound",
+        "EntityName": "Base Entity",
+        "NourishmentItemPrefab": {
+          "_type": "gameobject",
+          "prefab": "gameplay/nourishments/prefabs/nourishment.prefab"
+        },
+        "NourishmentType": "Food"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "e581da5f-b943-4fb3-a772-abf2cd8974b0",
+        "Flags": 0,
+        "Name": "display",
+        "Position": "13.36028,-3.079707,50.27859",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "fa05a876-01bb-414a-bbff-7f1136346e19",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": false,
+            "PanelSize": "590,1000",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.VendingMachineDisplay",
+            "__guid": "fd75c502-5b94-4a57-abc4-d865dadb9643"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

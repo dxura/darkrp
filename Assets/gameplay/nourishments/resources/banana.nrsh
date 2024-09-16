@@ -1,0 +1,14 @@
+{
+  "Name": "Banana",
+  "ModelColor": "0,0,0,0",
+  "Model": "models/banana/banana.vmdl",
+  "ModelMaterial": null,
+  "NourishmentType": "Food",
+  "Price": 50,
+  "UseSound": "sounds/kenney/ui/ui.favourite.sound",
+  "HealAmount": 5,
+  "__references": [
+    "caro.banana"
+  ],
+  "__version": 0
+}

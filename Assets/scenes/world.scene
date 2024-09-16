@@ -920,23 +920,25 @@
       "Enabled": true,
       "Children": [
         {
-          "__guid": "c8275057-ac8f-449e-9066-9c0dfec68f62",
+          "__guid": "855bfb1c-5f20-47ab-ba61-2ed927c761c9",
           "Flags": 0,
-          "Name": "tempvending_snackmachine001a",
-          "Position": "-2806,214.9998,72",
+          "Name": "drinks_machine",
+          "Position": "-2857.703,215.4722,72",
           "Rotation": "0,-0,-0.7071068,0.7071068",
           "Enabled": true,
-          "__Prefab": "prefabs/props/vending/tempvending_snackmachine001a.prefab",
+          "NetworkMode": 1,
+          "__Prefab": "gameplay/nourishments/prefabs/drinks_machine.prefab",
           "__PrefabVariables": {}
         },
         {
-          "__guid": "fbfb7cc6-800c-4376-afcb-d7d65301fe67",
+          "__guid": "5145d327-4b45-477f-b743-58c0271f9cd1",
           "Flags": 0,
-          "Name": "tempvending_drinksmachine001a",
-          "Position": "-2855,209,72",
+          "Name": "snack_machine",
+          "Position": "-2803.387,216.1423,72",
           "Rotation": "0,-0,-0.7071068,0.7071068",
           "Enabled": true,
-          "__Prefab": "prefabs/props/vending/tempvending_drinksmachine001a.prefab",
+          "NetworkMode": 1,
+          "__Prefab": "gameplay/nourishments/prefabs/snack_machine.prefab",
           "__PrefabVariables": {}
         }
       ]
