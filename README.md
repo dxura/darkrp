@@ -1,32 +1,44 @@
 # DarkRP for S&Box
 
-## What is this?
-This open-source project aims to bring the popular DarkRP gamemode to the S&Box platform.
+## Overview
+This open-source project aims to bring the popular **DarkRP gamemode** to the **S&Box** platform. Our goal is to faithfully recreate the core mechanics of DarkRP while leveraging the advanced features and capabilities of S&Box.
 
-## Links
-- S&Box Page: https://sbox.game/dxura/darkrp
-- Discord: https://discord.com/invite/yBDk9Xr6VB
+## Features
+- **Modern**: Leverages the power and performance of the latest Source 2 engine for enhanced graphics, physics, and performance.
+- **Cloud Asset Integration**: Effortlessly access and use cloud-based assets, making it easy to roleplay anything & everything.
+- **Modern UI**: A fully revised, responsive user interface designed for a smooth, intuitive player experience.
+- **Classic Map Reimagined**: Faithful recreation of the iconic DarkRP map, **rp_downtown_v2**, optimized for Source 2 with enhanced visuals and performance.
 
+## Useful Links
+- [S&Box Page](https://sbox.game/dxura/darkrp)
+- [Discord](https://discord.com/invite/yBDk9Xr6VB)
 
-## Project Leads
-- Sousou  : Initial Project Creator
-- QueenPM : Project Manager
-- Dimmer  : Project Manager (HC1 Base)
+## Roadmap
+- **Milestone 1**: Full port of orginial DarkRP mechanics and jobs to S&Box.
+- **Milestone 2**: TBD
+- **Milestone 3**: TBD
 
-
+## Contributing
+Interested in contributing? Whether you’re a developer, artist, or tester, we welcome all kinds of contributions. Check out our [Contributing Guidelines](https://github.com/dxura/darkrp/blob/main/CONTRIBUTING.md) to get started. 
+Our Discord is also a great place to connect with the team and get involved.
 
 ## Contributors
-- Bozy         : Job System ( Initial System )
-- Dada         : Important texturing and props placement work on our map
-- Dancore      : Entity system, Money Entity, Cloud Asset spawn system/Menu, ported rp_downtown_v2 to source 2, Chat enhancements
-- Dimmer       : Props grab system, Weapon ressources
-- EuroBlue     : Door contribution, Persistence system
-- Fnasp        : Door Menu & Title System
-- Goodmittens  : Money Printer ( Model & Material )
-- Grepid       : Flashlight system
-- HankKitts    : Model Contributions ( Money, Bench, Buildings, Door and DoorFrame ) include Materials.
-- IRLadderGoat : Scoreboard foundation, Physic Handling
-- Mangrogred   : Money Interaction
-- QueenPM      : Chat Enhancements, UI Improvements, Door, Usergroup, No-Clipping & Command Systems.
-- Red          : UI Refactorin
-- Stefan       : Job System Refactoring ( Current System ).
+
+### Core
+- **Sousou** 
+- **QueenPM**
+- **Dimmer**
+
+### Additional
+- **Bozy** : Job System (Initial System)
+- **Dada** : Texturing and prop placement work on the map
+- **Dancore** : Entity system, Money Entity, Cloud Asset spawn system/Menu, ported rp_downtown_v2 to Source 2, Chat enhancements
+- **EuroBlue** : Door contribution, Persistence system
+- **Fnasp** : Door Menu & Title System
+- **Goodmittens** : Money Printer (Model & Material)
+- **Grepid** : Flashlight system
+- **HankKitts** : Model contributions (Money, Bench, Buildings, Door, and DoorFrame) including Materials
+- **IRLadderGoat** : Scoreboard foundation, Physics Handling
+- **Mangrogred** : Money Interaction
+- **Red** : UI Refactoring
+- **Stefan** : Job System Refactoring (Current System)
