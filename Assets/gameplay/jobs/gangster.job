@@ -1,13 +1,13 @@
 {
-  "Name": "Mafia",
-  "Description": "Mafia",
+  "Name": "Gangster",
+  "Description": " The lowest person in crime. Generally works for the Mob boss who runs the crime family.\nWeapons: None",
   "Color": "1,0.17209,0.9862,1",
   "Group": "gameplay/jobs/groups/illegal.group",
   "SortingLevel": 0,
   "Models": [
     "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
   ],
-  "Salary": 10,
+  "Salary": 50,
   "MaxWorkers": 24,
   "Equipment": [
     "gameplay/equipment/default/physgun/physgun.equip",

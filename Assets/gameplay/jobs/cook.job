@@ -1,13 +1,13 @@
 {
-  "Name": "Chief Cook",
-  "Description": "Feed People",
+  "Name": "Cook",
+  "Description": "Responsible for feeding other members of the city. Can spawn a microwave and sell food.",
   "Color": "0.91667,0,1,1",
   "Group": "gameplay/jobs/groups/civilian.group",
   "SortingLevel": 0,
   "Models": [
     "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
   ],
-  "Salary": 30,
+  "Salary": 35,
   "MaxWorkers": 0,
   "Equipment": [
     "gameplay/equipment/default/physgun/physgun.equip",

@@ -1,6 +1,6 @@
 {
   "Name": "Medic",
-  "Description": "Medic",
+  "Description": "Uses medical knowledge to restore players to full health. Essential for healing in the city.",
   "Color": "1,1,1,1",
   "Group": "gameplay/jobs/groups/civilian.group",
   "SortingLevel": 0,

@@ -1,13 +1,13 @@
 {
   "Name": "Gun Dealer",
-  "Description": "Gun dealers can sell guns to the public they must have a public gun store and can sell guns with/without a license. ",
+  "Description": "The only person who can sell guns to others. Must avoid getting caught selling illegal firearms.",
   "Color": "1,0.64706,0,1",
   "Group": "gameplay/jobs/groups/civilian.group",
   "SortingLevel": 2,
   "Models": [
     "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
   ],
-  "Salary": 10,
+  "Salary": 50,
   "MaxWorkers": 4,
   "Equipment": [
     "gameplay/equipment/default/hands/hands.equip",
