@@ -4,6 +4,7 @@
   top: 10%;
   font-size: 50px;
 
+
   .background {
     position: absolute;
     opacity: 0.1;
@@ -13,4 +14,13 @@
 
   overflow: hidden;
   z-index: 25;
+
+  &.Generic {
+    background-color: rgba( black, 0.25 );
+  }
+
+  &.Error {
+    background-color: #ff0000;
+    color: #ffffff;
+  }
 }

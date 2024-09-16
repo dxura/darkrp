@@ -1,47 +1,45 @@
 # DarkRP for S&Box
-## Introduction
-This open-source project aims to bring the popular DarkRP gamemode to the S&Box platform.
 
-## Getting Involved
-To contribute to the project, please submit Pull Requests adhering to the following guidelines:
-- **Focused Changes:** Each Pull Request should address a single feature, modification, or bug fix.
-- **Clear Descriptions:** Provide a concise summary of the changes introduced in the Pull Request.
-- **Documentation for Core Features:** If your contribution is a fundamental component that other parts of the project will rely on, please include detailed documentation with usage examples.
-- **Code Reusability:** Strive to minimize code duplication by leveraging existing components and functions. Consider creating reusable modules or libraries for shared logic.
-- **Follow Code Guidelines:** Please follow our [Code Guidelines](#code-guidelines).
+## Overview
+This open-source project aims to bring the popular **DarkRP gamemode** to the **S&Box** platform. Our goal is to faithfully recreate the core mechanics of DarkRP while leveraging the advanced features and capabilities of S&Box.
 
-### Effective Communication
+## Features
+- **Modern**: Leverages the power and performance of the latest Source 2 engine for enhanced graphics, physics, and performance.
+- **Cloud Asset Integration**: Effortlessly access and use cloud-based assets, making it easy to roleplay anything & everything.
+- **Modern UI**: A fully revised, responsive user interface designed for a smooth, intuitive player experience.
+- **Classic Map Reimagined**: Faithful recreation of the iconic DarkRP map, **rp_downtown_v2**, optimized for Source 2 with enhanced visuals and performance.
 
-Open communication is essential for a successful project! We encourage you to join our [Discord server](https://discord.com/invite/yBDk9Xr6VB) before contributing. This is a great platform to:
+## Useful Links
+- [S&Box Page](https://sbox.game/dxura/darkrp)
+- [Discord](https://discord.com/invite/yBDk9Xr6VB)
+- [Project Board](https://github.com/orgs/dxura/projects/5)
+  
+## Roadmap
+- **Milestone 1**: Full port of orginial DarkRP mechanics and jobs to S&Box.
+- **Milestone 2**: TBD
+- **Milestone 3**: TBD
 
-- Discuss your ideas and plans with the development team.
-- Get feedback on potential contributions.
-- Collaborate with other developers on complex features.
-- By fostering open communication, we can ensure efficient development and a more cohesive codebase.
+## Contributing
+Interested in contributing? Whether you’re a developer, artist, or tester, we welcome all kinds of contributions. Check out our [Contributing Guidelines](https://github.com/dxura/darkrp/blob/main/CONTRIBUTING.md) to get started. 
+Our Discord is also a great place to connect with the team and get involved.
 
-## Code Guidelines
-To ensure code quality and maintainability, please adhere to the following guidelines:
+## Contributors
 
-- Clarity: Write clean, well-structured code with clear and concise comments.
-- Efficiency: Optimize code for performance and resource usage.
-- Error Handling: Implement error handling to handle exceptions. We prefer to have a low poop rating.
-- Consistency: Follow consistent coding style and formatting conventions. [See](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names)
-## Credits
-- Sousou : Project initiation and management - general coding
-- QueenPM : Project management - Chat enhancements - UI improvements - doors system - code optimization - user groups - no-clip system - commands system
-- Stefan : Job system
-- HankKitts : Money, bench, building, door and doorframe 3d model - materials texturing  
-- dancore : Entity system - code optimization - Money Entity - Cloud Asset spawn system/Menu - ported rp_downtown_v2 to source 2 - Chat enhancements
-- Bozy : Job system contribution
-- IRLadderGoat : Scoreboard foundation - code refactoring - physic handling
-- Mangrogred : Money pickup - tweaks - general work  
-- Dada : Important texturing and props placement work on our map
-- Red ([SebbeJohansson](https://github.com/SebbeJohansson)) : UI refactoring and enhancement work 
-- goodmittens : Money printer 3d model and materials
-- EuroBlue : Linux library implementation - Door contribution - persistence ( save ) system
-- Dimmer : Code fixes for Rider IDE - props grab system - weapon ressources - code refactoring
-- Grepid : Flashlight system
-- Fnasp : Door radial menu and title system
-## Links
-- S&Box Page: https://sbox.game/dxura/darkrp
-- Discord: https://discord.com/invite/yBDk9Xr6VB
+### Core
+- **Sousou** 
+- **QueenPM**
+- **Dimmer**
+
+### Additional
+- **Bozy** : Job System (Initial System)
+- **Dada** : Texturing and prop placement work on the map
+- **Dancore** : Entity system, Money Entity, Cloud Asset spawn system/Menu, ported rp_downtown_v2 to Source 2, Chat enhancements
+- **EuroBlue** : Door contribution, Persistence system
+- **Fnasp** : Door Menu & Title System
+- **Goodmittens** : Money Printer (Model & Material)
+- **Grepid** : Flashlight system
+- **HankKitts** : Model contributions (Money, Bench, Buildings, Door, and DoorFrame) including Materials
+- **IRLadderGoat** : Scoreboard foundation, Physics Handling
+- **Mangrogred** : Money Interaction
+- **Red** : UI Refactoring
+- **Stefan** : Job System Refactoring (Current System)
