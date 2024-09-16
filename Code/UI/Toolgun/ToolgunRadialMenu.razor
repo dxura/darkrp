@@ -2,34 +2,24 @@
 @using Sandbox.UI;
 @inherits PanelComponent
 
+@namespace Dxura.Darkrp.UI
+
 <root>
-	<div class="radial-menu" onclick="@(() => HandleCenterClick())">
-        <label class="title">Menu</label>
+	<div class="menu">
+        <p>Menu</p>
     </div>
-    <div class="options">
-        <div class="btn">
-            <i class="material-icons md-36">photo_camera</i>
+    <div class="submenu">
+        <div>
+            <p> Utility </p>
         </div>
-        <div class="btn">
-            <i class="material-icons md-36">photo</i>
+        <div>
+            <p> Fun </p>
         </div>
-        <div class="btn">
-            <i class="material-icons md-36">music_note</i>
+        <div>
+            <p> Placeholder </p>
         </div>
-        <div class="btn">
-            <i class="material-icons md-36">chat_bubble</i>
-        </div>
-        <div class="btn">
-            <i class="material-icons md-36">settings</i>
-        </div>
-        <div class="btn">
-            <i class="material-icons md-36">phone</i>
-        </div>
-        <div class="btn">
-            <i class="material-icons md-36">cloud</i>
-        </div>
-        <div class="btn">
-            <i class="material-icons md-36">videocam</i>
+        <div>
+            <p> Placeholder </p>
         </div>
     </div>
 </root>
@@ -37,23 +27,19 @@
 @code
 {
     [Property] public EquipmentResource Toolgun { get; set; } = null!;
-	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
 
     public Player Player => PlayerState.Local.Player;
     protected bool IsActive { get; set; }
 
-    protected bool IsRadialMenuActive { get; set; }
-
     protected override void OnTreeFirstBuilt()
 	{
 		BindClass( "active", () => IsActive );
-        BindClass( "radial-active", () => IsRadialMenuActive );
 	}
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine(MyStringValue, IsActive, IsRadialMenuActive);
+	protected override int BuildHash() => System.HashCode.Combine(IsActive);
 
 
     protected override void OnUpdate()
@@ -67,16 +53,6 @@
         {
             Log.Info("Toggling Toolgun Radial Menu");
             IsActive ^= true;
-
-            if ( IsActive )
-            {
-                IsRadialMenuActive = false;
-            }
         }
 	}
-
-        private void HandleCenterClick()
-        {
-            IsRadialMenuActive ^= true;
-        }
 }

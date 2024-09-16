@@ -48,9 +48,8 @@
             "ZIndex": 100
           },
           {
-            "__type": "ToolgunRadialMenu",
-            "__guid": "e4299bbb-b182-4206-a4e2-555d9b449cc3",
-            "MyStringValue": "Hello World!",
+            "__type": "Dxura.Darkrp.UI.ToolgunRadialMenu",
+            "__guid": "cb96ef41-a6b1-4fc3-834f-112789d9dfb3",
             "Toolgun": "gameplay/equipment/default/toolgun/toolgun.equip"
           }
         ]
