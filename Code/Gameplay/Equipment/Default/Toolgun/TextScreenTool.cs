@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 
-namespace Dxdua.Darkrp;
+namespace Dxura.Darkrp;
 
 public class TextScreenTool : Tool
 {

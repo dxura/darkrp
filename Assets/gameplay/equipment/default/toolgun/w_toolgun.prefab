@@ -74,8 +74,8 @@
         "Enabled": true,
         "Components": [
           {
-            "__type": "Dxdua.Darkrp.ToolGunEquipment",
-            "__guid": "667eef1a-93e3-4860-beb5-3b6bd0eda96a",
+            "__type": "Dxura.Darkrp.UI.ToolGunEquipment",
+            "__guid": "df9a64ff-88f7-43a6-868d-0183e09aad85",
             "InputActions": [
               "Attack1"
             ],
@@ -83,15 +83,15 @@
             "Tools": [
               {
                 "_type": "component",
-                "component_id": "ea0e5fc7-ba1d-42d0-a5bb-5626c6a9c1d3",
+                "component_id": "41ddb087-a85b-45a8-8365-9c5cbb2ea67c",
                 "go": "2611b608-4dd6-4484-9ca7-12267d6cc29c",
                 "component_type": "TextScreenTool"
               }
             ]
           },
           {
-            "__type": "Dxdua.Darkrp.TextScreenTool",
-            "__guid": "ea0e5fc7-ba1d-42d0-a5bb-5626c6a9c1d3"
+            "__type": "Dxura.Darkrp.TextScreenTool",
+            "__guid": "41ddb087-a85b-45a8-8365-9c5cbb2ea67c"
           }
         ]
       },

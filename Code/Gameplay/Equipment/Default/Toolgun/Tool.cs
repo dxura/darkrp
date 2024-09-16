@@ -1,4 +1,4 @@
-﻿namespace Dxdua.Darkrp;
+﻿namespace Dxura.Darkrp;
 
 public abstract class Tool: Component, IDescription
 {

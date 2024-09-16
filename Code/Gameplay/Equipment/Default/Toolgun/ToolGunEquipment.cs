@@ -1,4 +1,4 @@
-namespace Dxdua.Darkrp;
+namespace Dxura.Darkrp.UI;
 
 using Sandbox;
 public class ToolGunEquipment : InputWeaponComponent
@@ -6,26 +6,25 @@ public class ToolGunEquipment : InputWeaponComponent
 
     [Property] public List<Tool> Tools { get; set; } = new();
 
+    private Tool? CurrentTool = null!;
+
     protected override void OnInputUpdate()
     {
         if (Input.Down("attack1"))
         {
-            var selectedTool = GetSelectedTool("Text Screen");
-            
-
+           
             // Is there a better way to do this?
             var currentPlayer = PlayerState.Local!.Player!;
 
-            if (selectedTool != null)
+            if (CurrentTool != null)
             {
-                selectedTool.UseTool(currentPlayer);
+                CurrentTool.UseTool(currentPlayer);
             }
         }
     }
 
-
-    private Tool? GetSelectedTool(string toolName)
+    public void SetCurrentTool(string toolName)
     {
-        return Tools.Find(tool => tool.Name == toolName);
+        CurrentTool = Tools.Find(tool => tool.Name == toolName);
     }
 }

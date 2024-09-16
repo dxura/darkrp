@@ -9,24 +9,25 @@
         <p>Menu</p>
     </div>
     <div class="submenu">
-        <div>
-            <p> Utility </p>
-        </div>
-        <div>
-            <p> Fun </p>
-        </div>
-        <div>
-            <p> Placeholder </p>
-        </div>
-        <div>
-            <p> Placeholder </p>
-        </div>
+        @for (var i = 0; i < 4; i++)
+        {
+            var currentTool = i > ToolGunEquipment.Tools.Count() - 1 ? null : ToolGunEquipment.Tools[i];
+            var toolName = currentTool != null ? currentTool.Name : "Placeholder";
+             
+            <div onclick="@(() => SetCurrentTool(toolName))">
+                <p>
+                    @toolName
+                </p>
+            </div>
+        }
     </div>
 </root>
 
 @code
 {
     private Player Player => PlayerState.Local.Player;
+    private ToolGunEquipment ToolGunEquipment = null!;
+
     protected bool IsActive { get; set; }
 
     protected override void OnTreeFirstBuilt()
@@ -37,16 +38,22 @@
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(IsActive);
+    protected override int BuildHash() => System.HashCode.Combine(IsActive, ToolGunEquipment);
 
 
     protected override void OnUpdate()
     {
         base.OnUpdate();
 
-        if(Player.CurrentEquipment.Resource.Name != "Toolgun") return;
+        if ( Player.CurrentEquipment.Resource.Name != "Toolgun" ) return;
 
-        Log.Info("test");
+        if ( ToolGunEquipment == null )
+        {
+            var tempTool = Player.CurrentEquipment.Components.Get<ToolGunEquipment>(FindMode.EnabledInSelfAndDescendants);
+            if ( tempTool == null ) return;
+
+            ToolGunEquipment = tempTool;
+        }
 
         if (Input.Pressed("Use") && !IsActive)
         {
@@ -64,5 +71,11 @@
         {
             IsActive = false;
         }
-	}
+    }
+
+    private void SetCurrentTool(string toolName)
+    {
+        Log.Info("Setting current tool to " + toolName);
+        ToolGunEquipment.SetCurrentTool(toolName);
+    }
 }
