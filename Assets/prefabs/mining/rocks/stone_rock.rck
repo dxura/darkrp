@@ -2,9 +2,9 @@
   "Name": "Stone Rock",
   "Description": null,
   "Health": 100,
-  "GivenRocks": 5,
+  "GivenRocks": 3,
   "Model": "models/mining/rocks/rock1.vmdl",
-  "RespawnTime": 2,
+  "RespawnTime": 10,
   "HitSound": "sounds/mining/rock_chop.sound",
   "__references": [],
   "__version": 0

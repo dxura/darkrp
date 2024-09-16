@@ -1,9 +1,14 @@
 OreVendorMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
     .main-frame {
 		pointer-events: all;
 		display: flex;
 		flex-direction: column;
-        margin-top: 200px;
+        // margin-top: 200px;
         margin-left: 470px;
         height: 50%;
         width: 1200px;
@@ -68,16 +73,31 @@ OreVendorMenu{
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                // background-color: #2078e4f7;
                 
                 .ore{
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-around;
+                    justify-content: space-evenly;
                     align-items: center;
                     width: 100%;
-                    height: 120px;
-                    // background-color: red;
+                    height: 80%;
+                 
+                    
+
+                    .ore-info{
+                        font-size: 30px;
+                        font-weight: 600;
+                    }
+                    
+                    .textEntry{
+                        width: 250px;
+                        height: 50px;
+                        border: 1px solid #c9c9c9;
+                        font-size: 35px;
+                        font-weight: 400;
+              
+                      
+                    }
                
                     .sell-button{    
                         font-size: 25px;

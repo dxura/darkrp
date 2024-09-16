@@ -4,7 +4,7 @@
 
 
 <root>
-    @if(IsVendorOpen)
+    @if (IsVendorOpen)
     {
         <div class="main-frame">
             <div class="header">
@@ -14,17 +14,18 @@
             <div class="content">
                 <div class="player-info">
                     <h2>Player Info</h2>
-                    <p>Money: $@(PlayerState.Balance.ToString( "N0" ))</p>
+                    <p>Money: $@(PlayerState.Balance.ToString("N0"))</p>
                     <p>Your Ore: @(PlayerState.RockCount)</p>
                 </div>
                 <div class="selling">
-               
+
                     <div class="ore">
-                        <p>Diamond Ore</p>
+                        <p class="ore-info">Sell Ores</p>
+                        <TextEntry Numeric="@true" @ref="TextEntry"></TextEntry>
                         <button class="sell-button" onclick=@(() => SellOres())>Sell</button>
                     </div>
                 </div>
- 
+
             </div>
         </div>
     }
@@ -33,38 +34,48 @@
 @code
 {
     [Property] public bool IsVendorOpen { get; set; } = false;
+    public TextEntry TextEntry { get; set; }
 
-	/// The player state
-	public PlayerState PlayerState => PlayerState.Local;
+    /// The player state
+    public PlayerState PlayerState => PlayerState.Local;
 
-	void CloseTab()
-	{
+    void CloseTab()
+    {
         Log.Info("Closing tab");
-		IsVendorOpen = false;
-	}
+        IsVendorOpen = false;
+    }
 
     void SellOres()
     {
-        int amount;
 
-        if (PlayerState.RockCount > 0)
+        int amount;
+        int amountMultiply;
+
+        if (!Int32.TryParse(TextEntry.Value, out amount) || amount <= 0)
         {
-            amount = PlayerState.RockCount * 100;
-            PlayerState.GiveMoney(+amount);
-            Log.Info($"You have sold {PlayerState.RockCount} ores for ${amount}");
-            Toast.Instance.Show($"[Ore Vendor] You have sold {PlayerState.RockCount} ores for ${amount}");
-            PlayerState.SetRockAmount(0);
+            Log.Info("[Ore Vendor] Invalid amount");
+            Toast.Instance.Show("[Ore Vendor] Invalid amount. Please type a right amount", ToastType.Error);
+            return;
         }
-        else
+
+        if (amount > PlayerState.RockCount)
         {
-            var message = "[Ore Vendor] You don't have any ores to sell!";
+            var message = "[Ore Vendor] You don't have that much ore!";
             Log.Info(message);
-            Toast.Instance.Show(message);
-        }			
+            Toast.Instance.Show(message, ToastType.Error);
+            return;
+        }
+
+        amountMultiply = amount * 100;
+        PlayerState.SetRockAmount(PlayerState.RockCount - amount);
+        PlayerState.GiveMoney(amountMultiply);
+        Log.Info($"[Ore Vendor] You have sold {amount} ores for ${amountMultiply}");
+        Toast.Instance.Show($"[Ore Vendor] You have sold {amount} ores for ${amountMultiply}");
+        
     }
 
     protected override int BuildHash()
-	{
-		return HashCode.Combine(IsVendorOpen);
-	}
+    {
+        return HashCode.Combine(IsVendorOpen);
+    }
 }
