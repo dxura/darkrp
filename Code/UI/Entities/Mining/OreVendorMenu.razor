@@ -54,7 +54,7 @@
         if (!Int32.TryParse(TextEntry.Value, out amount) || amount <= 0)
         {
             Log.Info("[Ore Vendor] Invalid amount");
-            Toast.Instance.Show("[Ore Vendor] Invalid amount. Please type a right amount", ToastType.Error);
+            Toast.Instance.Show("[Ore Vendor] Invalid amount. Please type a right amount!", ToastType.Error);
             return;
         }
 
