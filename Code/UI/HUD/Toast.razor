@@ -5,7 +5,7 @@
 
 @using System.Text;
 
-<root class="hidden @BuildClass()" style="@BuildStyle()">
+<root class="hidden @BuildClass()">
 	<label class="emphasis">@Status</label>
 </root>
 
@@ -43,10 +43,5 @@
 		sb.Append( $"{Type} " );
 
 		return sb.ToString();
-	}
-
-	private string BuildStyle()
-	{
-		return "background-color: rgba( black, 0.25 );";
 	}
 }

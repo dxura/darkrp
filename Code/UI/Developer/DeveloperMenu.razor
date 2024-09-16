@@ -23,6 +23,12 @@
 {
 	protected bool IsActive { get; set; }
 
+	private Dictionary<string, string> _developerSteamIds = new()
+	{
+		{ "Dimmerly", "76561198047807813" },
+		{ "iJoshJenkins", "76561198027773037" }
+	};
+
 	protected override void OnTreeFirstBuilt()
 	{
 		BindClass( "active", () => IsActive );
@@ -32,7 +38,7 @@
 	{
 		method?.Invoke( null );
 	}
-	
+
 	protected override void OnUpdate()
 	{
 		if ( PlayerState.Local == null )
@@ -40,7 +46,10 @@
 			return;
 		}
 
-		if ( PlayerState.Local.UID != "76561198047807813" ) return;
+		if ( !_developerSteamIds.ContainsValue( PlayerState.Local.UID ) )
+		{
+			return;
+		}
 
 		if ( Input.Pressed( "DeveloperMenu" ) )
 		{

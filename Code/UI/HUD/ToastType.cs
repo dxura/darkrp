@@ -2,5 +2,6 @@
 
 public enum ToastType
 {
-	Generic
+	Generic,
+	Error
 }

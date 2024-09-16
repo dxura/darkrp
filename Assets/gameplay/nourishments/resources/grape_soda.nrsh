@@ -1,0 +1,12 @@
+{
+  "Name": "Grape Soda",
+  "ModelColor": "0.4,0,1,1",
+  "Model": "models/citizen_props/sodacan01.vmdl",
+  "ModelMaterial": null,
+  "NourishmentType": "Drink",
+  "Price": 200,
+  "UseSound": "sounds/water/water_splash_medium.sound",
+  "HealAmount": 30,
+  "__references": [],
+  "__version": 0
+}
