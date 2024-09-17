@@ -128,7 +128,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 			Pixelate = PlayerCameraGameObject.Components.GetOrCreate<Pixelate>();
 			ChromaticAberration = PlayerCameraGameObject.Components.GetOrCreate<ChromaticAberration>();
 			AudioListener = PlayerCameraGameObject.Components.GetOrCreate<AudioListener>();
-			ScreenShaker = PlayerCameraGameObject.Components.GetOrCreate<ScreenShaker>();
+			/*ScreenShaker = PlayerCameraGameObject.Components.GetOrCreate<ScreenShaker>();*/
 
 			// Optional
 			ColorAdjustments = PlayerCameraGameObject.Components.Get<ColorAdjustments>();
@@ -289,7 +289,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		Boom.Transform.LocalPosition = Vector3.Zero.WithZ( eyeHeight );
 
 		ApplyCameraEffects();
-		ScreenShaker?.Apply( Camera );
+		/*ScreenShaker?.Apply( Camera );*/
 
 		_targetFieldOfView = _targetFieldOfView.LerpTo( baseFov + _fieldOfViewOffset, Time.Delta * 5f );
 		Camera.FieldOfView = _targetFieldOfView;

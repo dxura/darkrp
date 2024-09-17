@@ -78,7 +78,8 @@
       },
       {
         "__type": "Dxura.Darkrp.ScreenShaker",
-        "__guid": "e405a983-581c-4843-b72d-bd6afa755f8f"
+        "__guid": "e405a983-581c-4843-b72d-bd6afa755f8f",
+        "__enabled": false
       },
       {
         "__type": "Sandbox.AmbientOcclusion",

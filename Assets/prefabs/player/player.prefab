@@ -83,7 +83,7 @@
           "component_type": "Player"
         },
         "RespawnProtectionSaturation": 0.25,
-        "ShouldViewBob": true,
+        "ShouldViewBob": false,
         "ThirdPersonDistance": 128
       },
       {
@@ -321,7 +321,6 @@
           {
             "__type": "Sandbox.ModelPhysics",
             "__guid": "c132631d-1bbf-46b4-949e-acd121c89190",
-            "__enabled": false,
             "Locking": {},
             "Model": "models/player/ct_side/ct_side_player_01/ct_side_player_01_v2.vmdl",
             "MotionEnabled": true,
