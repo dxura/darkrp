@@ -14,7 +14,7 @@
             var currentTool = i > ToolGunEquipment.Tools.Count() - 1 ? null : ToolGunEquipment.Tools[i];
             var toolName = currentTool != null ? currentTool.Name : "Placeholder";
              
-            <div onclick="@(() => SetCurrentTool(toolName))">
+            <div onmouseover="@(() => SetCurrentTool(toolName))">
                 <p>
                     @toolName
                 </p>
@@ -45,12 +45,12 @@
     {
         base.OnUpdate();
 
-        if ( Player.CurrentEquipment.Resource.Name != "Toolgun" ) return;
+        if (Player.CurrentEquipment.Resource.Name != "Toolgun") return;
 
-        if ( ToolGunEquipment == null )
+        if (ToolGunEquipment == null)
         {
             var tempTool = Player.CurrentEquipment.Components.Get<ToolGunEquipment>(FindMode.EnabledInSelfAndDescendants);
-            if ( tempTool == null ) return;
+            if (tempTool == null) return;
 
             ToolGunEquipment = tempTool;
         }
@@ -62,12 +62,12 @@
         }
 
 
-        if ( Input.Down("Use") )
+        if (Input.Down("Use"))
         {
             IsActive = true;
         }
 
-        if ( Input.Released("Use") )
+        if (Input.Released("Use"))
         {
             IsActive = false;
         }

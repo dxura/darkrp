@@ -2,7 +2,7 @@
   "Name": "Toolgun",
   "Description": "",
   "Slot": "Primary",
-  "Icon": "ui/equipment/physgun.png",
+  "Icon": "ui/equipment/toolgun.png",
   "IsPurchasable": true,
   "Price": 0,
   "MainPrefab": {
