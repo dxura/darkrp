@@ -12,7 +12,7 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "models/mining/rocks/moss rock 12 (4096).jpg"
+	TextureColor "models/mining/rocks/rock.jpg"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -24,11 +24,11 @@ Layer0
 	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "models/mining/rocks/moss rock 12_normal (4096).png"
+	TextureNormal "models/mining/rocks/rock_normal.png"
 
 	//---- Roughness ----
 	g_flRoughnessScaleFactor "1.000"
-	TextureRoughness "models/mining/rocks/moss rock 12_roughness (4096).jpg"
+	TextureRoughness "models/mining/rocks/rock_roughness.jpg"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
