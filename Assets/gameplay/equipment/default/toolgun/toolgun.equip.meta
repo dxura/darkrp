@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "toolgun",
+      "Type": "asset",
+      "Org": "local",
+      "Ident": "toolgun",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "gameplay/equipment/default/toolgun/toolgun.equip"
+      }
+    }
+  }
+}
