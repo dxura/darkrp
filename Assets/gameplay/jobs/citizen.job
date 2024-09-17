@@ -1,13 +1,13 @@
 {
   "Name": "Citizen",
-  "Description": "As a citizen you are a standard member of the community. ",
-  "Color": "0.06361,0.69302,0.0419,1",
-  "Group": "gameplay/jobs/groups/civilian.group",
+  "Description": "The most basic member of society. They have no specific role in city life.",
+  "Color": "0,0.66512,0.03326,1",
+  "Group": "gameplay/jobs/groups/citizen.group",
   "SortingLevel": 0,
   "Models": [
     "models/player/t_side/t_side_player_01/t_side_player_01_v2.vmdl"
   ],
-  "Salary": 10,
+  "Salary": 50,
   "MaxWorkers": 0,
   "Equipment": [
     "gameplay/equipment/default/hands/hands.equip",

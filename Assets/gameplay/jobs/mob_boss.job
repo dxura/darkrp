@@ -1,0 +1,18 @@
+{
+  "Name": "Mob Boss",
+  "Description": "The boss of the criminals in the city. Coordinates the gangsters to form an efficient crime organization.",
+  "Color": "0,0,0,1",
+  "Group": "gameplay/jobs/groups/gangster.group",
+  "SortingLevel": 0,
+  "Models": [
+    "models/gman_reference.vmdl"
+  ],
+  "Salary": 70,
+  "MaxWorkers": 3,
+  "Equipment": [],
+  "Vote": false,
+  "__references": [
+    "fatcisdev.gman_reference"
+  ],
+  "__version": 0
+}

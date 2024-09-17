@@ -1,17 +1,15 @@
 {
-  "Name": "Chief of Police",
+  "Name": "Police Chief",
   "Description": "You are the head of the police force. ",
   "Color": "0.03548,0.11619,0.3814,1",
-  "Group": "gameplay/jobs/groups/goverment.group",
+  "Group": "gameplay/jobs/groups/government.group",
   "SortingLevel": 1,
   "Models": [
     "models/player/ct_side/ct_side_riot_player/ct_side_riot_player.vmdl"
   ],
-  "Salary": 10,
+  "Salary": 85,
   "MaxWorkers": 1,
   "Equipment": [
-    "gameplay/equipment/default/hands/hands.equip",
-    "gameplay/equipment/default/physgun/physgun.equip",
     "gameplay/equipment/weapons/mp5/mp5.equip"
   ],
   "Vote": true,
