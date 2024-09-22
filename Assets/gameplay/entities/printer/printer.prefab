@@ -110,8 +110,45 @@
         "BodyGroups": 18446744073709551615,
         "MaterialOverride": "gameplay/entities/printer/materials/base/bronze/bronze_printer.vmat",
         "Model": "gameplay/entities/printer/models/printer.vmdl",
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
         "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.CapsuleCollider",
+        "__guid": "ded50b2e-84e5-403c-8cab-ecd0153420b1",
+        "End": "0.0000002533197,0,-4.496911",
+        "IsTrigger": true,
+        "Radius": 138.10007,
+        "Start": "0,0,-15.12272",
+        "Static": false
+      },
+      {
+        "__type": "Dxura.Darkrp.PrinterDamage",
+        "__guid": "44c23f7a-68c8-4f15-a84b-41c5475f7c4a",
+        "Explosion": {
+          "_type": "gameobject",
+          "prefab": "gameplay/equipment/throwables/molotov_cocktail/molotov_explosion.prefab"
+        },
+        "Fire": {
+          "_type": "gameobject",
+          "prefab": "gameplay/equipment/throwables/molotov_cocktail/molotov_firenode.prefab"
+        },
+        "HealthComponent": {
+          "_type": "component",
+          "component_id": "da24a7a1-6110-4bf0-8c0c-f4e71549fb19",
+          "go": "d9722984-8e27-467c-bf69-0aed3358f138",
+          "component_type": "HealthComponent"
+        },
+        "Printer": {
+          "_type": "gameobject",
+          "go": "d9722984-8e27-467c-bf69-0aed3358f138"
+        }
       }
     ],
     "Children": [
@@ -130,6 +167,12 @@
             "InteractionRange": 1000,
             "LookAtCamera": false,
             "PanelSize": "410,122",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderScale": 1,
             "VerticalAlign": "Center"
           },
@@ -152,6 +195,12 @@
             "BodyGroups": 18446744073709551615,
             "MaterialOverride": "gameplay/entities/printer/materials/fan/bronze/printer_fan_bronze.vmat",
             "Model": "gameplay/entities/printer/models/printer_fan.vmdl",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderType": "On",
             "Tint": "1,1,1,1"
           }
@@ -163,6 +212,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
