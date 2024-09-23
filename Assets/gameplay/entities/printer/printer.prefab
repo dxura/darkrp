@@ -133,8 +133,9 @@
         "__guid": "44c23f7a-68c8-4f15-a84b-41c5475f7c4a",
         "Explosion": {
           "_type": "gameobject",
-          "prefab": "gameplay/equipment/throwables/molotov_cocktail/molotov_explosion.prefab"
+          "prefab": "gameplay/entities/printer/printer_explosion.prefab"
         },
+        "ExplosionDamage": 50,
         "Fire": {
           "_type": "gameobject",
           "prefab": "gameplay/equipment/throwables/molotov_cocktail/molotov_firenode.prefab"

@@ -10,7 +10,8 @@ public sealed class PrinterDamage : Component,Component.ITriggerListener,IDamage
 	[Property] public HealthComponent HealthComponent { get;set;}
 	[Property] public GameObject Fire { get; set; }
 	[Property] public GameObject Explosion { get; set; }
- 
+	
+	[Property] public float ExplosionDamage { get; set;} = 50.0f;
 	private float PrinterMidLife = 30f;
 	private GameObject _printer;
 
@@ -24,6 +25,14 @@ public sealed class PrinterDamage : Component,Component.ITriggerListener,IDamage
 		}
 	}
 
+	protected void PrinterExplosionDamage(){
+		var player = PlayerState.Local.Player;
+		if(HealthComponent.Health <= 2){
+			player.HealthComponent.TakeDamage(new DamageInfo(player as Component,ExplosionDamage,Hitbox:HitboxTags.None,Flags:DamageFlags.Explosion));
+			Explosion.Clone(Transform.Position);
+			OnDestroy();
+		}
+	}
     protected override void OnDestroy()
     {
         if ( _printer.IsValid() )
@@ -35,14 +44,7 @@ public sealed class PrinterDamage : Component,Component.ITriggerListener,IDamage
 
     public void OnTriggerEnter(Collider other)
 	{
-		var player = PlayerState.Local.Player;
-		Log.Info("Player entry");
-		if(HealthComponent.Health <= 2){
-			Log.Info("Player Life " + player.HealthComponent.Health);
-			OnKill(new DamageInfo( player as Component, 50,Hitbox:HitboxTags.None,Flags:DamageFlags.Explosion));
-			Explosion.Clone(Transform.Position);
-			OnDestroy();
-		}
+		PrinterExplosionDamage();
 	}	
 
 	public void OnTriggerExit(Collider other)
