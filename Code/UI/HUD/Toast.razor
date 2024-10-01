@@ -44,4 +44,14 @@
 
 		return sb.ToString();
 	}
+
+	private string BuildStyle()
+	{
+		if(Type == ToastType.Error)
+		{
+			return "background-color: rgba( red, 0.25 );";
+		}
+			
+		return "background-color: rgba( black, 0.25 );";
+	}
 }
