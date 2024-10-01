@@ -12,7 +12,7 @@
   "Equipment": [],
   "Vote": false,
   "__references": [
-    "sboxmp.scientist_suit"
+    "sboxmp.scientist_suit#58090"
   ],
   "__version": 0
 }

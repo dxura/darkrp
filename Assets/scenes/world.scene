@@ -1680,9 +1680,9 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "based.guerrilla",
-    "facepunch.fence_panel_large",
-    "titanovsky.sbox_atm"
+    "based.guerrilla#62188",
+    "facepunch.fence_panel_large#44051",
+    "titanovsky.sbox_atm#54292"
   ],
   "__version": 1
 }
