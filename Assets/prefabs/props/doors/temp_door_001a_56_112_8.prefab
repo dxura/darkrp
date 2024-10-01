@@ -40,8 +40,8 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "viasoundcorner.hl2_door_open",
-    "viasoundcorner.hl2_door_soft_close"
+    "viasoundcorner.hl2_door_open#19085",
+    "viasoundcorner.hl2_door_soft_close#19084"
   ],
   "__version": 1
 }

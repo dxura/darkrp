@@ -8,7 +8,7 @@
   "UseSound": "sounds/kenney/ui/ui.favourite.sound",
   "HealAmount": 100,
   "__references": [
-    "facepunch.watermelon"
+    "facepunch.watermelon#33881"
   ],
   "__version": 0
 }

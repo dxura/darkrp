@@ -8,7 +8,7 @@
   "UseSound": "sounds/kenney/ui/ui.favourite.sound",
   "HealAmount": 5,
   "__references": [
-    "caro.banana"
+    "caro.banana#26787"
   ],
   "__version": 0
 }

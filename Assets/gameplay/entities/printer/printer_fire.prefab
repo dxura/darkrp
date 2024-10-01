@@ -59,8 +59,8 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.grenade_scorchmark",
-    "sugmagaming.fireparticle"
+    "facepunch.grenade_scorchmark#58009",
+    "sugmagaming.fireparticle#19112"
   ],
   "__version": 1
 }

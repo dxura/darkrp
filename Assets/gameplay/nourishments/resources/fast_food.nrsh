@@ -8,7 +8,7 @@
   "UseSound": "sounds/kenney/ui/ui.favourite.sound",
   "HealAmount": 75,
   "__references": [
-    "greg.p2_fastfood"
+    "greg.p2_fastfood#35506"
   ],
   "__version": 0
 }

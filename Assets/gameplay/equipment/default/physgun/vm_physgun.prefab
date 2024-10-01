@@ -1010,7 +1010,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "rust.v_rust_pistol"
+    "rust.v_rust_pistol#43970"
   ],
   "__version": 1
 }

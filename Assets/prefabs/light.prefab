@@ -81,7 +81,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.ceiling_halogen"
+    "facepunch.ceiling_halogen#29025"
   ],
   "__version": 1
 }
