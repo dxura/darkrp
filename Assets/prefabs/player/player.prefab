@@ -83,7 +83,7 @@
           "component_type": "Player"
         },
         "RespawnProtectionSaturation": 0.25,
-        "ShouldViewBob": true,
+        "ShouldViewBob": false,
         "ThirdPersonDistance": 128
       },
       {

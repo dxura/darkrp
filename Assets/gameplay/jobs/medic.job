@@ -1,0 +1,18 @@
+{
+  "Name": "Medic",
+  "Description": "Uses medical knowledge to restore players to full health. Essential for healing in the city.",
+  "Color": "0,0.85116,0.79442,1",
+  "Group": "gameplay/jobs/groups/citizen.group",
+  "SortingLevel": 0,
+  "Models": [
+    "models/player/scientist_suit/scientist_suit.vmdl"
+  ],
+  "Salary": 50,
+  "MaxWorkers": 3,
+  "Equipment": [],
+  "Vote": false,
+  "__references": [
+    "sboxmp.scientist_suit#58090"
+  ],
+  "__version": 0
+}

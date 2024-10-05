@@ -2,19 +2,15 @@
   "RootObject": {
     "__guid": "46dd51b8-74cd-4aec-90d9-9717388c25fe",
     "Flags": 0,
-    "Name": "molotov_explosion",
+    "Name": "printer_explosion",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
     "Components": [
       {
         "__type": "Dxura.Darkrp.TimedDestroyComponent",
         "__guid": "b2e54133-6592-416a-9f6a-8e83633eb2fe",
         "Time": 5,
         "TimeUntilDestroy": {
-          "Relative": -4146.5044,
-          "Passed": 4146.5044,
-          "Fraction": 1
+          "Fraction": "NaN"
         }
       },
       {
@@ -23,7 +19,8 @@
         "DestroyOnFinish": false,
         "Follow": true,
         "LifeTime": 1,
-        "SoundEvent": "sounds/weapons/grenade/molotov_break.sound",
+        "MixerName": "Game",
+        "SoundEvent": "sounds/weapons/grenade/he_grenade_explode.sound",
         "VolumeModifier": false,
         "VolumeOverTime": [
           {
@@ -44,12 +41,11 @@
         "Rotation": "0,-0.7071068,0,0.7071068",
         "Tags": "particles",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "Sandbox.ParticleEffect",
             "__guid": "d500726c-c1a5-44ad-891a-11b23c5044f7",
+            "__version": 1,
             "Alpha": {
               "Type": "Curve",
               "CurveA": [
@@ -75,6 +71,7 @@
               ],
               "Constants": "1,0,0,0"
             },
+            "ApplyAlpha": true,
             "ApplyColor": true,
             "ApplyRotation": true,
             "ApplyShape": true,
@@ -129,9 +126,12 @@
               "Constants": "1,4,0,0"
             },
             "MaxParticles": 50,
+            "OrbitalForce": {},
+            "OrbitalPull": {},
             "PerParticleTimeScale": {
               "Constants": "1,0.4,0,0"
             },
+            "Pitch": {},
             "PreWarm": 0,
             "PushStrength": {},
             "Roll": {
@@ -179,6 +179,7 @@
             },
             "SheetSequence": true,
             "Space": "World",
+            "StartDelay": {},
             "StartVelocity": {
               "Type": "Range",
               "Evaluation": "Particle",
@@ -186,12 +187,14 @@
             },
             "Stretch": {},
             "TimeScale": 1,
-            "Tint": "1,1,1,1"
+            "Tint": "1,1,1,1",
+            "Yaw": {}
           },
           {
             "__type": "Sandbox.ParticleSpriteRenderer",
             "__guid": "145f7533-b3f0-43d5-86b2-b8490d5a1251",
             "Additive": false,
+            "Alignment": "LookAtCamera",
             "BlurAmount": 0.05,
             "BlurOpacity": 0.91,
             "BlurSpacing": 0.73,
@@ -199,8 +202,15 @@
             "FaceVelocity": false,
             "FogStrength": 0.57,
             "LeadingTrail": false,
+            "Lighting": false,
             "MotionBlur": false,
             "Opaque": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RotationOffset": 339.53,
             "Scale": 1.78,
             "Shadows": false,
@@ -218,6 +228,7 @@
             "OnEdge": false,
             "Radius": 0,
             "Rate": 0,
+            "RateOverDistance": 0,
             "Velocity": 0
           }
         ]
@@ -229,12 +240,11 @@
         "Rotation": "0,-0.7071068,0,0.7071068",
         "Tags": "particles",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "Sandbox.ParticleEffect",
             "__guid": "43eec86d-eb66-4893-b43c-bde14bede493",
+            "__version": 1,
             "Alpha": {
               "Type": "Curve",
               "CurveA": {
@@ -254,6 +264,7 @@
               },
               "Constants": "1,0,0,0"
             },
+            "ApplyAlpha": true,
             "ApplyColor": true,
             "ApplyRotation": true,
             "ApplyShape": true,
@@ -307,9 +318,12 @@
               "Constants": "1,1,0,0"
             },
             "MaxParticles": 5,
+            "OrbitalForce": {},
+            "OrbitalPull": {},
             "PerParticleTimeScale": {
               "Constants": "1,0.4,0,0"
             },
+            "Pitch": {},
             "PreWarm": 0,
             "PushStrength": {},
             "Roll": {
@@ -355,18 +369,21 @@
             },
             "SheetSequence": true,
             "Space": "World",
+            "StartDelay": {},
             "StartVelocity": {
               "Type": "Range",
               "Evaluation": "Particle"
             },
             "Stretch": {},
             "TimeScale": 1,
-            "Tint": "1,0.42473,0.15814,1"
+            "Tint": "1,0.42473,0.15814,1",
+            "Yaw": {}
           },
           {
             "__type": "Sandbox.ParticleSpriteRenderer",
             "__guid": "f10d1b1c-5a4a-40d9-abfa-06dfaa57767d",
             "Additive": true,
+            "Alignment": "LookAtCamera",
             "BlurAmount": 0.05,
             "BlurOpacity": 0.91,
             "BlurSpacing": 0.73,
@@ -374,8 +391,15 @@
             "FaceVelocity": false,
             "FogStrength": 0.57,
             "LeadingTrail": false,
+            "Lighting": false,
             "MotionBlur": false,
             "Opaque": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RotationOffset": 339.53,
             "Scale": 1.5,
             "Shadows": false,
@@ -395,7 +419,8 @@
             "InVolume": true,
             "Loop": false,
             "OnEdge": false,
-            "Rate": 0
+            "Rate": 0,
+            "RateOverDistance": 0
           }
         ]
       },
@@ -406,12 +431,11 @@
         "Rotation": "0,-0.7071068,0,0.7071068",
         "Tags": "particles",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "Sandbox.ParticleEffect",
             "__guid": "6a0c568c-ab2a-40d5-a9ea-b6e74efc1662",
+            "__version": 1,
             "Alpha": {
               "Type": "Curve",
               "CurveA": {
@@ -430,6 +454,7 @@
               },
               "Constants": "1,0,0,0"
             },
+            "ApplyAlpha": true,
             "ApplyColor": true,
             "ApplyRotation": false,
             "ApplyShape": true,
@@ -479,9 +504,12 @@
               "Constants": "3,5,0,0"
             },
             "MaxParticles": 1,
+            "OrbitalForce": {},
+            "OrbitalPull": {},
             "PerParticleTimeScale": {
               "Constants": "1,0.4,0,0"
             },
+            "Pitch": {},
             "PreWarm": 0,
             "PushStrength": {},
             "Roll": {
@@ -518,18 +546,21 @@
             },
             "SheetSequence": false,
             "Space": "World",
+            "StartDelay": {},
             "StartVelocity": {
               "Type": "Range",
               "Evaluation": "Particle"
             },
             "Stretch": {},
             "TimeScale": 1,
-            "Tint": "0.99535,0.76634,0.50462,1"
+            "Tint": "0.99535,0.76634,0.50462,1",
+            "Yaw": {}
           },
           {
             "__type": "Sandbox.ParticleSpriteRenderer",
             "__guid": "b37f14af-6a15-44c5-8c67-702afe729f8c",
             "Additive": true,
+            "Alignment": "LookAtCamera",
             "BlurAmount": 1,
             "BlurOpacity": 0.91,
             "BlurSpacing": 1,
@@ -537,8 +568,15 @@
             "FaceVelocity": false,
             "FogStrength": 1,
             "LeadingTrail": true,
+            "Lighting": false,
             "MotionBlur": false,
             "Opaque": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RotationOffset": 0,
             "Scale": 4,
             "Shadows": false,
@@ -558,7 +596,8 @@
             "InVolume": true,
             "Loop": false,
             "OnEdge": false,
-            "Rate": 0
+            "Rate": 0,
+            "RateOverDistance": 0
           }
         ]
       },
@@ -568,12 +607,11 @@
         "Name": "Shrapnel",
         "Tags": "particles",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "Sandbox.ParticleEffect",
             "__guid": "42a51990-c977-43c9-a569-115a0a590f15",
+            "__version": 1,
             "Alpha": {
               "Type": "Curve",
               "CurveA": [
@@ -586,6 +624,7 @@
               ],
               "Constants": "1,0,0,0"
             },
+            "ApplyAlpha": true,
             "ApplyColor": true,
             "ApplyRotation": false,
             "ApplyShape": true,
@@ -637,9 +676,12 @@
               "Constants": "1,2,0,0"
             },
             "MaxParticles": 50,
+            "OrbitalForce": {},
+            "OrbitalPull": {},
             "PerParticleTimeScale": {
               "Constants": "1,0.4,0,0"
             },
+            "Pitch": {},
             "PreWarm": 0,
             "PushStrength": {},
             "Roll": {
@@ -678,6 +720,7 @@
             },
             "SheetSequence": false,
             "Space": "World",
+            "StartDelay": {},
             "StartVelocity": {
               "Type": "Range",
               "Evaluation": "Particle",
@@ -685,12 +728,14 @@
             },
             "Stretch": {},
             "TimeScale": 1,
-            "Tint": "0.9814,0.3762,0,1"
+            "Tint": "0.9814,0.3762,0,1",
+            "Yaw": {}
           },
           {
             "__type": "Sandbox.ParticleSpriteRenderer",
             "__guid": "c7b8b15d-4f6d-449b-a0fa-a49071b46da7",
             "Additive": false,
+            "Alignment": "LookAtCamera",
             "BlurAmount": 1,
             "BlurOpacity": 0.91,
             "BlurSpacing": 0.73,
@@ -698,8 +743,15 @@
             "FaceVelocity": false,
             "FogStrength": 1,
             "LeadingTrail": true,
+            "Lighting": false,
             "MotionBlur": true,
             "Opaque": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RotationOffset": 0,
             "Scale": 2,
             "Shadows": false,
@@ -717,6 +769,7 @@
             "OnEdge": false,
             "Radius": 10,
             "Rate": 0,
+            "RateOverDistance": 0,
             "Velocity": 100
           }
         ]
@@ -728,8 +781,6 @@
         "Position": "0,0,1",
         "Rotation": "0,0.7071068,0,0.7071068",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "Sandbox.DecalRenderer",
@@ -738,6 +789,12 @@
             "CutoffAngleSoftness": 5,
             "Material": "materials/decals/decal_scorchmark/grenade_scorchmark.vmat",
             "Mod2XBlending": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "Size": "128,128,32",
             "TintColor": "1,1,1,1",
             "TriPlanar": false
@@ -750,6 +807,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
     "facepunch.grenade_scorchmark#58009"

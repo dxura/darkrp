@@ -20,7 +20,7 @@
   "ArmorReduction": null,
   "HelmetReduction": null,
   "__references": [
-    "rust.rust_pistol"
+    "rust.rust_pistol#43964"
   ],
   "__version": 0
 }

@@ -1,0 +1,18 @@
+{
+  "Name": "Cook",
+  "Description": "Responsible for feeding other members of the city. Can spawn a microwave and sell food.",
+  "Color": "0.46047,0,0,1",
+  "Group": "gameplay/jobs/groups/citizen.group",
+  "SortingLevel": 0,
+  "Models": [
+    "models/gordon/gordon.vmdl"
+  ],
+  "Salary": 50,
+  "MaxWorkers": 3,
+  "Equipment": [],
+  "Vote": false,
+  "__references": [
+    "marauders.gordonfreeman#42772"
+  ],
+  "__version": 0
+}
