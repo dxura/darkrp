@@ -11,6 +11,8 @@ public class TextScreenTool : Tool
 
     public TimeSince TimeSinceLastScreen { get; set; }
 
+    private List<IUndoable> History { get; set; } = new();
+
     /// <summary>
     /// Gets the prefab for the text screen, probably need a better way to do this.
     /// </summary>
@@ -34,14 +36,47 @@ public class TextScreenTool : Tool
                 var eyeDir = WeaponRay.Forward;
                 var eyeRot = Rotation.From(new Angles(0.0f, Player.EyeAngles.yaw, 0.0f));
                 GameObject itemEntity = TextScreenPrefab.Clone(tr.HitPosition + (tr.Normal * 2));
-                itemEntity.Transform.Rotation *= Rotation.From(tr.Normal.EulerAngles);
+                itemEntity.WorldRotation *= Rotation.From(tr.Normal.EulerAngles);
 
                 TextScreen TextScreen = itemEntity.Components.Get<TextScreen>();
                 TextScreen.Text = "Hello World!";
 
                 itemEntity.NetworkSpawn();
+
+                History.Add(TextScreen);
             }
         }
     }
 
+    public override void OpenToolOptions(Player Player)
+    {
+        Log.Info("Opening tool options");
+    }
+
+    public void UndoLastAction()
+    {
+        if (History.Count > 0)
+        {
+            History.Last().Undo();
+            History.RemoveAt(History.Count - 1);
+        }
+    }
+
+    protected override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+
+        // Handle undo input
+        if (Input.Pressed("Undo"))
+        {
+            try
+            {
+                UndoLastAction();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+        }
+    }
 }

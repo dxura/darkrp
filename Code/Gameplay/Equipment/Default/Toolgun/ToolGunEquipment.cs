@@ -10,15 +10,24 @@ public class ToolGunEquipment : InputWeaponComponent
 
     protected override void OnInputUpdate()
     {
+
         if (Input.Down("attack1"))
         {
-           
             // Is there a better way to do this?
             var currentPlayer = PlayerState.Local!.Player!;
 
             if (CurrentTool != null)
             {
                 CurrentTool.UseTool(currentPlayer);
+            }
+        }
+
+        if (Input.Pressed("attack2"))
+        {
+            if (CurrentTool != null)
+            {
+                var currentPlayer = PlayerState.Local!.Player!;
+                CurrentTool.OpenToolOptions(currentPlayer);
             }
         }
     }
