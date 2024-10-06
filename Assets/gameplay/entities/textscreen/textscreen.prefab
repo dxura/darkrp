@@ -1,0 +1,53 @@
+{
+  "RootObject": {
+    "__guid": "0d6e68f6-50f4-4da8-9ab8-663d03c30c2f",
+    "Flags": 0,
+    "Name": "textscreen",
+    "Tags": "interactable",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.TextScreen",
+        "__guid": "628b7170-4fba-4c68-b48b-3daf34aa3fde",
+        "EntityName": "Text Screen"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "b863f73d-5732-41c0-a380-bd19af34c03b",
+        "Flags": 0,
+        "Name": "Display",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "3e9fdeee-7712-475c-b8af-f09ac2210795",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": false,
+            "PanelSize": "3000,1000",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.TextScreenDisplay",
+            "__guid": "2410a4a2-f8c7-49b8-b854-293faa0700b7"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

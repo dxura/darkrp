@@ -1,0 +1,130 @@
+{
+  "RootObject": {
+    "__guid": "10ef7883-bbb5-41ec-896e-1167790c6cdc",
+    "Flags": 0,
+    "Name": "w_toolgun",
+    "Tags": "player",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.Equipment",
+        "__guid": "86da8ad9-bf19-4dfa-831d-6d7508c6b35f",
+        "DeploySound": "sounds/guns/switch/weapon_switch.sound",
+        "Handedness": "Right",
+        "HoldType": "Pistol",
+        "ModelRenderer": {
+          "_type": "component",
+          "component_id": "ab54211c-ad2c-4257-9191-234a4a852d50",
+          "go": "70fc3ae8-f4d1-47f4-affe-0f5ea02096ad",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "Muzzle": {
+          "_type": "gameobject",
+          "go": "fd59ffd1-23d5-487c-aebb-f28ed89e2a58"
+        },
+        "OnlyShowCrosshairDot": false,
+        "Resource": "gameplay/equipment/default/toolgun/toolgun.equip",
+        "SpeedPenalty": 20,
+        "UseCrosshair": true
+      },
+      {
+        "__type": "Dxura.Darkrp.TagBinder",
+        "__guid": "f62e91a5-661e-4bd9-b187-5e00308ed723"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "70fc3ae8-f4d1-47f4-affe-0f5ea02096ad",
+        "Flags": 0,
+        "Name": "Model",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "ab54211c-ad2c-4257-9191-234a4a852d50",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "weapons/rust_pistol/rust_pistol.vmdl",
+            "Morphs": {},
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "fd59ffd1-23d5-487c-aebb-f28ed89e2a58",
+            "Flags": 0,
+            "Name": "Muzzle",
+            "Position": "11.38782,-0.00000003648898,4.571617",
+            "Enabled": true
+          }
+        ]
+      },
+      {
+        "__guid": "2611b608-4dd6-4484-9ca7-12267d6cc29c",
+        "Flags": 0,
+        "Name": "Functions",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Dxura.Darkrp.UI.ToolGunEquipment",
+            "__guid": "df9a64ff-88f7-43a6-868d-0183e09aad85",
+            "InputActions": [
+              "Attack1"
+            ],
+            "RequiresAllInputActions": false,
+            "Tools": [
+              {
+                "_type": "component",
+                "component_id": "41ddb087-a85b-45a8-8365-9c5cbb2ea67c",
+                "go": "2611b608-4dd6-4484-9ca7-12267d6cc29c",
+                "component_type": "TextScreenTool"
+              }
+            ]
+          },
+          {
+            "__type": "Dxura.Darkrp.TextScreenTool",
+            "__guid": "41ddb087-a85b-45a8-8365-9c5cbb2ea67c"
+          }
+        ]
+      },
+      {
+        "__guid": "3b9c0305-bce6-4a55-8447-ff9050ce91a6",
+        "Flags": 0,
+        "Name": "Menu",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "0f6f98d4-a4ae-4fe7-86c6-41d2b231a5bf",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
+            "ZIndex": 100
+          },
+          {
+            "__type": "Dxura.Darkrp.UI.ToolgunRadialMenu",
+            "__guid": "316a18bc-176e-4376-b192-56cf480de845"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "rust.rust_pistol"
+  ],
+  "__version": 1
+}

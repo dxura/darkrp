@@ -1,0 +1,81 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+@namespace Dxura.Darkrp.UI
+
+<root>
+	<div class="menu">
+        <p>Menu</p>
+    </div>
+    <div class="submenu">
+        @for (var i = 0; i < 4; i++)
+        {
+            var currentTool = i > ToolGunEquipment.Tools.Count() - 1 ? null : ToolGunEquipment.Tools[i];
+            var toolName = currentTool != null ? currentTool.Name : "Placeholder";
+             
+            <div onmouseover="@(() => SetCurrentTool(toolName))">
+                <p>
+                    @toolName
+                </p>
+            </div>
+        }
+    </div>
+</root>
+
+@code
+{
+    private Player Player => PlayerState.Local.Player;
+    private ToolGunEquipment ToolGunEquipment = null!;
+
+    protected bool IsActive { get; set; }
+
+    protected override void OnTreeFirstBuilt()
+    {
+        BindClass( "active", () => IsActive );
+    }
+
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(IsActive, ToolGunEquipment);
+
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (Player.CurrentEquipment.Resource.Name != "Toolgun") return;
+
+        if (ToolGunEquipment == null)
+        {
+            var tempTool = Player.CurrentEquipment.Components.Get<ToolGunEquipment>(FindMode.EnabledInSelfAndDescendants);
+            if (tempTool == null) return;
+
+            ToolGunEquipment = tempTool;
+        }
+
+        if (Input.Pressed("Use") && !IsActive)
+        {
+            // Reset the mouse position to the center of the screen
+            Mouse.Position = new(Screen.Width / 2, Screen.Height / 2);
+        }
+
+
+        if (Input.Down("Use"))
+        {
+            IsActive = true;
+        }
+
+        if (Input.Released("Use"))
+        {
+            IsActive = false;
+        }
+    }
+
+    private void SetCurrentTool(string toolName)
+    {
+        Log.Info("Setting current tool to " + toolName);
+        ToolGunEquipment.SetCurrentTool(toolName);
+    }
+}
