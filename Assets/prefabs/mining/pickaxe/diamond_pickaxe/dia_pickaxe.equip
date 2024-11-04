@@ -1,0 +1,27 @@
+{
+  "Name": "Diamond Pickaxe",
+  "Description": "",
+  "Slot": "Secondary",
+  "Icon": "ui/equipment/pickaxe.png",
+  "IsPurchasable": true,
+  "Price": 0,
+  "MainPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/mining/pickaxe/diamond_pickaxe/w_diamondpickaxe.prefab"
+  },
+  "ViewModelPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/mining/pickaxe/diamond_pickaxe/vm_diamondpickaxe.prefab"
+  },
+  "WorldModel": "models/items/tools/pickaxe/stone_pickaxe.vmdl",
+  "DroppedSize": "8,2,8",
+  "DroppedCenter": "0,0,0",
+  "CanDrop": false,
+  "ArmorReduction": null,
+  "HelmetReduction": null,
+  "PickaxeDamage": 50,
+  "__references": [
+    "apetavern.stone_pickaxe"
+  ],
+  "__version": 0
+}

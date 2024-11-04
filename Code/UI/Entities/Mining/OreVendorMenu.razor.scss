@@ -1,0 +1,120 @@
+OreVendorMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    .main-frame {
+		pointer-events: all;
+		display: flex;
+		flex-direction: column;
+        // margin-top: 200px;
+        margin-left: 470px;
+        height: 50%;
+        width: 1200px;
+		background-color: #24292ff7;
+		color: #c9c9c9;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
+		border-radius: 10px;
+		box-shadow: 2px 2px 30px 1px #000000;
+        
+		.header{
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+
+            .title{
+                margin-left: 12px;
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+			.close-button{
+				padding: 10px;
+                margin: 14px;
+				font-size: 25px;
+				color: #c9c9c9;
+				border: 1px solid #c9c9c9;
+				border-radius: 5px;
+				cursor: pointer;
+			
+				&:hover{
+					background: linear-gradient(0deg, rgb(171, 62, 62) 0%, rgb(222, 3, 3) 100%);
+					color: white;
+				}
+			}
+     
+			
+		}
+
+        .content{
+            height: 100%;
+            width: auto;
+            display: flex;
+            flex-direction: row; 
+            font-size: 22px;           
+ 
+            .player-info{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 100px;
+                width: 50%;
+                height: auto;
+                background-color: #24292ff7;
+                box-shadow: 2px 2px 30px 1px #000000;
+            }
+
+            .selling{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                
+                .ore{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    width: 100%;
+                    height: 80%;
+                 
+                    
+
+                    .ore-info{
+                        font-size: 30px;
+                        font-weight: 600;
+                    }
+                    
+                    .textEntry{
+                        width: 250px;
+                        height: 50px;
+                        border: 1px solid #c9c9c9;
+                        font-size: 35px;
+                        font-weight: 400;
+              
+                      
+                    }
+               
+                    .sell-button{    
+                        font-size: 25px;
+                        padding: 10px 50px 10px 50px;
+                        color: #c9c9c9;
+                        border: 1px solid #c9c9c9;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    
+                        &:hover{
+                            background: linear-gradient(0deg, rgb(62, 129, 171) 0%, rgb(2, 103, 211) 100%);
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
