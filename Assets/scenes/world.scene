@@ -2,6 +2,21 @@
   "__guid": "d76aee93-9284-4ae5-bd05-6a4b9b0852cc",
   "GameObjects": [
     {
+      "__guid": "ea441feb-5f9c-4a4a-8e10-8111e6e7c3e5",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "1ae46e9a-1883-441b-9281-84ffe97e5a37",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "minimal"
+        }
+      ]
+    },
+    {
       "__guid": "ea1c2d3d-9aa4-4559-9d9e-fddfba251f44",
       "Flags": 0,
       "Name": "Map",
@@ -57,6 +72,7 @@
             {
               "__type": "Sandbox.SkyBox2D",
               "__guid": "de79e9e0-5c37-4c54-ac67-bfcdb1d5483b",
+              "SkyIndirectLighting": true,
               "SkyMaterial": "materials/skybox/skybox_sunrise_01.vmat",
               "Tint": "1,1,1,1"
             },
@@ -92,10 +108,8 @@
             {
               "__type": "Sandbox.TextRenderer",
               "__guid": "cf578722-29eb-43d5-9632-4d666d59da7f",
-              "Color": "0.66047,0.11366,0.11366,1",
-              "FontFamily": "Poppins",
-              "FontSize": 64,
-              "FontWeight": 800,
+              "__version": 1,
+              "BlendMode": "Normal",
               "RenderOptions": {
                 "GameLayer": true,
                 "OverlayLayer": false,
@@ -103,8 +117,33 @@
                 "AfterUILayer": false
               },
               "Scale": 0.3,
-              "Text": "DarkRP (DEV)\n",
-              "TextAlignment": "Center"
+              "TextAlignment": "Center",
+              "TextScope": {
+                "Text": "DarkRP (DEV)\n",
+                "TextColor": "0.66047,0.11366,0.11366,1",
+                "FontName": "Poppins",
+                "FontSize": 64,
+                "FontWeight": 800,
+                "LineHeight": 1,
+                "Outline": {
+                  "Size": 4,
+                  "Color": "0,0,1,1"
+                },
+                "Shadow": {
+                  "Size": 4,
+                  "Color": "0,0,0,1",
+                  "Offset": "4,4"
+                },
+                "OutlineUnder": {
+                  "Size": 4,
+                  "Color": "0,1,0,1"
+                },
+                "ShadowUnder": {
+                  "Size": 4,
+                  "Color": "0,0,0,1",
+                  "Offset": "4,4"
+                }
+              }
             }
           ],
           "Children": [
@@ -118,10 +157,8 @@
                 {
                   "__type": "Sandbox.TextRenderer",
                   "__guid": "1fdb7064-10fa-40a0-bac7-5188161e35f6",
-                  "Color": "1,1,1,1",
-                  "FontFamily": "Poppins",
-                  "FontSize": 46.05,
-                  "FontWeight": 800,
+                  "__version": 1,
+                  "BlendMode": "Normal",
                   "RenderOptions": {
                     "GameLayer": true,
                     "OverlayLayer": false,
@@ -129,8 +166,33 @@
                     "AfterUILayer": false
                   },
                   "Scale": 0.15,
-                  "Text": "Actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
-                  "TextAlignment": "Center"
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 46.05,
+                    "FontWeight": 800,
+                    "LineHeight": 1,
+                    "Outline": {
+                      "Size": 4,
+                      "Color": "0,0,1,1"
+                    },
+                    "Shadow": {
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
                 }
               ]
             },
@@ -146,6 +208,7 @@
                   "__type": "Sandbox.ModelRenderer",
                   "__guid": "43393c2c-b16f-4034-b423-1899503d6151",
                   "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
                   "Model": "models/dev/box.vmdl",
                   "RenderOptions": {
                     "GameLayer": true,
@@ -977,18 +1040,6 @@
       "__PrefabVariables": {}
     },
     {
-      "__guid": "07a78a97-6a0f-4905-a486-86d8e03e0a73",
-      "Flags": 0,
-      "Name": "printer (2)",
-      "Position": "-3136,-352,109.6402",
-      "Tags": "entity,printer,interact,grab",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "gameplay/entities/printer/printer.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "461b5328-a49d-4a11-b1e0-26e126c49bbc",
       "Flags": 0,
       "Name": "printer (3)",
@@ -1660,9 +1711,13 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 60,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "minimal"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -1676,13 +1731,14 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "minimal",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [
     "based.guerrilla#62188",
     "facepunch.fence_panel_large#44051",
     "titanovsky.sbox_atm#54292"
   ],
-  "__version": 1
+  "HasUnsavedChanges": false,
+  "__version": 2
 }

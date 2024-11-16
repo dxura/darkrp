@@ -12,20 +12,19 @@ Properties/*
 code/obj/*
 code/Properties/*
 
-# Standalone Builds
-Exports/*
-
 # Auto-generated asset related files
+.sbox/*
 *.generated.*
 *.*_c
 !*.shader_c
 *.los
-
+*.vpk
 *launchSettings.json
 *.sln
-*.editorconfig
-*.sln.DotSettings
-*.sln.DotSettings.user
 
 *idea
+
+# Exported / standalone games
+Exports/
+
 .sbox/
