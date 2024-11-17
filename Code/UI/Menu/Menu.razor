@@ -25,9 +25,6 @@
 		          <button class="button @( SelectedSection == MenuSection.Market ? "active" : "" )" @onclick="@( () => SetSelectedSection( MenuSection.Market ) )">
 			          <i class="icon">store</i> Market
 		          </button>
-		          <button class="button @( SelectedSection == MenuSection.Props ? "active" : "" )" @onclick="@( () => SetSelectedSection( MenuSection.Props ) )">
-			          <i class="icon">folder</i> Props
-		          </button>
 	          </div>
 
 	          <div class="button-container">
@@ -56,9 +53,6 @@
                       break;
                    case MenuSection.Market:
 		                <MarketMenuSection></MarketMenuSection>
-	                   break;
-                   case MenuSection.Props:
-		                <PropsMenuSection></PropsMenuSection>
 	                   break;
                    case MenuSection.Admin:
 		                <AdminMenuSection></AdminMenuSection>

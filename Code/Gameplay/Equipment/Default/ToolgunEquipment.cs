@@ -10,47 +10,49 @@ public class ToolgunEquipment : InputWeaponComponent
     [Property, Group( "Prefabs" )] GameObject LinePrefab { get; set; }
     [Property, Group( "Prefabs" )] GameObject MarkerPrefab { get; set; }
 
-    private BaseTool? _currentTool = null;
+    public BaseTool? CurrentTool = null;
 
     protected override void OnStart()
     {
-        if ( _currentTool == null )
+        if ( CurrentTool == null )
             SetTool( TypeLibrary.GetType<BaseTool>( "Dxura.Darkrp.Tools.RemoverTool" ) );
     }
 
     protected override void OnInputUpdate()
     {
-        if ( Input.Pressed( "attack1" ) ) _currentTool?.PrimaryUseStart();
-        if ( Input.Down( "attack1" ) ) _currentTool?.PrimaryUseUpdate();
-        if ( Input.Released( "attack1" ) ) _currentTool?.PrimaryUseEnd();
+        if ( Input.Pressed( "attack1" ) ) CurrentTool?.PrimaryUseStart();
+        if ( Input.Down( "attack1" ) ) CurrentTool?.PrimaryUseUpdate();
+        if ( Input.Released( "attack1" ) ) CurrentTool?.PrimaryUseEnd();
 
-        if ( Input.Pressed( "attack2" ) ) _currentTool?.SecondaryUseStart();
-        if ( Input.Down( "attack2" ) ) _currentTool?.SecondaryUseUpdate();
-        if ( Input.Released( "attack2" ) ) _currentTool?.SecondaryUseEnd();
+        if ( Input.Pressed( "attack2" ) ) CurrentTool?.SecondaryUseStart();
+        if ( Input.Down( "attack2" ) ) CurrentTool?.SecondaryUseUpdate();
+        if ( Input.Released( "attack2" ) ) CurrentTool?.SecondaryUseEnd();
 
-        if ( Input.Pressed( "reload" ) ) _currentTool?.ReloadUseStart();
-        if ( Input.Down( "reload" ) ) _currentTool?.ReloadUseUpdate();
-        if ( Input.Released( "reload" ) ) _currentTool?.ReloadUseEnd();
+        if ( Input.Pressed( "reload" ) ) CurrentTool?.ReloadUseStart();
+        if ( Input.Down( "reload" ) ) CurrentTool?.ReloadUseUpdate();
+        if ( Input.Released( "reload" ) ) CurrentTool?.ReloadUseEnd();
     }
 
     public void SetTool( TypeDescription toolDescription )
     {
-        if ( _currentTool != null )
+        if ( CurrentTool != null )
         {
-            if ( _currentTool.GetType() == toolDescription.TargetType ) return;
+            if ( CurrentTool.GetType() == toolDescription.TargetType ) return;
 
-            _currentTool?.OnUnequip();
-            _currentTool = null;
+            CurrentTool?.OnUnequip();
+            CurrentTool = null;
         }
 
         if ( toolDescription == null ) return;
 
-        _currentTool = TypeLibrary.Create<BaseTool>( toolDescription.TargetType );
-        _currentTool.Toolgun = this;
-        _currentTool?.OnEquip();
+        CurrentTool = TypeLibrary.Create<BaseTool>( toolDescription.TargetType );
+        CurrentTool.Toolgun = this;
+        CurrentTool?.OnEquip();
 
         // ToolMenu.Instance?.UpdateInspector();
     }
+
+
     
     [Broadcast]
     public void BroadcastUseEffects( Vector3 hitPosition, Vector3 hitNormal = default )

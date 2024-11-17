@@ -1,4 +1,4 @@
-namespace Scenebox;
+namespace Dxura.Darkrp;
 
 public interface ICameraOverride
 {

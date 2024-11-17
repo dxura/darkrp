@@ -1,0 +1,19 @@
+@using Sandbox.UI;
+@inherits Panel
+@namespace Dxura.Darkrp.Ui
+
+<root class="cell" onclick=@Spawn Tooltip=@Model.ResourceName>
+    <Image Texture=@ThumbnailCache.Get(Model) />
+</root>
+
+@code
+{
+    public Model Model { get; set; }
+
+    void Spawn()
+    {
+        PropManager.Instance.SpawnProp(Model.ResourceName, false);
+    }
+
+    protected override int BuildHash() => System.HashCode.Combine(ThumbnailCache.Get(Model));
+}

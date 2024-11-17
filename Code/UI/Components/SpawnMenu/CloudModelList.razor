@@ -1,0 +1,29 @@
+@using System.Threading.Tasks;
+@using Dxura.Darkrp.UI
+@using Sandbox;
+@using Sandbox.UI;
+@inherits Panel
+@namespace Dxura.Darkrp.Ui
+@attribute [StyleSheet]
+
+<root class="spawnpage columned">
+    <AssetList @ref="AssetList" Query="type:model sort:popular" />
+</root>
+
+@code
+{
+    AssetList AssetList;
+
+    protected override void OnAfterTreeRender(bool firstTime)
+    {
+        if (firstTime)
+        {
+            AssetList.OnSelected += Spawn;
+        }
+    }
+
+    void Spawn(Package package)
+    {
+        PropManager.Instance.SpawnProp(package.FullIdent, true);
+    }
+}

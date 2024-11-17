@@ -35,6 +35,7 @@
       "AssemblyReferences": [],
       "IgnoreFolders": [],
       "DistinctAssemblyReferences": []
-    }
+    },
+    "ControlModes": {}
   }
 }
