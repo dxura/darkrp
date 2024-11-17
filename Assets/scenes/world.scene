@@ -83,98 +83,7 @@
           "Name": "Info",
           "Position": "-3136,-672,224",
           "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.TextRenderer",
-              "__guid": "cf578722-29eb-43d5-9632-4d666d59da7f",
-              "__version": 1,
-              "BlendMode": "Normal",
-              "RenderOptions": {
-                "GameLayer": true,
-                "OverlayLayer": false,
-                "BloomLayer": false,
-                "AfterUILayer": false
-              },
-              "Scale": 0.3,
-              "TextAlignment": "Center",
-              "TextScope": {
-                "Text": "DarkRP (DEV)\n",
-                "TextColor": "0.66047,0.11366,0.11366,1",
-                "FontName": "Poppins",
-                "FontSize": 64,
-                "FontWeight": 800,
-                "LineHeight": 1,
-                "Outline": {
-                  "Size": 4,
-                  "Color": "0,0,1,1"
-                },
-                "Shadow": {
-                  "Size": 4,
-                  "Color": "0,0,0,1",
-                  "Offset": "4,4"
-                },
-                "OutlineUnder": {
-                  "Size": 4,
-                  "Color": "0,1,0,1"
-                },
-                "ShadowUnder": {
-                  "Size": 4,
-                  "Color": "0,0,0,1",
-                  "Offset": "4,4"
-                }
-              }
-            }
-          ],
           "Children": [
-            {
-              "__guid": "115f5ef9-f1b1-440f-bbd7-0f2684fb053d",
-              "Flags": 0,
-              "Name": "desc",
-              "Position": "0,0,-77.74789",
-              "Enabled": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.TextRenderer",
-                  "__guid": "1fdb7064-10fa-40a0-bac7-5188161e35f6",
-                  "__version": 1,
-                  "BlendMode": "Normal",
-                  "RenderOptions": {
-                    "GameLayer": true,
-                    "OverlayLayer": false,
-                    "BloomLayer": false,
-                    "AfterUILayer": false
-                  },
-                  "Scale": 0.15,
-                  "TextAlignment": "Center",
-                  "TextScope": {
-                    "Text": "Actual gameplay coming soon.\n\nhttps://discord.gg/rtxYCmpkbt\n\nControls\nQ: Menu (WIP)  \nV: Talk    F: Flashlight\nG: Drop     Tab: Scoreboard",
-                    "TextColor": "1,1,1,1",
-                    "FontName": "Poppins",
-                    "FontSize": 46.05,
-                    "FontWeight": 800,
-                    "LineHeight": 1,
-                    "Outline": {
-                      "Size": 4,
-                      "Color": "0,0,1,1"
-                    },
-                    "Shadow": {
-                      "Size": 4,
-                      "Color": "0,0,0,1",
-                      "Offset": "4,4"
-                    },
-                    "OutlineUnder": {
-                      "Size": 4,
-                      "Color": "0,1,0,1"
-                    },
-                    "ShadowUnder": {
-                      "Size": 4,
-                      "Color": "0,0,0,1",
-                      "Offset": "4,4"
-                    }
-                  }
-                }
-              ]
-            },
             {
               "__guid": "ed56a27d-2d44-449e-8ed4-a84a0754e7c5",
               "Flags": 0,
@@ -197,6 +106,36 @@
                   },
                   "RenderType": "On",
                   "Tint": "0,0,0,1"
+                }
+              ]
+            },
+            {
+              "__guid": "b5d32c0b-f2f9-49c6-af0a-2697c4634a1b",
+              "Flags": 0,
+              "Name": "Screen",
+              "Position": "2.675537,-0.00006103516,-55.93466",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.WorldPanel",
+                  "__guid": "ab034b3d-5a28-4db3-994d-3180073912e6",
+                  "HorizontalAlign": "Center",
+                  "InteractionRange": 1000,
+                  "LookAtCamera": false,
+                  "PanelSize": "3671.699,3399.302",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderScale": 1,
+                  "VerticalAlign": "Center"
+                },
+                {
+                  "__type": "Dxura.Darkrp.UI.Info",
+                  "__guid": "fdc79191-af13-4fc8-bba3-bdaa80ee841b"
                 }
               ]
             }
