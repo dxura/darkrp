@@ -64,8 +64,19 @@
       {
         "__type": "Sandbox.SoundPointComponent",
         "__guid": "419ee3ac-e54c-45f6-91ec-ba30e3111c66",
+        "Distance": 512,
         "DistanceAttenuation": false,
         "DistanceAttenuationOverride": false,
+        "Falloff": [
+          {
+            "y": 1,
+            "in": 3.1415927,
+            "out": -3.1415927
+          },
+          {
+            "x": 1
+          }
+        ],
         "Force2d": false,
         "MaxRepeatTime": 1,
         "MinRepeatTime": 1,
@@ -93,7 +104,8 @@
         "IsTrigger": false,
         "Scale": "35,35,10",
         "Static": false,
-        "Surface": "surfaces/plastic.surface"
+        "Surface": "surfaces/plastic.surface",
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "Sandbox.HighlightOutline",
@@ -108,6 +120,7 @@
         "__type": "Sandbox.ModelRenderer",
         "__guid": "26c609c0-2310-438a-83a3-14b8e2abfb0f",
         "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
         "MaterialOverride": "gameplay/entities/printer/materials/base/bronze/bronze_printer.vmat",
         "Model": "gameplay/entities/printer/models/printer.vmdl",
         "RenderOptions": {
@@ -126,7 +139,8 @@
         "IsTrigger": true,
         "Radius": 138.10007,
         "Start": "0,0,-15.12272",
-        "Static": false
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "Dxura.Darkrp.PrinterDamage",
@@ -194,6 +208,7 @@
             "__type": "Sandbox.ModelRenderer",
             "__guid": "5d4e6314-c428-4dd4-b064-b4b329fe93fb",
             "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
             "MaterialOverride": "gameplay/entities/printer/materials/fan/bronze/printer_fan_bronze.vmat",
             "Model": "gameplay/entities/printer/models/printer_fan.vmdl",
             "RenderOptions": {
@@ -208,7 +223,30 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
@@ -216,5 +254,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
+  "HasUnsavedChanges": false,
   "__version": 1
 }

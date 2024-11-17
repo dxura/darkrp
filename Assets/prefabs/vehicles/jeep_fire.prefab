@@ -5,7 +5,6 @@
     "Name": "jeep_fire",
     "Tags": "particles",
     "Enabled": true,
-    "Components": [],
     "Children": [
       {
         "__guid": "2122c87b-e746-4a10-a345-ffe8c396e414",
@@ -39,6 +38,12 @@
             "CutoffAngleSoftness": 5,
             "Material": "materials/decals/decal_scorchmark/grenade_scorchmark.vmat",
             "Mod2XBlending": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "Size": "64,64,32",
             "TintColor": "1,1,1,1",
             "TriPlanar": false
@@ -46,15 +51,40 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
     "facepunch.grenade_scorchmark#58009",
     "sugmagaming.fireparticle#19112"
   ],
+  "HasUnsavedChanges": false,
   "__version": 1
 }

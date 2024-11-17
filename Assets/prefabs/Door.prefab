@@ -6,7 +6,6 @@
     "Tags": "noblockaudio",
     "Enabled": true,
     "NetworkMode": 1,
-    "NetworkInterpolation": true,
     "Components": [
       {
         "__type": "Dxura.Darkrp.Door",
@@ -28,7 +27,14 @@
         "__type": "Sandbox.ModelRenderer",
         "__guid": "cb88b133-2d16-4209-b014-24bbf27fb8d0",
         "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
         "Model": "models/dev/door/door_single_dev.vmdl",
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
         "Tint": "1,0.31667,0,1"
       },
@@ -37,19 +43,46 @@
         "__guid": "5f4fcae3-9810-493c-bd5f-2d9d3a4fb20a",
         "IsTrigger": false,
         "Model": "models/dev/door/door_single_dev.vmdl",
-        "Static": true
+        "Static": true,
+        "SurfaceVelocity": "0,0,0"
       }
     ],
-    "Children": []
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
     "facepunch.door_single_dev#57525",
     "viasoundcorner.hl2_door_open#19085",
     "viasoundcorner.hl2_door_soft_close#19084"
   ],
+  "HasUnsavedChanges": false,
   "__version": 1
 }
