@@ -64,6 +64,56 @@
         "Enabled": true,
         "Children": [
           {
+            "__guid": "0b44f191-c104-4f49-b48d-134f8d66819a",
+            "Flags": 0,
+            "Name": "Label",
+            "Position": "7.823867,6.728631,1.486507",
+            "Rotation": "0.395466,-0.5861797,-0.3954659,-0.5861797",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.TextRenderer",
+                "__guid": "d2e644b2-308b-4206-bdea-7b08b46ebcc2",
+                "__version": 1,
+                "BlendMode": "Normal",
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
+                "Scale": 0.03,
+                "TextAlignment": "Center",
+                "TextScope": {
+                  "Text": "\uD83D\uDD28",
+                  "TextColor": "0,0.41667,1,1",
+                  "FontName": "Poppins",
+                  "FontSize": 110.53,
+                  "FontWeight": 400,
+                  "LineHeight": 1,
+                  "Outline": {
+                    "Size": 4,
+                    "Color": "0,0,1,1"
+                  },
+                  "Shadow": {
+                    "Size": 4,
+                    "Color": "0,0,0,1",
+                    "Offset": "4,4"
+                  },
+                  "OutlineUnder": {
+                    "Size": 4,
+                    "Color": "0,1,0,1"
+                  },
+                  "ShadowUnder": {
+                    "Size": 4,
+                    "Color": "0,0,0,1",
+                    "Offset": "4,4"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "__guid": "5cb743b6-4d84-4b19-8cfd-207e50adda41",
             "Flags": 4,
             "Name": "slide_lock",
@@ -129,7 +179,7 @@
             "Children": [
               {
                 "__guid": "0308fa6f-cba8-4d27-a925-c0e3d71e3f95",
-                "Flags": 4,
+                "Flags": 1028,
                 "Name": "joint6",
                 "Position": "9.941494,0.00002479553,-0.0000629425",
                 "Rotation": "-0.00000002123518,0.707106,-0.0000000630584,0.7071075",
