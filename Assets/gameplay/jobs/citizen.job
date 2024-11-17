@@ -11,9 +11,11 @@
   "MaxWorkers": 0,
   "Equipment": [
     "gameplay/equipment/default/hands/hands.equip",
-    "gameplay/equipment/default/physgun/physgun.equip"
+    "gameplay/equipment/default/physgun/physgun.equip",
+    "gameplay/equipment/default/toolgun/toolgun.equip"
   ],
   "Vote": false,
   "__references": [],
+  "HasUnsavedChanges": true,
   "__version": 0
 }

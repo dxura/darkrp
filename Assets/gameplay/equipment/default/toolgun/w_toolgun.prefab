@@ -1,0 +1,145 @@
+{
+  "RootObject": {
+    "__guid": "56fffd4a-7058-4879-b0c9-efc3e3bbce84",
+    "Flags": 0,
+    "Name": "w_toolgun",
+    "Tags": "player,particles",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Dxura.Darkrp.Equipment",
+        "__guid": "fe1fe626-a1a6-40ab-b2f5-1ce554531845",
+        "DeploySound": "sounds/guns/switch/weapon_switch.sound",
+        "Handedness": "Right",
+        "HoldType": "Pistol",
+        "ModelRenderer": {
+          "_type": "component",
+          "component_id": "e40b4121-0851-4ade-a3ca-2d3802bcea02",
+          "go": "cc4d4b03-1b13-4136-8b21-c4a623c930d8",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "Muzzle": {
+          "_type": "gameobject",
+          "go": "cf4feaa9-289a-4cbd-abda-1c5529cbf45a"
+        },
+        "OnlyShowCrosshairDot": true,
+        "Resource": "gameplay/equipment/default/toolgun/toolgun.equip",
+        "SpeedPenalty": 20,
+        "UseCrosshair": true
+      },
+      {
+        "__type": "Dxura.Darkrp.TagBinder",
+        "__guid": "5087b522-f603-48a4-be5f-d815e5503404"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "cc4d4b03-1b13-4136-8b21-c4a623c930d8",
+        "Flags": 0,
+        "Name": "Model",
+        "Position": "2.292478,0.0000001366423,-2.470606",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "e40b4121-0851-4ade-a3ca-2d3802bcea02",
+            "BodyGroups": 9493,
+            "CreateAttachments": false,
+            "CreateBoneObjects": false,
+            "Model": "models/weapons/sbox_pistol_usp/w_usp.vmdl",
+            "Morphs": {},
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Sequence": {
+              "Name": null
+            },
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "cf4feaa9-289a-4cbd-abda-1c5529cbf45a",
+            "Flags": 0,
+            "Name": "Muzzle",
+            "Position": "4.357469,-0.00008210569,4.917149",
+            "Enabled": true
+          }
+        ]
+      },
+      {
+        "__guid": "14528470-faca-4636-8ef0-79261b5585aa",
+        "Flags": 0,
+        "Name": "Functions",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Dxura.Darkrp.ToolgunEquipment",
+            "__guid": "e4379812-bc5b-447e-aaa0-d4c5a747d510",
+            "InputActions": [
+              "Attack1",
+              "Attack2",
+              "Reload"
+            ],
+            "LinePrefab": {
+              "_type": "gameobject",
+              "prefab": "gameplay/equipment/default/toolgun/particles/toolgun_line.prefab"
+            },
+            "MarkerPrefab": {
+              "_type": "gameobject",
+              "prefab": "gameplay/equipment/default/toolgun/particles/toolgun_mark.prefab"
+            },
+            "RequiresAllInputActions": false,
+            "UseSound": "gameplay/equipment/default/toolgun/sound/toolgun.fire.sound"
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.w_usp#33631"
+  ],
+  "HasUnsavedChanges": false,
+  "__version": 1
+}

@@ -33,7 +33,7 @@ public abstract class InputWeaponComponent : EquipmentComponent,
 
 	void IGameEventHandler<EquipmentDeployedEvent>.OnGameEvent( EquipmentDeployedEvent eventArgs )
 	{
-		if ( !(Equipment?.Owner?.IsProxy) ?? false )
+		if ( !Equipment.Owner?.IsProxy ?? false )
 		{
 			RunningWhileDeployed = InputActions.Any( x => Input.Down( x ) );
 		}

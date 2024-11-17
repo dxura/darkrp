@@ -1,43 +1,43 @@
 {
   "RootObject": {
-    "__guid": "c5dfab41-dbdc-4fd6-8e3b-1eb3767acfda",
+    "__guid": "a0713400-41ec-4283-aef1-b8bf21aecd03",
     "Flags": 0,
-    "Name": "mount_usp",
+    "Name": "toolgun_mark",
     "Enabled": true,
+    "NetworkMode": 0,
+    "Components": [
+      {
+        "__type": "Scenebox.FadeAfter",
+        "__guid": "67a007f1-b775-417a-9665-be04cfce08c3",
+        "FadeTime": 0.75,
+        "Time": 0
+      }
+    ],
     "Children": [
       {
-        "__guid": "f084eecf-1698-4000-b9bc-5f401be688a9",
+        "__guid": "7d81d57a-37a8-443f-b097-96d92b294267",
         "Flags": 0,
-        "Name": "Model",
+        "Name": "Object",
+        "Rotation": "0,0.7071067,0,0.7071068",
+        "Scale": "0.08889522,0.08889522,0.08889522",
         "Enabled": true,
+        "NetworkMode": 0,
         "Components": [
           {
-            "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "bb5f7cb1-60bf-41e1-844a-fddb75cd5fb3",
-            "BodyGroups": 9493,
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "b3938a7b-dd45-4900-9835-d05fe0af5e51",
+            "BodyGroups": 18446744073709551615,
             "CreateAttachments": false,
-            "CreateBoneObjects": false,
-            "Model": "models/weapons/sbox_pistol_usp/w_usp.vmdl",
-            "Morphs": {},
-            "Parameters": {
-              "bools": {},
-              "ints": {},
-              "floats": {},
-              "vectors": {},
-              "rotations": {}
-            },
+            "MaterialOverride": "materials/toolgun_mark.vmat",
+            "Model": "models/dev/plane.vmdl",
             "RenderOptions": {
               "GameLayer": true,
               "OverlayLayer": false,
               "BloomLayer": false,
               "AfterUILayer": false
             },
-            "RenderType": "On",
-            "Sequence": {
-              "Name": null
-            },
-            "Tint": "1,1,1,1",
-            "UseAnimGraph": true
+            "RenderType": "Off",
+            "Tint": "1,1,1,1"
           }
         ]
       }
@@ -72,9 +72,6 @@
   "MenuIcon": null,
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
-  "__references": [
-    "facepunch.w_usp#33631"
-  ],
-  "HasUnsavedChanges": false,
+  "__references": [],
   "__version": 1
 }
