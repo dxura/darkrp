@@ -3,13 +3,13 @@ using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
-public abstract class GivePlayerStateComponent<T> : Component,
+public abstract class GivePlayerComponent<T> : Component,
 	IGameEventHandler<EnterStateEvent>,
 	IGameEventHandler<LeaveStateEvent>,
 	IGameEventHandler<PlayerJoinedEvent>
 	where T : Component, new()
 {
-	private void CreateForPlayer( PlayerState player )
+	private void CreateForPlayer( Player player )
 	{
 		if ( player.Components.Get<T>( FindMode.EverythingInChildren ) is { } existing )
 		{

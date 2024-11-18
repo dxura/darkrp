@@ -6,7 +6,7 @@
 	return;
 
 @{
-	var isValidPlayer = PlayerState.Local != null && PlayerState.Local.IsValid() && PlayerState.Local.Player.IsValid();
+	var isValidPlayer = Player.Local != null && Player.Local.IsValid() && Player.Local.IsValid();
 }
 
 <root>
@@ -79,6 +79,6 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( IsHudEnabled, PlayerState.Local.IsValid() && PlayerState.Local.Player.IsValid());
+		return HashCode.Combine( IsHudEnabled, Player.Local.IsValid() && Player.Local.IsValid());
 	}
 }

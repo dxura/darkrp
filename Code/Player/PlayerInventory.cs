@@ -408,7 +408,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		if ( Player.PlayerState.Balance < resource.Price )
+		if ( Player.Balance < resource.Price )
 		{
 			return;
 		}
@@ -418,7 +418,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		Player.PlayerState.Balance -= resource.Price;
+		Player.Balance -= resource.Price;
 	}
 
 	public void OnGameEvent( PlayerSpawnedEvent eventArgs )

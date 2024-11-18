@@ -46,7 +46,7 @@ public sealed class PrinterEntity : BaseEntity, IDescription
 			return;
 		}
 
-		player.PlayerState?.GiveMoney(  PrinterCurrentMoney );
+		player.GiveMoney(  PrinterCurrentMoney );
 			
 		ResetPrinterMoney();
 

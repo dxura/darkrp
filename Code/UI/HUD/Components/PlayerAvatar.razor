@@ -4,8 +4,8 @@
 @attribute [StyleSheet]
 
 <root class="@AvatarClasses">
-	<div class="avatar" style="@( PlayerState.IsValid() ? $"border: 0.5px solid {PlayerColor.Hex}" : "" )">
-		<img class="image" src="avatar:@PlayerState.UID"/>
+	<div class="avatar" style="@( Player.IsValid() ? $"border: 0.5px solid {PlayerColor.Hex}" : "" )">
+		<img class="image" src="avatar:@Player.Uid"/>
 	</div>
 
 	@if ( !Player.IsValid() || IsDead )
@@ -18,16 +18,15 @@
 	@if ( ShowHealth && Player.HealthComponent.State == LifeState.Alive )
 	{
 		<div class="health">
-			<div class="health-inner" style="width:@( PlayerState.Player.HealthComponent.Health )%"/>
+			<div class="health-inner" style="width:@( Player.HealthComponent.Health )%"/>
 		</div>
 	}
 </root>
 
 @code
 {
-	public Player Player => PlayerState.IsValid() ? PlayerState.Player : null;
-	public PlayerState PlayerState { get; set; }
-	public Color PlayerColor => PlayerState.IsValid() ? PlayerState.PlayerColor : Color.White;
+	public Player Player { get; set; }
+	public Color PlayerColor => Player.IsValid() ? Player.PlayerColor : Color.White;
 	private bool IsDead => !Player.IsValid() || Player?.HealthComponent.State != LifeState.Alive;
 
 	public bool ShowHealth { get; set; } = true;
@@ -43,10 +42,10 @@
 
 	protected override int BuildHash()
 	{
-		var hash = HashCode.Combine( PlayerState );
+		var hash = HashCode.Combine( Player );
 
 		if ( Player.IsValid() )
-			hash = HashCode.Combine( hash, Player.HealthComponent.Health, Player.HealthComponent.State, PlayerState.PlayerColor );
+			hash = HashCode.Combine( hash, Player.HealthComponent.Health, Player.HealthComponent.State, Player.PlayerColor );
 
 		return hash;
 	}

@@ -9,9 +9,9 @@ public class Respawner : Component
 
     public int GetRespawnTime()
     {
-        if (PlayerState.Local != null)
+        if (Player.Local != null)
         {
-            return (RespawnDelaySeconds - PlayerState.Local.TimeSinceRespawnStateChanged)
+            return (RespawnDelaySeconds - Player.Local.TimeSinceRespawnStateChanged)
                 .Clamp(0f, RespawnDelaySeconds)
                 .CeilToInt();
         }
@@ -56,7 +56,7 @@ public class Respawner : Component
 
         foreach (var player in GameUtils.AllPlayers)
         {
-            if (player.Player.IsValid() && player.Player.HealthComponent.State == LifeState.Alive)
+            if (player.IsValid() && player.HealthComponent.State == LifeState.Alive)
                 continue;
 
             if (!player.IsConnected)

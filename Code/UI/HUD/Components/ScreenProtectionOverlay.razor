@@ -13,16 +13,16 @@
 
 	float GetOpacity()
 	{
-		if ( !PlayerState.Local.IsValid() )
+		if ( !Player.Local.IsValid() )
 			return 0f;
 
-		if ( !PlayerState.Local.Player.IsValid() )
+		if ( !Player.Local.IsValid() )
 			return 0f;
 
-		if ( !PlayerState.Local.Player.HealthComponent.IsValid() )
+		if ( !Player.Local.HealthComponent.IsValid() )
 			return 0f;
 
-		if ( PlayerState.Local.Player.HealthComponent.IsGodMode )
+		if ( Player.Local.HealthComponent.IsGodMode )
 			return 1f;
 
 		return 0f;

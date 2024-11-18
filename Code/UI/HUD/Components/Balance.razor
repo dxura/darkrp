@@ -5,23 +5,20 @@
 @if ( !Player.IsValid() ) return;
 
 <root>
-	<label class="important">$@PlayerState.Balance.ToString( "N0" )</label>
+	<label class="important">$@Player.Balance.ToString( "N0" )</label>
 </root>
 
 @code
 {
 	/// The player
-	public Player Player => PlayerState.IsValid() ? PlayerState.Player : null;
-
-	/// The player state
-	public PlayerState PlayerState => PlayerState.Local;
+	public Player Player => Player.Local;
 
 
 	protected override int BuildHash()
 	{
 		if ( !Player.IsValid() ) return 0;
-		if ( !PlayerState.IsValid() ) return 0;
+		if ( !Player.IsValid() ) return 0;
 
-		return HashCode.Combine( PlayerState?.Balance );
+		return HashCode.Combine( Player?.Balance );
 	}
 }

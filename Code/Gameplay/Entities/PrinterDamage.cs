@@ -26,7 +26,7 @@ public sealed class PrinterDamage : Component,Component.ITriggerListener,IDamage
 	}
 
 	protected void PrinterExplosionDamage(){
-		var player = PlayerState.Local.Player;
+		var player = Player.Local;
 		if(HealthComponent.Health <= 2){
 			player.HealthComponent.TakeDamage(new DamageInfo(player as Component,ExplosionDamage,Hitbox:HitboxTags.None,Flags:DamageFlags.Explosion));
 			Explosion.Clone(Transform.Position);

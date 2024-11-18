@@ -45,22 +45,10 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	public Pixelate Pixelate { get; set; } = null!;
 
 	/// <summary>
-	/// The default player camera prefab.
-	/// </summary>
-	[Property]
-	[RequireComponent]
-	public GameObject DefaultPlayerCameraPrefab { get; set; } = null!;
-
-	/// <summary>
 	/// The boom for this camera.
 	/// </summary>
 	[Property]
 	public GameObject Boom { get; set; } = null!;
-
-	/// <summary>
-	/// See <see cref="DefaultPlayerCameraPrefab"/>, this is the instance of this.
-	/// </summary>
-	public GameObject PlayerCameraGameObject { get; set; } = null!;
 
 	public bool IsActive { get; private set; }
 
@@ -85,6 +73,19 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 	protected override void OnStart()
 	{
+		Camera = Scene.Camera;
+		Camera.GameObject.SetParent(GameObject);
+		Pixelate = Camera.GameObject.Components.GetOrCreate<Pixelate>();
+		ChromaticAberration =  Camera.GameObject.Components.GetOrCreate<ChromaticAberration>();
+		AudioListener =  Camera.GameObject.Components.GetOrCreate<AudioListener>();
+		ScreenShaker =  Camera.GameObject.Components.GetOrCreate<ScreenShaker>();
+
+		// Optional
+		ColorAdjustments =  Camera.GameObject.Components.Get<ColorAdjustments>();
+		
+		OnModeChanged();
+		Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
+
 	}
 
 	private float _fieldOfViewOffset = 0f;
@@ -105,37 +106,6 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		{
 			Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
 		}
-	}
-
-	public void SetActive( bool isActive )
-	{
-		if ( PlayerCameraGameObject.IsValid() )
-		{
-			PlayerCameraGameObject.Destroy();
-		}
-
-		if ( isActive )
-		{
-			PlayerCameraGameObject = GetOrCreateCameraObject();
-
-			if ( !PlayerCameraGameObject.IsValid() )
-			{
-				Log.Warning( "Couldn't make camera??" );
-				return;
-			}
-
-			Camera = PlayerCameraGameObject.Components.GetOrCreate<CameraComponent>();
-			Pixelate = PlayerCameraGameObject.Components.GetOrCreate<Pixelate>();
-			ChromaticAberration = PlayerCameraGameObject.Components.GetOrCreate<ChromaticAberration>();
-			AudioListener = PlayerCameraGameObject.Components.GetOrCreate<AudioListener>();
-			ScreenShaker = PlayerCameraGameObject.Components.GetOrCreate<ScreenShaker>();
-
-			// Optional
-			ColorAdjustments = PlayerCameraGameObject.Components.Get<ColorAdjustments>();
-		}
-		
-		OnModeChanged();
-		Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
 	}
 
 	/// <summary>
@@ -190,7 +160,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	[DeveloperCommand( "Toggle Third Person", "Player" )]
 	public static void ToggleThirdPerson()
 	{
-		var pl = PlayerState.Local.Player;
+		var pl = Player.Local;
 		pl.CameraController.Mode = pl.CameraController.Mode == CameraMode.FirstPerson
 			? CameraMode.ThirdPerson
 			: CameraMode.FirstPerson;
@@ -345,25 +315,5 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	private void SetBoomLength( float length )
 	{
 		MaxBoomLength = length;
-	}
-	
-	private GameObject GetOrCreateCameraObject()
-	{
-		// I don't really get how this can happen.
-		if ( !Scene.IsValid() )
-		{
-			return null;
-		}
-
-		var component = Scene.GetAllComponents<PlayerCameraOverride>().FirstOrDefault();
-
-		var config = new CloneConfig() { StartEnabled = true, Parent = Boom, Transform = new Transform() };
-
-		if ( component.IsValid() )
-		{
-			return component.Prefab.Clone( config );
-		}
-
-		return DefaultPlayerCameraPrefab?.Clone( config );
 	}
 }

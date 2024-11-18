@@ -57,11 +57,11 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 
 	private bool IsOutlineVisible()
 	{
-		var localPlayerState = PlayerState.Local;
-		if ( localPlayerState.IsValid() && localPlayerState.Player.IsValid() &&
-		     localPlayerState.Player.HealthComponent.State == LifeState.Dead )
+		var localPlayer = Player.Local;
+		if ( localPlayer.IsValid() &&
+		     HealthComponent.State == LifeState.Dead )
 		{
-			if ( localPlayerState.GetLastKiller() == this )
+			if ( localPlayer.GetLastKiller() == this )
 			{
 				return true;
 			}
@@ -73,7 +73,7 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 	private void UpdateOutline()
 	{
 		// Somehow this can happen?
-		if ( !PlayerState.Local.IsValid() )
+		if ( !Player.Local.IsValid() )
 		{
 			return;
 		}
@@ -89,15 +89,17 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 		Outline.Color = Color.Transparent;
 		Outline.InsideColor = HealthComponent.IsGodMode ? Color.White.WithAlpha( 0.1f ) : Color.Transparent;
 
-		if ( PlayerState.Local.GetLastKiller() == this )
+		if ( Local.GetLastKiller() == this )
 		{
 			Outline.ObscuredColor = Color.Red;
 		}
 		else
 		{
-			Outline.ObscuredColor = PlayerState.Local.Job == Job && PlayerState != null
-				? PlayerState.PlayerColor
-				: Color.Transparent;
+
+			// TODO
+			// Outline.ObscuredColor = Local.Job == Job && player != null
+			// 	? player.PlayerColor
+			// 	: Color.Transparent;
 		}
 	}
 

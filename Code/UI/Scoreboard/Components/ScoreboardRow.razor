@@ -28,9 +28,9 @@
 
 	<span class="col playername gap-sm">
 
-		<PlayerAvatar ShowHealth="@false" class="avatar" PlayerState="@PlayerState"/>
+		<PlayerAvatar ShowHealth="@false" class="avatar" Player="@Player"/>
 		<label>
-			@PlayerState.DisplayName
+			@Player.DisplayName
 		</label>
 
 		@if ( IsPartyMember )
@@ -39,19 +39,18 @@
 		}
 	</span>
 
-	@foreach ( var x in IScore.Find( PlayerState ) )
+	@foreach ( var x in IScore.Find( Player ) )
 	{
 		<label class="col stat">@( x.Value )</label>
 	}
 </root>
 
 @code {
-	public PlayerState PlayerState { get; set; }
-	public Player Player => PlayerState.Player;
-	private Connection Connection => PlayerState.Connection;
-	private PlayerScore Score => PlayerState.Components.Get<PlayerScore>();
+	public Player Player { get; set; }
+	private Connection Connection => Player.Connection;
+	private PlayerScore Score => Player.Components.Get<PlayerScore>();
 
-	private bool IsLocal => PlayerState.IsLocalPlayer;
+	private bool IsLocal => Player.IsLocalPlayer;
 	private bool IsDead => !Player.IsValid() || Player.HealthComponent.State != LifeState.Alive;
 	private bool IsPartyMember => PartyRoom.Current?.Members.Any( x => x.Id == Connection.SteamId ) ?? false;
 
@@ -63,10 +62,10 @@
 
 		if ( Player.IsValid() )
 		{
-			hash = HashCode.Combine( hash, IsPartyMember, Player.PlayerState.PlayerColor );
+			hash = HashCode.Combine( hash, IsPartyMember, Player.PlayerColor );
 		}
 
-		foreach ( var x in IScore.Find( PlayerState ) )
+		foreach ( var x in IScore.Find( Player ) )
 		{
 			hash = HashCode.Combine( hash, x.Value );
 		}

@@ -16,7 +16,7 @@ public class NetworkUtils
 	/// <returns></returns>
 	public static IDisposable RpcMyJob()
 	{
-		return RpcJob( PlayerState.Local.Job );
+		return RpcJob( Player.Local.Job );
 	}
 
 	/// <summary>

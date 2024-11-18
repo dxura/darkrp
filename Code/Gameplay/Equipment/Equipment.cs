@@ -129,7 +129,7 @@ public class Equipment : Component, Component.INetworkListener, IEquipment, IDes
 	[DeveloperCommand( "Toggle View Model", "Visuals" )]
 	private static void ToggleViewModel()
 	{
-		var player = PlayerState.Local.Player;
+		var player = Player.Local;
 
 		player.CurrentEquipment.ViewModel.ModelRenderer.Enabled =
 			!player.CurrentEquipment.ViewModel.ModelRenderer.Enabled;

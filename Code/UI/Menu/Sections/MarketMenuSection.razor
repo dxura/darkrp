@@ -4,7 +4,7 @@
 <root>
 	<h1>TODO Market (Gun dealers can buy weapons, change jobs)</h1>
 	
-	@if ( PlayerState.Local?.Job.Name == "Gun Dealer" )
+	@if ( Player.Local?.Job.Name == "Gun Dealer" )
 	{
 		<BuyMenu></BuyMenu>
 	}
@@ -15,7 +15,7 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( PlayerState.Local?.Job.Name );
+		return HashCode.Combine( Player.Local?.Job.Name );
 
 	}
 }

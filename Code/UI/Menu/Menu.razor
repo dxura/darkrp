@@ -9,9 +9,9 @@
     <div class="main">
        <div class="side-bar">
           <div class="player-container">
-             <div class="name">@PlayerState.Local?.DisplayName</div>
+             <div class="name">@Player.Local?.DisplayName</div>
              <Balance></Balance>
-             <div class="sub">Salary: <span>$@(PlayerState.Local?.Job.Salary ?? 0)</span></div>
+             <div class="sub">Salary: <span>$@(Player.Local?.Job.Salary ?? 0)</span></div>
           </div>
           <div class="navigation">
              
@@ -82,7 +82,7 @@
     {
 	    
 	    // Hide when deead
-	    if ( IsActive && (PlayerState.Local?.Player == null || PlayerState.Local.Player.HealthComponent.State == LifeState.Dead))
+	    if ( IsActive && (Player.Local == null || Player.Local.HealthComponent.State == LifeState.Dead))
 	    {
 		    IsActive = false;
 		    StateHasChanged();

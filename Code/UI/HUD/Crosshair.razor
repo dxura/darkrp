@@ -44,7 +44,7 @@
 
 	public Panel Hitmarker { get; set; }
 
-	Player? Player => PlayerState.Local.IsValid() ? PlayerState.Local.Player : null;
+	Player? Player => Player.Local.IsValid() ? Player.Local : null;
 	Equipment? Equipment => Player.IsValid() ? Player.CurrentEquipment : null;
 
 	private TimeUntil TimeUntilHitmarkerRemove = 0f;

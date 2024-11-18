@@ -20,12 +20,12 @@ public static class GameUtils
 	/// <summary>
 	/// All players in the game (includes disconnected players before expiration).
 	/// </summary>
-	public static IEnumerable<PlayerState> AllPlayers => Game.ActiveScene.GetAllComponents<PlayerState>();
+	public static IEnumerable<Player> AllPlayers => Game.ActiveScene.GetAllComponents<Player>();
 
 	/// <summary>
 	/// Get all players on a team.
 	/// </summary>
-	public static IEnumerable<PlayerState> GetPlayers( JobResource job )
+	public static IEnumerable<Player> GetPlayers( JobResource job )
 	{
 		return AllPlayers.Where( x => x.Job == job );
 	}
@@ -34,7 +34,7 @@ public static class GameUtils
 	/// Every <see cref="Player"/> currently in the world.
 	/// </summary>
 	public static IEnumerable<Player> Players =>
-		AllPlayers.Select( x => x.Player ).Where( x => x.IsValid() );
+		AllPlayers.Where( x => x.IsValid() );
 
 	/// <summary>
 	/// Every <see cref="Player"/> currently in the world, on the given job.

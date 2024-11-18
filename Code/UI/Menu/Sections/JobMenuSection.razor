@@ -34,19 +34,19 @@
 
 	private void SelectJob( JobResource job )
 	{
-		var localPlayerState = PlayerState.Local;
+		var localPlayer = Player.Local;
 
-		if ( localPlayerState == null )
+		if ( localPlayer == null )
 		{
 			return;
 		}
 
-		if ( localPlayerState.Job == job )
+		if ( localPlayer.Job == job )
 		{
 			return;
 		}
 		
-		PlayerState.Local?.AssignJob( job );
+		Player.Local?.AssignJob( job );
 		PlaySound( "sounds/job-switch" );
 
 	}

@@ -73,12 +73,12 @@ public sealed class SpawnProtection : Component,
 			return;
 		}
 
-		if ( !player.PlayerState.IsValid() )
+		if ( !player.IsValid() )
 		{
 			return;
 		}
 
-		if ( !player.Network.Active || !player.PlayerState.Network.Active )
+		if ( !player.Network.Active || !player.Network.Active )
 		{
 			return;
 		}

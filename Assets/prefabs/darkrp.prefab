@@ -1,7 +1,7 @@
 {
   "RootObject": {
     "__guid": "e237b3b6-67f2-4a25-abba-103a472e15d2",
-    "Flags": 0,
+    "Flags": 64,
     "Name": "darkrp",
     "Enabled": true,
     "Children": [
@@ -16,9 +16,9 @@
             "__type": "Dxura.Darkrp.GameNetworkManager",
             "__guid": "42c91d9a-e476-4d23-b093-e727b6ba2f76",
             "IsMultiplayer": true,
-            "PlayerStatePrefab": {
+            "PlayerPrefab": {
               "_type": "gameobject",
-              "prefab": "prefabs/player/playerstate.prefab"
+              "prefab": "prefabs/player.prefab"
             }
           }
         ]
@@ -131,6 +131,103 @@
               "models/citizen_props/roadcone01.vmdl"
             ],
             "SpawnProtectionTimeWindow": 1
+          }
+        ]
+      },
+      {
+        "__guid": "44d5a949-1e8e-455a-b057-bea7d6b24f26",
+        "Flags": 64,
+        "Name": "Camera",
+        "Tags": "maincamera",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "51b6aa09-2510-419e-94ae-099ebe4e60a5",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 60,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          },
+          {
+            "__type": "Sandbox.AudioListener",
+            "__guid": "d9e8832b-86e8-4fcf-ba73-e54a046862a4",
+            "UseCameraDirection": true
+          },
+          {
+            "__type": "Sandbox.Highlight",
+            "__guid": "aee27f05-1aed-457f-a4f7-3ea8c63f338d"
+          },
+          {
+            "__type": "Sandbox.Bloom",
+            "__guid": "2b566097-4309-45ff-a614-2c6939249a8c",
+            "BloomColor": {
+              "color": [
+                {
+                  "c": "1,1,1,1"
+                },
+                {
+                  "t": 1,
+                  "c": "1,1,1,1"
+                }
+              ]
+            },
+            "BloomCurve": [
+              {
+                "y": 0.5
+              },
+              {
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "Mode": "Additive",
+            "Strength": 1,
+            "Threshold": 0.5,
+            "ThresholdWidth": 0
+          },
+          {
+            "__type": "Sandbox.Sharpen",
+            "__guid": "f16b22be-e175-43f9-8f2c-2b45c703063b",
+            "Scale": 2
+          },
+          {
+            "__type": "Sandbox.ChromaticAberration",
+            "__guid": "876b90aa-a5fd-463d-b6b0-fc2b824d9ad4",
+            "Offset": "4,6,0",
+            "Scale": 0.33
+          },
+          {
+            "__type": "Sandbox.Pixelate",
+            "__guid": "7e04da2a-0459-4510-8642-ccf654d3d3f3",
+            "Scale": 5
+          },
+          {
+            "__type": "Dxura.Darkrp.ScreenShaker",
+            "__guid": "6e717477-b77f-47c0-935e-2b40e0d69272"
+          },
+          {
+            "__type": "Sandbox.AmbientOcclusion",
+            "__guid": "22df3cb4-2a8b-400b-b9dc-a56cc5bf758f",
+            "FalloffDistance": 1,
+            "Intensity": 8,
+            "Quality": "High",
+            "Radius": 32
+          },
+          {
+            "__type": "Sandbox.WorldInput",
+            "__guid": "c193db8f-561e-4115-a9be-dcba1f77fec6",
+            "LeftMouseAction": "Attack1",
+            "RightMouseAction": "Attack2"
           }
         ]
       }

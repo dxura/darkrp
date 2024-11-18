@@ -12,7 +12,7 @@
           "__guid": "1ae46e9a-1883-441b-9281-84ffe97e5a37",
           "Description": "",
           "SceneTags": "",
-          "Title": "minimal"
+          "Title": "Downtown"
         }
       ]
     },
@@ -26,8 +26,8 @@
           "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
           "Flags": 0,
           "Name": "Sun",
-          "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
-          "Tags": "light_directional,light",
+          "Rotation": "-0.1042335,0.6892158,0.1072191,0.7089577",
+          "Tags": "light,light_directional",
           "Enabled": true,
           "Components": [
             {
@@ -1548,9 +1548,8 @@
       "__guid": "df865cd5-95fc-463d-ba20-220fcb7ee559",
       "Flags": 0,
       "Name": "darkrp",
-      "Position": "-3392,-640,160",
       "Enabled": true,
-      "__Prefab": "gameplay/darkrp.prefab",
+      "__Prefab": "prefabs/darkrp.prefab",
       "__PrefabVariables": {}
     },
     {
@@ -1625,7 +1624,7 @@
     "TimeScale": 1,
     "UseFixedUpdate": true,
     "Metadata": {
-      "Title": "minimal"
+      "Title": "Downtown"
     },
     "NavMesh": {
       "Enabled": false,
@@ -1641,7 +1640,7 @@
     }
   },
   "ResourceVersion": 2,
-  "Title": "minimal",
+  "Title": "Downtown",
   "Description": null,
   "__references": [
     "facepunch.fence_panel_large#44051",

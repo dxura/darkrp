@@ -13,7 +13,7 @@ public abstract class BaseGrenade : Component
 	/// <summary>
 	/// Is this player an enemy of the viewer?
 	/// </summary>
-	public bool IsEnemy => PlayerState.Local.Job != Player.Job;
+	public bool IsEnemy => Player.Local.Job != Player.Job;
 
 	private TimeSince TimeSinceCreated { get; set; }
 
