@@ -1,6 +1,8 @@
-﻿namespace Dxura.Darkrp;
+﻿using Sandbox.Events;
 
-public class Respawner : Component
+namespace Dxura.Darkrp;
+
+public class Respawner : Component, IGameEventHandler<PlayerJoinedEvent>
 {
     [Property] [HostSync] private float RespawnDelaySeconds { get; set; } = 3f;
 
@@ -80,5 +82,11 @@ public class Respawner : Component
                     break;
             }
         }
+    }
+
+    // "Spawn" player when joined
+    public void OnGameEvent(PlayerJoinedEvent eventArgs)
+    {
+        eventArgs.Player.Respawn(Random.Shared.FromList(SpawnPoints), false);
     }
 }

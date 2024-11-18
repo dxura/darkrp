@@ -114,7 +114,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 
 		player.HostInit();
 		player.ClientInit();
-
+		
 		Scene.Dispatch( new PlayerJoinedEvent( player ) );
 	}
 }

@@ -114,19 +114,6 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 		{
 			EyeAngles = Rotation.LookAt( killer.Transform.Position - Transform.Position, Vector3.Up );
 		}
-
-		if ( ((Input.Pressed( "attack1" ) || Input.Pressed( "attack2" )) && !IsRespawning) ||
-		     LastDamageInfo.TimeSinceEvent > DeathcamSkipTime )
-		{
-			// Don't let players immediately switch
-			if ( LastDamageInfo.TimeSinceEvent < DeathcamIgnoreInputTime )
-			{
-				return;
-			}
-
-			GameObject.Destroy();
-			return;
-		}
 	}
 
 	protected override void OnFixedUpdate()

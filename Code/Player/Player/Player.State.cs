@@ -41,7 +41,7 @@ public partial class Player
 	/// <summary>
 	/// Our local player on this client.
 	/// </summary>
-	public static Player Local { get; private set; } = null!;
+	public static Player? Local { get; private set; }
 
 	/// <summary>
 	/// The player's ID. This is their SteamID.

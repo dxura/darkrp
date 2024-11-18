@@ -72,7 +72,7 @@ public sealed class PlayerScore : Component,
 	IGameEventHandler<KillEvent>,
 	IScore
 {
-	[Property] public Player Player { get; set; }
+	[Property] public required Player Player { get; set; }
 
 	[HostSync]
 	[Property]

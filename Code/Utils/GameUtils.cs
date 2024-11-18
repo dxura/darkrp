@@ -7,10 +7,6 @@ using GameSystems.Jobs;
 
 namespace Dxura.Darkrp;
 
-public interface IWeighted
-{
-	float Weight { get; }
-}
 
 /// <summary>
 /// A list of game utilities that'll help us achieve common goals with less code... I guess?
