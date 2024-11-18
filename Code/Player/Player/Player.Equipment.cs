@@ -96,29 +96,22 @@ public partial class Player :
 
 	public void SetCurrentEquipment( Equipment? weapon )
 	{
+		if ( weapon == CurrentEquipment ) 
+			return;
+
+		ClearCurrentWeapon();
+
 		if ( IsProxy )
 		{
 			if ( Networking.IsHost )
-			{
 				SetCurrentWeapon( weapon );
-			}
 
 			return;
 		}
 
 		TimeSinceWeaponDeployed = 0;
 
-		if ( weapon == null )
-		{
-			foreach ( var item in Inventory.Equipment )
-			{
-				item.Holster();
-			}
-		}
-		else
-		{
-			weapon.Deploy();
-		}
+		weapon?.Deploy();
 	}
 
 	public void ClearViewModel()
