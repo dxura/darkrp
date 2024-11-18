@@ -52,7 +52,7 @@
         },
         "RenderOptions": {
           "GameLayer": true,
-          "OverlayLayer": false,
+          "OverlayLayer": true,
           "BloomLayer": false,
           "AfterUILayer": false
         },
@@ -526,8 +526,8 @@
             "__guid": "10274a18-a19a-4706-be58-4a1d6135521b",
             "Flags": 4,
             "Name": "clavicle_L",
-            "Position": "-1.429637,0.8201652,2.590543",
-            "Rotation": "-0.7037544,-0.7040542,0.06705465,0.06738564",
+            "Position": "-1.429636,0.820164,2.590549",
+            "Rotation": "0.7037544,0.7040544,-0.06705467,-0.06738562",
             "Enabled": true,
             "Children": [
               {
@@ -718,8 +718,8 @@
                             "__guid": "d112cd88-6bb3-497d-b472-b137cbf0e76a",
                             "Flags": 4,
                             "Name": "hand_R_to_L_ikrule",
-                            "Position": "-27.1186,6.5985,29.64756",
-                            "Rotation": "-0.1621509,-0.6658909,-0.0001014173,0.7282143",
+                            "Position": "-27.11869,6.598507,29.64742",
+                            "Rotation": "-0.1621506,-0.6658909,-0.0001019243,0.7282146",
                             "Enabled": true
                           },
                           {
@@ -853,7 +853,7 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.v_mp5#64494"
+    "based.guerrilla#62188"
   ],
   "HasUnsavedChanges": false,
   "__version": 1

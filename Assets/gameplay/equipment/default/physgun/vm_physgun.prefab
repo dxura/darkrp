@@ -3,7 +3,7 @@
     "__guid": "a1738cd9-71d8-4459-9255-aa68ff8e2b7a",
     "Flags": 0,
     "Name": "vm_physgun",
-    "Tags": "viewmodel,player",
+    "Tags": "player,viewmodel",
     "Enabled": true,
     "NetworkMode": 0,
     "Components": [
@@ -42,7 +42,7 @@
         },
         "RenderOptions": {
           "GameLayer": true,
-          "OverlayLayer": false,
+          "OverlayLayer": true,
           "BloomLayer": false,
           "AfterUILayer": false
         },
