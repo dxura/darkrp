@@ -4,12 +4,6 @@ namespace Dxura.Darkrp;
 
 public partial class Player
 {
-	/// <summary>
-	/// Development: should bots follow the player's input?
-	/// </summary>
-	[ConVar( "darkrp_bot_follow" )]
-	public static bool BotFollowHostInput { get; set; }
-
 	[DeveloperCommand( "-10 HP (head)", "Player" )]
 	private static void Command_HurtTenHead()
 	{

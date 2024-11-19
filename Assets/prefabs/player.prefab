@@ -27,11 +27,9 @@
           "prefab": "prefabs/impact_fx/impact_blood_mist.prefab"
         },
         "BloodImpactSound": "sounds/impacts/melee/impact-melee-flesh.sound",
-        "Body": {
-          "_type": "component",
-          "component_id": "68310fd2-d9db-4f87-a98a-81a7c7dca155",
-          "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
-          "component_type": "PlayerBody"
+        "BodyRoot": {
+          "_type": "gameobject",
+          "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af"
         },
         "FallDamageScale": 0.2,
         "FootstepBaseVolume": 5,
@@ -64,11 +62,23 @@
         "MinimumFallSoundVelocity": 250,
         "MinimumFallVelocity": 500,
         "NoclipSpeed": 1000,
+        "Physics": {
+          "_type": "component",
+          "component_id": "c132631d-1bbf-46b4-949e-acd121c89190",
+          "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
+          "component_type": "ModelPhysics"
+        },
         "PlayerBoxCollider": {
           "_type": "component",
           "component_id": "0d4973b2-fdb1-4f1d-ab98-c1c49bfd4a2b",
           "go": "3e4e2095-635e-4b89-a9c9-fc3b4d321b84",
           "component_type": "BoxCollider"
+        },
+        "Renderer": {
+          "_type": "component",
+          "component_id": "2192125d-a0f3-4033-8a96-7b77485d8539",
+          "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
+          "component_type": "SkinnedModelRenderer"
         },
         "SprintFootstepScale": 2,
         "SprintMovementDampening": 0.35,
@@ -250,28 +260,6 @@
         "Enabled": true,
         "Components": [
           {
-            "__type": "Dxura.Darkrp.PlayerBody",
-            "__guid": "68310fd2-d9db-4f87-a98a-81a7c7dca155",
-            "Physics": {
-              "_type": "component",
-              "component_id": "c132631d-1bbf-46b4-949e-acd121c89190",
-              "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
-              "component_type": "ModelPhysics"
-            },
-            "Player": {
-              "_type": "component",
-              "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
-              "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
-              "component_type": "Player"
-            },
-            "Renderer": {
-              "_type": "component",
-              "component_id": "2192125d-a0f3-4033-8a96-7b77485d8539",
-              "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
-              "component_type": "SkinnedModelRenderer"
-            }
-          },
-          {
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "2192125d-a0f3-4033-8a96-7b77485d8539",
             "BodyGroups": 18446744073709551615,
@@ -406,22 +394,6 @@
               "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
               "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
               "component_type": "Player"
-            }
-          },
-          {
-            "__type": "Dxura.Darkrp.HumanOutfitter",
-            "__guid": "a3c096fb-d984-497f-9616-14892738cf20",
-            "Player": {
-              "_type": "component",
-              "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
-              "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
-              "component_type": "Player"
-            },
-            "Renderer": {
-              "_type": "component",
-              "component_id": "2192125d-a0f3-4033-8a96-7b77485d8539",
-              "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
-              "component_type": "SkinnedModelRenderer"
             }
           }
         ],

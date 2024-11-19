@@ -299,7 +299,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 		var firstPersonPov = Mode == CameraMode.FirstPerson && !IsProxy;
 		
-		Player.Body?.SetFirstPersonView( firstPersonPov );
+		Player.SetFirstPersonView( firstPersonPov );
 
 		if ( firstPersonPov )
 		{

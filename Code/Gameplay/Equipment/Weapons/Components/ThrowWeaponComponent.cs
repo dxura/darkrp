@@ -140,9 +140,9 @@ public partial class ThrowWeaponComponent : InputWeaponComponent,
 			dropped.NetworkSpawn();
 		}
 
-		if ( Equipment.Owner.IsValid() && Equipment.Owner.BodyRenderer.IsValid() )
+		if ( Equipment.Owner.IsValid() && Equipment.Owner.Renderer.IsValid() )
 		{
-			Equipment.Owner.BodyRenderer.Set( "b_throw_grenade", true );
+			Equipment.Owner.Renderer.Set( "b_throw_grenade", true );
 		}
 
 		if ( !Networking.IsHost )

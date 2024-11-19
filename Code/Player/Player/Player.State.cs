@@ -12,11 +12,10 @@ public record OnPlayerRagdolledEvent : IGameEvent
 
 public partial class Player
 {
-
 	/// <summary>
 	/// An accessor for health component if we have one.
 	/// </summary>
-	[Property]
+	[Property, Feature("State")]
 	[RequireComponent]
 	public HealthComponent HealthComponent { get; set; } = null!;
 	
@@ -47,7 +46,7 @@ public partial class Player
 	/// The player's ID. This is their SteamID.
 	/// </summary>
 	[HostSync]
-	[Property]
+	[Property, Feature("State")]
 	[Saved]
 	public string Uid { get; set; } = "";
 
@@ -68,11 +67,9 @@ public partial class Player
 	/// <summary>
 	/// The job this player belongs to.
 	/// </summary>
-	[Property]
-	[Group( "Setup" )]
+	[Property, Feature("State")]
 	[HostSync]
 	[Change( nameof(OnJobPropertyChanged) )]
-
 	public JobResource Job { get; set; } = null!;
 
 	/// <summary>
@@ -203,10 +200,7 @@ public partial class Player
 
 		Teleport( SpawnPosition, SpawnRotation );
 
-		if ( Body is not null )
-		{
-			Body.DamageTakenForce = Vector3.Zero;
-		}
+		DamageTakenForce = Vector3.Zero;
 
 		if ( HealthComponent.State != LifeState.Alive )
 		{
@@ -252,37 +246,48 @@ public partial class Player
 	[Broadcast( NetPermission.HostOnly )]
 	private void CreateRagdoll()
 	{
-		if ( !Body.IsValid() )
-		{
-			return;
-		}
-
-		Body.SetRagdoll( true );
-		Body.GameObject.SetParent( null, true );
-		Body.GameObject.Name = $"Ragdoll ({DisplayName})";
-
-		var ev = new OnPlayerRagdolledEvent();
-		Scene.Dispatch( ev );
-
-		if ( ev.DestroyTime > 0f )
-		{
-			var comp = Body.Components.Create<TimedDestroyComponent>();
-			comp.Time = ev.DestroyTime;
-		}
-
-		Body = null;
+// TODO: Create new dummy ragdoll
+		// SetRagdoll( true );
+		// GameObject.SetParent( null, true );
+		// GameObject.Name = $"Ragdoll ({DisplayName})";
+		//
+		// var ev = new OnPlayerRagdolledEvent();
+		// Scene.Dispatch( ev );
+		//
+		// if ( ev.DestroyTime > 0f )
+		// {
+		// 	var comp = Body.Components.Create<TimedDestroyComponent>();
+		// 	comp.Time = ev.DestroyTime;
+		// }
 	}
 
 	private void ResetBody()
 	{
-		if ( Body is not null )
-		{
-			Body.DamageTakenForce = Vector3.Zero;
-		}
+		DamageTakenForce = Vector3.Zero;
 
 		PlayerBoxCollider.Enabled = true;
 
-		Components.Get<HumanOutfitter>( FindMode.EnabledInSelfAndDescendants )?
-			.UpdateFromJob( Job );
+		UpdateBodyFromJob(Job);
+	}
+
+	// deathcam
+	private void UpdateDeathCam()
+	{
+		if ( IsProxy )
+		{
+			return;
+		}
+
+		if ( LastDamageInfo is null )
+		{
+			return;
+		}
+
+		var killer = GetLastKiller();
+
+		if ( killer.IsValid() )
+		{
+			EyeAngles = Rotation.LookAt( killer.Transform.Position - Transform.Position, Vector3.Up );
+		}
 	}
 }

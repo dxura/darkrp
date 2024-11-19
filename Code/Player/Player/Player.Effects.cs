@@ -10,50 +10,54 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 	/// What effect should we spawn when a player gets headshot?
 	/// </summary>
 	[Property]
-	[Group( "Effects" )]
-	public GameObject? HeadshotEffect { get; set; }
+	[Feature( "Effects" )]
+	private GameObject? HeadshotEffect { get; set; }
 
 	/// <summary>
 	/// What effect should we spawn when a player gets headshot while wearing a helmet?
 	/// </summary>
 	[Property]
-	[Group( "Effects" )]
-	public GameObject? HeadshotWithHelmetEffect { get; set; }
+	[Feature( "Effects" )]
+	private GameObject? HeadshotWithHelmetEffect { get; set; }
 
 	/// <summary>
 	/// What effect should we spawn when we hit a player?
 	/// </summary>
 	[Property]
-	[Group( "Effects" )]
-	public GameObject? BloodEffect { get; set; }
+	[Feature( "Effects" )]
+	private GameObject? BloodEffect { get; set; }
 
 	/// <summary>
 	/// What sound should we play when a player gets headshot?
 	/// </summary>
 	[Property]
-	[Group( "Effects" )]
-	public SoundEvent? HeadshotSound { get; set; }
+	[Feature( "Effects" ), Group("Sounds")]
+	private SoundEvent? HeadshotSound { get; set; }
 
 	/// <summary>
 	/// What sound should we play when a player gets headshot?
 	/// </summary>
 	[Property]
-	[Group( "Effects" )]
-	public SoundEvent HeadshotWithHelmetSound { get; set; } = null!;
+	[Feature( "Effects" ), Group("Sounds")]
+	private SoundEvent HeadshotWithHelmetSound { get; set; } = null!;
 
 	/// <summary>
 	/// What sound should we play when we hit a player?
 	/// </summary>
 	[Property]
-	[Group( "Effects" )]
-	public SoundEvent? BloodImpactSound { get; set; }
+	[Feature( "Effects" ), Group("Sounds")]
+	private SoundEvent? BloodImpactSound { get; set; }
 	
 	/// <summary>
 	/// What sound should we play when we change jobs?
 	/// </summary>
 	[Property]
-	[Group( "Effects" )]
-	public SoundEvent? JobChangedSound { get; set; }
+	[Feature( "Effects" ), Group("Sounds")]
+	private SoundEvent? JobChangedSound { get; set; }
+	
+	[Property, Feature( "Effects" ), Group("Sounds")]
+	public SoundEvent? LandSound { get; set; }
+
 
 	private bool IsOutlineVisible()
 	{
@@ -101,10 +105,5 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 			// 	? player.PlayerColor
 			// 	: Color.Transparent;
 		}
-	}
-
-	public void OnGameEvent( JobChangedEvent eventArgs )
-	{
-		Sound.Play( JobChangedSound, Transform.Position);
 	}
 }

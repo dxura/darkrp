@@ -1,12 +1,14 @@
-﻿using Dxura.Darkrp;
+using System.Text.Json.Serialization;
+using Dxura.Darkrp;
+using GameSystems.Jobs;
 
 namespace Dxura.Darkrp;
 
-public class PlayerBody : Component
+public partial class Player
 {
-	[Property] public SkinnedModelRenderer Renderer { get; set; }
-	[Property] public ModelPhysics Physics { get; set; }
-	[Property] public Player Player { get; set; }
+	[Property, Feature("Body")] public required GameObject BodyRoot { get; set; }
+	[Property, Feature("Body")] public required SkinnedModelRenderer Renderer { get; set; }
+	[Property, Feature("Body")] public required ModelPhysics Physics { get; set; }
 
 	public Vector3 DamageTakenPosition { get; set; }
 	public Vector3 DamageTakenForce { get; set; }
@@ -23,8 +25,8 @@ public class PlayerBody : Component
 
 		if ( !ragdoll )
 		{
-			GameObject.Transform.LocalPosition = Vector3.Zero;
-			GameObject.Transform.LocalRotation = Rotation.Identity;
+			BodyRoot.LocalPosition = Vector3.Zero;
+			BodyRoot.LocalRotation = Rotation.Identity;
 		}
 
 		SetFirstPersonView( !ragdoll );
@@ -37,7 +39,7 @@ public class PlayerBody : Component
 		Transform.ClearInterpolation();
 	}
 
-	internal void ApplyRagdollImpulses( Vector3 position, Vector3 force )
+	private void ApplyRagdollImpulses( Vector3 position, Vector3 force )
 	{
 		if ( !Physics.IsValid() || !Physics.PhysicsGroup.IsValid() )
 		{
@@ -50,7 +52,7 @@ public class PlayerBody : Component
 		}
 	}
 
-	public void Refresh()
+	public void RefreshBody()
 	{
 		SetFirstPersonView( _isFirstPerson );
 	}
@@ -61,5 +63,16 @@ public class PlayerBody : Component
 
 		// Disable the player's body so it doesn't render.
 		Renderer.Enabled = !firstPerson;
+	}
+	
+	/// <summary>
+	/// Called to wear an outfit based off a job.
+	/// </summary>
+	/// <param name="job"></param>
+	[Broadcast( NetPermission.HostOnly )]
+	private void UpdateBodyFromJob( JobResource job )
+	{
+		Renderer.Model = Game.Random.FromList( job.Models );
+		RefreshBody();
 	}
 }

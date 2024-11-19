@@ -5,7 +5,7 @@ namespace Dxura.Darkrp;
 
 public partial class Player
 {
-	[HostSync] [Property] [JsonIgnore] public VehicleSeat? CurrentSeat { get; set; }
+	[HostSync] [Property, Feature("Misc")] [JsonIgnore] public VehicleSeat? CurrentSeat { get; set; }
 
 	public TimeSince TimeSinceSeatChanged { get; set; } = 0;
 

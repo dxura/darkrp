@@ -137,7 +137,7 @@ public partial class ReloadWeaponComponent : InputWeaponComponent,
 			PlayAsyncSound( kv.Key, kv.Value, () => IsReloading );
 		}
 
-		Equipment.Owner?.BodyRenderer?.Set( "b_reload", true );
+		Equipment.Owner?.Renderer?.Set( "b_reload", true );
 	}
 
 	[Broadcast( NetPermission.OwnerOnly )]
@@ -150,7 +150,7 @@ public partial class ReloadWeaponComponent : InputWeaponComponent,
 
 		// Tags will be better so we can just react to stimuli.
 		Equipment.ViewModel?.ModelRenderer?.Set( "b_reload", false );
-		Equipment.Owner?.BodyRenderer?.Set( "b_reload", false );
+		Equipment.Owner?.Renderer?.Set( "b_reload", false );
 		Equipment.ViewModel?.ModelRenderer?.Set( "b_reloading", false );
 	}
 

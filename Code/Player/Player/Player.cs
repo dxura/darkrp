@@ -3,12 +3,6 @@ namespace Dxura.Darkrp;
 public sealed partial class Player : Component, IDescription, IAreaDamageReceiver, IRespawnable
 {
 	/// <summary>
-	/// The player's body
-	/// </summary>
-	[Property]
-	public PlayerBody? Body { get; set; }
-
-	/// <summary>
 	/// A reference to the player's head (the GameObject)
 	/// </summary>
 	[Property]
@@ -42,11 +36,6 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	/// Get a quick reference to the real Camera GameObject.
 	/// </summary>
 	public GameObject? CameraGameObject => CameraController?.Camera?.GameObject;
-
-	/// <summary>
-	/// Finds the first <see cref="SkinnedModelRenderer"/> on <see cref="Body"/>
-	/// </summary>
-	public SkinnedModelRenderer? BodyRenderer => Body?.Components?.Get<SkinnedModelRenderer>();
 
 	// IDescription
 	string IDescription.DisplayName => DisplayName;
@@ -91,31 +80,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 			_smoothEyeHeight.LerpTo( EyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
 		CharacterController.Height = Height + _smoothEyeHeight;
 	}
-
-	private float DeathcamSkipTime => 5f;
-	private float DeathcamIgnoreInputTime => 1f;
-
-	// deathcam
-	private void UpdateDeathCam()
-	{
-		if ( IsProxy )
-		{
-			return;
-		}
-
-		if ( LastDamageInfo is null )
-		{
-			return;
-		}
-
-		var killer = GetLastKiller();
-
-		if ( killer.IsValid() )
-		{
-			EyeAngles = Rotation.LookAt( killer.Transform.Position - Transform.Position, Vector3.Up );
-		}
-	}
-
+	
 	protected override void OnFixedUpdate()
 	{
 		OnFixedUpdatePresence();
@@ -174,5 +139,11 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 		{
 			ApplyMovement();
 		}
+	}
+	
+	public void OnGameEvent( JobChangedEvent eventArgs )
+	{
+		Sound.Play( JobChangedSound, WorldPosition);
+		UpdateBodyFromJob(eventArgs.After);
 	}
 }

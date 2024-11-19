@@ -5,13 +5,13 @@ public partial class Player
 	/// <summary>
 	/// Called when the player jumps.
 	/// </summary>
-	[Property]
+	[Property, Feature("Movement")]
 	public Action? OnJump { get; set; }
 
 	/// <summary>
 	/// The player's box collider, so people can jump on other people.
 	/// </summary>
-	[Property]
+	[Property, Feature("Movement")]
 	public BoxCollider PlayerBoxCollider { get; set; } = null!;
 	
 	/// <summary>
@@ -24,20 +24,19 @@ public partial class Player
 	/// <summary>
 	/// How tall are we?
 	/// </summary>
-	[Property]
-	[Group( "Config" )]
+	[Property, Feature("Movement"), Group( "Config" )]
 	public float Height { get; set; } = 64f;
 
-	[Property] [Group( "Fall Damage" )] public float MinimumFallVelocity { get; set; } = 500f;
-	[Property] [Group( "Fall Damage" )] public float MinimumFallSoundVelocity { get; set; } = 300f;
-	[Property] [Group( "Fall Damage" )] public float FallDamageScale { get; set; } = 0.2f;
+	[Property, Feature("Movement"), Group( "Config" )] public float MinimumFallVelocity { get; set; } = 500f;
+	[Property, Feature("Movement"), Group( "Config" )] public float MinimumFallSoundVelocity { get; set; } = 300f;
+	[Property, Feature("Movement"), Group( "Config" )] public float FallDamageScale { get; set; } = 0.2f;
 
-	[Property] [Group( "Sprint" )] public float SprintMovementDampening { get; set; } = 0.35f;
+	[Property, Feature("Movement"), Group( "Config" )] public float SprintMovementDampening { get; set; } = 0.35f;
 
 	/// <summary>
 	/// Noclip movement speed
 	/// </summary>
-	[Property]
+	[Property, Feature("Movement"), Group( "Config" )]
 	public float NoclipSpeed { get; set; } = 1000f;
 
 	public PlayerGlobals Global => GlobalGameNamespace.GetGlobal<PlayerGlobals>();
@@ -206,10 +205,7 @@ public partial class Player
 
 		if ( IsInVehicle )
 		{
-			if ( Body.IsValid() )
-			{
-				Body.Transform.Local = new Transform();
-			}
+			BodyRoot.LocalTransform = new Transform();
 
 			if ( AnimationHelper.IsValid() )
 			{
@@ -225,11 +221,9 @@ public partial class Player
 		}
 		else
 		{
-			if ( Body.IsValid() )
-			{
-				Body.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
-			}
+			BodyRoot.WorldRotation = Rotation.FromYaw( EyeAngles.yaw );
 
+			
 			if ( AnimationHelper.IsValid() )
 			{
 				AnimationHelper.WithVelocity( cc.Velocity );
@@ -478,9 +472,7 @@ public partial class Player
 			}
 		}
 	}
-
-	[Property] [Group( "Effects" )] public SoundEvent? LandSound { get; set; }
-
+	
 	[Broadcast]
 	private void PlayFallSound()
 	{

@@ -57,7 +57,7 @@ public partial class MeleeWeaponComponent : InputWeaponComponent
 		}
 
 		// Third person
-		Equipment?.Owner?.BodyRenderer?.Set( "b_attack", true );
+		Equipment?.Owner?.Renderer?.Set( "b_attack", true );
 
 		// First person
 		Equipment?.ViewModel?.ModelRenderer.Set( "b_attack", true );

@@ -13,8 +13,7 @@ partial class Player
 	/// <summary>
 	/// How far can we use stuff?
 	/// </summary>
-	[Property]
-	[Group( "Interaction" )]
+	[Property, Feature("Using"), Group( "Interaction" )]
 	private float UseDistance { get; set; } = 72f;
 
 	/// <summary>

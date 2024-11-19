@@ -91,7 +91,7 @@ public class PhysGunEquipment : InputWeaponComponent
 
 		if ( Input.Pressed( "Attack1" ) )
 		{
-			Equipment.Owner?.BodyRenderer?.Set( "b_attack", true );
+			Equipment.Owner?.Renderer?.Set( "b_attack", true );
 
 			if ( !Grabbing )
 				Grabbing = true;
@@ -102,7 +102,7 @@ public class PhysGunEquipment : InputWeaponComponent
 
 		if ( GrabbedObject.IsValid() && wantsToFreeze )
 		{
-			Equipment.Owner?.BodyRenderer?.Set( "b_attack", true );
+			Equipment.Owner?.Renderer?.Set( "b_attack", true );
 		}
 
 		BeamActive = grabEnabled;

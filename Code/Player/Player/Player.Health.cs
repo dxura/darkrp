@@ -46,10 +46,10 @@ public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHan
 		_timeUntilAccelerationRecovered = Global.TakeDamageAccelerationDampenTime;
 		_accelerationAddedScale = Global.TakeDamageAccelerationOffset;
 
-		if ( attacker != victim && Body != null )
+		if ( attacker != victim)
 		{
-			Body.DamageTakenPosition = position;
-			Body.DamageTakenForce = force.Normal * damageInfo.Damage * Game.Random.Float( 5f, 20f );
+			DamageTakenPosition = position;
+			DamageTakenForce = force.Normal * damageInfo.Damage * Game.Random.Float( 5f, 20f );
 		}
 
 		// Headshot effects

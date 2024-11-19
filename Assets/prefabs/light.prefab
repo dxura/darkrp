@@ -15,6 +15,7 @@
             "__type": "Sandbox.ModelRenderer",
             "__guid": "06c5de7d-b9c4-4d7a-95b4-0763825bbda0",
             "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
             "Model": "models/sbox_props/ceiling_halogen/ceiling_halogen.vmdl",
             "RenderOptions": {
               "GameLayer": true,
@@ -60,6 +61,7 @@
             "__type": "Sandbox.ModelRenderer",
             "__guid": "53e88980-6397-4f22-8628-22aa154661c3",
             "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
             "MaterialOverride": "materials/dev/primary_white_emissive.vmat",
             "Model": "models/dev/sphere.vmdl",
             "RenderOptions": {
@@ -74,14 +76,39 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
     "facepunch.ceiling_halogen#29025"
   ],
+  "HasUnsavedChanges": false,
   "__version": 1
 }

@@ -260,9 +260,9 @@ public class ShootWeaponComponent : InputWeaponComponent,
 		}
 
 		// Third person
-		if ( Equipment.Owner.IsValid() && Equipment.Owner.BodyRenderer.IsValid() )
+		if ( Equipment.Owner.IsValid() && Equipment.Owner.Renderer.IsValid() )
 		{
-			Equipment.Owner.BodyRenderer.Set( "b_attack", true );
+			Equipment.Owner.Renderer.Set( "b_attack", true );
 		}
 
 		// First person
