@@ -8,8 +8,8 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 	[Property] public bool ClearBetweenRounds { get; set; } = true;
 	[Property] public bool ClearOnRespawn { get; set; } = false;
 
-	public Dictionary<PlayerState, List<DamageInfo>> Registry { get; set; } = new();
-	public Dictionary<PlayerState, List<DamageInfo>> MyInflictedDamage { get; set; } = new();
+	public Dictionary<Player, List<DamageInfo>> Registry { get; set; } = new();
+	public Dictionary<Player, List<DamageInfo>> MyInflictedDamage { get; set; } = new();
 
 	[Broadcast( NetPermission.HostOnly )]
 	protected void RpcRefresh()
@@ -19,10 +19,10 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 
 	public List<DamageInfo> GetDamageOnMe()
 	{
-		return GetDamageInflictedTo( PlayerState.Local );
+		return GetDamageInflictedTo( Player.Local );
 	}
 
-	public List<DamageInfo> GetDamageInflictedTo( PlayerState player )
+	public List<DamageInfo> GetDamageInflictedTo( Player player )
 	{
 		if ( !Registry.TryGetValue( player, out var list ) )
 		{
@@ -32,7 +32,7 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 		return list;
 	}
 
-	public List<DamageInfo> GetMyInflictedDamage( PlayerState player )
+	public List<DamageInfo> GetMyInflictedDamage( Player player )
 	{
 		if ( !MyInflictedDamage.TryGetValue( player, out var list ) )
 		{
@@ -44,12 +44,12 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 
 	public struct GroupedDamage
 	{
-		public PlayerState? Attacker { get; set; }
+		public Player? Attacker { get; set; }
 		public int Count { get; set; }
 		public float Damage { get; set; }
 	}
 
-	public List<GroupedDamage> GetGroupedDamage( PlayerState player )
+	public List<GroupedDamage> GetGroupedDamage( Player player )
 	{
 		var groups = new List<GroupedDamage>();
 
@@ -60,7 +60,7 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 			{
 				groups.Add( new GroupedDamage
 				{
-					Attacker = group.First().Attacker is Player attackerPlayer ? attackerPlayer.PlayerState : null,
+					Attacker = group.First().Attacker is Player attackerPlayer ? attackerPlayer : null,
 					Count = group.Count(),
 					Damage = group.Sum( x => x.Damage )
 				} );
@@ -70,7 +70,7 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 		return groups;
 	}
 
-	public List<GroupedDamage> GetGroupedInflictedDamage( PlayerState player )
+	public List<GroupedDamage> GetGroupedInflictedDamage( Player player )
 	{
 		var groups = new List<GroupedDamage>();
 
@@ -81,7 +81,7 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 			{
 				groups.Add( new GroupedDamage
 				{
-					Attacker = group.First().Attacker is Player attackerPlayer ? attackerPlayer.PlayerState : null,
+					Attacker = group.First().Attacker is Player attackerPlayer ? attackerPlayer : null,
 					Count = group.Count(),
 					Damage = group.Sum( x => x.Damage )
 				} );
@@ -101,19 +101,19 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 	{
 		var attacker = eventArgs.DamageInfo.Attacker;
 		var victim = eventArgs.DamageInfo.Victim;
-		var playerState = victim is Player playerVictim ? playerVictim.PlayerState : null;
+		var player = victim as Player;
 
-		if ( !playerState.IsValid() )
+		if ( !player.IsValid() )
 		{
 			return;
 		}
 
-		var attackerPlayerState = attacker is Player attackerPlayer ? attackerPlayer.PlayerState : null;
-		if ( attackerPlayerState == PlayerState.Local )
+		var attackerPlayer = attacker as Player;
+		if ( attackerPlayer == Player.Local )
 		{
-			if ( !MyInflictedDamage.TryGetValue( playerState, out var myList ) )
+			if ( !MyInflictedDamage.TryGetValue( player, out var myList ) )
 			{
-				MyInflictedDamage.Add( playerState, new List<DamageInfo> { eventArgs.DamageInfo } );
+				MyInflictedDamage.Add( player, new List<DamageInfo> { eventArgs.DamageInfo } );
 			}
 			else
 			{
@@ -121,9 +121,9 @@ public partial class DamageTracker : Component, IGameEventHandler<DamageTakenGlo
 			}
 		}
 
-		if ( !Registry.TryGetValue( playerState, out var list ) )
+		if ( !Registry.TryGetValue( player, out var list ) )
 		{
-			Registry.Add( playerState, new List<DamageInfo> { eventArgs.DamageInfo } );
+			Registry.Add( player, new List<DamageInfo> { eventArgs.DamageInfo } );
 		}
 		else
 		{

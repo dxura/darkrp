@@ -139,7 +139,7 @@ public partial class Vehicle : Component, IRespawnable, IUse, IDescription, IDam
 			seat.Eject();
 		}
 
-		Explosion?.Clone( Transform.Position );
+		Explosion?.Clone( WorldPosition );
 		GameObject.Destroy();
 	}
 

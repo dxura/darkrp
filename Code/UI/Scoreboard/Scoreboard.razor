@@ -29,14 +29,14 @@
 				<label class ="col stat-small small" ></label >
 				<label class ="col stat-small small" ></label >
 				<label class ="col playername small" ></label >
-				@foreach( var x in IScore.Find( PlayerState.Local ) )
+				@foreach( var x in IScore.Find( Player.Local ) )
 			{
 				<label class="col stat">@( x.Attribute.Name )</label>
 			}
 			</div >
 				@foreach( var player in group )
 			{
-				<ScoreboardRow PlayerState="@player"/>
+				<ScoreboardRow Player="@player"/>
 			}
 		}
 	</table>
@@ -44,13 +44,13 @@
 
 @code
 {
-	public IEnumerable<PlayerState> PlayerStates => GameUtils.AllPlayers;
+	public IEnumerable<Player> Players => GameUtils.AllPlayers;
 
-	private List<IGrouping<JobGroupResource, PlayerState>> GroupedPlayers
+	private List<IGrouping<JobGroupResource, Player>> GroupedPlayers
 	{
 		get
 		{
-			var sortedPlayers = PlayerStates.OrderByDescending( x => x.Components.Get<PlayerScore>().Kills );
+			var sortedPlayers = Players.OrderByDescending( x => x.Components.Get<PlayerScore>().Kills );
 			var groupedPlayers = sortedPlayers.GroupBy( x => x.Job.Group );
 			return groupedPlayers.ToList();
 		}

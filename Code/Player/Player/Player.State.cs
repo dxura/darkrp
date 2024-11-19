@@ -1,3 +1,5 @@
+using GameSystems.Jobs;
+using SandbankDatabase;
 using Sandbox.Diagnostics;
 using Sandbox.Events;
 
@@ -35,15 +37,119 @@ public partial class Player
 	/// </summary>
 	[HostSync]
 	public TimeSince TimeSinceLastRespawn { get; private set; }
+	
+	/// <summary>
+	/// Our local player on this client.
+	/// </summary>
+	public static Player? Local { get; private set; }
+
+	/// <summary>
+	/// The player's ID. This is their SteamID.
+	/// </summary>
+	[HostSync]
+	[Property]
+	[Saved]
+	public string Uid { get; set; } = "";
+
+	/// <summary>
+	/// The player's name, which might have to persist if they leave
+	/// </summary>
+	[HostSync]
+	[Saved]
+	public string? SteamName { get; set; }
+
+	/// <summary>
+	/// The connection of this player
+	/// </summary>
+	public Connection? Connection => Network.Owner;
+
+	public bool IsConnected => Connection is not null && (Connection.IsActive || Connection.IsHost);
+
+	/// <summary>
+	/// The job this player belongs to.
+	/// </summary>
+	[Property]
+	[Group( "Setup" )]
+	[HostSync]
+	[Change( nameof(OnJobPropertyChanged) )]
+
+	public JobResource Job { get; set; } = null!;
+
+	/// <summary>
+	/// Is this the local player for this client
+	/// </summary>
+	public bool IsLocalPlayer => !IsProxy && Connection == Connection.Local;
+
+	/// <summary>
+	/// Unique colour or team color of this player
+	/// </summary>
+	public Color PlayerColor => Job.Color;
+
+	public void HostInit()
+	{
+		RespawnState = RespawnState.Immediate;
+	}
+
+	[Authority]
+	public void ClientInit()
+	{
+		Local = this;
+	}
+
+	public void Kick()
+	{
+		GameObject.Destroy();
+		// todo: actually kick em
+	}
+
+	[Broadcast( NetPermission.OwnerOnly )]
+	public void AssignJob( JobResource job )
+	{
+		if ( !Networking.IsHost )
+		{
+			return;
+		}
+
+		
+		// Respect job caps
+		if ( job.MaxWorkers != 0 && GameUtils.GetPlayersByJob( job ).Count() >= job.MaxWorkers )
+		{
+			return;
+		}
+
+		Job = job;
+		Respawn(Random.Shared.FromList(Respawner.SpawnPoints), true );
+
+
+		Scene.Dispatch( new JobAssignedEvent( this, job ) );
+	}
+
+	/// <summary>
+	/// Called when <see cref="Job"/> changes across the network.
+	/// </summary>
+	private void OnJobPropertyChanged( JobResource before, JobResource after )
+	{
+		GameObject.Root.Dispatch( new JobChangedEvent( before, after ) );
+	}
+
+	/// <summary>
+	/// Save this player's data.
+	/// </summary>
+	public void Save()
+	{
+		Sandbank.Insert("players", this);
+	}
 
 	public void OnKill( DamageInfo damageInfo )
 	{
+		LastDamageInfo = damageInfo;
+
 		if ( Networking.IsHost )
 		{
 			ArmorComponent.HasHelmet = false;
 			ArmorComponent.Armor = 0f;
 
-			PlayerState.RespawnState = RespawnState.Requested;
+			RespawnState = RespawnState.Requested;
 
 			Inventory.Clear();
 			CreateRagdoll();
@@ -55,9 +161,7 @@ public partial class Player
 		{
 			return;
 		}
-
-		PlayerState.OnKill( damageInfo );
-
+		
 		Holster();
 
 		_previousVelocity = Vector3.Zero;
@@ -121,14 +225,8 @@ public partial class Player
 	[Authority]
 	private void OnClientRespawn()
 	{
-		if ( !PlayerState.IsValid() )
-		{
-			return;
-		}
-
 		SteamId = Connection.Local.SteamId;
 
-		CameraController.SetActive( true );
 		CameraController.Mode = CameraMode.FirstPerson;
 	}
 

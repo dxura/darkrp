@@ -48,12 +48,12 @@
 
 @code
 {
-	public Player Player => PlayerState.Local.Player;
+	public Player Player => Player.Local;
 
-	public List<DamageTracker.GroupedDamage> DamageEntries => GameManager.Instance?.Get<DamageTracker>()?.GetGroupedDamage( PlayerState.Local );
-	public List<DamageTracker.GroupedDamage> InflictedDamageEntries => GameManager.Instance?.Get<DamageTracker>()?.GetGroupedInflictedDamage( PlayerState.Local );
+	public List<DamageTracker.GroupedDamage> DamageEntries => GameManager.Instance?.Get<DamageTracker>()?.GetGroupedDamage( Player.Local );
+	public List<DamageTracker.GroupedDamage> InflictedDamageEntries => GameManager.Instance?.Get<DamageTracker>()?.GetGroupedInflictedDamage( Player.Local );
 
-	public DamageInfo LastDamageInfo => PlayerState.Local.LastDamageInfo;
+	public DamageInfo LastDamageInfo => Player.Local.LastDamageInfo;
 
 	public string GetName( Component attacker )
 	{

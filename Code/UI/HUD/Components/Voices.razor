@@ -31,7 +31,7 @@
 
 	private bool CanDisplay( Voice voice )
 	{
-		return voice.LastPlayed < 0.25f && voice.Transform.Position.Distance( PlayerState.Local.Player?.Transform.Position ?? Vector3.Zero ) <= 1000;
+		return voice.LastPlayed < 0.25f && voice.Transform.Position.Distance( Player.Local?.Transform.Position ?? Vector3.Zero ) <= 1000;
 	}
 
 	private string GetAmplitudeScale(Voice voice)

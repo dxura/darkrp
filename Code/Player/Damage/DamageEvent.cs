@@ -82,7 +82,7 @@ public enum DamageFlags
 public record DamageInfo(
 	Component Attacker,
 	float Damage,
-	Component Inflictor = null,
+	Component? Inflictor = null,
 	Vector3 Position = default,
 	Vector3 Force = default,
 	HitboxTags Hitbox = default,

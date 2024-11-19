@@ -10,11 +10,6 @@ public abstract class BaseGrenade : Component
 	[Property] public bool CanDealDamage { get; set; }
 	[Sync] public Player Player { get; set; }
 
-	/// <summary>
-	/// Is this player an enemy of the viewer?
-	/// </summary>
-	public bool IsEnemy => PlayerState.Local.Job != Player.Job;
-
 	private TimeSince TimeSinceCreated { get; set; }
 
 	protected override void OnStart()

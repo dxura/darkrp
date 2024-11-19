@@ -14,7 +14,7 @@ public class BaseEntity : Component, IUse, IRespawnable
 	/// <summary>
 	/// Gets or sets the owner of the entity.
 	/// </summary>
-	 public PlayerState? Owner { get; set; }
+	 public Player? Owner { get; set; }
 	
 	/// <summary>
 	/// Health component (If we have one)
@@ -63,7 +63,7 @@ public class BaseEntity : Component, IUse, IRespawnable
 	/// </summary>
 	/// <param name="gameObject">The GameObject to add the entity to.</param>
 	/// <param name="owner">The player who owns this entity.</param>
-	public static void SpawnEntity( GameObject gameObject, PlayerState owner )
+	public static void SpawnEntity( GameObject gameObject, Player owner )
 	{
 		var entity = gameObject.Components.GetOrCreate<BaseEntity>();
 		entity.Owner = owner;

@@ -56,7 +56,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	void IAreaDamageReceiver.ApplyAreaDamage( AreaDamage component )
 	{
 		var dmg = new DamageInfo( component.Attacker, component.Damage, component.Inflictor,
-			component.Transform.Position,
+			component.WorldPosition,
 			Flags: component.DamageFlags );
 
 		HealthComponent.TakeDamage( dmg );
@@ -71,17 +71,17 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 			() => IsSprinting || TimeSinceSprintChanged < 0.25f || TimeSinceGroundedChanged < 0.25f );
 
 		GameObject.Name = $"Player ({DisplayName})";
-
-		CameraController?.SetActive( !IsProxy );
 	}
 
 	public SceneTraceResult CachedEyeTrace { get; private set; }
 
 	protected override void OnUpdate()
 	{
+		OnUpdatePawn();
+		
 		if ( HealthComponent.State == LifeState.Dead )
 		{
-			UpdateDead();
+			UpdateDeathCam();
 		}
 
 		OnUpdateMovement();
@@ -90,52 +90,29 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 		_smoothEyeHeight =
 			_smoothEyeHeight.LerpTo( EyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
 		CharacterController.Height = Height + _smoothEyeHeight;
-
-		if ( !IsProxy )
-		{
-			DebugUpdate();
-		}
 	}
 
 	private float DeathcamSkipTime => 5f;
 	private float DeathcamIgnoreInputTime => 1f;
 
 	// deathcam
-	private void UpdateDead()
+	private void UpdateDeathCam()
 	{
 		if ( IsProxy )
 		{
 			return;
 		}
 
-		if ( !PlayerState.IsValid() )
+		if ( LastDamageInfo is null )
 		{
 			return;
 		}
 
-		if ( PlayerState.LastDamageInfo is null )
-		{
-			return;
-		}
-
-		var killer = PlayerState.GetLastKiller();
+		var killer = GetLastKiller();
 
 		if ( killer.IsValid() )
 		{
 			EyeAngles = Rotation.LookAt( killer.Transform.Position - Transform.Position, Vector3.Up );
-		}
-
-		if ( ((Input.Pressed( "attack1" ) || Input.Pressed( "attack2" )) && !PlayerState.IsRespawning) ||
-		     PlayerState.LastDamageInfo.TimeSinceEvent > DeathcamSkipTime )
-		{
-			// Don't let players immediately switch
-			if ( PlayerState.LastDamageInfo.TimeSinceEvent < DeathcamIgnoreInputTime )
-			{
-				return;
-			}
-
-			GameObject.Destroy();
-			return;
 		}
 	}
 
@@ -196,8 +173,4 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 			ApplyMovement();
 		}
 	}
-
-	[HostSync] public bool InPlayArea { get; set; } = true;
-	[HostSync] public RealTimeUntil TimeUntilPlayAreaKill { get; set; } = 10f;
-	[Property] public float OutOfPlayAreaKillTime { get; set; } = 5f;
 }

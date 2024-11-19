@@ -2,12 +2,7 @@
 @inherits Panel
 @attribute [StyleSheet]
 
-@if ( PlayerState.RespawnState == RespawnState.Immediate )
-{
-	return;
-}
-
-@if ( !PlayerState.IsRespawning )
+@if (Player is not { IsRespawning: true } || Player?.RespawnState == RespawnState.Immediate )
 {
 	return;
 }
@@ -24,10 +19,10 @@
 @code
 {
 	public Respawner Respawner => Scene.GetAllComponents<Respawner>().FirstOrDefault();
-	public PlayerState PlayerState => PlayerState.Local;
+	public Player? Player => Player.Local;
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( PlayerState.IsRespawning, Respawner.GetRespawnTime() );
+		return HashCode.Combine( Player?.IsRespawning, Respawner.GetRespawnTime() );
 	}
 }

@@ -11,13 +11,13 @@ namespace Dxura.Darkrp;
 public interface IScore
 {
 	/// <summary>
-	/// Looks for a bunch of score attributes from components on a <see cref="PlayerState"/>, and returns a formatted, sorted list of values.
+	/// Looks for a bunch of score attributes from components on a <see cref="Player"/>, and returns a formatted, sorted list of values.
 	/// </summary>
-	/// <param name="playerState"></param>
+	/// <param name="Player"></param>
 	/// <returns></returns>
-	public static IEnumerable<(object Value, ScoreAttribute Attribute)> Find( PlayerState playerState )
+	public static IEnumerable<(object Value, ScoreAttribute Attribute)> Find( Player Player )
 	{
-		var components = playerState.Components.GetAll<IScore>( FindMode.EnabledInSelfAndDescendants );
+		var components = Player.Components.GetAll<IScore>( FindMode.EnabledInSelfAndDescendants );
 		var values = new List<(object Value, MemberDescription Member, ScoreAttribute Attribute)>();
 
 		foreach ( var comp in components )
@@ -72,7 +72,7 @@ public sealed class PlayerScore : Component,
 	IGameEventHandler<KillEvent>,
 	IScore
 {
-	[Property] public PlayerState PlayerState { get; set; }
+	[Property] public required Player Player { get; set; }
 
 	[HostSync]
 	[Property]
@@ -105,7 +105,7 @@ public sealed class PlayerScore : Component,
 			return;
 		}
 
-		var thisPlayer = PlayerState?.Player;
+		var thisPlayer = Player;
 		if ( !thisPlayer.IsValid() )
 		{
 			return;

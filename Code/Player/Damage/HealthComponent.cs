@@ -40,6 +40,7 @@ public partial class HealthComponent : Component, IRespawnable
 	/// </summary>
 	[HostSync]
 	[Change( nameof(OnHealthPropertyChanged) )]
+	[Property, ReadOnly]
 	public float Health { get; set; } = 100f;
 
 	[Property] [Group( "Setup" )] public float MaxHealth { get; set; } = 100f;

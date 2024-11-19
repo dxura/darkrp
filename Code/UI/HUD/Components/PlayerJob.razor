@@ -11,7 +11,7 @@
 
 @code
 {
-	private static JobResource Job => PlayerState.Local.Player?.Job ?? JobProvider.Default();
+	private static JobResource Job => Player.Local?.Job ?? JobProvider.Default();
 
 	protected override int BuildHash()
 	{

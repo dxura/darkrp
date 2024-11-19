@@ -11,9 +11,9 @@ namespace Dxura.Darkrp.Editor;
 /// </summary>
 public class RecoilPatternEditor : GraphicsView
 {
-	ChartBackground Background;
+	readonly ChartBackground _background;
 
-	public RecoilPatternEditor( Widget parent ) : base( parent )
+	public RecoilPatternEditor( Widget? parent ) : base( parent )
 	{
 		SceneRect = new( 0, Size );
 		HorizontalScrollbar = ScrollbarMode.Off;
@@ -21,7 +21,7 @@ public class RecoilPatternEditor : GraphicsView
 		Scale = 1;
 		CenterOn( new Vector2( 100, 10 ) );
 
-		Background = new ChartBackground
+		_background = new ChartBackground
 		{
 			Size = SceneRect.Size,
 			RangeX = new Vector2( -5, 5 ),
@@ -29,15 +29,15 @@ public class RecoilPatternEditor : GraphicsView
 			AxisX = new AxisConfig { LineColor = Theme.White.WithAlpha( 0.2f ), Ticks = 11, Width = 30.0f, LabelColor = Theme.White.WithAlpha( 0.5f ) },
 			AxisY = new AxisConfig { LineColor = Theme.White.WithAlpha( 0.2f ), Ticks = 11, Width = 20.0f, LabelColor = Theme.White.WithAlpha( 0.5f ) }
 		};
-		Add( Background );
+		Add( _background );
 	}
 
 	public void SetProperty( SerializedProperty property )
 	{
 		var instance = new RecoilPatternInstance( this )
 		{
-			RangeX = Background.RangeX,
-			RangeY = Background.RangeY,
+			RangeX = _background.RangeX,
+			RangeY = _background.RangeY,
 			Property = property
 		};
 
@@ -49,14 +49,14 @@ public class RecoilPatternEditor : GraphicsView
 		base.DoLayout();
 
 		SceneRect = new( 0, Size );
-		Background.Size = SceneRect.Size;
+		_background.Size = SceneRect.Size;
 		
 		foreach ( var i in Items )
 		{
 			if ( i is RecoilPatternInstance instance )
 			{
-				if ( instance.SceneRect == Background.ChartRect ) continue;
-				instance.SceneRect = Background.ChartRect;
+				if ( instance.SceneRect == _background.ChartRect ) continue;
+				instance.SceneRect = _background.ChartRect;
 				instance.Refresh();
 			}
 		}

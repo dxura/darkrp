@@ -8,7 +8,7 @@
 	<div class="flex column with-padding gap-sm">
 
 		<div class="with-background with-padding">
-			<label class="emphasis">$@PlayerState.Balance.ToString( "N0" )</label>
+			<label class="emphasis">$@Player.Balance.ToString( "N0" )</label>
 		</div>
 
 		<div class="with-rounding flex row gap-sm">
@@ -75,8 +75,7 @@
 @code
 {
 	public PlayerInventory Inventory => Player?.Inventory;
-	public Player Player => PlayerState.Local?.Player;
-	public PlayerState PlayerState => PlayerState.Local;
+	public Player Player => Player.Local;
 
 	private void BuyWeapon( EquipmentResource resource )
 	{
@@ -100,12 +99,12 @@
 
 	private bool CanAfford( EquipmentResource resource )
 	{
-		return PlayerState.Balance >= resource.Price;
+		return Player.Balance >= resource.Price;
 	}
 
 	private bool CanAfford( BuyMenuItem buyMenuItem )
 	{
-		return PlayerState.Balance >= buyMenuItem.GetPrice( Player );
+		return Player.Balance >= buyMenuItem.GetPrice( Player );
 	}
 	
 	protected override int BuildHash()

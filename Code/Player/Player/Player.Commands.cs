@@ -13,7 +13,7 @@ public partial class Player
 	[DeveloperCommand( "-10 HP (head)", "Player" )]
 	private static void Command_HurtTenHead()
 	{
-		var player = PlayerState.Local.Player;
+		var player = Local;
 		if ( player is null )
 		{
 			return;
@@ -25,7 +25,7 @@ public partial class Player
 	[DeveloperCommand( "-10 HP (chest)", "Player" )]
 	private static void Command_HurtTenChest()
 	{
-		var player = PlayerState.Local.Player;
+		var player = Local;
 		if ( player is null )
 		{
 			return;
@@ -37,7 +37,7 @@ public partial class Player
 	[DeveloperCommand( "Heal", "Player" )]
 	private static void Command_Heal()
 	{
-		var player = PlayerState.Local.Player;
+		var player = Local;
 		if ( player is null )
 		{
 			return;
@@ -50,7 +50,7 @@ public partial class Player
 	[ConCmd( "kill" )]
 	private static void Command_Suicide()
 	{
-		var player = PlayerState.Local.Player;
+		var player = Local;
 		if ( player is null )
 		{
 			return;
@@ -62,20 +62,20 @@ public partial class Player
 	[DeveloperCommand( "Give $1k", "Player" )]
 	private static void Command_GiveGrand()
 	{
-		var player = PlayerState.Local.Player;
+		var player = Local;
 		if ( player is null )
 		{
 			return;
 		}
 
-		player.PlayerState.GiveMoney( 1000 );
+		player.GiveMoney( 1000 );
 	}
 
 	[Authority]
 	private static void Host_Suicide()
 	{
 		var pawn = Game.ActiveScene.GetAllComponents<Player>()
-			.FirstOrDefault( p => p.Network.OwnerConnection == Rpc.Caller );
+			.FirstOrDefault( p => p.Network.Owner == Rpc.Caller );
 
 		if ( !pawn.IsValid() )
 		{

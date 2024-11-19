@@ -1,6 +1,8 @@
-﻿namespace Dxura.Darkrp;
+﻿using Sandbox.Events;
 
-public class Respawner : Component
+namespace Dxura.Darkrp;
+
+public class Respawner : Component, IGameEventHandler<PlayerJoinedEvent>
 {
     [Property] [HostSync] private float RespawnDelaySeconds { get; set; } = 3f;
 
@@ -9,9 +11,9 @@ public class Respawner : Component
 
     public int GetRespawnTime()
     {
-        if (PlayerState.Local != null)
+        if (Player.Local != null)
         {
-            return (RespawnDelaySeconds - PlayerState.Local.TimeSinceRespawnStateChanged)
+            return (RespawnDelaySeconds - Player.Local.TimeSinceRespawnStateChanged)
                 .Clamp(0f, RespawnDelaySeconds)
                 .CeilToInt();
         }
@@ -56,7 +58,7 @@ public class Respawner : Component
 
         foreach (var player in GameUtils.AllPlayers)
         {
-            if (player.Player.IsValid() && player.Player.HealthComponent.State == LifeState.Alive)
+            if (player.IsValid() && player.HealthComponent.State == LifeState.Alive)
                 continue;
 
             if (!player.IsConnected)
@@ -80,5 +82,11 @@ public class Respawner : Component
                     break;
             }
         }
+    }
+
+    // "Spawn" player when joined
+    public void OnGameEvent(PlayerJoinedEvent eventArgs)
+    {
+        eventArgs.Player.Respawn(Random.Shared.FromList(SpawnPoints), false);
     }
 }

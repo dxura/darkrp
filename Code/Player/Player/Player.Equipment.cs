@@ -13,7 +13,7 @@ public partial class Player :
 	[ReadOnly]
 	public Equipment? CurrentEquipment { get; private set; }
 
-	public GameObject ViewModelGameObject => CameraController.PlayerCameraGameObject;
+	public GameObject ViewModelGameObject => Scene.Camera.GameObject;
 
 	/// <summary>
 	/// How inaccurate are things like gunshots?

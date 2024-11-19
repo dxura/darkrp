@@ -41,19 +41,19 @@
 
 	protected override void OnUpdate()
 	{
-		if ( PlayerState.Local == null )
+		if ( Player.Local == null )
 		{
 			return;
 		}
 
-		if ( !_developerSteamIds.ContainsValue( PlayerState.Local.UID ) )
+		if ( !_developerSteamIds.ContainsValue( Player.Local.Uid ) )
 		{
 			return;
 		}
 
 		if ( Input.Pressed( "DeveloperMenu" ) )
 		{
-			Log.Info( PlayerState.Local.UID );
+			Log.Info( Player.Local.Uid );
 
 			IsActive ^= true;
 		}

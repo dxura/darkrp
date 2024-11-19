@@ -16,9 +16,9 @@
             "__type": "Dxura.Darkrp.GameNetworkManager",
             "__guid": "42c91d9a-e476-4d23-b093-e727b6ba2f76",
             "IsMultiplayer": true,
-            "PlayerStatePrefab": {
+            "PlayerPrefab": {
               "_type": "gameobject",
-              "prefab": "prefabs/player/playerstate.prefab"
+              "prefab": "prefabs/player.prefab"
             }
           }
         ]
@@ -131,6 +131,50 @@
               "models/citizen_props/roadcone01.vmdl"
             ],
             "SpawnProtectionTimeWindow": 1
+          }
+        ]
+      },
+      {
+        "__guid": "44d5a949-1e8e-455a-b057-bea7d6b24f26",
+        "Flags": 0,
+        "Name": "Camera",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "51b6aa09-2510-419e-94ae-099ebe4e60a5",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 60,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 1
+          },
+          {
+            "__type": "Sandbox.AudioListener",
+            "__guid": "d9e8832b-86e8-4fcf-ba73-e54a046862a4",
+            "UseCameraDirection": true
+          },
+          {
+            "__type": "Sandbox.Highlight",
+            "__guid": "aee27f05-1aed-457f-a4f7-3ea8c63f338d"
+          },
+          {
+            "__type": "Dxura.Darkrp.ScreenShaker",
+            "__guid": "6e717477-b77f-47c0-935e-2b40e0d69272"
+          },
+          {
+            "__type": "Sandbox.WorldInput",
+            "__guid": "c193db8f-561e-4115-a9be-dcba1f77fec6",
+            "LeftMouseAction": "Attack1",
+            "RightMouseAction": "Attack2"
           }
         ]
       }

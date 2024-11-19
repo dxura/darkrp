@@ -45,24 +45,10 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	public Pixelate Pixelate { get; set; } = null!;
 
 	/// <summary>
-	/// The default player camera prefab.
-	/// </summary>
-	[Property]
-	[RequireComponent]
-	public GameObject DefaultPlayerCameraPrefab { get; set; } = null!;
-
-	/// <summary>
 	/// The boom for this camera.
 	/// </summary>
 	[Property]
 	public GameObject Boom { get; set; } = null!;
-
-	/// <summary>
-	/// See <see cref="DefaultPlayerCameraPrefab"/>, this is the instance of this.
-	/// </summary>
-	public GameObject PlayerCameraGameObject { get; set; } = null!;
-
-	public bool IsActive { get; private set; }
 
 	public float MaxBoomLength { get; set; }
 
@@ -75,16 +61,30 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		{
 			if ( Camera.IsValid() )
 			{
-				return new Ray( Camera.Transform.Position + Camera.Transform.Rotation.Forward,
-					Camera.Transform.Rotation.Forward );
+				return new Ray( Camera.WorldPosition + Camera.WorldRotation.Forward,
+					Camera.WorldRotation.Forward );
 			}
 
-			return new Ray( Transform.Position + Vector3.Up * 64f, Player.EyeAngles.ToRotation().Forward );
+			return new Ray( WorldPosition + Vector3.Up * 64f, Player.EyeAngles.ToRotation().Forward );
 		}
 	}
 
 	protected override void OnStart()
 	{
+		Camera = Scene.Camera;
+		Camera.GameObject.SetParent(Boom);
+		
+		Pixelate = Camera.GameObject.Components.GetOrCreate<Pixelate>();
+		ChromaticAberration =  Camera.GameObject.Components.GetOrCreate<ChromaticAberration>();
+		AudioListener =  Camera.GameObject.Components.GetOrCreate<AudioListener>();
+		ScreenShaker =  Camera.GameObject.Components.GetOrCreate<ScreenShaker>();
+
+		// Optional
+		ColorAdjustments =  Camera.GameObject.Components.Get<ColorAdjustments>();
+		
+		OnModeChanged();
+		Boom.WorldRotation = Player.EyeAngles.ToRotation();
+
 	}
 
 	private float _fieldOfViewOffset = 0f;
@@ -103,39 +103,8 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		}
 		else
 		{
-			Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
+			Boom.WorldRotation = Player.EyeAngles.ToRotation();
 		}
-	}
-
-	public void SetActive( bool isActive )
-	{
-		if ( PlayerCameraGameObject.IsValid() )
-		{
-			PlayerCameraGameObject.Destroy();
-		}
-
-		if ( isActive )
-		{
-			PlayerCameraGameObject = GetOrCreateCameraObject();
-
-			if ( !PlayerCameraGameObject.IsValid() )
-			{
-				Log.Warning( "Couldn't make camera??" );
-				return;
-			}
-
-			Camera = PlayerCameraGameObject.Components.GetOrCreate<CameraComponent>();
-			Pixelate = PlayerCameraGameObject.Components.GetOrCreate<Pixelate>();
-			ChromaticAberration = PlayerCameraGameObject.Components.GetOrCreate<ChromaticAberration>();
-			AudioListener = PlayerCameraGameObject.Components.GetOrCreate<AudioListener>();
-			ScreenShaker = PlayerCameraGameObject.Components.GetOrCreate<ScreenShaker>();
-
-			// Optional
-			ColorAdjustments = PlayerCameraGameObject.Components.Get<ColorAdjustments>();
-		}
-		
-		OnModeChanged();
-		Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
 	}
 
 	/// <summary>
@@ -150,15 +119,15 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		}
 
 		// All transform effects are additive to camera local position, so we need to reset it before anything is applied
-		Camera.Transform.LocalPosition = Vector3.Zero;
-		Camera.Transform.LocalRotation = Rotation.Identity;
+		Camera.LocalPosition = Vector3.Zero;
+		Camera.LocalRotation = Rotation.Identity;
 
 		if ( Mode == CameraMode.ThirdPerson && Player.IsProxy )
 		{
 			// orbit cam: spectating only
-			var angles = Boom.Transform.Rotation.Angles();
+			var angles = Boom.WorldRotation.Angles();
 			angles += Input.AnalogLook;
-			Boom.Transform.Rotation = angles.WithPitch( angles.pitch.Clamp( -90, 90 ) ).ToRotation();
+			Boom.WorldRotation = angles.WithPitch( angles.pitch.Clamp( -90, 90 ) ).ToRotation();
 		}
 		else
 		{
@@ -167,13 +136,13 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 		if ( MaxBoomLength > 0 )
 		{
-			var tr = Scene.Trace.Ray( new Ray( Boom.Transform.Position, Boom.Transform.Rotation.Backward ),
+			var tr = Scene.Trace.Ray( new Ray( Boom.WorldPosition, Boom.WorldRotation.Backward ),
 					MaxBoomLength )
 				.IgnoreGameObjectHierarchy( GameObject.Root )
 				.WithoutTags( "trigger", "player", "ragdoll" )
 				.Run();
 
-			Camera.Transform.LocalPosition = Vector3.Backward * (tr.Hit ? tr.Distance - 5.0f : MaxBoomLength);
+			Camera.LocalPosition = Vector3.Backward * (tr.Hit ? tr.Distance - 5.0f : MaxBoomLength);
 		}
 
 		if ( ShouldViewBob )
@@ -184,13 +153,13 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		Update( eyeHeight );
 	}
 
-	private float walkBob = 0;
-	private float LerpBobSpeed = 0;
+	private float _walkBob;
+	private float _lerpBobSpeed;
 
 	[DeveloperCommand( "Toggle Third Person", "Player" )]
 	public static void ToggleThirdPerson()
 	{
-		var pl = PlayerState.Local.Player;
+		var pl = Player.Local;
 		pl.CameraController.Mode = pl.CameraController.Mode == CameraMode.FirstPerson
 			? CameraMode.ThirdPerson
 			: CameraMode.FirstPerson;
@@ -218,14 +187,14 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 			bobSpeed *= 0.3f;
 		}
 
-		LerpBobSpeed = LerpBobSpeed.LerpTo( bobSpeed, Time.Delta * 10f );
+		_lerpBobSpeed = _lerpBobSpeed.LerpTo( bobSpeed, Time.Delta * 10f );
 
-		walkBob += Time.Delta * 10.0f * LerpBobSpeed;
-		var yaw = MathF.Sin( walkBob ) * 0.5f;
-		var pitch = MathF.Cos( -walkBob * 2f ) * 0.5f;
+		_walkBob += Time.Delta * 10.0f * _lerpBobSpeed;
+		var yaw = MathF.Sin( _walkBob ) * 0.5f;
+		var pitch = MathF.Cos( -_walkBob * 2f ) * 0.5f;
 
-		Boom.Transform.LocalRotation *= Rotation.FromYaw( -yaw * LerpBobSpeed );
-		Boom.Transform.LocalRotation *= Rotation.FromPitch( -pitch * LerpBobSpeed * 0.5f );
+		Boom.LocalRotation *= Rotation.FromYaw( -yaw * _lerpBobSpeed );
+		Boom.LocalRotation *= Rotation.FromPitch( -pitch * _lerpBobSpeed * 0.5f );
 	}
 
 	private void ApplyScope()
@@ -286,7 +255,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		ApplyRecoil();
 		ApplyScope();
 
-		Boom.Transform.LocalPosition = Vector3.Zero.WithZ( eyeHeight );
+		Boom.LocalPosition = Vector3.Zero.WithZ( eyeHeight );
 
 		ApplyCameraEffects();
 		ScreenShaker?.Apply( Camera );
@@ -345,25 +314,5 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	private void SetBoomLength( float length )
 	{
 		MaxBoomLength = length;
-	}
-	
-	private GameObject GetOrCreateCameraObject()
-	{
-		// I don't really get how this can happen.
-		if ( !Scene.IsValid() )
-		{
-			return null;
-		}
-
-		var component = Scene.GetAllComponents<PlayerCameraOverride>().FirstOrDefault();
-
-		var config = new CloneConfig() { StartEnabled = true, Parent = Boom, Transform = new Transform() };
-
-		if ( component.IsValid() )
-		{
-			return component.Prefab.Clone( config );
-		}
-
-		return DefaultPlayerCameraPrefab?.Clone( config );
 	}
 }

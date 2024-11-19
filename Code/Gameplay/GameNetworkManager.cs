@@ -15,7 +15,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// Which player prefab should we spawn?
 	/// </summary>
 	[Property]
-	public GameObject PlayerStatePrefab { get; set; }
+	public required GameObject PlayerPrefab { get; set; }
 
 	/// <summary>
 	/// Is this game multiplayer? If not, we won't create a lobby.
@@ -34,9 +34,9 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 		//
 		// Create a lobby if we're not connected
 		//
-		if ( !GameNetworkSystem.IsActive )
+		if ( !Networking.IsActive )
 		{
-			GameNetworkSystem.CreateLobby();
+			Networking.CreateLobby(new LobbyConfig());
 		}
 	}
 
@@ -45,41 +45,39 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// </summary>
 	/// <param name="channel"></param>
 	/// <returns></returns>
-	private PlayerState GetOrCreatePlayerState( Connection channel = null )
+	private Player GetOrCreatePlayer( Connection channel)
 	{
 		// A candidate player state has no owner.
-		var playerState = Scene.GetAllComponents<PlayerState>()
-			.FirstOrDefault( x => x.Connection is null && x.UID == channel.SteamId.ToString() );
+		var candidatePlayer = Scene.GetAllComponents<Player>()
+			.FirstOrDefault( x => x.Connection is null && x.Uid == channel.SteamId.ToString() );
 
-		if ( playerState.IsValid() )
+		if ( candidatePlayer.IsValid() )
 		{
 			Log.Warning(
-				$"Found existing player state for {channel.SteamId} that we can re-use. {playerState}");
-			return playerState;
+				$"Found existing player state for {channel.SteamId} that we can re-use. {candidatePlayer}");
+			return candidatePlayer;
 		}
 
-		Assert.True( PlayerStatePrefab.IsValid(), "Could not spawn player as no PlayerStatePrefab assigned." );
+		Assert.True( PlayerPrefab.IsValid(), "Could not spawn player as no PlayerPrefab assigned." );
 
-		var player = PlayerStatePrefab.Clone();
-		player.BreakFromPrefab();
-		player.Name = $"PlayerState ({channel.DisplayName})";
-		player.Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
-		playerState = player.Components.Get<PlayerState>();
+		var playerGameObject = PlayerPrefab.Clone();
+		playerGameObject.BreakFromPrefab();
+		playerGameObject.Name = $"Player ({channel.DisplayName})";
+		playerGameObject.Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
 
-		var playerData = Sandbank.SelectOneWithID<PlayerState>("players", channel.SteamId.ToString());
-
-		if ( playerData != null )
-		{
-			Log.Warning($"Found existing player data for {channel.SteamId} that we can re-use.");
-			Sandbank.CopySavedData(playerData, playerState);
-		}
-		else
-		{
-			playerState.UID = channel.SteamId.ToString();
-			playerState.SteamName = channel.DisplayName;
-		}
-
-		return playerState;
+		// var playerData = Sandbank.SelectOneWithID<Player>("players", channel.SteamId.ToString());
+		//
+		// if ( playerData != null )
+		// {
+		// 	Log.Warning($"Found existing player data for {channel.SteamId} that we can re-use.");
+		// 	Sandbank.CopySavedData(playerData, Player);
+		// }
+		
+		var player = playerGameObject.GetComponent<Player>();
+		player.Uid = channel.SteamId.ToString();
+		player.SteamName = channel.DisplayName;
+		
+		return player;
 	}
 
 	/// <summary>
@@ -89,34 +87,34 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	public void OnActive( Connection channel )
 	{
 		Log.Info( $"Player '{channel.DisplayName}' is becoming active" );
-
-		var playerState = GetOrCreatePlayerState( channel );
-		if ( !playerState.IsValid() )
+		
+		var player = GetOrCreatePlayer( channel );
+		if ( !player.IsValid() )
 		{
-			throw new Exception( $"Something went wrong when trying to create PlayerState for {channel.DisplayName}" );
+			throw new Exception( $"Something went wrong when trying to create Player for {channel.DisplayName}" );
 		}
-
-		OnPlayerJoined( playerState, channel );
+		
+		OnPlayerJoined( player, channel );
 	}
 
-	public void OnPlayerJoined( PlayerState playerState, Connection channel )
+	private void OnPlayerJoined( Player player, Connection channel )
 	{
 		// Dunno if we need both of these events anymore? But I'll keep them for now.
-		Scene.Dispatch( new PlayerConnectedEvent( playerState ) );
+		Scene.Dispatch( new PlayerConnectedEvent( player ) );
 
 		// Either spawn over network, or claim ownership
-		if ( !playerState.Network.Active )
+		if ( !player.Network.Active )
 		{
-			playerState.GameObject.NetworkSpawn( channel );
+			player.GameObject.NetworkSpawn( channel );
 		}
 		else
 		{
-			playerState.Network.AssignOwnership( channel );
+			player.Network.AssignOwnership( channel );
 		}
 
-		playerState.HostInit();
-		playerState.ClientInit();
-
-		Scene.Dispatch( new PlayerJoinedEvent( playerState ) );
+		player.HostInit();
+		player.ClientInit();
+		
+		Scene.Dispatch( new PlayerJoinedEvent( player ) );
 	}
 }
