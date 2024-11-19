@@ -14,9 +14,8 @@ public class PrinterEntityConfiguration {
 
 [Title( "Printer" )]
 [Category( "Entities" )]
-public sealed class PrinterEntity : BaseEntity, IDescription
+public sealed class PrinterEntity : BaseEntity, IDescription, IDamageListener, IAreaDamageReceiver
 {
-	
 	[Property] private SoundEvent? WithdrawSound { get; set; }
 
 	[Property] private GameObject PrinterFan { get; set; } = null!;
@@ -30,16 +29,33 @@ public sealed class PrinterEntity : BaseEntity, IDescription
 	[Property] private readonly Dictionary<PrinterType, PrinterEntityConfiguration> _printerConfig = new();
 
 	// Printer Timer Setup
-	[Property, Sync] public int PrinterCurrentMoney { get; set; } = 0;
+	[Property, Sync] public int PrinterCurrentMoney { get; set; }
 	[Property] private int PrinterTimerMoney { get; set; } = 25;
 	[Property] private int PrinterMaxMoney { get; set; } = 8000;
+	
+	/// <summary>
+	/// What to spawn when we explode?
+	/// </summary>
+	[Property]
+	[Group( "Effects" )]
+	public required GameObject Explosion { get; set; }
+
 
 	private TimeSince _lastUsed = 0; // Set the timer
 	private PrinterType _currentPrinterType; // Store the current printer type
+	private bool _isDestroyed = false;
 	
 	public override void OnUse( Player player )
 	{
 		Log.Info( "Interacting with printer" );
+		
+		if ( WithdrawSound != null )
+		{
+			Sound.Play( WithdrawSound, WorldPosition );
+		}
+		
+		if(!Networking.IsHost) return;
+
 
 		if ( PrinterCurrentMoney <= 0 )
 		{
@@ -49,16 +65,12 @@ public sealed class PrinterEntity : BaseEntity, IDescription
 		player.GiveMoney(  PrinterCurrentMoney );
 			
 		ResetPrinterMoney();
-
-
-		if ( WithdrawSound != null )
-		{
-			Sound.Play( WithdrawSound );
-		}
 	}
-	
-	protected override void OnFixedUpdate()
+
+	protected override void OnUpdate()
 	{
+		if(!Networking.IsHost) return;
+		
 		// Determine the timer based on the printer type
 		var printerTimer = GetPrinterTimer();
 		
@@ -72,7 +84,10 @@ public sealed class PrinterEntity : BaseEntity, IDescription
 
 			_lastUsed = 0; // Reset the timer
 		}
+	}
 
+	protected override void OnFixedUpdate()
+	{
 		SpinFan();
 	}
 
@@ -82,7 +97,7 @@ public sealed class PrinterEntity : BaseEntity, IDescription
 		var rotationAmount = PrinterFanSpeed * Time.Delta;
 
 		// Apply the rotation relative to the GameObject's current rotation
-		PrinterFan.Transform.Rotation *= Rotation.FromAxis(Vector3.Left, -rotationAmount);
+		PrinterFan.WorldRotation *= Rotation.FromAxis(Vector3.Left, -rotationAmount);
 	}
 
 	// Method to set the current printer type and update its color
@@ -122,7 +137,28 @@ public sealed class PrinterEntity : BaseEntity, IDescription
 		ModelRenderer.MaterialOverride = config?.Material;
 	}
 
+	protected override void OnDestroyed()
+	{
+		var explosion = Explosion.Clone( WorldPosition );
+		var areaDamage = explosion.AddComponent<AreaDamage>();
+		areaDamage.Damage = 60;
+		areaDamage.Attacker = this;
+		areaDamage.Interval = 60; // Set high so we only do it once
+		areaDamage.DamageFlags = DamageFlags.Explosion;
+
+		base.OnDestroyed();
+	}
+
 	public string DisplayName => _currentPrinterType + " Printer";
 
 	public Color Color => Color.Yellow;
+	
+	public void ApplyAreaDamage(AreaDamage component)
+	{
+		var dmg = new DamageInfo( component.Attacker, component.Damage, component.Inflictor,
+			component.WorldPosition,
+			Flags: component.DamageFlags );
+		
+		HealthComponent?.TakeDamage(dmg);
+	}
 }

@@ -143,9 +143,9 @@
 		if ( !string.IsNullOrEmpty( victimDesc?.Icon ) ) victim = $"icon:{victimDesc.Icon}";
 
 		BroadcastKillFeedEvent(
-			attacker ?? "Unknown", attackerDesc?.Color ?? Color.White,
-			inflictor ?? "Unknown",
-			victim ?? "Unknown", victimDesc?.Color ?? Color.White,
+			attacker ?? "", attackerDesc?.Color ?? Color.White,
+			inflictor ?? "",
+			victim ?? "", victimDesc?.Color ?? Color.White,
 			damageInfo.Hitbox,
 			damageInfo.Flags
 		);

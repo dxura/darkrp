@@ -2,7 +2,7 @@
   "RootObject": {
     "__guid": "ee03e5ee-439a-4bc0-9f71-0f8baf7504ce",
     "Flags": 0,
-    "Name": "decoy_grenade_explode",
+    "Name": "explosion",
     "Enabled": true,
     "Components": [
       {
@@ -10,10 +10,55 @@
         "__guid": "668057cb-bfa0-4477-943a-f02c4e8d74ae",
         "Time": 3,
         "TimeUntilDestroy": {
-          "Relative": -3040.7166,
-          "Passed": 3040.7166,
+          "Relative": -3119.4685,
+          "Passed": 3119.4685,
           "Fraction": 1
         }
+      },
+      {
+        "__type": "Sandbox.SoundPointComponent",
+        "__guid": "02543d6d-06a5-44bb-8212-88013ad89f0a",
+        "Distance": 512,
+        "DistanceAttenuation": false,
+        "DistanceAttenuationOverride": false,
+        "Falloff": [
+          {
+            "y": 1,
+            "in": 3.1415927,
+            "out": -3.1415927
+          },
+          {
+            "x": 1
+          }
+        ],
+        "Force2d": false,
+        "MaxRepeatTime": 1,
+        "MinRepeatTime": 1,
+        "Occlusion": false,
+        "OcclusionOverride": false,
+        "OcclusionRadius": 32,
+        "Pitch": 1,
+        "PlayOnStart": true,
+        "ReflectionOverride": false,
+        "Reflections": false,
+        "Repeat": false,
+        "SoundEvent": "sounds/weapons/grenade/he_grenade_explode.sound",
+        "SoundOverride": false,
+        "StopOnNew": false,
+        "TargetMixer": {
+          "Name": "unknown",
+          "Id": "00000000-0000-0000-0000-000000000000"
+        },
+        "Volume": 1
+      },
+      {
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "575e280c-3820-4cf6-a6e1-0a4ebc6ffe85",
+        "Center": "0,0,0",
+        "IsTrigger": true,
+        "Radius": 150,
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
       }
     ],
     "Children": [

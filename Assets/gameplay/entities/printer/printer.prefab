@@ -19,6 +19,10 @@
           }
         },
         "EntityName": "Printer",
+        "Explosion": {
+          "_type": "gameobject",
+          "prefab": "prefabs/helpers/explosion.prefab"
+        },
         "HealthComponent": {
           "_type": "component",
           "component_id": "da24a7a1-6110-4bf0-8c0c-f4e71549fb19",
@@ -44,6 +48,7 @@
       {
         "__type": "Dxura.Darkrp.HealthComponent",
         "__guid": "da24a7a1-6110-4bf0-8c0c-f4e71549fb19",
+        "Health": 100,
         "IsGodMode": false,
         "MaxHealth": 50
       },
@@ -131,39 +136,6 @@
         },
         "RenderType": "On",
         "Tint": "1,1,1,1"
-      },
-      {
-        "__type": "Sandbox.CapsuleCollider",
-        "__guid": "ded50b2e-84e5-403c-8cab-ecd0153420b1",
-        "End": "0.0000002533197,0,-4.496911",
-        "IsTrigger": true,
-        "Radius": 138.10007,
-        "Start": "0,0,-15.12272",
-        "Static": false,
-        "SurfaceVelocity": "0,0,0"
-      },
-      {
-        "__type": "Dxura.Darkrp.PrinterDamage",
-        "__guid": "44c23f7a-68c8-4f15-a84b-41c5475f7c4a",
-        "Explosion": {
-          "_type": "gameobject",
-          "prefab": "gameplay/entities/printer/printer_explosion.prefab"
-        },
-        "ExplosionDamage": 50,
-        "Fire": {
-          "_type": "gameobject",
-          "prefab": "gameplay/equipment/throwables/molotov_cocktail/molotov_firenode.prefab"
-        },
-        "HealthComponent": {
-          "_type": "component",
-          "component_id": "da24a7a1-6110-4bf0-8c0c-f4e71549fb19",
-          "go": "d9722984-8e27-467c-bf69-0aed3358f138",
-          "component_type": "HealthComponent"
-        },
-        "Printer": {
-          "_type": "gameobject",
-          "go": "d9722984-8e27-467c-bf69-0aed3358f138"
-        }
       }
     ],
     "Children": [
