@@ -9,6 +9,13 @@
       {
         "__type": "Dxura.Darkrp.Player",
         "__guid": "3370799f-99ac-4881-9678-016414bdb61f",
+        "_torchSpotLight": {
+          "_type": "component",
+          "component_id": "028e3e07-adef-4fbf-8883-137dbac9da13",
+          "go": "b03710d3-75bd-4111-b405-2974362db2c3",
+          "component_type": "SpotLight"
+        },
+        "_torchToggleSound": "sounds/player/flashlight_toggle.sound",
         "AnimationHelper": {
           "_type": "component",
           "component_id": "21b6a16f-ce05-4982-8ae4-c85592c7b220",
@@ -27,6 +34,8 @@
           "component_type": "PlayerBody"
         },
         "FallDamageScale": 0.2,
+        "FootstepBaseVolume": 5,
+        "FootstepScale": 1,
         "Head": {
           "_type": "gameobject",
           "go": "4858b351-8fb8-43aa-af2a-92496608fcda"
@@ -61,6 +70,7 @@
           "go": "3e4e2095-635e-4b89-a9c9-fc3b4d321b84",
           "component_type": "BoxCollider"
         },
+        "SprintFootstepScale": 2,
         "SprintMovementDampening": 0.35,
         "Uid": "",
         "UseDistance": 72
@@ -104,6 +114,7 @@
       {
         "__type": "Dxura.Darkrp.HealthComponent",
         "__guid": "b0ad035b-94a2-4e02-8850-15baffda666b",
+        "Health": 100,
         "IsGodMode": false,
         "MaxHealth": 100
       },
@@ -114,19 +125,6 @@
           "_type": "gameobject",
           "go": "54431291-2c92-4075-bf87-882481574799"
         }
-      },
-      {
-        "__type": "Dxura.Darkrp.PlayerFootsteps",
-        "__guid": "f717d818-dab0-4b35-b7bf-1a9a307c486b",
-        "FootstepBaseDecibels": 70,
-        "FootstepScale": 1,
-        "Player": {
-          "_type": "component",
-          "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
-          "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
-          "component_type": "Player"
-        },
-        "SprintFootstepScale": 2
       },
       {
         "__type": "Sandbox.HighlightOutline",
@@ -193,28 +191,6 @@
             "Enabled": true,
             "Components": [
               {
-                "__type": "Dxura.Darkrp.PlayerFlashlight",
-                "__guid": "c0b0ecc5-d5e7-4763-aa46-93dd05cd9b21",
-                "_light": {
-                  "_type": "component",
-                  "component_id": "028e3e07-adef-4fbf-8883-137dbac9da13",
-                  "go": "b03710d3-75bd-4111-b405-2974362db2c3",
-                  "component_type": "SpotLight"
-                },
-                "_player": {
-                  "_type": "component",
-                  "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
-                  "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
-                  "component_type": "Player"
-                },
-                "_soundPoint": {
-                  "_type": "component",
-                  "component_id": "2179e588-fe36-465a-a8f9-31eaebc0e6f7",
-                  "go": "b03710d3-75bd-4111-b405-2974362db2c3",
-                  "component_type": "SoundPointComponent"
-                }
-              },
-              {
                 "__type": "Sandbox.SpotLight",
                 "__guid": "028e3e07-adef-4fbf-8883-137dbac9da13",
                 "__enabled": false,
@@ -229,7 +205,7 @@
               },
               {
                 "__type": "Sandbox.SoundPointComponent",
-                "__guid": "2179e588-fe36-465a-a8f9-31eaebc0e6f7",
+                "__guid": "4ea879ea-fd01-4a28-af86-4e7efc86f03e",
                 "Distance": 512,
                 "DistanceAttenuation": false,
                 "DistanceAttenuationOverride": false,
@@ -256,7 +232,7 @@
                 "Repeat": false,
                 "SoundEvent": "sounds/player/flashlight_toggle.sound",
                 "SoundOverride": false,
-                "StopOnNew": true,
+                "StopOnNew": false,
                 "TargetMixer": {
                   "Name": "unknown",
                   "Id": "00000000-0000-0000-0000-000000000000"

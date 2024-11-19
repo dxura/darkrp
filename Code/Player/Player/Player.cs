@@ -118,6 +118,8 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 
 	protected override void OnFixedUpdate()
 	{
+		OnFixedUpdatePresence();
+		
 		var cc = CharacterController;
 		if ( !cc.IsValid() )
 		{
