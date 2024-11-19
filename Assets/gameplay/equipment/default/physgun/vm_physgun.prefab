@@ -42,7 +42,7 @@
         },
         "RenderOptions": {
           "GameLayer": true,
-          "OverlayLayer": true,
+           "OverlayLayer": false,
           "BloomLayer": false,
           "AfterUILayer": false
         },
