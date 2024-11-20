@@ -349,7 +349,7 @@ public class Equipment : Component, Component.INetworkListener, IEquipment, IDes
 
 	protected virtual void OnDeployed()
 	{
-		if ( Owner.IsValid() && Owner.CameraController.Mode == CameraMode.FirstPerson )
+		if ( Owner.IsValid() && Owner.CameraMode == CameraMode.FirstPerson )
 		{
 			CreateViewModel( !HasCreatedViewModel );
 		}

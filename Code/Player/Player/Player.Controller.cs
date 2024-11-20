@@ -5,39 +5,63 @@ public partial class Player
 	/// <summary>
 	/// Called when the player jumps.
 	/// </summary>
-	[Property, Feature("Movement")]
+	[Property, Feature("Controller")]
 	public Action? OnJump { get; set; }
 
 	/// <summary>
 	/// The player's box collider, so people can jump on other people.
 	/// </summary>
-	[Property, Feature("Movement")]
+	[Property, Feature("Controller")]
 	public BoxCollider PlayerBoxCollider { get; set; } = null!;
-	
-	/// <summary>
-	/// Should camera be locked
-	/// </summary>
-	[Property] public bool LockCamera { get; set; }
 
 	[RequireComponent] public TagBinder TagBinder { get; set; } = null!;
 
-	/// <summary>
-	/// How tall are we?
-	/// </summary>
-	[Property, Feature("Movement"), Group( "Config" )]
-	public float Height { get; set; } = 64f;
+	[Property, Feature("Controller"), Group( "Config" )] public float MinimumFallVelocity { get; set; } = 500f;
+	[Property, Feature("Controller"), Group( "Config" )] public float MinimumFallSoundVelocity { get; set; } = 300f;
+	[Property, Feature("Controller"), Group( "Config" )] public float FallDamageScale { get; set; } = 0.2f;
 
-	[Property, Feature("Movement"), Group( "Config" )] public float MinimumFallVelocity { get; set; } = 500f;
-	[Property, Feature("Movement"), Group( "Config" )] public float MinimumFallSoundVelocity { get; set; } = 300f;
-	[Property, Feature("Movement"), Group( "Config" )] public float FallDamageScale { get; set; } = 0.2f;
-
-	[Property, Feature("Movement"), Group( "Config" )] public float SprintMovementDampening { get; set; } = 0.35f;
+	[Property, Feature("Controller"), Group( "Config" )] public float SprintMovementDampening { get; set; } = 0.35f;
 
 	/// <summary>
 	/// Noclip movement speed
 	/// </summary>
-	[Property, Feature("Movement"), Group( "Config" )]
+	[Property, Feature("Controller"), Group( "Config" )]
 	public float NoclipSpeed { get; set; } = 1000f;
+	
+	[Range( 0, 200 )] [Property, Feature("Controller"), Group( "Config" )] public float Radius { get; set; } = 16.0f;
+
+	[Range( 0, 200 )] [Property, Feature("Controller"), Group( "Config" )] public float Height { get; set; } = 64.0f;
+	[Range( 0, 50 )] [Property, Feature("Controller"), Group( "Config" )] public float StepHeight { get; set; } = 18.0f;
+
+	[Range( 0, 90 )] [Property, Feature("Controller"), Group( "Config" )] public float GroundAngle { get; set; } = 45.0f;
+
+	[Range( 0, 64 )] [Property, Feature("Controller"), Group( "Config" )] public float Acceleration { get; set; } = 10.0f;
+
+	/// <summary>
+	/// When jumping into walls, should we bounce off or just stop dead?
+	/// </summary>
+	[Range( 0, 1 )]
+	[Property, Feature("Controller"), Group( "Config" )]
+	public float Bounciness { get; set; } = 0.3f;
+
+	/// <summary>
+	/// If enabled, determine what to collide with using current project's collision rules for the <see cref="GameObject.Tags"/>
+	/// of the containing <see cref="GameObject"/>.
+	/// </summary>
+	[Property, Feature("Controller")]
+	[Group( "Collision" )]
+	[Title( "Use Project Collision Rules" )]
+	public bool UseCollisionRules { get; set; } = false;
+
+	[Property, Feature("Controller")]
+	[Group( "Collision" )]
+	[HideIf( nameof(UseCollisionRules), true )]
+	public TagSet IgnoreLayers { get; set; } = new();
+	
+
+	[Sync] public Vector3 Velocity { get; set; }
+
+	[Sync] public bool IsOnGround { get; set; }
 
 	public PlayerGlobals Global => GlobalGameNamespace.GetGlobal<PlayerGlobals>();
 
@@ -124,17 +148,17 @@ public partial class Player
 	/// How much friction to apply to the aim eg if zooming
 	/// </summary>
 	public float AimDampening { get; set; } = 1.0f;
-
-	/// <summary>
-	/// An accessor to get the camera controller's aim ray.
-	/// </summary>
-	public Ray AimRay => CameraController.AimRay;
+	
+	public GameObject? GroundObject { get; set; }
+	public Collider? GroundCollider { get; set; }
+	public BBox BoundingBox => new(new Vector3( -Radius, -Radius, 0 ), new Vector3( Radius, Radius, Height ));
 
 	private float _smoothEyeHeight;
 	private Vector3 _previousVelocity;
 	private Vector3 _jumpPosition;
 	private bool _isTouchingLadder;
 	private Vector3 _ladderNormal;
+	
 
 	[Sync] private float EyeHeightOffset { get; set; }
 
@@ -178,12 +202,11 @@ public partial class Player
 
 		acceleration *= (relative + _accelerationAddedScale).Clamp( 0, 1 );
 
-		CharacterController.Acceleration = acceleration;
+		Acceleration = acceleration;
 	}
 
 	private void OnUpdateMovement()
 	{
-		var cc = CharacterController;
 		CurrentHoldType = CurrentEquipment.IsValid() ? CurrentEquipment.GetHoldType() : AnimationHelper.HoldTypes.None;
 
 		if ( IsProxy )
@@ -192,7 +215,7 @@ public partial class Player
 		}
 
 		// Eye input
-		if ( !IsProxy && cc.IsValid() )
+		if ( !IsProxy && IsValid )
 		{
 			if ( !IsProxy && HealthComponent.State == LifeState.Alive && !LockCamera )
 			{
@@ -200,7 +223,7 @@ public partial class Player
 				EyeAngles = EyeAngles.WithPitch( EyeAngles.pitch.Clamp( -90, 90 ) );
 			}
 
-			CameraController.UpdateFromEyes( _smoothEyeHeight );
+			UpdateFromEyes( _smoothEyeHeight );
 		}
 
 		if ( IsInVehicle )
@@ -226,7 +249,7 @@ public partial class Player
 			
 			if ( AnimationHelper.IsValid() )
 			{
-				AnimationHelper.WithVelocity( cc.Velocity );
+				AnimationHelper.WithVelocity( Velocity );
 				AnimationHelper.WithWishVelocity( WishVelocity );
 				AnimationHelper.IsGrounded = IsGrounded;
 				AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
@@ -244,7 +267,7 @@ public partial class Player
 
 	private float GetMaxAcceleration()
 	{
-		if ( !CharacterController.IsOnGround )
+		if ( !IsOnGround )
 		{
 			return Global.AirMaxAcceleration;
 		}
@@ -254,8 +277,6 @@ public partial class Player
 
 	private void ApplyMovement()
 	{
-		var cc = CharacterController;
-
 		CheckLadder();
 
 		var gravity = Global.Gravity;
@@ -266,31 +287,31 @@ public partial class Player
 			return;
 		}
 
-		if ( cc.IsOnGround )
+		if ( IsOnGround )
 		{
-			cc.Velocity = cc.Velocity.WithZ( 0 );
-			cc.Accelerate( WishVelocity );
+			Velocity = Velocity.WithZ( 0 );
+			Accelerate( WishVelocity );
 		}
 		else
 		{
 			if ( !IsNoclipping )
 			{
-				cc.Velocity -= gravity * Time.Delta * 0.5f;
+				Velocity -= gravity * Time.Delta * 0.5f;
 			}
 
-			cc.Accelerate( WishVelocity.ClampLength( GetMaxAcceleration() ) );
+			Accelerate( WishVelocity.ClampLength( GetMaxAcceleration() ) );
 		}
 
-		if ( !cc.IsOnGround )
+		if ( !IsOnGround )
 		{
 			if ( !IsNoclipping )
 			{
-				cc.Velocity -= gravity * Time.Delta * 0.5f;
+				Velocity -= gravity * Time.Delta * 0.5f;
 			}
 		}
 		else
 		{
-			cc.Velocity = cc.Velocity.WithZ( 0 );
+			Velocity = Velocity.WithZ( 0 );
 		}
 
 		if ( IsNoclipping )
@@ -306,13 +327,13 @@ public partial class Player
 				vertical = -1f;
 			}
 
-			cc.IsOnGround = false;
-			cc.Velocity = WishMove.Normal * EyeAngles.ToRotation() * NoclipSpeed;
-			cc.Velocity += Vector3.Up * vertical * NoclipSpeed;
+			IsOnGround = false;
+			Velocity = WishMove.Normal * EyeAngles.ToRotation() * NoclipSpeed;
+			Velocity += Vector3.Up * vertical * NoclipSpeed;
 		}
 
-		cc.ApplyFriction( GetFriction() );
-		cc.Move();
+		ApplyFriction( GetFriction() );
+		Move();
 	}
 
 	private TimeSince _timeSinceCrouchPressed = 10f;
@@ -386,12 +407,12 @@ public partial class Player
 			TimeSinceLastInput = 0f;
 		}
 
-		if ( CharacterController.IsOnGround && !IsFrozen )
+		if ( IsOnGround && !IsFrozen )
 		{
 			var bhop = Global.BunnyHopping;
 			if ( bhop ? Input.Down( "Jump" ) : Input.Pressed( "Jump" ) )
 			{
-				CharacterController.Punch( Vector3.Up * Global.JumpPower * 1f );
+				Punch( Vector3.Up * Global.JumpPower * 1f );
 				BroadcastPlayerJumped();
 			}
 		}
@@ -399,7 +420,7 @@ public partial class Player
 
 	public SceneTraceResult TraceBBox( Vector3 start, Vector3 end, float liftFeet = 0.0f, float liftHead = 0.0f )
 	{
-		var bbox = CharacterController.BoundingBox;
+		var bbox = BoundingBox;
 		var mins = bbox.Mins;
 		var maxs = bbox.Maxs;
 
@@ -416,7 +437,7 @@ public partial class Player
 
 		var tr = Scene.Trace.Ray( start, end )
 			.Size( mins, maxs )
-			.WithoutTags( CharacterController.IgnoreLayers )
+			.WithoutTags( IgnoreLayers )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
 			.Run();
 		return tr;
@@ -492,7 +513,6 @@ public partial class Player
 
 	private void CheckLadder()
 	{
-		var cc = CharacterController;
 		var wishvel = new Vector3( WishMove.x.Clamp( -1f, 1f ), WishMove.y.Clamp( -1f, 1f ), 0 );
 		wishvel *= EyeAngles.WithPitch( 0 ).ToRotation();
 		wishvel = wishvel.Normal;
@@ -501,11 +521,11 @@ public partial class Player
 		{
 			if ( Input.Pressed( "jump" ) )
 			{
-				cc.Velocity = _ladderNormal * 100.0f;
+				Velocity = _ladderNormal * 100.0f;
 				_isTouchingLadder = false;
 				return;
 			}
-			else if ( cc.GroundObject != null && _ladderNormal.Dot( wishvel ) > 0 )
+			else if ( GroundObject != null && _ladderNormal.Dot( wishvel ) > 0 )
 			{
 				_isTouchingLadder = false;
 				return;
@@ -517,7 +537,7 @@ public partial class Player
 		var end = start + (_isTouchingLadder ? _ladderNormal * -1.0f : wishvel) * ladderDistance;
 
 		var pm = Scene.Trace.Ray( start, end )
-			.Size( cc.BoundingBox.Mins, cc.BoundingBox.Maxs )
+			.Size( BoundingBox.Mins, BoundingBox.Maxs )
 			.WithTag( "ladder" )
 			.HitTriggers()
 			.IgnoreGameObjectHierarchy( GameObject )
@@ -534,14 +554,13 @@ public partial class Player
 
 	private void LadderMove()
 	{
-		var cc = CharacterController;
-		cc.IsOnGround = false;
+		IsOnGround = false;
 
 		var velocity = WishVelocity;
 		var normalDot = velocity.Dot( _ladderNormal );
 		var cross = _ladderNormal * normalDot;
-		cc.Velocity = velocity - cross + -normalDot * _ladderNormal.Cross( Vector3.Up.Cross( _ladderNormal ).Normal );
-		cc.Move();
+		Velocity = velocity - cross + -normalDot * _ladderNormal.Cross( Vector3.Up.Cross( _ladderNormal ).Normal );
+		Move();
 	}
 
 	private void BuildWishInput()
@@ -579,7 +598,7 @@ public partial class Player
 	// TODO: expose to global
 	private float GetFriction()
 	{
-		if ( !CharacterController.IsOnGround )
+		if ( !IsOnGround )
 		{
 			return 0.1f;
 		}
@@ -604,7 +623,7 @@ public partial class Player
 
 	private float GetAcceleration()
 	{
-		if ( !CharacterController.IsOnGround )
+		if ( !IsOnGround )
 		{
 			return Global.AirAcceleration;
 		}
@@ -674,5 +693,267 @@ public partial class Player
 		}
 
 		return Global.WalkSpeed - GetSpeedPenalty();
+	}
+
+	protected override void DrawGizmos()
+	{
+		Gizmo.Draw.LineBBox( BoundingBox );
+	}
+
+	/// <summary>
+	/// Add acceleration to the current velocity. 
+	/// No need to scale by time delta - it will be done inside.
+	/// </summary>
+	public void Accelerate( Vector3 vector )
+	{
+		Velocity = Velocity.WithAcceleration( vector, Acceleration * Time.Delta );
+	}
+
+	/// <summary>
+	/// Apply an amount of friction to the current velocity.
+	/// No need to scale by time delta - it will be done inside.
+	/// </summary>
+	public void ApplyFriction( float frictionAmount, float stopSpeed = 140.0f )
+	{
+		var speed = Velocity.Length;
+		if ( speed < 0.01f )
+		{
+			return;
+		}
+
+		// Bleed off some speed, but if we have less than the bleed
+		//  threshold, bleed the threshold amount.
+		var control = speed < stopSpeed ? stopSpeed : speed;
+
+		// Add the amount to the drop amount.
+		var drop = control * Time.Delta * frictionAmount;
+
+		// scale the velocity
+		var newspeed = speed - drop;
+		if ( newspeed < 0 )
+		{
+			newspeed = 0;
+		}
+
+		if ( newspeed == speed )
+		{
+			return;
+		}
+
+		newspeed /= speed;
+		Velocity *= newspeed;
+	}
+
+	private SceneTrace BuildTrace( Vector3 from, Vector3 to )
+	{
+		return BuildTrace( Scene.Trace.Ray( from, to ) );
+	}
+
+	private SceneTrace BuildTrace( SceneTrace source )
+	{
+		var trace = source.Size( BoundingBox ).IgnoreGameObjectHierarchy( GameObject );
+
+		return UseCollisionRules ? trace.WithCollisionRules( Tags ) : trace.WithoutTags( IgnoreLayers );
+	}
+
+	/// <summary>
+	/// Trace the controller's current position to the specified delta
+	/// </summary>
+	public SceneTraceResult TraceDirection( Vector3 direction )
+	{
+		return BuildTrace( GameObject.Transform.Position, GameObject.Transform.Position + direction ).Run();
+	}
+
+	private void Move( bool step )
+	{
+		if ( step && IsOnGround )
+		{
+			Velocity = Velocity.WithZ( 0 );
+		}
+
+		if ( Velocity.Length < 0.001f )
+		{
+			Velocity = Vector3.Zero;
+			return;
+		}
+
+		var pos = GameObject.Transform.Position;
+
+		var mover = new CharacterControllerHelper( BuildTrace( pos, pos ), pos, Velocity );
+		mover.Bounce = Bounciness;
+		mover.MaxStandableAngle = GroundAngle;
+
+		if ( step && IsOnGround )
+		{
+			mover.TryMoveWithStep( Time.Delta, StepHeight );
+		}
+		else
+		{
+			mover.TryMove( Time.Delta );
+		}
+
+		Transform.Position = mover.Position;
+		Velocity = mover.Velocity;
+	}
+
+	private void CategorizePosition()
+	{
+		var position = Transform.Position;
+		var point = position + Vector3.Down * 2;
+		var vBumpOrigin = position;
+		var wasOnGround = IsOnGround;
+
+		// We're flying upwards too fast, never land on ground
+		if ( !IsOnGround && Velocity.z > 40.0f )
+		{
+			ClearGround();
+			return;
+		}
+
+		//
+		// trace down one step height if we're already on the ground "step down". If not, search for floor right below us
+		// because if we do StepHeight we'll snap that many units to the ground
+		//
+		point.z -= wasOnGround ? StepHeight : 0.1f;
+
+
+		var pm = BuildTrace( vBumpOrigin, point ).Run();
+
+		//
+		// we didn't hit - or the ground is too steep to be ground
+		//
+		if ( !pm.Hit || Vector3.GetAngle( Vector3.Up, pm.Normal ) > GroundAngle )
+		{
+			ClearGround();
+			return;
+		}
+
+		//
+		// we are on ground
+		//
+		IsOnGround = true;
+		GroundObject = pm.GameObject;
+		GroundCollider = pm.Shape?.Collider as Collider;
+
+		//
+		// move to this ground position, if we moved, and hit
+		//
+		if ( wasOnGround && !pm.StartedSolid && pm.Fraction > 0.0f && pm.Fraction < 1.0f )
+		{
+			Transform.Position = pm.EndPosition + pm.Normal * 0.01f;
+		}
+	}
+
+	/// <summary>
+	/// Disconnect from ground and punch our velocity. This is useful if you want the player to jump or something.
+	/// </summary>
+	public void Punch( in Vector3 amount )
+	{
+		ClearGround();
+		Velocity += amount;
+	}
+
+	private void ClearGround()
+	{
+		IsOnGround = false;
+		GroundObject = default;
+		GroundCollider = default;
+	}
+
+	/// <summary>
+	/// Move a character, with this velocity
+	/// </summary>
+	public void Move()
+	{
+		if ( TryUnstuck() )
+		{
+			return;
+		}
+
+		if ( IsOnGround )
+		{
+			Move( true );
+		}
+		else
+		{
+			Move( false );
+		}
+
+		CategorizePosition();
+	}
+
+	/// <summary>
+	/// Move from our current position to this target position, but using tracing an sliding.
+	/// This is good for different control modes like ladders and stuff.
+	/// </summary>
+	public void MoveTo( Vector3 targetPosition, bool useStep )
+	{
+		if ( TryUnstuck() )
+		{
+			return;
+		}
+
+		var pos = Transform.Position;
+		var delta = targetPosition - pos;
+
+		var mover = new CharacterControllerHelper( BuildTrace( pos, pos ), pos, delta );
+		mover.MaxStandableAngle = GroundAngle;
+
+		if ( useStep )
+		{
+			mover.TryMoveWithStep( 1.0f, StepHeight );
+		}
+		else
+		{
+			mover.TryMove( 1.0f );
+		}
+
+		Transform.Position = mover.Position;
+	}
+
+	private int _stuckTries;
+
+	private bool TryUnstuck()
+	{
+		var result = BuildTrace( Transform.Position, Transform.Position ).Run();
+
+		// Not stuck, we cool
+		if ( !result.StartedSolid )
+		{
+			_stuckTries = 0;
+			return false;
+		}
+
+		//using ( Gizmo.Scope( "unstuck", Transform.World ) )
+		//{
+		//	Gizmo.Draw.Color = Gizmo.Colors.Red;
+		//	Gizmo.Draw.LineBBox( BoundingBox );
+		//}
+
+		var AttemptsPerTick = 20;
+
+		for ( var i = 0; i < AttemptsPerTick; i++ )
+		{
+			var pos = Transform.Position + Vector3.Random.Normal * ((float)_stuckTries / 2.0f);
+
+			// First try the up direction for moving platforms
+			if ( i == 0 )
+			{
+				pos = Transform.Position + Vector3.Up * 2;
+			}
+
+			result = BuildTrace( pos, pos ).Run();
+
+			if ( !result.StartedSolid )
+			{
+				//Log.Info( $"unstuck after {_stuckTries} tries ({_stuckTries * AttemptsPerTick} tests)" );
+				Transform.Position = pos;
+				return false;
+			}
+		}
+
+		_stuckTries++;
+
+		return true;
 	}
 }

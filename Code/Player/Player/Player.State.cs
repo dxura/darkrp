@@ -5,17 +5,12 @@ using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
-public record OnPlayerRagdolledEvent : IGameEvent
-{
-	public float DestroyTime { get; set; } = 0f;
-}
-
 public partial class Player
 {
 	/// <summary>
 	/// An accessor for health component if we have one.
 	/// </summary>
-	[Property, Feature("State")]
+	[Property, Group("State")]
 	[RequireComponent]
 	public HealthComponent HealthComponent { get; set; } = null!;
 	
@@ -46,7 +41,7 @@ public partial class Player
 	/// The player's ID. This is their SteamID.
 	/// </summary>
 	[HostSync]
-	[Property, Feature("State")]
+	[Property, Group("State")]
 	[Saved]
 	public string Uid { get; set; } = "";
 
@@ -67,7 +62,7 @@ public partial class Player
 	/// <summary>
 	/// The job this player belongs to.
 	/// </summary>
-	[Property, Feature("State")]
+	[Property, Group("State")]
 	[HostSync]
 	[Change( nameof(OnJobPropertyChanged) )]
 	public JobResource Job { get; set; } = null!;
@@ -149,7 +144,7 @@ public partial class Player
 			RespawnState = RespawnState.Requested;
 
 			Inventory.Clear();
-			CreateRagdoll();
+			DoRagdoll();
 		}
 
 		PlayerBoxCollider.Enabled = false;
@@ -162,7 +157,7 @@ public partial class Player
 		Holster();
 
 		_previousVelocity = Vector3.Zero;
-		CameraController.Mode = CameraMode.ThirdPerson;
+		CameraMode = CameraMode.ThirdPerson;
 	}
 
 	public void SetSpawnPoint( SpawnPointInfo spawnPoint )
@@ -209,7 +204,8 @@ public partial class Player
 		}
 
 		HealthComponent.Health = HealthComponent.MaxHealth;
-
+		HealthComponent.State = LifeState.Alive;
+		
 		TimeSinceLastRespawn = 0f;
 
 		ResetBody();
@@ -221,7 +217,7 @@ public partial class Player
 	{
 		SteamId = Connection.Local.SteamId;
 
-		CameraController.Mode = CameraMode.FirstPerson;
+		CameraMode = CameraMode.FirstPerson;
 	}
 
 	public void Teleport( Transform transform )
@@ -236,29 +232,17 @@ public partial class Player
 		Transform.ClearInterpolation();
 		EyeAngles = rotation.Angles();
 
-		if ( CharacterController.IsValid() )
+		if ( IsValid )
 		{
-			CharacterController.Velocity = Vector3.Zero;
-			CharacterController.IsOnGround = true;
+			Velocity = Vector3.Zero;
+			IsOnGround = true;
 		}
 	}
 
 	[Broadcast( NetPermission.HostOnly )]
-	private void CreateRagdoll()
+	private void DoRagdoll()
 	{
-// TODO: Create new dummy ragdoll
-		// SetRagdoll( true );
-		// GameObject.SetParent( null, true );
-		// GameObject.Name = $"Ragdoll ({DisplayName})";
-		//
-		// var ev = new OnPlayerRagdolledEvent();
-		// Scene.Dispatch( ev );
-		//
-		// if ( ev.DestroyTime > 0f )
-		// {
-		// 	var comp = Body.Components.Create<TimedDestroyComponent>();
-		// 	comp.Time = ev.DestroyTime;
-		// }
+		SetRagdoll( true );
 	}
 
 	private void ResetBody()
@@ -266,11 +250,13 @@ public partial class Player
 		DamageTakenForce = Vector3.Zero;
 
 		PlayerBoxCollider.Enabled = true;
+		
+		SetRagdoll(false);
 
 		UpdateBodyFromJob(Job);
 	}
 
-	// deathcam
+	// Death cam
 	private void UpdateDeathCam()
 	{
 		if ( IsProxy )
@@ -287,7 +273,7 @@ public partial class Player
 
 		if ( killer.IsValid() )
 		{
-			EyeAngles = Rotation.LookAt( killer.Transform.Position - Transform.Position, Vector3.Up );
+			EyeAngles = Rotation.LookAt( killer.WorldPosition - WorldPosition, Vector3.Up );
 		}
 	}
 }

@@ -16,7 +16,7 @@ public partial class Player
 	private bool _isFirstPerson = true;
 	public bool IsRagdoll => Physics.Enabled;
 
-	internal void SetRagdoll( bool ragdoll )
+	private void SetRagdoll( bool ragdoll )
 	{
 		Physics.Enabled = ragdoll;
 		Renderer.UseAnimGraph = !ragdoll;

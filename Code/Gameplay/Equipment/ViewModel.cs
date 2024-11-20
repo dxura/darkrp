@@ -171,7 +171,7 @@ public partial class ViewModel : Component, IEquipment
 
 	protected void ApplyVelocity()
 	{
-		var moveVel = Owner.CharacterController.Velocity;
+		var moveVel = Owner.Velocity;
 		var moveLen = moveVel.Length;
 
 		var wishMove = Owner.WishMove.Normal * 1f;
@@ -258,7 +258,7 @@ public partial class ViewModel : Component, IEquipment
 		localRotation = Rotation.Identity;
 		localPosition = Vector3.Zero;
 
-		if ( !Owner.IsValid() || !Owner.CharacterController.IsValid() )
+		if ( !Owner.IsValid() || !Owner.IsValid() )
 		{
 			return;
 		}

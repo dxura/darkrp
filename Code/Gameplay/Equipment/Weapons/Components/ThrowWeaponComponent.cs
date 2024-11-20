@@ -123,7 +123,7 @@ public partial class ThrowWeaponComponent : InputWeaponComponent,
 				? tr.HitPosition + tr.Normal * Equipment.Resource.WorldModel.Bounds.Size.Length
 				: player.AimRay.Position + player.AimRay.Forward * 32f;
 			var rotation = Rotation.From( 0, player.EyeAngles.yaw + 90f, 90f );
-			var baseVelocity = player.CharacterController.Velocity;
+			var baseVelocity = player.Velocity;
 			var dropped = Prefab.Clone( position, rotation );
 			dropped.Tags.Set( "no_player", true );
 

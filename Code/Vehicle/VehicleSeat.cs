@@ -118,7 +118,7 @@ public sealed class VehicleSeat : Component
 
 		// Move player to best exit point
 		player.Transform.Position = FindExitLocation();
-		player.CharacterController.Velocity = Vehicle.Rigidbody.Velocity;
+		player.Velocity = Vehicle.Rigidbody.Velocity;
 
 		using ( Rpc.FilterInclude( Connection.Host ) )
 		{

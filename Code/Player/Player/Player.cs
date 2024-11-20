@@ -13,29 +13,12 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	/// </summary>
 	[Property]
 	public AnimationHelper? AnimationHelper { get; set; }
-
-	/// <summary>
-	/// The current character controller for this player.
-	/// </summary>
-	[RequireComponent]
-	public CharacterController CharacterController { get; set; } = null!;
-
-	/// <summary>
-	/// The current camera controller for this player.
-	/// </summary>
-	[RequireComponent]
-	public CameraController CameraController { get; set; } = null!;
-
+	
 	/// <summary>
 	/// The outline effect for this player.
 	/// </summary>
 	[RequireComponent]
 	public HighlightOutline Outline { get; set; } = null!;
-
-	/// <summary>
-	/// Get a quick reference to the real Camera GameObject.
-	/// </summary>
-	public GameObject? CameraGameObject => CameraController?.Camera?.GameObject;
 
 	// IDescription
 	string IDescription.DisplayName => DisplayName;
@@ -53,7 +36,8 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	
 	protected override void OnStart()
 	{
-		// TODO: expose these parameters please
+		OnStartCamera();
+		
 		TagBinder.BindTag( "no_shooting",
 			() => IsSprinting || TimeSinceSprintChanged < 0.25f || TimeSinceWeaponDeployed < 0.66f );
 		TagBinder.BindTag( "no_aiming",
@@ -78,21 +62,20 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * CrouchLerpSpeed() );
 		_smoothEyeHeight =
 			_smoothEyeHeight.LerpTo( EyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
-		CharacterController.Height = Height + _smoothEyeHeight;
+		Height += _smoothEyeHeight;
 	}
 	
 	protected override void OnFixedUpdate()
 	{
 		OnFixedUpdatePresence();
 		
-		var cc = CharacterController;
-		if ( !cc.IsValid() )
+		if ( !IsValid )
 		{
 			return;
 		}
 
 		var wasGrounded = IsGrounded;
-		IsGrounded = cc.IsOnGround;
+		IsGrounded = IsOnGround;
 
 		if ( IsGrounded != wasGrounded )
 		{
@@ -121,7 +104,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 			return;
 		}
 
-		_previousVelocity = cc.Velocity;
+		_previousVelocity = Velocity;
 
 		UpdateUse();
 		BuildWishInput();

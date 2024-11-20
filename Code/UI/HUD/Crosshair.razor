@@ -170,7 +170,7 @@
 	public override void Tick()
 	{
 		var player = Player;
-		var visible = player.IsValid() && player.HealthComponent.State == LifeState.Alive && player.CameraController.Mode == CameraMode.FirstPerson;
+		var visible = player.IsValid() && player.HealthComponent.State == LifeState.Alive && player.CameraMode == CameraMode.FirstPerson;
 
 		if ( Equipment.IsValid() )
 		{

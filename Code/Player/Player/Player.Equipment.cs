@@ -36,7 +36,7 @@ public partial class Player :
 			scale *= Global.AimVelocitySpreadScale;
 		}
 
-		var velLen = CharacterController.Velocity.Length;
+		var velLen =  Velocity.Length;
 		spread += velLen.Remap( 0, Global.SpreadVelocityLimit, 0, 1, true ) * scale;
 
 		if ( IsCrouching && IsGrounded )
@@ -124,7 +124,7 @@ public partial class Player :
 
 	public void CreateViewModel( bool playDeployEffects = true )
 	{
-		if ( CameraController.Mode != CameraMode.FirstPerson )
+		if ( CameraMode != CameraMode.FirstPerson )
 		{
 			return;
 		}

@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
+using Dxura.Darkrp;
 using Dxura.Darkrp.UI;
 using Sandbox.Events;
 
@@ -8,30 +11,38 @@ public enum CameraMode
 	FirstPerson,
 	ThirdPerson
 }
-
-public sealed class CameraController : Component, IGameEventHandler<DamageTakenEvent>
+public partial class Player
 {
-	[Property] public Player Player { get; set; } = null!;
+	
+	/// <summary>
+	/// Get a quick reference to the real Camera GameObject.
+	/// </summary>
+	public GameObject? CameraGameObject => Camera?.GameObject;
+	
+	/// <summary>
+	/// Should camera be locked
+	/// </summary>
+	[Property, Feature("Camera")] public bool LockCamera { get; set; }
+	
+	[Property, Feature("Camera"), Group("Config")] public bool ShouldViewBob { get; set; } = true;
+	[Property, Feature("Camera"), Group("Config")] public float RespawnProtectionSaturation { get; set; } = 0.35f;
 
-	[Property] [Group( "Config" )] public bool ShouldViewBob { get; set; } = true;
-	[Property] [Group( "Config" )] public float RespawnProtectionSaturation { get; set; } = 0.35f;
+	[Property, Feature("Camera"), Group("Config")] public float ThirdPersonDistance { get; set; } = 128f;
+	[Property, Feature("Camera"), Group("Config")] public float AimFovOffset { get; set; } = -5f;
 
-	[Property] public float ThirdPersonDistance { get; set; } = 128f;
-	[Property] public float AimFovOffset { get; set; } = -5f;
+	private CameraMode _cameraMode;
 
-	private CameraMode _mode;
-
-	public CameraMode Mode
+	public CameraMode CameraMode
 	{
-		get => _mode;
+		get => _cameraMode;
 		set
 		{
-			if ( _mode == value )
+			if ( _cameraMode == value )
 			{
 				return;
 			}
 
-			_mode = value;
+			_cameraMode = value;
 			OnModeChanged();
 		}
 	}
@@ -39,16 +50,16 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	// These components are cached.
 	public CameraComponent Camera { get; set; } = null!;
 	public AudioListener AudioListener { get; set; } = null!;
-	public ColorAdjustments ColorAdjustments { get; set; } = null!;
-	public ScreenShaker ScreenShaker { get; set; } = null!;
-	public ChromaticAberration ChromaticAberration { get; set; } = null!;
-	public Pixelate Pixelate { get; set; } = null!;
+	private ColorAdjustments ColorAdjustments { get; set; } = null!;
+	private ScreenShaker ScreenShaker { get; set; } = null!;
+	private ChromaticAberration ChromaticAberration { get; set; } = null!;
+	private Pixelate Pixelate { get; set; } = null!;
 
 	/// <summary>
 	/// The boom for this camera.
 	/// </summary>
-	[Property]
-	public GameObject Boom { get; set; } = null!;
+	[Property, Feature("Camera")]
+	private GameObject Boom { get; set; } = null!;
 
 	public float MaxBoomLength { get; set; }
 
@@ -65,12 +76,17 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 					Camera.WorldRotation.Forward );
 			}
 
-			return new Ray( WorldPosition + Vector3.Up * 64f, Player.EyeAngles.ToRotation().Forward );
+			return new Ray( WorldPosition + Vector3.Up * 64f, EyeAngles.ToRotation().Forward );
 		}
 	}
 
-	protected override void OnStart()
+	private void OnStartCamera()
 	{
+		if (IsProxy)
+		{
+			Enabled = false;
+		}
+		
 		Camera = Scene.Camera;
 		Camera.GameObject.SetParent(Boom);
 		
@@ -83,7 +99,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		ColorAdjustments =  Camera.GameObject.Components.Get<ColorAdjustments>();
 		
 		OnModeChanged();
-		Boom.WorldRotation = Player.EyeAngles.ToRotation();
+		Boom.WorldRotation = EyeAngles.ToRotation();
 
 	}
 
@@ -97,13 +113,13 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 	private void UpdateRotation()
 	{
-		if ( Player.IsInVehicle )
+		if ( IsInVehicle )
 		{
-			Boom.Transform.Local = Boom.Transform.Local.WithRotation( Player.EyeAngles.ToRotation() );
+			Boom.Transform.Local = Boom.Transform.Local.WithRotation( EyeAngles.ToRotation() );
 		}
 		else
 		{
-			Boom.WorldRotation = Player.EyeAngles.ToRotation();
+			Boom.WorldRotation = EyeAngles.ToRotation();
 		}
 	}
 
@@ -122,7 +138,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		Camera.LocalPosition = Vector3.Zero;
 		Camera.LocalRotation = Rotation.Identity;
 
-		if ( Mode == CameraMode.ThirdPerson && Player.IsProxy )
+		if ( CameraMode == CameraMode.ThirdPerson && IsProxy )
 		{
 			// orbit cam: spectating only
 			var angles = Boom.WorldRotation.Angles();
@@ -159,10 +175,12 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	[DeveloperCommand( "Toggle Third Person", "Player" )]
 	public static void ToggleThirdPerson()
 	{
-		var pl = Player.Local;
-		pl.CameraController.Mode = pl.CameraController.Mode == CameraMode.FirstPerson
-			? CameraMode.ThirdPerson
-			: CameraMode.FirstPerson;
+		if (Local != null)
+		{
+			Local.CameraMode = Local.CameraMode == CameraMode.FirstPerson
+				? CameraMode.ThirdPerson
+				: CameraMode.FirstPerson;
+		}
 	}
 
 	/// <summary>
@@ -171,18 +189,18 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	/// </summary>
 	private void ViewBob()
 	{
-		if ( Mode != CameraMode.FirstPerson )
+		if ( CameraMode != CameraMode.FirstPerson )
 		{
 			return;
 		}
 
-		var bobSpeed = Player.CharacterController.Velocity.Length.LerpInverse( 0, 300 );
-		if ( !Player.IsGrounded )
+		var bobSpeed = Velocity.Length.LerpInverse( 0, 300 );
+		if ( !IsGrounded )
 		{
 			bobSpeed *= 0.1f;
 		}
 
-		if ( !Player.IsSprinting )
+		if ( !IsSprinting )
 		{
 			bobSpeed *= 0.3f;
 		}
@@ -199,12 +217,12 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 	private void ApplyScope()
 	{
-		if ( !Player.CurrentEquipment.IsValid() )
+		if ( !CurrentEquipment.IsValid() )
 		{
 			return;
 		}
 
-		if ( Player?.CurrentEquipment?.Components.Get<ScopeWeaponComponent>( FindMode.EnabledInSelfAndDescendants ) is
+		if ( CurrentEquipment?.Components.Get<ScopeWeaponComponent>( FindMode.EnabledInSelfAndDescendants ) is
 		    { } scope )
 		{
 			var fov = scope.GetFOV();
@@ -220,21 +238,21 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		var baseFov = GameSettingsSystem.Current.FieldOfView;
 		_fieldOfViewOffset = 0;
 
-		if ( !Player.IsValid() )
+		if ( !IsValid )
 		{
 			return;
 		}
 
-		if ( Player.CurrentEquipment.IsValid() )
+		if ( CurrentEquipment.IsValid() )
 		{
-			if ( Player.CurrentEquipment?.Tags.Has( "aiming" ) ?? false )
+			if ( CurrentEquipment?.Tags.Has( "aiming" ) ?? false )
 			{
 				_fieldOfViewOffset += AimFovOffset;
 			}
 		}
 
 		// deathcam, "zoom" at target.
-		if ( Player.HealthComponent.State == LifeState.Dead )
+		if ( HealthComponent.State == LifeState.Dead )
 		{
 			_fieldOfViewOffset += AimFovOffset;
 		}
@@ -247,7 +265,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 				_fetchedInitial = true;
 			}
 
-			ColorAdjustments.Saturation = Player.HealthComponent.IsGodMode
+			ColorAdjustments.Saturation = HealthComponent.IsGodMode
 				? RespawnProtectionSaturation
 				: ColorAdjustments.Saturation.MoveToLinear( _defaultSaturation, 1f );
 		}
@@ -263,14 +281,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		_targetFieldOfView = _targetFieldOfView.LerpTo( baseFov + _fieldOfViewOffset, Time.Delta * 5f );
 		Camera.FieldOfView = _targetFieldOfView;
 	}
-
-	private RealTimeSince _timeSinceDamageTaken = 1;
-
-	void IGameEventHandler<DamageTakenEvent>.OnGameEvent( DamageTakenEvent eventArgs )
-	{
-		_timeSinceDamageTaken = 0;
-	}
-
+	
 	private void ApplyCameraEffects()
 	{
 		var timeSinceDamage = _timeSinceDamageTaken.Relative;
@@ -281,33 +292,33 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 	private void ApplyRecoil()
 	{
-		if ( !Player.CurrentEquipment.IsValid() )
+		if ( !CurrentEquipment.IsValid() )
 		{
 			return;
 		}
 
-		if ( Player.CurrentEquipment?.Components.Get<RecoilWeaponComponent>( FindMode.EnabledInSelfAndDescendants ) is
+		if ( CurrentEquipment?.Components.Get<RecoilWeaponComponent>( FindMode.EnabledInSelfAndDescendants ) is
 		    { } fn )
 		{
-			Player.EyeAngles += fn.Current;
+			EyeAngles += fn.Current;
 		}
 	}
 
 	private void OnModeChanged()
 	{
-		SetBoomLength( Mode == CameraMode.FirstPerson ? 0.0f : ThirdPersonDistance );
+		SetBoomLength( CameraMode == CameraMode.FirstPerson ? 0.0f : ThirdPersonDistance );
 
-		var firstPersonPov = Mode == CameraMode.FirstPerson && !IsProxy;
+		var firstPersonPov = CameraMode == CameraMode.FirstPerson && !IsProxy;
 		
-		Player.SetFirstPersonView( firstPersonPov );
+		SetFirstPersonView( firstPersonPov );
 
 		if ( firstPersonPov )
 		{
-			Player.CreateViewModel( false );
+			CreateViewModel( false );
 		}
 		else
 		{
-			Player.ClearViewModel();
+			ClearViewModel();
 		}
 	}
 
@@ -315,4 +326,5 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	{
 		MaxBoomLength = length;
 	}
+	
 }

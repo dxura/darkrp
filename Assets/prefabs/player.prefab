@@ -16,6 +16,8 @@
           "component_type": "SpotLight"
         },
         "_torchToggleSound": "sounds/player/flashlight_toggle.sound",
+        "Acceleration": 10,
+        "AimFovOffset": -5,
         "AnimationHelper": {
           "_type": "component",
           "component_id": "21b6a16f-ce05-4982-8ae4-c85592c7b220",
@@ -26,15 +28,21 @@
           "_type": "gameobject",
           "prefab": "prefabs/impact_fx/impact_blood_mist.prefab"
         },
-        "BloodImpactSound": "sounds/impacts/melee/impact-melee-flesh.sound",
+        "BloodImpactSound": "sounds/impacts/impact-melee-flesh.sound",
         "BodyRoot": {
           "_type": "gameobject",
           "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af"
         },
+        "Boom": {
+          "_type": "gameobject",
+          "go": "b03710d3-75bd-4111-b405-2974362db2c3"
+        },
+        "Bounciness": 0.3,
         "Deaths": 0,
         "FallDamageScale": 0.2,
         "FootstepBaseVolume": 5,
         "FootstepScale": 1,
+        "GroundAngle": 45,
         "Head": {
           "_type": "gameobject",
           "go": "4858b351-8fb8-43aa-af2a-92496608fcda"
@@ -56,6 +64,7 @@
           "component_type": "HealthComponent"
         },
         "Height": 64,
+        "IgnoreLayers": "",
         "Job": "gameplay/jobs/citizen.job",
         "JobChangedSound": "sounds/job-switch.sound",
         "Kills": 0,
@@ -76,46 +85,22 @@
           "go": "3e4e2095-635e-4b89-a9c9-fc3b4d321b84",
           "component_type": "BoxCollider"
         },
+        "Radius": 16,
         "Renderer": {
           "_type": "component",
           "component_id": "2192125d-a0f3-4033-8a96-7b77485d8539",
           "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
           "component_type": "SkinnedModelRenderer"
         },
-        "SprintFootstepScale": 2,
-        "SprintMovementDampening": 0.35,
-        "Uid": "",
-        "UseDistance": 72
-      },
-      {
-        "__type": "Dxura.Darkrp.CameraController",
-        "__guid": "8242c8b9-577c-4bfe-9c5d-37113e4e2c74",
-        "AimFovOffset": -5,
-        "Boom": {
-          "_type": "gameobject",
-          "go": "b03710d3-75bd-4111-b405-2974362db2c3"
-        },
-        "Player": {
-          "_type": "component",
-          "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
-          "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
-          "component_type": "Player"
-        },
         "RespawnProtectionSaturation": 1,
         "ShouldViewBob": false,
-        "ThirdPersonDistance": 128
-      },
-      {
-        "__type": "Dxura.Darkrp.CharacterController",
-        "__guid": "88189b1e-d1ed-42a8-8465-199d1d657bbd",
-        "Acceleration": 14,
-        "Bounciness": 0.3,
-        "GroundAngle": 45,
-        "Height": 64,
-        "IgnoreLayers": "ragdoll,invis,pickup,no_player,fire",
-        "Radius": 12,
+        "SprintFootstepScale": 2,
+        "SprintMovementDampening": 0.35,
         "StepHeight": 18,
-        "UseCollisionRules": false
+        "ThirdPersonDistance": 128,
+        "Uid": "",
+        "UseCollisionRules": false,
+        "UseDistance": 72
       },
       {
         "__type": "Dxura.Darkrp.ArmorComponent",
@@ -151,11 +136,6 @@
       {
         "__type": "Dxura.Darkrp.TagBinder",
         "__guid": "bda86caa-ccce-46b8-b31b-e5e333de8618"
-      },
-      {
-        "__type": "Dxura.Darkrp.PlayerRagdollBehavior",
-        "__guid": "7473f428-70b3-4503-ba2b-bd69378bbb6e",
-        "DestroyTime": 15
       },
       {
         "__type": "Sandbox.Voice",

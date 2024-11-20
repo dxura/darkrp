@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using Dxura.Darkrp;
 using Sandbox.Events;
 
@@ -7,12 +8,12 @@ namespace Dxura.Darkrp;
 public partial class Player : IGameEventHandler<KillEvent>
 {
 	[HostSync]
-	[Property, Feature("Score")]
+	[Property, Group("Score")]
 	[ReadOnly]
 	public int Kills { get; set; } = 0;
 
 	[HostSync]
-	[Property, Feature("Score")]
+	[Property, Group("Score")]
 	[ReadOnly]
 	public int Deaths { get; set; } = 0;
 

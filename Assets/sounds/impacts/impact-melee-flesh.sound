@@ -1,0 +1,34 @@
+{
+  "UI": false,
+  "Volume": "1",
+  "Pitch": "1",
+  "Decibels": 70,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/impacts/melee/bluntweapon/flesh-1.vsnd",
+    "sounds/impacts/melee/bluntweapon/flesh-2.vsnd",
+    "sounds/impacts/melee/bluntweapon/flesh-3.vsnd",
+    "sounds/impacts/melee/bluntweapon/flesh-4.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "Distance": 10000,
+  "Falloff": [
+    {
+      "y": 1,
+      "in": 1,
+      "out": -1
+    },
+    {
+      "x": 1,
+      "in": 1,
+      "out": -1
+    }
+  ],
+  "__references": [],
+  "HasUnsavedChanges": true,
+  "__version": 1
+}

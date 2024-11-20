@@ -34,7 +34,7 @@ public class ScopeWeaponComponent : InputWeaponComponent
 			return;
 		}
 
-		var camera = Equipment.Owner.CameraController;
+		var camera = Equipment.Owner;
 
 		if ( ScopeOverlay is not null )
 		{
@@ -144,7 +144,7 @@ public class ScopeWeaponComponent : InputWeaponComponent
 			return;
 		}
 
-		var camera = Equipment?.Owner?.CameraController;
+		var camera = Equipment?.Owner;
 		if ( !camera.IsValid() )
 		{
 			return;
@@ -163,13 +163,12 @@ public class ScopeWeaponComponent : InputWeaponComponent
 		Equipment.Owner.AimDampening /= ZoomLevel * ZoomLevel + 1;
 
 		{
-			var cc = Equipment.Owner.CharacterController;
 
-			var velocity = Equipment.Owner.CharacterController.Velocity.Length / 25.0f;
+			var velocity = Equipment.Owner.Velocity.Length / 25.0f;
 			var blur = 1.0f / (velocity + 1.0f);
 			blur = MathX.Clamp( blur, 0.1f, 1.0f );
 
-			if ( !cc.IsOnGround )
+			if ( !Equipment.Owner.IsOnGround )
 			{
 				blur = 0.1f;
 			}

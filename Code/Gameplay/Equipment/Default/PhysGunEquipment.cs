@@ -282,10 +282,10 @@ public class PhysGunEquipment : InputWeaponComponent
 
 		if ( GrabbedObject != null && GrabbedObject.Root.Components.TryGet<Player>( out var player ) )
 		{
-			var velocity = player.CharacterController.Velocity;
+			var velocity = player.Velocity;
 			Vector3.SmoothDamp( player.Transform.Position, HoldPos, ref velocity, 0.075f, Time.Delta );
-			player.CharacterController.Velocity = velocity;
-			player.CharacterController.IsOnGround = false;
+			player.Velocity = velocity;
+			player.IsOnGround = false;
 
 			return;
 		}

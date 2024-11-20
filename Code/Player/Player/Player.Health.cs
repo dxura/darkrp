@@ -5,6 +5,8 @@ namespace Dxura.Darkrp;
 
 public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHandler<DamageTakenEvent>
 {
+	private RealTimeSince _timeSinceDamageTaken = 1;
+	
 	/// <summary>
 	/// Called when YOU inflict damage on something
 	/// </summary>
@@ -22,6 +24,7 @@ public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHan
 	/// </summary>
 	void IGameEventHandler<DamageTakenEvent>.OnGameEvent( DamageTakenEvent eventArgs )
 	{
+		_timeSinceDamageTaken = 0;
 		var damageInfo = eventArgs.DamageInfo;
 
 		var attacker = GameUtils.GetPlayerFromComponent( eventArgs.DamageInfo.Attacker );
