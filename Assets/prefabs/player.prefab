@@ -100,7 +100,11 @@
         "ThirdPersonDistance": 128,
         "Uid": "",
         "UseCollisionRules": false,
-        "UseDistance": 72
+        "UseDistance": 72,
+        "WeaponGameObject": {
+          "_type": "gameobject",
+          "go": "54431291-2c92-4075-bf87-882481574799"
+        }
       },
       {
         "__type": "Dxura.Darkrp.ArmorComponent",
@@ -114,14 +118,6 @@
         "Health": 100,
         "IsGodMode": false,
         "MaxHealth": 100
-      },
-      {
-        "__type": "Dxura.Darkrp.PlayerInventory",
-        "__guid": "7514a6eb-1688-4ac1-818e-5fd8ade159b6",
-        "WeaponGameObject": {
-          "_type": "gameobject",
-          "go": "54431291-2c92-4075-bf87-882481574799"
-        }
       },
       {
         "__type": "Sandbox.HighlightOutline",

@@ -204,7 +204,7 @@ public class Equipment : Component, Component.INetworkListener, IEquipment, IDes
 		// We must first holster all other equipment items.
 		if ( Owner.IsValid() )
 		{
-			var equipment = Owner.Inventory.Equipment.ToList();
+			var equipment = Owner.Equipment.ToList();
 
 			foreach ( var item in equipment )
 			{

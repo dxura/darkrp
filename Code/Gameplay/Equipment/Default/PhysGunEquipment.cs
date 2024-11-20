@@ -130,7 +130,7 @@ public class PhysGunEquipment : InputWeaponComponent
 
 		if ( Equipment.Owner != null )
 		{
-			Equipment.Owner.Inventory.CantSwitch = GrabbedObject != null;
+			Equipment.Owner.CantSwitch = GrabbedObject != null;
 		}
 	}
 

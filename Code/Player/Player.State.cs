@@ -21,12 +21,6 @@ public partial class Player
 	public ArmorComponent ArmorComponent { get; private set; } = null!;
 
 	/// <summary>
-	/// The player's inventory, items, etc.
-	/// </summary>
-	[RequireComponent]
-	public PlayerInventory Inventory { get; private set; } = null!;
-
-	/// <summary>
 	/// How long since the player last respawned?
 	/// </summary>
 	[HostSync]
@@ -35,7 +29,7 @@ public partial class Player
 	/// <summary>
 	/// Our local player on this client.
 	/// </summary>
-	public static Player? Local { get; private set; }
+	public static Player Local { get; private set; } = null!;
 
 	/// <summary>
 	/// The player's ID. This is their SteamID.
@@ -143,7 +137,7 @@ public partial class Player
 
 			RespawnState = RespawnState.Requested;
 
-			Inventory.Clear();
+			ClearLoadout();
 			DoRagdoll();
 		}
 

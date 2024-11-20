@@ -165,7 +165,7 @@ public class HandsEquipment : InputWeaponComponent
 
 		_heldBody.BodyType = PhysicsBodyType.Dynamic;
 
-		Player.Inventory.CantSwitch = true;
+		Player.CantSwitch = true;
 		
 		_lastPickupTime = RealTime.Now;
 
@@ -191,7 +191,7 @@ public class HandsEquipment : InputWeaponComponent
 		_held?.Tags.Remove( "nocollide" );
 		_held = null;
 		_heldBody = null;
-		Player.Inventory.CantSwitch = false;
+		Player.CantSwitch = false;
 	}
 
 	private void RotateHeldObject()

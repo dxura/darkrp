@@ -51,6 +51,7 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	protected override void OnUpdate()
 	{
 		OnUpdatePawn();
+		OnUpdateEquipment();
 		
 		if ( HealthComponent.State == LifeState.Dead )
 		{

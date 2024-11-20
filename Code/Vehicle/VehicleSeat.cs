@@ -91,12 +91,12 @@ public sealed class VehicleSeat : Component
 	[Broadcast]
 	private void RpcLeave()
 	{
-		if ( !Networking.IsHost )
+		if ( !Networking.IsHost || Player == null )
 		{
 			return;
 		}
 
-		Player.SetCurrentEquipment( Player.Inventory.Equipment.FirstOrDefault() );
+		Player.SetCurrentEquipment( Player.Equipment.FirstOrDefault() );
 
 		Player.CurrentSeat = null;
 		Player = null;

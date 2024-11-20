@@ -3,18 +3,22 @@ using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
-/// <summary>
-/// The player's inventory.
-/// </summary>
-public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
+public partial class Player :
+	IGameEventHandler<EquipmentDeployedEvent>,
+	IGameEventHandler<EquipmentHolsteredEvent>,
+	IGameEventHandler<PlayerSpawnedEvent>
 {
-	[RequireComponent] private Player Player { get; set; } = null!;
-
+	/// <summary>
+	/// What weapon are we using?
+	/// </summary>
+	[Property]
+	[ReadOnly]
+	public Equipment? CurrentEquipment { get; private set; }
+	
 	/// <summary>
 	/// What equipment do we have right now?
 	/// </summary>
-	public IEnumerable<Equipment> Equipment =>
-		Player.Components.GetAll<Equipment>( FindMode.EverythingInSelfAndDescendants );
+	public IEnumerable<Equipment> Equipment => Components.GetAll<Equipment>( FindMode.EverythingInSelfAndDescendants );
 
 	/// <summary>
 	/// A <see cref="GameObject"/> that will hold all of our equipment.
@@ -22,14 +26,132 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 	[Property]
 	public GameObject WeaponGameObject { get; set; } = null!;
 
-	/// <summary>
-	/// Gets the player's current weapon.
-	/// </summary>
-	private Equipment? Current => Player?.CurrentEquipment;
-
 	public bool CantSwitch = false;
 
-	public void Clear()
+	public GameObject ViewModelGameObject => Scene.Camera.GameObject;
+
+	/// <summary>
+	/// How inaccurate are things like gunshots?
+	/// </summary>
+	public float Spread { get; set; }
+
+	private void UpdateRecoilAndSpread()
+	{
+		var isAiming = CurrentEquipment.IsValid() && CurrentEquipment.Tags.Has( "aiming" );
+
+		var spread = Global.BaseSpreadAmount;
+		var scale = Global.VelocitySpreadScale;
+		if ( isAiming )
+		{
+			spread *= Global.AimSpread;
+		}
+
+		if ( isAiming )
+		{
+			scale *= Global.AimVelocitySpreadScale;
+		}
+
+		var velLen =  Velocity.Length;
+		spread += velLen.Remap( 0, Global.SpreadVelocityLimit, 0, 1, true ) * scale;
+
+		if ( IsCrouching && IsGrounded )
+		{
+			spread *= Global.CrouchSpreadScale;
+		}
+
+		if ( !IsGrounded )
+		{
+			spread *= Global.AirSpreadScale;
+		}
+
+		Spread = spread;
+	}
+
+	void IGameEventHandler<EquipmentDeployedEvent>.OnGameEvent( EquipmentDeployedEvent eventArgs )
+	{
+		CurrentEquipment = eventArgs.Equipment;
+	}
+
+	void IGameEventHandler<EquipmentHolsteredEvent>.OnGameEvent( EquipmentHolsteredEvent eventArgs )
+	{
+		if ( eventArgs.Equipment == CurrentEquipment )
+		{
+			CurrentEquipment = null;
+		}
+	}
+
+	[Authority]
+	private void SetCurrentWeapon( Equipment? equipment )
+	{
+		SetCurrentEquipment( equipment );
+	}
+
+	[Authority]
+	private void ClearCurrentWeapon()
+	{
+		CurrentEquipment?.Holster();
+	}
+
+	public void Holster()
+	{
+		if ( IsProxy )
+		{
+			if ( Networking.IsHost )
+			{
+				ClearCurrentWeapon();
+			}
+
+			return;
+		}
+
+		CurrentEquipment?.Holster();
+	}
+
+	public TimeSince TimeSinceWeaponDeployed { get; private set; }
+
+	public void SetCurrentEquipment( Equipment? weapon )
+	{
+		if ( weapon == CurrentEquipment ) 
+			return;
+
+		ClearCurrentWeapon();
+
+		if ( IsProxy )
+		{
+			if ( Networking.IsHost )
+				SetCurrentWeapon( weapon );
+
+			return;
+		}
+
+		TimeSinceWeaponDeployed = 0;
+
+		weapon?.Deploy();
+	}
+
+	public void ClearViewModel()
+	{
+		foreach ( var weapon in Equipment )
+		{
+			weapon.ClearViewModel();
+		}
+	}
+
+	public void CreateViewModel( bool playDeployEffects = true )
+	{
+		if ( CameraMode != CameraMode.FirstPerson )
+		{
+			return;
+		}
+
+		var weapon = CurrentEquipment;
+		if ( weapon.IsValid() )
+		{
+			weapon.CreateViewModel( playDeployEffects );
+		}
+	}
+
+	public void ClearLoadout()
 	{
 		if ( !Networking.IsHost )
 		{
@@ -81,46 +203,46 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		var canDrop = GameManager.Instance.Get<EquipmentDropper>() is { } dropper && dropper.CanDrop( Player, weapon );
+		var canDrop = GameManager.Instance.Get<EquipmentDropper>() is { } dropper && dropper.CanDrop(this, weapon );
 
 		if ( canDrop )
 		{
-			var tr = Scene.Trace.Ray( new Ray( Player.AimRay.Position, Player.AimRay.Forward ), 128 )
+			var tr = Scene.Trace.Ray( new Ray( AimRay.Position, AimRay.Forward ), 128 )
 				.IgnoreGameObjectHierarchy( GameObject.Root )
 				.WithoutTags( "trigger" )
 				.Run();
 
 			var position = tr.Hit
 				? tr.HitPosition + tr.Normal * weapon.Resource.WorldModel.Bounds.Size.Length
-				: Player.AimRay.Position + Player.AimRay.Forward * 32f;
-			var rotation = Rotation.From( 0, Player.EyeAngles.yaw + 90, 90 );
+				: AimRay.Position + AimRay.Forward * 32f;
+			var rotation = Rotation.From( 0, EyeAngles.yaw + 90, 90 );
 
-			var baseVelocity = Player.Velocity;
+			var baseVelocity = Velocity;
 			var droppedWeapon = DroppedEquipment.Create( weapon.Resource, position, rotation, weapon );
 
 			if ( !tr.Hit )
 			{
-				droppedWeapon.Rigidbody.Velocity = baseVelocity + Player.AimRay.Forward * 200.0f + Vector3.Up * 50;
+				droppedWeapon.Rigidbody.Velocity = baseVelocity + AimRay.Forward * 200.0f + Vector3.Up * 50;
 				droppedWeapon.Rigidbody.AngularVelocity = Vector3.Random * 8.0f;
 			}
 		}
 
 		if ( canDrop || forceRemove )
 		{
-			RemoveWeapon( weapon );
+			RemoveEquipment( weapon );
 		}
 	}
 
-	protected override void OnUpdate()
+	private void OnUpdateEquipment()
 	{
 		if ( IsProxy )
 		{
 			return;
 		}
 
-		if ( Input.Pressed( "Drop" ) && Current.IsValid() )
+		if ( Input.Pressed( "Drop" ) && CurrentEquipment.IsValid() )
 		{
-			Drop( Current );
+			Drop( CurrentEquipment );
 			return;
 		}
 
@@ -184,7 +306,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 		}
 
 		var weaponToSwitchTo = availableWeapons[currentSlot];
-		if ( weaponToSwitchTo == Current )
+		if ( weaponToSwitchTo == CurrentEquipment )
 		{
 			return;
 		}
@@ -195,7 +317,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 	public void HolsterCurrent()
 	{
 		Assert.True( !IsProxy || Networking.IsHost );
-		Player.SetCurrentEquipment( null );
+		SetCurrentEquipment( null );
 	}
 
 	public void SwitchToSlot( EquipmentSlot slot )
@@ -211,13 +333,13 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		if ( equipment.Length == 1 && Current == equipment[0])
+		if ( equipment.Length == 1 && CurrentEquipment == equipment[0])
 		{
 			HolsterCurrent();
 			return;
 		}
 
-		var index = Array.IndexOf( equipment, Current );
+		var index = Array.IndexOf( equipment, CurrentEquipment );
 		Switch( equipment[(index + 1) % equipment.Length] );
 	}
 
@@ -234,13 +356,13 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		Player.SetCurrentEquipment( equipment );
+		SetCurrentEquipment( equipment );
 	}
 
 	/// <summary>
 	/// Removes the given weapon and destroys it.
 	/// </summary>
-	public void RemoveWeapon( Equipment equipment )
+	public void RemoveEquipment( Equipment equipment )
 	{
 		Assert.True( Networking.IsHost );
 
@@ -249,7 +371,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		if ( Current == equipment )
+		if ( CurrentEquipment == equipment )
 		{
 			var otherEquipment = Equipment.Where( x => x != equipment );
 			var orderedBySlot = otherEquipment.OrderBy( x => x.Resource.Slot );
@@ -276,7 +398,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		RemoveWeapon( equipment );
+		RemoveEquipment( equipment );
 	}
 
 	public Equipment? Give( EquipmentResource? resource, bool makeActive = true )
@@ -326,12 +448,12 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			Transform = new Transform(), Parent = WeaponGameObject
 		} );
 		var component = gameObject.Components.Get<Equipment>( FindMode.EverythingInSelfAndDescendants );
-		gameObject.NetworkSpawn( Player.Network.OwnerConnection );
-		component.OwnerId = Player.Id;
+		gameObject.NetworkSpawn( Network.Owner );
+		component.OwnerId = Id;
 
 		if ( makeActive )
 		{
-			Player.SetCurrentEquipment( component );
+			SetCurrentEquipment( component );
 		}
 
 		return component;
@@ -382,7 +504,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		equipmentData.Purchase( Player );
+		equipmentData.Purchase( this );
 	}
 
 	public void Purchase( int resourceId )
@@ -408,7 +530,7 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		if ( Player.Balance < resource.Price )
+		if ( Balance < resource.Price )
 		{
 			return;
 		}
@@ -418,14 +540,14 @@ public class PlayerInventory : Component, IGameEventHandler<PlayerSpawnedEvent>
 			return;
 		}
 
-		Player.Balance -= resource.Price;
+		Balance -= resource.Price;
 	}
 
 	public void OnGameEvent( PlayerSpawnedEvent eventArgs )
 	{
 		
 		// Ignore if not for us
-		if ( eventArgs.Player != Player )
+		if ( eventArgs.Player != this )
 		{
 			return;	
 		}

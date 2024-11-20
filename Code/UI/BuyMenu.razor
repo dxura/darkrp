@@ -30,7 +30,7 @@
 							if ( !resource.IsPurchasable )
 								continue;
 
-							<div class="button @slot @( @Inventory.Has( resource ) ? "owned" : "unowned" ) @( @CanAfford( resource ) ? "" : "unaffordable" )" onclick=@( () => BuyWeapon( resource ) )>
+							<div class="button @slot @( @Player.Has( resource ) ? "owned" : "unowned" ) @( @CanAfford( resource ) ? "" : "unaffordable" )" onclick=@( () => BuyWeapon( resource ) )>
 								<label>@resource.Name</label>
 
 								@if ( !string.IsNullOrEmpty( resource.Icon ) )
@@ -74,7 +74,6 @@
 
 @code
 {
-	public PlayerInventory Inventory => Player?.Inventory;
 	public Player Player => Player.Local;
 
 	private void BuyWeapon( EquipmentResource resource )
@@ -84,7 +83,7 @@
 
 		Sound.Play( "buy" );
 
-		Inventory.Purchase( resource.ResourceId );
+		Player.Purchase( resource.ResourceId );
 	}
 
 	private void BuyEquipment( BuyMenuItem buyMenuItem )
@@ -94,7 +93,7 @@
 
 		Sound.Play( "buy" );
 
-		Inventory.TryPurchaseBuyMenuItem( buyMenuItem.Id );
+		Player.TryPurchaseBuyMenuItem( buyMenuItem.Id );
 	}
 
 	private bool CanAfford( EquipmentResource resource )
@@ -109,6 +108,6 @@
 	
 	protected override int BuildHash()
 	{
-		return !Player.IsValid() ? 0 : HashCode.Combine( Inventory.Equipment.Count() );
+		return !Player.IsValid() ? 0 : HashCode.Combine( Player.Equipment.Count() );
 	}
 }

@@ -57,7 +57,7 @@ public partial class DroppedEquipment : Component, IUse
 
 	public UseResult CanUse( Player player )
 	{
-		if ( player.Inventory.CanTake( Resource ) != PlayerInventory.PickupResult.Pickup )
+		if ( player.CanTake( Resource ) != Player.PickupResult.Pickup )
 		{
 			return "Can't pick this up";
 		}
@@ -82,7 +82,7 @@ public partial class DroppedEquipment : Component, IUse
 		}
 
 		var currentActiveSlot = player.CurrentEquipment?.Resource.Slot ?? EquipmentSlot.Melee;
-		var weapon = player.Inventory.Give( Resource, Resource.Slot < currentActiveSlot );
+		var weapon = player.Give( Resource, Resource.Slot < currentActiveSlot );
 
 		if ( !weapon.IsValid() )
 		{

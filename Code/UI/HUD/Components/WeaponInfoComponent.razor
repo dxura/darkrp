@@ -5,7 +5,7 @@
 @if ( !Player.IsValid() ) return;
 
 <root class="hud with-deadzone column">
-	@foreach ( var slotGroup in Inventory.Equipment.OrderBy( x => x.Resource.Slot ).GroupBy( x => x.Resource.Slot ) )
+	@foreach ( var slotGroup in Player.Equipment.OrderBy( x => x.Resource.Slot ).GroupBy( x => x.Resource.Slot ) )
 	{
 		<div class="layout group @GroupClasses( slotGroup.Key )">
 			<div class="background"/>
@@ -23,8 +23,7 @@
 @code
 {
 	public Player Player => Player.Local;
-	public PlayerInventory Inventory => Player.Inventory;
-	public Equipment CurrentEquipment => Player?.CurrentEquipment;
+	public Equipment? CurrentEquipment => Player.CurrentEquipment;
 
 	public string GroupClasses( EquipmentSlot slot )
 	{
@@ -43,11 +42,11 @@
 
 	public int GetSlot( Equipment equipment )
 	{
-		return Inventory.Equipment.ToList().IndexOf( equipment );
+		return Player.Equipment.ToList().IndexOf( equipment );
 	}
 
 	protected override int BuildHash()
 	{
-		return !Player.IsValid() ? 0 : HashCode.Combine( Inventory.Equipment.Count(), CurrentEquipment );
+		return !Player.IsValid() ? 0 : HashCode.Combine( Player.Equipment.Count(), CurrentEquipment );
 	}
 }

@@ -77,7 +77,7 @@ public partial class ThrowWeaponComponent : InputWeaponComponent,
 		{
 			// We want to remove the weapon on the host only.
 			var player = Equipment.Owner;
-			player.Inventory.RemoveWeapon( Equipment );
+			player?.RemoveEquipment( Equipment );
 			return;
 		}
 
