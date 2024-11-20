@@ -99,7 +99,7 @@
           "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
           "component_type": "Player"
         },
-        "RespawnProtectionSaturation": 0.25,
+        "RespawnProtectionSaturation": 1,
         "ShouldViewBob": false,
         "ThirdPersonDistance": 128
       },

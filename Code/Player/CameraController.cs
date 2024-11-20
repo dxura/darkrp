@@ -14,7 +14,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	[Property] public Player Player { get; set; } = null!;
 
 	[Property] [Group( "Config" )] public bool ShouldViewBob { get; set; } = true;
-	[Property] [Group( "Config" )] public float RespawnProtectionSaturation { get; set; } = 0.25f;
+	[Property] [Group( "Config" )] public float RespawnProtectionSaturation { get; set; } = 0.35f;
 
 	[Property] public float ThirdPersonDistance { get; set; } = 128f;
 	[Property] public float AimFovOffset { get; set; } = -5f;

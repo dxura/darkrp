@@ -175,6 +175,25 @@
             "__guid": "c193db8f-561e-4115-a9be-dcba1f77fec6",
             "LeftMouseAction": "Attack1",
             "RightMouseAction": "Attack2"
+          },
+          {
+            "__type": "Sandbox.ColorAdjustments",
+            "__guid": "69c0e24c-560e-4876-9a7f-4e88914b7d07",
+            "Brightness": 1,
+            "Contrast": 1,
+            "HueRotate": 0,
+            "Saturation": 1
+          },
+          {
+            "__type": "Sandbox.ChromaticAberration",
+            "__guid": "33dfa60b-0491-4e30-ba19-a5b95f82ff5d",
+            "Offset": "0,0,0",
+            "Scale": 1
+          },
+          {
+            "__type": "Sandbox.Pixelate",
+            "__guid": "7bc846c1-a851-47a3-8402-68cad480f4d0",
+            "Scale": 0
           }
         ]
       }
