@@ -6,7 +6,7 @@ namespace Dxura.Darkrp;
 [Title( "On Shot - FOV Offset" )]
 [Icon( "pending" )]
 [Group( "Weapon Components" )]
-public class FovOffset : EquipmentComponent, IGameEventHandler<WeaponShotEvent>
+public class FovOffset : WeaponComponent, IGameEventHandler<WeaponShotEvent>
 {
 	[Property] public float Length { get; set; } = 0.3f;
 	[Property] public float Size { get; set; } = 1.05f;

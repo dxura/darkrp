@@ -5,7 +5,7 @@ namespace Dxura.Darkrp;
 /// <summary>
 /// A weapon component that reacts to input actions.
 /// </summary>
-public abstract class InputWeaponComponent : EquipmentComponent,
+public abstract class InputWeaponComponent : WeaponComponent,
 	IGameEventHandler<EquipmentDeployedEvent>
 {
 	/// <summary>

@@ -1,15 +1,27 @@
 {
-	"UI": false,
-	"Volume": 1,
-	"VolumeRandom": 0,
-	"Pitch": 1,
-	"PitchRandom": 0,
-	"Decibels": 70,
-	"Sounds":
-	[
-		"sounds/guns/r870/shotgun_load.vsnd"
-	],
-	"SelectionMode": "Random",
-	"MaximumDistance": 1143.933500,
-	"MinimumDistance": 57.196674
+  "UI": false,
+  "Volume": "1",
+  "Pitch": "1",
+  "Decibels": 70,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/guns/r870/shotgun_load.vsnd"
+  ],
+  "Occlusion": true,
+  "AirAbsorption": true,
+  "Transmission": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "Distance": 15000,
+  "Falloff": [
+    {
+      "y": 1
+    },
+    {
+      "x": 1
+    }
+  ],
+  "__references": [],
+  "HasUnsavedChanges": true,
+  "__version": 1
 }

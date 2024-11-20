@@ -202,42 +202,6 @@
                 "LightColor": "0.91373,0.98039,1,1",
                 "Radius": 1000,
                 "Shadows": true
-              },
-              {
-                "__type": "Sandbox.SoundPointComponent",
-                "__guid": "4ea879ea-fd01-4a28-af86-4e7efc86f03e",
-                "Distance": 512,
-                "DistanceAttenuation": false,
-                "DistanceAttenuationOverride": false,
-                "Falloff": [
-                  {
-                    "y": 1,
-                    "in": 3.1415927,
-                    "out": -3.1415927
-                  },
-                  {
-                    "x": 1
-                  }
-                ],
-                "Force2d": false,
-                "MaxRepeatTime": 1,
-                "MinRepeatTime": 1,
-                "Occlusion": false,
-                "OcclusionOverride": false,
-                "OcclusionRadius": 32,
-                "Pitch": 1,
-                "PlayOnStart": false,
-                "ReflectionOverride": false,
-                "Reflections": false,
-                "Repeat": false,
-                "SoundEvent": "sounds/player/flashlight_toggle.sound",
-                "SoundOverride": false,
-                "StopOnNew": false,
-                "TargetMixer": {
-                  "Name": "unknown",
-                  "Id": "00000000-0000-0000-0000-000000000000"
-                },
-                "Volume": 1
               }
             ]
           }

@@ -158,11 +158,6 @@
             "ZNear": 1
           },
           {
-            "__type": "Sandbox.AudioListener",
-            "__guid": "d9e8832b-86e8-4fcf-ba73-e54a046862a4",
-            "UseCameraDirection": true
-          },
-          {
             "__type": "Sandbox.Highlight",
             "__guid": "aee27f05-1aed-457f-a4f7-3ea8c63f338d"
           },

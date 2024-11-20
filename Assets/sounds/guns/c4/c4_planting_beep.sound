@@ -1,7 +1,7 @@
 {
   "UI": false,
-  "Volume": "0.75,1.00,0",
-  "Pitch": "1.80,2.00,1",
+  "Volume": "1",
+  "Pitch": "1.8 2",
   "Decibels": 10000,
   "SelectionMode": "Random",
   "Sounds": [
@@ -12,6 +12,16 @@
   "Transmission": true,
   "OcclusionRadius": 64,
   "DistanceAttenuation": true,
+  "Distance": 7500,
+  "Falloff": [
+    {
+      "y": 1
+    },
+    {
+      "x": 1
+    }
+  ],
   "__references": [],
-  "__version": 0
+  "HasUnsavedChanges": true,
+  "__version": 1
 }

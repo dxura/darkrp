@@ -1,13 +1,28 @@
 {
   "UI": false,
-  "Volume": "0.10,0.10,0",
-  "Pitch": "1.00,1.00,0",
+  "Volume": "0.1",
+  "Pitch": "1",
   "Decibels": 40,
   "SelectionMode": "Forward",
   "Sounds": [
     "sounds/guns/switch/switch_2.vsnd",
     "sounds/guns/switch/switch_3.vsnd"
   ],
-  "MaximumDistance": 395.08035,
-  "MinimumDistance": 19.754019
+  "Occlusion": true,
+  "AirAbsorption": true,
+  "Transmission": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "Distance": 15000,
+  "Falloff": [
+    {
+      "y": 1
+    },
+    {
+      "x": 1
+    }
+  ],
+  "__references": [],
+  "HasUnsavedChanges": true,
+  "__version": 1
 }

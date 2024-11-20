@@ -1646,6 +1646,206 @@
           "SurfaceVelocity": "0,0,0"
         }
       ]
+    },
+    {
+      "__guid": "5f99c8a6-9112-4e5c-9bd5-9f3411b58cef",
+      "Flags": 0,
+      "Name": "Spray",
+      "Position": "-2969.083,-658.407,286.2117",
+      "Rotation": "0,-0.7071067,0,0.7071068",
+      "Tags": "particles",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ParticleEffect",
+          "__guid": "e2c6d854-3be8-488d-a528-869b8cbb34e6",
+          "__version": 1,
+          "Alpha": {
+            "Type": "Curve",
+            "CurveA": [
+              {
+                "y": 1
+              },
+              {
+                "x": 0.48029557,
+                "y": 1,
+                "in": 1.5365853,
+                "out": -1.5365853
+              },
+              {
+                "x": 1,
+                "in": 1.312303,
+                "out": -1.312303
+              }
+            ],
+            "Constants": "1,0,0,0"
+          },
+          "ApplyAlpha": true,
+          "ApplyColor": true,
+          "ApplyRotation": false,
+          "ApplyShape": true,
+          "Bounce": {
+            "Constants": "1,0,0,0"
+          },
+          "Brightness": {
+            "Constants": "1,0,0,0"
+          },
+          "Bumpiness": {},
+          "Collision": true,
+          "CollisionRadius": 3.2000046,
+          "Damping": {
+            "Constants": "2.1,0,0,0"
+          },
+          "DieOnCollisionChance": {
+            "Constants": "-7.7,0,0,0"
+          },
+          "Force": true,
+          "ForceDirection": "0,0,-892.9016",
+          "ForceScale": {
+            "Constants": "1.5,0,0,0"
+          },
+          "Friction": {
+            "Constants": "1,0,0,0"
+          },
+          "Gradient": {
+            "Type": "Range",
+            "Evaluation": "Particle",
+            "GradientA": {
+              "color": [
+                {
+                  "t": 0.5,
+                  "c": "1,1,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "GradientB": {
+              "color": [
+                {
+                  "t": 0.5,
+                  "c": "1,1,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "ConstantA": "1,1,1,1",
+            "ConstantB": "0.12149,0.68531,0.72558,1"
+          },
+          "Lifetime": {
+            "Type": "Range",
+            "Evaluation": "Particle",
+            "Constants": "1,38.7,0,0"
+          },
+          "MaxParticles": 5000,
+          "OrbitalForce": {
+            "Y": {
+              "Constants": "25.1,0,0,0"
+            }
+          },
+          "OrbitalPull": {
+            "Constants": "61.1,0,0,0"
+          },
+          "PerParticleTimeScale": {
+            "Constants": "1,0.4,0,0"
+          },
+          "Pitch": {},
+          "PreWarm": 0,
+          "PushStrength": {},
+          "Roll": {
+            "Type": "Range",
+            "Evaluation": "Particle",
+            "Constants": "0,360,0,0"
+          },
+          "Scale": {
+            "CurveA": {
+              "rangey": "0,3",
+              "frames": [
+                {
+                  "in": -9.333329,
+                  "out": 9.333329
+                },
+                {
+                  "x": 0.03325123,
+                  "y": 1,
+                  "in": -0.056075174,
+                  "out": 0.056075174
+                },
+                {
+                  "x": 1,
+                  "in": 2.9152544,
+                  "out": -2.9152544
+                }
+              ]
+            },
+            "Constants": "6.5,0,0,0"
+          },
+          "SequenceId": {},
+          "SequenceSpeed": {
+            "Constants": "1,0,0,0"
+          },
+          "SequenceTime": {
+            "Constants": "1,0,0,0"
+          },
+          "SheetSequence": false,
+          "Space": "World",
+          "StartDelay": {},
+          "StartVelocity": {
+            "Type": "Range",
+            "Evaluation": "Particle",
+            "Constants": "0.2,200,0,0"
+          },
+          "Stretch": {
+            "Constants": "1.1,0,0,0"
+          },
+          "TimeScale": 1,
+          "Tint": "0.16982,0.50607,0.73023,1",
+          "Yaw": {}
+        },
+        {
+          "__type": "Sandbox.ParticleSpriteRenderer",
+          "__guid": "dfee44ef-51f2-4dc3-a9c8-da93e94f2d92",
+          "Additive": false,
+          "Alignment": "LookAtCamera",
+          "BlurAmount": 0.5,
+          "BlurOpacity": 0.91,
+          "BlurSpacing": 0.73,
+          "DepthFeather": 0,
+          "FaceVelocity": false,
+          "FogStrength": 1,
+          "LeadingTrail": true,
+          "Lighting": false,
+          "MotionBlur": false,
+          "Opaque": false,
+          "Pivot": "0.5,0.5",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RotationOffset": 0,
+          "Scale": 0.26,
+          "Shadows": false,
+          "SortMode": "Unsorted",
+          "Texture": "materials/particles/shapes/sphere1.vtex"
+        },
+        {
+          "__type": "Sandbox.ParticleConeEmitter",
+          "__guid": "456f67a9-0579-46da-9008-6bc58a5628b1",
+          "Burst": 0,
+          "ConeAngle": 45,
+          "ConeFar": 15.299948,
+          "ConeNear": 1,
+          "Delay": 0,
+          "DestroyOnEnd": false,
+          "Duration": 32.20004,
+          "InVolume": false,
+          "Loop": true,
+          "OnEdge": false,
+          "Rate": 282.5,
+          "RateOverDistance": 72
+        }
+      ]
     }
   ],
   "SceneProperties": {

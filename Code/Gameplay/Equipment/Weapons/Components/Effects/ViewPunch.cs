@@ -6,7 +6,7 @@ namespace Dxura.Darkrp;
 [Title( "On Shot - View Punch" )]
 [Category( "Weapon Components" )]
 [Icon( "pending" )]
-public class ViewPunch : EquipmentComponent, IGameEventHandler<WeaponShotEvent>
+public class ViewPunch : WeaponComponent, IGameEventHandler<WeaponShotEvent>
 {
 	[Property] public float Lifetime { get; set; } = 0.3f;
 	[Property] public Vector3 PositionOffset { get; set; } = new(0.5f, 0.2f, 0.75f);
