@@ -31,6 +31,7 @@
           "_type": "gameobject",
           "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af"
         },
+        "Deaths": 0,
         "FallDamageScale": 0.2,
         "FootstepBaseVolume": 5,
         "FootstepScale": 1,
@@ -57,6 +58,7 @@
         "Height": 64,
         "Job": "gameplay/jobs/citizen.job",
         "JobChangedSound": "sounds/job-switch.sound",
+        "Kills": 0,
         "LandSound": "sounds/footsteps/footstep-concrete-land.sound",
         "LockCamera": false,
         "MinimumFallSoundVelocity": 250,
@@ -171,18 +173,6 @@
         },
         "Volume": 30,
         "WorldspacePlayback": true
-      },
-      {
-        "__type": "Dxura.Darkrp.PlayerScore",
-        "__guid": "f16594d2-1f76-4afd-9e66-f259efe25c7b",
-        "Deaths": 0,
-        "Kills": 0,
-        "Player": {
-          "_type": "component",
-          "component_id": "3370799f-99ac-4881-9678-016414bdb61f",
-          "go": "a4f94dfd-8684-4032-89b1-b08190beab32",
-          "component_type": "Player"
-        }
       }
     ],
     "Children": [

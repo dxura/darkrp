@@ -13,19 +13,7 @@
 			</span>
 		}
 	</span>
-
-	@* Ping but doesn't work *@
-	@* <span class="col stat-small"> *@
-	@*        @if ( Connection is not null ) *@
-	@* 	{ *@
-	@* 	<label class="small">Ping @(Connection?.Ping.CeilToInt())</label> *@
-	@* 	} *@
-	@* 	else *@
-	@* 	{ *@
-	@* 	<Icon style="background-tint: red;" File="/ui/no-connection.png" size="24" /> *@
-	@* 	} *@
-	@*    </span> *@
-
+	
 	<span class="col playername gap-sm">
 
 		<PlayerAvatar ShowHealth="@false" class="avatar" Player="@Player"/>
@@ -39,16 +27,13 @@
 		}
 	</span>
 
-	@foreach ( var x in IScore.Find( Player ) )
-	{
-		<label class="col stat">@( x.Value )</label>
-	}
+	<label class="col stat">@( Player.Kills )</label>
+	<label class="col stat">@( Player.Deaths )</label>
 </root>
 
 @code {
 	public Player Player { get; set; }
 	private Connection Connection => Player.Connection;
-	private PlayerScore Score => Player.Components.Get<PlayerScore>();
 
 	private bool IsLocal => Player.IsLocalPlayer;
 	private bool IsDead => !Player.IsValid() || Player.HealthComponent.State != LifeState.Alive;
@@ -58,16 +43,11 @@
 
 	protected override int BuildHash()
 	{
-		var hash = HashCode.Combine( Connection, IsLocal, IsDead, Connection?.Ping );
+		var hash = HashCode.Combine( Connection, IsLocal, IsDead, Connection?.Ping, Player.Deaths, Player.Kills );
 
 		if ( Player.IsValid() )
 		{
 			hash = HashCode.Combine( hash, IsPartyMember, Player.PlayerColor );
-		}
-
-		foreach ( var x in IScore.Find( Player ) )
-		{
-			hash = HashCode.Combine( hash, x.Value );
 		}
 
 		return hash;

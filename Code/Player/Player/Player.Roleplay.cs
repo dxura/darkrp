@@ -12,7 +12,6 @@ public partial class Player
     /// </summary>
     [HostSync]
     [Order( -100 )]
-    [Score( "Balance", Format = "${0:N0}" )]
     [Saved]
     public int Balance { get; set; } = 1000;
 
