@@ -58,6 +58,11 @@ public partial class Player
 	[HideIf( nameof(UseCollisionRules), true )]
 	public TagSet IgnoreLayers { get; set; } = new();
 	
+	/// <summary>
+	/// A reference to the animation helper (normally on the Body GameObject)
+	/// </summary>
+	[Property]
+	public AnimationHelper? AnimationHelper { get; set; }
 
 	[Sync] public Vector3 Velocity { get; set; }
 
@@ -159,41 +164,21 @@ public partial class Player
 	private bool _isTouchingLadder;
 	private Vector3 _ladderNormal;
 	
-
 	[Sync] private float EyeHeightOffset { get; set; }
 
-	private void UpdateEyes()
+	public void OnStartController()
 	{
-		if ( !IsProxy )
-		{
-			var eyeHeightOffset = GetEyeHeightOffset();
-
-			var target = eyeHeightOffset;
-			var trace = TraceBBox( Transform.Position, Transform.Position, 0, 10f );
-			if ( trace.Hit && target > _smoothEyeHeight )
-			{
-				// We hit something, that means we can't increase our eye height because something's in the way.
-				eyeHeightOffset = _smoothEyeHeight;
-				IsCrouching = true;
-			}
-			else
-			{
-				eyeHeightOffset = target;
-			}
-
-			EyeHeightOffset = eyeHeightOffset;
-		}
-
-		if ( PlayerBoxCollider.IsValid() )
-		{
-			// Bit shit, but it works
-			PlayerBoxCollider.Center = new Vector3( 0, 0, 32 + _smoothEyeHeight );
-			PlayerBoxCollider.Scale = new Vector3( 32, 32, 64 + _smoothEyeHeight );
-		}
+		TagBinder.BindTag( "no_shooting",
+			() => IsSprinting || TimeSinceSprintChanged < 0.25f || TimeSinceWeaponDeployed < 0.66f );
+		TagBinder.BindTag( "no_aiming",
+			() => IsSprinting || TimeSinceSprintChanged < 0.25f || TimeSinceGroundedChanged < 0.25f );
 	}
-	
 	private void OnUpdateController()
 	{
+		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * Global.CrouchLerpSpeed );
+		_smoothEyeHeight =
+			_smoothEyeHeight.LerpTo( EyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
+		
 		CurrentHoldType = CurrentEquipment.IsValid() ? CurrentEquipment.GetHoldType() : AnimationHelper.HoldTypes.None;
 
 		if ( IsProxy )
@@ -251,6 +236,36 @@ public partial class Player
 
 		AimDampening = 1.0f;
 	}
+	
+	private void UpdateEyes()
+	{
+		if ( !IsProxy )
+		{
+			var eyeHeightOffset = GetEyeHeightOffset();
+
+			var target = eyeHeightOffset;
+			var trace = TraceBBox( Transform.Position, Transform.Position, 0, 10f );
+			if ( trace.Hit && target > _smoothEyeHeight )
+			{
+				// We hit something, that means we can't increase our eye height because something's in the way.
+				eyeHeightOffset = _smoothEyeHeight;
+				IsCrouching = true;
+			}
+			else
+			{
+				eyeHeightOffset = target;
+			}
+
+			EyeHeightOffset = eyeHeightOffset;
+		}
+
+		if ( PlayerBoxCollider.IsValid() )
+		{
+			// Bit shit, but it works
+			PlayerBoxCollider.Center = new Vector3( 0, 0, 32 + _smoothEyeHeight );
+			PlayerBoxCollider.Scale = new Vector3( 32, 32, 64 + _smoothEyeHeight );
+		}
+	}
 
 	private float GetMaxAcceleration()
 	{
@@ -267,6 +282,11 @@ public partial class Player
 	
 	private void OnFixedUpdateController()
 	{
+		if (IsProxy || HealthComponent.State != LifeState.Alive)
+		{
+			return;
+		}
+		
 		var wasGrounded = IsGrounded;
 		IsGrounded = IsOnGround;
 

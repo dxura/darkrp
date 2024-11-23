@@ -46,14 +46,14 @@
 			return;
 		}
 
-		if ( !_developerSteamIds.ContainsValue( Player.Local.Uid ) )
+		if ( !_developerSteamIds.ContainsValue( Player.Local.SteamId ) )
 		{
 			return;
 		}
 
 		if ( Input.Pressed( "DeveloperMenu" ) )
 		{
-			Log.Info( Player.Local.Uid );
+			Log.Info( Player.Local.SteamId );
 
 			IsActive ^= true;
 		}

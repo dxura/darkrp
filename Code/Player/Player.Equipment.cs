@@ -37,6 +37,11 @@ public partial class Player :
 
 	private void OnFixedUpdateEquipment()
 	{
+		if (IsProxy || HealthComponent.State != LifeState.Alive)
+		{
+			return;
+		}
+		
 		var isAiming = CurrentEquipment.IsValid() && CurrentEquipment.Tags.Has( "aiming" );
 
 		var spread = Global.BaseSpreadAmount;

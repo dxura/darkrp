@@ -86,7 +86,7 @@ public partial class Player
 	{
 		if (IsProxy)
 		{
-			Enabled = false;
+			return;
 		}
 		
 		Camera = Scene.Camera;
@@ -111,17 +111,22 @@ public partial class Player
 			return;
 		}
 
-		if ( LastDamageInfo is null )
+		// Deathcam
+		if (HealthComponent.State == LifeState.Dead)
 		{
-			return;
+			if ( LastDamageInfo is null )
+			{
+				return;
+			}
+
+			var killer = GetLastKiller();
+
+			if ( killer.IsValid() )
+			{
+				EyeAngles = Rotation.LookAt( killer.WorldPosition - WorldPosition, Vector3.Up );
+			}
 		}
 
-		var killer = GetLastKiller();
-
-		if ( killer.IsValid() )
-		{
-			EyeAngles = Rotation.LookAt( killer.WorldPosition - WorldPosition, Vector3.Up );
-		}
 	}
 
 	public void AddFieldOfViewOffset( float degrees )

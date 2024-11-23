@@ -13,7 +13,7 @@ public enum RespawnState
 	Immediate
 }
 
-public partial class Player
+public partial class Player : IRespawnable, IDescription
 {
 	/// <summary>
 	/// Our local player on this client.
@@ -25,8 +25,7 @@ public partial class Player
 	/// </summary>
 	[HostSync]
 	[Property, Group("State")]
-	[Saved]
-	public string Uid { get; set; } = "";
+	public string SteamId { get; set; } = "";
 
 	/// <summary>
 	/// The player's name, which might have to persist if they leave
@@ -34,6 +33,11 @@ public partial class Player
 	[HostSync]
 	[Saved]
 	public string? SteamName { get; set; }
+	
+	/// <summary>
+	/// What are we called?
+	/// </summary>
+	public string DisplayName => $"{SteamName}{(!IsConnected ? " (Disconnected)" : "")}";
 
 	/// <summary>
 	/// The connection of this player
@@ -47,8 +51,12 @@ public partial class Player
 	/// </summary>
 	[HostSync]
 	public TimeSince TimeSinceLastRespawn { get; private set; }
-
 	
+	/// <summary>
+	/// The position this player last spawned at.
+	/// </summary>
+	[HostSync]
+	public Vector3 SpawnPosition { get; set; }
 	/// <summary>
 	/// The rotation this player last spawned at.
 	/// </summary>
@@ -68,6 +76,13 @@ public partial class Player
 	[HostSync]
 	[Change( nameof(OnJobPropertyChanged) )]
 	public JobResource Job { get; set; } = null!;
+	
+	public TimeSince TimeSinceRespawnStateChanged { get; private set; }
+	public DamageInfo? LastDamageInfo { get; private set; }
+	
+	// IDescription
+	string IDescription.DisplayName => DisplayName;
+	Color IDescription.Color => Job.Color;
 
 	/// <summary>
 	/// Is this the local player for this client
@@ -78,12 +93,23 @@ public partial class Player
 	/// Unique colour or team color of this player
 	/// </summary>
 	public Color PlayerColor => Job.Color;
+	
+	public SceneTraceResult CachedEyeTrace { get; private set; }
 
-	public void HostInit()
+	public void OnFixedUpdateState()
 	{
-		RespawnState = RespawnState.Immediate;
+		if (IsProxy)
+		{
+			return;
+		}
+		
+		CachedEyeTrace = Scene.Trace.Ray( AimRay, 100000f )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.WithoutTags( "ragdoll", "movement" )
+			.UseHitboxes()
+			.Run();
 	}
-
+	
 	[Authority]
 	public void ClientInit()
 	{
@@ -231,8 +257,6 @@ public partial class Player
 	[Authority]
 	private void OnClientRespawn()
 	{
-		SteamId = Connection.Local.SteamId;
-
 		CameraMode = CameraMode.FirstPerson;
 	}
 	
@@ -258,7 +282,7 @@ public partial class Player
 	/// </summary>
 	[HostSync]
 	[Change( nameof(OnRespawnStateChanged) )]
-	public RespawnState RespawnState { get; set; }
+	public RespawnState RespawnState { get; set; } = RespawnState.Immediate;
 
 	public bool IsRespawning => RespawnState is RespawnState.Delayed;
 

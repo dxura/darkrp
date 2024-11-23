@@ -49,7 +49,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	{
 		// A candidate player state has no owner.
 		var candidatePlayer = Scene.GetAllComponents<Player>()
-			.FirstOrDefault( x => x.Connection is null && x.Uid == channel.SteamId.ToString() );
+			.FirstOrDefault( x => x.Connection is null && x.SteamId == channel.SteamId.ToString() );
 
 		if ( candidatePlayer.IsValid() )
 		{
@@ -74,7 +74,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 		// }
 		
 		var player = playerGameObject.GetComponent<Player>();
-		player.Uid = channel.SteamId.ToString();
+		player.SteamId = channel.SteamId.ToString();
 		player.SteamName = channel.DisplayName;
 		
 		return player;
@@ -112,7 +112,6 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 			player.Network.AssignOwnership( channel );
 		}
 
-		player.HostInit();
 		player.ClientInit();
 		
 		Scene.Dispatch( new PlayerJoinedEvent( player ) );

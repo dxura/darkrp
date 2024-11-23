@@ -57,6 +57,12 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 	
 	[Property, Feature( "Effects" ), Group("Sounds")]
 	public SoundEvent? LandSound { get; set; }
+	
+	/// <summary>
+	/// The outline effect for this player.
+	/// </summary>
+	[RequireComponent]
+	public HighlightOutline Outline { get; set; } = null!;
 
 
 	private bool IsOutlineVisible()

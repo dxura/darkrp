@@ -22,6 +22,11 @@ public partial class Player
     
     private void OnFixedUpdateRoleplay()
     {
+        if (IsProxy || HealthComponent.State != LifeState.Alive)
+        {
+            return;
+        }
+        
         // Update seat
         if ( CurrentSeat.IsValid() )
         {

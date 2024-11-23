@@ -23,6 +23,11 @@ partial class Player
 
 	private void OnFixedUpdateUsing()
 	{
+		if (HealthComponent.State != LifeState.Alive)
+		{
+			return;
+		}
+		
 		IsUsing = Input.Down( "Use" );
 
 		if ( Input.Pressed( "Use" ) )
