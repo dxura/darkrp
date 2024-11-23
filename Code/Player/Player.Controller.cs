@@ -151,7 +151,7 @@ public partial class Player
 	
 	public GameObject? GroundObject { get; set; }
 	public Collider? GroundCollider { get; set; }
-	public BBox BoundingBox => new(new Vector3( -Radius, -Radius, 0 ), new Vector3( Radius, Radius, Height ));
+	public BBox BoundingBox => new(new Vector3( -Radius, -Radius, 0 ), new Vector3( Radius, Radius, Height + (IsCrouching ? _smoothEyeHeight : 0 )));
 
 	private float _smoothEyeHeight;
 	private Vector3 _previousVelocity;
@@ -336,19 +336,6 @@ public partial class Player
 		Move();
 	}
 
-	private TimeSince _timeSinceCrouchPressed = 10f;
-	private TimeSince _timeSinceCrouchReleased = 10f;
-
-	private float CrouchLerpSpeed()
-	{
-		if ( _timeSinceCrouchPressed < 1f && _timeSinceCrouchReleased < 1f )
-		{
-			return Global.SlowCrouchLerpSpeed;
-		}
-
-		return Global.CrouchLerpSpeed;
-	}
-
 	private bool WantsToSprint =>
 		Input.Down( "Run" ) && !IsSlowWalking && !HasEquipmentTag( "no_sprint" ) && WishMove.x > 0.2f;
 
@@ -379,16 +366,6 @@ public partial class Player
 		IsCrouching = Input.Down( "Duck" ) && !IsNoclipping;
 
 		IsUsing = Input.Down( "Use" );
-
-		if ( Input.Pressed( "Duck" ) )
-		{
-			_timeSinceCrouchPressed = 0;
-		}
-
-		if ( Input.Released( "Duck" ) )
-		{
-			_timeSinceCrouchReleased = 0;
-		}
 
 		// Check if our current weapon has the planting tag and if so force us to crouch.
 		var currentWeapon = CurrentEquipment;

@@ -60,10 +60,9 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 
 		OnUpdateMovement();
 
-		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * CrouchLerpSpeed() );
+		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * Global.CrouchLerpSpeed );
 		_smoothEyeHeight =
 			_smoothEyeHeight.LerpTo( EyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
-		Height += _smoothEyeHeight;
 	}
 	
 	protected override void OnFixedUpdate()
