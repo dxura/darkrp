@@ -35,7 +35,7 @@ public partial class Player :
 	/// </summary>
 	public float Spread { get; set; }
 
-	private void UpdateRecoilAndSpread()
+	private void OnFixedUpdateEquipment()
 	{
 		var isAiming = CurrentEquipment.IsValid() && CurrentEquipment.Tags.Has( "aiming" );
 

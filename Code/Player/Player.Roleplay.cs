@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using GameSystems.Jobs;
 using SandbankDatabase;
 using Sandbox.Diagnostics;
@@ -14,6 +15,28 @@ public partial class Player
     [Order( -100 )]
     [Saved]
     public int Balance { get; set; } = 1000;
+    
+    [HostSync] [Property, Feature("Misc")] [JsonIgnore] public PlayerSeat? CurrentSeat { get; set; }
+    public TimeSince TimeSinceSeatChanged { get; set; } = 0;
+    public bool IsSeated => CurrentSeat.IsValid();
+    
+    private void OnFixedUpdateRoleplay()
+    {
+        // Update seat
+        if ( CurrentSeat.IsValid() )
+        {
+            if ( CurrentSeat.HasInput )
+            {
+                CurrentSeat?.Vehicle?.InputState.UpdateFromLocal();
+            }
+
+            if ( Input.Pressed( "Use" ) )
+            {
+                // Try leaving the seat
+                CurrentSeat?.Leave( this );
+            }
+        }
+    }
 
     public void SetBalance( int amount )
     {
@@ -44,4 +67,6 @@ public partial class Player
         Balance += amount;
         Save();
     }
+
+
 }

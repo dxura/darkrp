@@ -21,7 +21,7 @@ partial class Player
 	/// </summary>
 	public GameObject? LastUsedObject { get; private set; }
 
-	private void UpdateUse()
+	private void OnFixedUpdateUsing()
 	{
 		IsUsing = Input.Down( "Use" );
 

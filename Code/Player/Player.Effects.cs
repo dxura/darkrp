@@ -74,7 +74,7 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 		return false;
 	}
 
-	private void UpdateOutline()
+	private void OnFixedUpdateEffects()
 	{
 		// Somehow this can happen?
 		if ( !Player.Local.IsValid() )

@@ -120,16 +120,25 @@
             "BaseDamage": 20,
             "BaseDamageFalloff": [
               {
-                "y": 1
+                "x": 0,
+                "y": 1,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               },
               {
                 "x": 0.37202382,
                 "y": 0.91245157,
                 "in": 0.5832836,
-                "out": -0.5832836
+                "out": -0.5832836,
+                "mode": "Mirrored"
               },
               {
-                "x": 1
+                "x": 1,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               }
             ],
             "BloodEjectDistance": 512,
@@ -243,7 +252,8 @@
                 "-2.216981,0.5084746"
               ],
               "LoopStart": 4,
-              "LoopEnd": 30
+              "LoopEnd": 30,
+              "IsLooping": false
             },
             "ResetTime": 0.3,
             "Scale": "2,5",
@@ -265,13 +275,26 @@
             "__guid": "3773dffd-5820-4f59-b91b-7a0714a51e63",
             "AnglesOffset": "-0.4,-0.1,-0.5",
             "Curve": [
-              {},
               {
-                "x": 0.21428572,
-                "y": 1
+                "x": 0,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               },
               {
-                "x": 1
+                "x": 0.21428572,
+                "y": 1,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               }
             ],
             "Lifetime": 0.45,
@@ -283,13 +306,26 @@
             "__type": "Dxura.Darkrp.FovOffset",
             "__guid": "86bf81c6-dddf-4f7e-b589-1a798e1dd02a",
             "Curve": [
-              {},
               {
-                "x": 0.15,
-                "y": 1
+                "x": 0,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               },
               {
-                "x": 1
+                "x": 0.15,
+                "y": 1,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               }
             ],
             "Length": 0.1,
@@ -331,6 +367,5 @@
   "__references": [
     "facepunch.w_m4a1#60166"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

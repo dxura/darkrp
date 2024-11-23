@@ -21,6 +21,7 @@
           {
             "__type": "Dxura.Darkrp.HealthComponent",
             "__guid": "96c37e62-8582-4a6f-a2dd-41a3e2078b37",
+            "Health": 100,
             "IsGodMode": false,
             "MaxHealth": 3000
           },
@@ -29,7 +30,8 @@
             "__guid": "70b4b3be-539f-4d49-af61-35713c5cc41e",
             "IsTrigger": false,
             "Model": "props/willies_jeep/willies_jeep.vmdl",
-            "Static": false
+            "Static": false,
+            "SurfaceVelocity": "0,0,0"
           },
           {
             "__type": "Sandbox.Rigidbody",
@@ -37,7 +39,14 @@
             "AngularDamping": 1,
             "Gravity": true,
             "LinearDamping": 1,
-            "Locking": {},
+            "Locking": {
+              "X": false,
+              "Y": false,
+              "Z": false,
+              "Pitch": false,
+              "Yaw": false,
+              "Roll": false
+            },
             "MassCenterOverride": "0,0,16",
             "MassOverride": 2000,
             "MotionEnabled": true,
@@ -85,13 +94,13 @@
                 "_type": "component",
                 "component_id": "8ddc121b-2212-467f-ac82-ef7525b94c3c",
                 "go": "8e52a384-24d4-4407-b242-f82fa682212f",
-                "component_type": "VehicleSeat"
+                "component_type": "PlayerSeat"
               },
               {
                 "_type": "component",
                 "component_id": "f168ef24-ac28-4494-b5a8-0077eee16497",
                 "go": "a7cb9028-f1f9-4329-a07e-6d7c9247dec5",
-                "component_type": "VehicleSeat"
+                "component_type": "PlayerSeat"
               }
             ],
             "Torque": 40000,
@@ -126,10 +135,27 @@
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "62cfb8fa-49db-4bcd-a116-6b9c549657f4",
             "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
             "CreateBoneObjects": false,
             "Model": "props/willies_jeep/willies_jeep.vmdl",
             "Morphs": {},
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderType": "On",
+            "Sequence": {
+              "Name": null
+            },
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
@@ -151,7 +177,7 @@
                 "Enabled": true,
                 "Components": [
                   {
-                    "__type": "Dxura.Darkrp.VehicleSeat",
+                    "__type": "Dxura.Darkrp.PlayerSeat",
                     "__guid": "8ddc121b-2212-467f-ac82-ef7525b94c3c",
                     "ExitVolumes": [
                       {
@@ -186,7 +212,7 @@
                 "Enabled": true,
                 "Components": [
                   {
-                    "__type": "Dxura.Darkrp.VehicleSeat",
+                    "__type": "Dxura.Darkrp.PlayerSeat",
                     "__guid": "f168ef24-ac28-4494-b5a8-0077eee16497",
                     "ExitVolumes": [
                       {
@@ -259,7 +285,6 @@
                     "__guid": "24a2587b-e0bd-4ba6-8d26-bdc91fd4d9f8",
                     "Flags": 0,
                     "Name": "Model",
-                    "Position": "0,0,0",
                     "Rotation": "0,0,0.7071067,0.7071068",
                     "Scale": "1.1,1.1,1.1",
                     "Enabled": true,
@@ -268,7 +293,14 @@
                         "__type": "Sandbox.ModelRenderer",
                         "__guid": "2e64654f-055f-483d-b17d-a9a4b2a80596",
                         "BodyGroups": 18446744073709551615,
+                        "CreateAttachments": false,
                         "Model": "entities/modular_vehicle/wheel_a.vmdl",
+                        "RenderOptions": {
+                          "GameLayer": true,
+                          "OverlayLayer": false,
+                          "BloomLayer": false,
+                          "AfterUILayer": false
+                        },
                         "RenderType": "On",
                         "Tint": "1,1,1,1"
                       },
@@ -326,7 +358,6 @@
                     "__guid": "ebccb7aa-1b21-426f-ad89-a919f0fa98d6",
                     "Flags": 0,
                     "Name": "Model",
-                    "Position": "0,0,0",
                     "Rotation": "0,0,-0.7071067,0.7071068",
                     "Scale": "1.1,1.1,1.1",
                     "Enabled": true,
@@ -335,7 +366,14 @@
                         "__type": "Sandbox.ModelRenderer",
                         "__guid": "b261d8ba-9b43-46ce-9bf5-7d561d444d46",
                         "BodyGroups": 18446744073709551615,
+                        "CreateAttachments": false,
                         "Model": "entities/modular_vehicle/wheel_a.vmdl",
+                        "RenderOptions": {
+                          "GameLayer": true,
+                          "OverlayLayer": false,
+                          "BloomLayer": false,
+                          "AfterUILayer": false
+                        },
                         "RenderType": "On",
                         "Tint": "1,1,1,1"
                       },
@@ -428,7 +466,14 @@
                             "__type": "Sandbox.ModelRenderer",
                             "__guid": "b6aca4ab-bc45-42e9-9156-2994dd830ea6",
                             "BodyGroups": 18446744073709551615,
+                            "CreateAttachments": false,
                             "Model": "entities/modular_vehicle/wheel_a.vmdl",
+                            "RenderOptions": {
+                              "GameLayer": true,
+                              "OverlayLayer": false,
+                              "BloomLayer": false,
+                              "AfterUILayer": false
+                            },
                             "RenderType": "On",
                             "Tint": "1,1,1,1"
                           },
@@ -495,7 +540,14 @@
                             "__type": "Sandbox.ModelRenderer",
                             "__guid": "46983c48-17c9-43b0-b325-1f2c9e5c6c69",
                             "BodyGroups": 18446744073709551615,
+                            "CreateAttachments": false,
                             "Model": "entities/modular_vehicle/wheel_a.vmdl",
+                            "RenderOptions": {
+                              "GameLayer": true,
+                              "OverlayLayer": false,
+                              "BloomLayer": false,
+                              "AfterUILayer": false
+                            },
                             "RenderType": "On",
                             "Tint": "1,1,1,1"
                           },
@@ -572,11 +624,35 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
     "ava.willies_jeep1#32688",

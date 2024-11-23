@@ -72,7 +72,7 @@ public partial class Player
 
 	private void OnFixedUpdatePresence()
 	{
-		if ( !IsValid || IsInVehicle || HealthComponent.State != LifeState.Alive )
+		if ( !IsValid || IsSeated || HealthComponent.State != LifeState.Alive )
 		{
 			return;
 		}

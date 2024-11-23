@@ -191,21 +191,8 @@ public partial class Player
 			PlayerBoxCollider.Scale = new Vector3( 32, 32, 64 + _smoothEyeHeight );
 		}
 	}
-
-	private TimeUntil _timeUntilAccelerationRecovered = 0;
-	private float _accelerationAddedScale = 0;
-
-	private void ApplyAcceleration()
-	{
-		var relative = _timeUntilAccelerationRecovered.Fraction.Clamp( 0, 1 );
-		var acceleration = GetAcceleration();
-
-		acceleration *= (relative + _accelerationAddedScale).Clamp( 0, 1 );
-
-		Acceleration = acceleration;
-	}
-
-	private void OnUpdateMovement()
+	
+	private void OnUpdateController()
 	{
 		CurrentHoldType = CurrentEquipment.IsValid() ? CurrentEquipment.GetHoldType() : AnimationHelper.HoldTypes.None;
 
@@ -226,7 +213,7 @@ public partial class Player
 			UpdateFromEyes( _smoothEyeHeight );
 		}
 
-		if ( IsInVehicle )
+		if ( IsSeated )
 		{
 			BodyRoot.LocalTransform = new Transform();
 
@@ -275,8 +262,42 @@ public partial class Player
 		return Global.MaxAcceleration;
 	}
 
-	private void ApplyMovement()
+	private TimeUntil _timeUntilAccelerationRecovered = 0;
+	private float _accelerationAddedScale = 0;
+	
+	private void OnFixedUpdateController()
 	{
+		var wasGrounded = IsGrounded;
+		IsGrounded = IsOnGround;
+
+		if ( IsGrounded != wasGrounded )
+		{
+			GroundedChanged( wasGrounded, IsGrounded );
+		}
+		
+		_previousVelocity = Velocity;
+
+		UpdateEyes();
+		
+		BuildWishInput();
+		BuildWishVelocity();
+		BuildInput();
+		
+		
+		// Perform movement
+		
+		if (IsSeated)
+		{
+			return;
+		}
+		
+		var relative = _timeUntilAccelerationRecovered.Fraction.Clamp( 0, 1 );
+		var acceleration = GetAcceleration();
+
+		acceleration *= (relative + _accelerationAddedScale).Clamp( 0, 1 );
+
+		Acceleration = acceleration;
+		
 		CheckLadder();
 
 		var gravity = Global.Gravity;
@@ -623,7 +644,7 @@ public partial class Player
 	// TODO: expose to global
 	private float GetEyeHeightOffset()
 	{
-		if ( IsInVehicle )
+		if ( IsSeated )
 		{
 			return -24f;
 		}

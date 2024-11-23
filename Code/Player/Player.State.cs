@@ -5,32 +5,21 @@ using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
+public enum RespawnState
+{
+	Not,
+	Requested,
+	Delayed,
+	Immediate
+}
+
 public partial class Player
 {
-	/// <summary>
-	/// An accessor for health component if we have one.
-	/// </summary>
-	[Property, Group("State")]
-	[RequireComponent]
-	public HealthComponent HealthComponent { get; set; } = null!;
-	
-	/// <summary>
-	/// The player's health component
-	/// </summary>
-	[RequireComponent]
-	public ArmorComponent ArmorComponent { get; private set; } = null!;
-
-	/// <summary>
-	/// How long since the player last respawned?
-	/// </summary>
-	[HostSync]
-	public TimeSince TimeSinceLastRespawn { get; private set; }
-	
 	/// <summary>
 	/// Our local player on this client.
 	/// </summary>
 	public static Player Local { get; private set; } = null!;
-
+	
 	/// <summary>
 	/// The player's ID. This is their SteamID.
 	/// </summary>
@@ -52,6 +41,25 @@ public partial class Player
 	public Connection? Connection => Network.Owner;
 
 	public bool IsConnected => Connection is not null && (Connection.IsActive || Connection.IsHost);
+	
+	/// <summary>
+	/// How long since the player last respawned?
+	/// </summary>
+	[HostSync]
+	public TimeSince TimeSinceLastRespawn { get; private set; }
+
+	
+	/// <summary>
+	/// The rotation this player last spawned at.
+	/// </summary>
+	[HostSync]
+	public Rotation SpawnRotation { get; set; }
+
+	/// <summary>
+	/// The tags of the last spawn point of this pawn.
+	/// </summary>
+	[HostSync]
+	public NetList<string> SpawnPointTags { get; private set; } = new();
 
 	/// <summary>
 	/// The job this player belongs to.
@@ -80,12 +88,6 @@ public partial class Player
 	public void ClientInit()
 	{
 		Local = this;
-	}
-
-	public void Kick()
-	{
-		GameObject.Destroy();
-		// todo: actually kick em
 	}
 
 	[Broadcast( NetPermission.OwnerOnly )]
@@ -125,8 +127,28 @@ public partial class Player
 	{
 		Sandbank.Insert("players", this);
 	}
+	
 
-	public void OnKill( DamageInfo damageInfo )
+	public void Teleport( Transform transform )
+	{
+		Teleport( transform.Position, transform.Rotation );
+	}
+
+	[Authority]
+	public void Teleport( Vector3 position, Rotation rotation )
+	{
+		Transform.World = new Transform( position, rotation );
+		Transform.ClearInterpolation();
+		EyeAngles = rotation.Angles();
+
+		if ( IsValid )
+		{
+			Velocity = Vector3.Zero;
+			IsOnGround = true;
+		}
+	}
+	
+		public void OnKill( DamageInfo damageInfo )
 	{
 		LastDamageInfo = damageInfo;
 
@@ -213,26 +235,7 @@ public partial class Player
 
 		CameraMode = CameraMode.FirstPerson;
 	}
-
-	public void Teleport( Transform transform )
-	{
-		Teleport( transform.Position, transform.Rotation );
-	}
-
-	[Authority]
-	public void Teleport( Vector3 position, Rotation rotation )
-	{
-		Transform.World = new Transform( position, rotation );
-		Transform.ClearInterpolation();
-		EyeAngles = rotation.Angles();
-
-		if ( IsValid )
-		{
-			Velocity = Vector3.Zero;
-			IsOnGround = true;
-		}
-	}
-
+	
 	[Broadcast( NetPermission.HostOnly )]
 	private void DoRagdoll()
 	{
@@ -249,25 +252,58 @@ public partial class Player
 
 		UpdateBodyFromJob(Job);
 	}
+		
+	/// <summary>
+	/// Are we ready to respawn?
+	/// </summary>
+	[HostSync]
+	[Change( nameof(OnRespawnStateChanged) )]
+	public RespawnState RespawnState { get; set; }
 
-	// Death cam
-	private void UpdateDeathCam()
+	public bool IsRespawning => RespawnState is RespawnState.Delayed;
+
+	private void Spawn( SpawnPointInfo spawnPoint )
 	{
-		if ( IsProxy )
+		RespawnState = RespawnState.Not;
+		OnRespawn();
+	}
+
+	public void Respawn(SpawnPointInfo spawnPoint, bool forceNew )
+	{
+		Log.Info(
+			$"Spawning player.. ( {GameObject.Name} ({DisplayName}, {Job}), {spawnPoint.Position}, [{string.Join( ", ", spawnPoint.Tags )}] )" );
+
+		if ( forceNew || HealthComponent.State == LifeState.Dead )
 		{
-			return;
+			Spawn( spawnPoint );
 		}
-
-		if ( LastDamageInfo is null )
+		else
 		{
-			return;
-		}
-
-		var killer = GetLastKiller();
-
-		if ( killer.IsValid() )
-		{
-			EyeAngles = Rotation.LookAt( killer.WorldPosition - WorldPosition, Vector3.Up );
+			SetSpawnPoint( spawnPoint );
+			OnRespawn();
 		}
 	}
+
+	private void OnRespawnStateChanged( LifeState oldValue, LifeState newValue )
+	{
+		TimeSinceRespawnStateChanged = 0f;
+	}
+
+	private Player? GetLastKiller()
+	{
+		if ( LastDamageInfo == null )
+		{
+			return null;
+		}
+		
+		return GameUtils.GetPlayerFromComponent( LastDamageInfo.Attacker );
+	}
+	
+	public void OnGameEvent( JobChangedEvent eventArgs )
+	{
+		Sound.Play( JobChangedSound, WorldPosition);
+		UpdateBodyFromJob(eventArgs.After);
+	}
+
+
 }

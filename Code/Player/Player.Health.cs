@@ -3,8 +3,22 @@ using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
-public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHandler<DamageTakenEvent>
+public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHandler<DamageTakenEvent>, IAreaDamageReceiver
 {
+	
+	/// <summary>
+	/// An accessor for health component if we have one.
+	/// </summary>
+	[Property, Group("State")]
+	[RequireComponent]
+	public HealthComponent HealthComponent { get; set; } = null!;
+	
+	/// <summary>
+	/// The player's health component
+	/// </summary>
+	[RequireComponent]
+	public ArmorComponent ArmorComponent { get; private set; } = null!;
+	
 	private RealTimeSince _timeSinceDamageTaken = 1;
 	
 	/// <summary>
@@ -98,5 +112,15 @@ public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHan
 				}
 			}
 		}
+	}
+	
+	// IAreaDamageReceiver
+	void IAreaDamageReceiver.ApplyAreaDamage( AreaDamage component )
+	{
+		var dmg = new DamageInfo( component.Attacker, component.Damage, component.Inflictor,
+			component.WorldPosition,
+			Flags: component.DamageFlags );
+
+		HealthComponent.TakeDamage( dmg );
 	}
 }

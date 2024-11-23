@@ -24,7 +24,7 @@ public partial class Vehicle : Component, IRespawnable, IUse, IDescription, IDam
 	[Property] [Group( "Effects" )] public GameObject Fire { get; set; }
 
 	[Property] [Group( "Vehicle" )] public List<Wheel> Wheels { get; set; }
-	[Property] [Group( "Vehicle" )] public List<VehicleSeat> Seats { get; set; }
+	[Property] [Group( "Vehicle" )] public List<PlayerSeat> Seats { get; set; }
 	[Property] [Group( "Vehicle" )] public float Torque { get; set; } = 15000f;
 	[Property] [Group( "Vehicle" )] public float BoostTorque { get; set; } = 20000f;
 	[Property] [Group( "Vehicle" )] public float AccelerationRate { get; set; } = 1.0f;

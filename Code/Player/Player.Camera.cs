@@ -62,6 +62,8 @@ public partial class Player
 	private GameObject Boom { get; set; } = null!;
 
 	public float MaxBoomLength { get; set; }
+	private float _fieldOfViewOffset = 0f;
+	private float _targetFieldOfView = 90f;
 
 	/// <summary>
 	/// Constructs a ray using the camera's GameObject
@@ -100,11 +102,27 @@ public partial class Player
 		
 		OnModeChanged();
 		Boom.WorldRotation = EyeAngles.ToRotation();
-
 	}
+	
+	private void OnUpdateCamera()
+	{
+		if ( IsProxy )
+		{
+			return;
+		}
 
-	private float _fieldOfViewOffset = 0f;
-	private float _targetFieldOfView = 90f;
+		if ( LastDamageInfo is null )
+		{
+			return;
+		}
+
+		var killer = GetLastKiller();
+
+		if ( killer.IsValid() )
+		{
+			EyeAngles = Rotation.LookAt( killer.WorldPosition - WorldPosition, Vector3.Up );
+		}
+	}
 
 	public void AddFieldOfViewOffset( float degrees )
 	{
@@ -113,7 +131,7 @@ public partial class Player
 
 	private void UpdateRotation()
 	{
-		if ( IsInVehicle )
+		if ( IsSeated )
 		{
 			Boom.Transform.Local = Boom.Transform.Local.WithRotation( EyeAngles.ToRotation() );
 		}

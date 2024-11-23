@@ -2,7 +2,7 @@ using Dxura.Darkrp;
 
 namespace Dxura.Darkrp;
 
-public sealed class VehicleSeat : Component
+public sealed class PlayerSeat : Component
 {
 	[Property] public Vehicle? Vehicle { get; set; }
 	[Property] public bool HasInput { get; set; } = true;

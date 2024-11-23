@@ -1,6 +1,8 @@
 namespace Dxura.Darkrp;
 
-public sealed partial class Player : Component, IDescription, IAreaDamageReceiver, IRespawnable
+
+
+public sealed partial class Player : Component, IDescription, IRespawnable
 {
 	/// <summary>
 	/// A reference to the player's head (the GameObject)
@@ -19,20 +21,33 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	/// </summary>
 	[RequireComponent]
 	public HighlightOutline Outline { get; set; } = null!;
+	
+	/// <summary>
+	/// The position this player last spawned at.
+	/// </summary>
+	[HostSync]
+	public Vector3 SpawnPosition { get; set; }
+
+	/// <summary>
+	/// Who's the owner?
+	/// </summary>
+	[Sync]
+	public ulong SteamId { get; set; }
+	
+	/// <summary>
+	/// What are we called?
+	/// </summary>
+	public string DisplayName => $"{SteamName}{(!IsConnected ? " (Disconnected)" : "")}";
+	
+	public TimeSince TimeSinceRespawnStateChanged { get; private set; }
+	public DamageInfo? LastDamageInfo { get; private set; }
 
 	// IDescription
 	string IDescription.DisplayName => DisplayName;
 	Color IDescription.Color => Job.Color;
-
-	// IAreaDamageReceiver
-	void IAreaDamageReceiver.ApplyAreaDamage( AreaDamage component )
-	{
-		var dmg = new DamageInfo( component.Attacker, component.Damage, component.Inflictor,
-			component.WorldPosition,
-			Flags: component.DamageFlags );
-
-		HealthComponent.TakeDamage( dmg );
-	}
+	
+	public SceneTraceResult CachedEyeTrace { get; private set; }
+	
 	
 	protected override void OnStart()
 	{
@@ -46,19 +61,17 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 		GameObject.Name = $"Player ({DisplayName})";
 	}
 
-	public SceneTraceResult CachedEyeTrace { get; private set; }
 
 	protected override void OnUpdate()
 	{
-		OnUpdatePawn();
 		OnUpdateEquipment();
 		
 		if ( HealthComponent.State == LifeState.Dead )
 		{
-			UpdateDeathCam();
+			OnUpdateCamera();
 		}
 
-		OnUpdateMovement();
+		OnUpdateController();
 
 		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * Global.CrouchLerpSpeed );
 		_smoothEyeHeight =
@@ -67,24 +80,15 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 	
 	protected override void OnFixedUpdate()
 	{
-		OnFixedUpdatePresence();
-		
 		if ( !IsValid )
 		{
 			return;
 		}
-
-		var wasGrounded = IsGrounded;
-		IsGrounded = IsOnGround;
-
-		if ( IsGrounded != wasGrounded )
-		{
-			GroundedChanged( wasGrounded, IsGrounded );
-		}
-
-		UpdateEyes();
-		UpdateOutline();
-
+		
+		OnFixedUpdatePresence();
+		OnFixedUpdateEffects();
+		
+		// Cursor
 		if ( !IsProxy )
 		{
 			CachedEyeTrace = Scene.Trace.Ray( AimRay, 100000f )
@@ -103,30 +107,10 @@ public sealed partial class Player : Component, IDescription, IAreaDamageReceive
 		{
 			return;
 		}
-
-		_previousVelocity = Velocity;
-
-		UpdateUse();
-		BuildWishInput();
-		BuildWishVelocity();
-		BuildInput();
-
-		UpdateRecoilAndSpread();
-		ApplyAcceleration();
-
-		if ( IsInVehicle )
-		{
-			ApplyVehicle();
-		}
-		else
-		{
-			ApplyMovement();
-		}
-	}
-	
-	public void OnGameEvent( JobChangedEvent eventArgs )
-	{
-		Sound.Play( JobChangedSound, WorldPosition);
-		UpdateBodyFromJob(eventArgs.After);
+		
+		OnFixedUpdateController();
+		OnFixedUpdateUsing();
+		OnFixedUpdateEquipment();
+		OnFixedUpdateRoleplay();
 	}
 }
