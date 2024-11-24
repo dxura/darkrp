@@ -43,10 +43,6 @@
         "FootstepBaseVolume": 5,
         "FootstepScale": 1,
         "GroundAngle": 45,
-        "Head": {
-          "_type": "gameobject",
-          "go": "4858b351-8fb8-43aa-af2a-92496608fcda"
-        },
         "HeadshotEffect": {
           "_type": "gameobject",
           "prefab": "prefabs/impact_fx/impact_blood_mist.prefab"
@@ -96,9 +92,9 @@
         "ShouldViewBob": false,
         "SprintFootstepScale": 2,
         "SprintMovementDampening": 0.35,
+        "SteamId": "",
         "StepHeight": 18,
         "ThirdPersonDistance": 128,
-        "Uid": "",
         "UseCollisionRules": false,
         "UseDistance": 72,
         "WeaponGameObject": {
@@ -136,6 +132,37 @@
       {
         "__type": "Sandbox.Voice",
         "__guid": "db93ff0e-042f-44d7-a0f2-e697f6237e8c",
+        "Distance": 15000,
+        "Falloff": [
+          {
+            "x": 0,
+            "y": 1,
+            "in": 0,
+            "out": -1.8,
+            "mode": "Mirrored"
+          },
+          {
+            "x": 0.05,
+            "y": 0.22,
+            "in": 3.5,
+            "out": -3.5,
+            "mode": "Mirrored"
+          },
+          {
+            "x": 0.2,
+            "y": 0.04,
+            "in": 0.16,
+            "out": -0.16,
+            "mode": "Mirrored"
+          },
+          {
+            "x": 1,
+            "y": 0,
+            "in": 0,
+            "out": 0,
+            "mode": "Mirrored"
+          }
+        ],
         "Loopback": false,
         "Mode": "PushToTalk",
         "MorphScale": 3,
@@ -146,6 +173,10 @@
           "component_id": "2192125d-a0f3-4033-8a96-7b77485d8539",
           "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
           "component_type": "SkinnedModelRenderer"
+        },
+        "VoiceMixer": {
+          "Name": "unknown",
+          "Id": "00000000-0000-0000-0000-000000000000"
         },
         "Volume": 30,
         "WorldspacePlayback": true
@@ -246,7 +277,14 @@
             "__type": "Sandbox.ModelPhysics",
             "__guid": "c132631d-1bbf-46b4-949e-acd121c89190",
             "__enabled": false,
-            "Locking": {},
+            "Locking": {
+              "X": false,
+              "Y": false,
+              "Z": false,
+              "Pitch": false,
+              "Yaw": false,
+              "Roll": false
+            },
             "Model": "models/player/ct_side/ct_side_player_01/ct_side_player_01_v2.vmdl",
             "MotionEnabled": true,
             "Renderer": {
@@ -1220,6 +1258,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "HasUnsavedChanges": false,
   "__version": 1
 }
