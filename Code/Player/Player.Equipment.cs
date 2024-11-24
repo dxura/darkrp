@@ -11,7 +11,7 @@ public partial class Player :
 	/// <summary>
 	/// What weapon are we using?
 	/// </summary>
-	[Property]
+	[Property, Group("State")]
 	[ReadOnly]
 	public Equipment? CurrentEquipment { get; private set; }
 	
@@ -23,7 +23,7 @@ public partial class Player :
 	/// <summary>
 	/// A <see cref="GameObject"/> that will hold all of our equipment.
 	/// </summary>
-	[Property]
+	[Property, Feature("Misc"), Group("Equipment")]
 	public GameObject WeaponGameObject { get; set; } = null!;
 
 	public bool CantSwitch = false;

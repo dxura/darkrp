@@ -61,7 +61,7 @@ public partial class Player
 	/// <summary>
 	/// A reference to the animation helper (normally on the Body GameObject)
 	/// </summary>
-	[Property]
+	[Property, Feature("Controller")]
 	public AnimationHelper? AnimationHelper { get; set; }
 
 	[Sync] public Vector3 Velocity { get; set; }

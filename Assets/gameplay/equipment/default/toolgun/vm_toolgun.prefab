@@ -41,8 +41,8 @@
           "rotations": {}
         },
         "RenderOptions": {
-          "GameLayer": true,
-           "OverlayLayer": false,
+          "GameLayer": false,
+          "OverlayLayer": true,
           "BloomLayer": false,
           "AfterUILayer": false
         },
@@ -67,7 +67,7 @@
             "__guid": "0b44f191-c104-4f49-b48d-134f8d66819a",
             "Flags": 0,
             "Name": "Label",
-            "Position": "7.823867,6.728631,1.486507",
+            "Position": "8.909563,9.199076,1.486507",
             "Rotation": "0.395466,-0.5861797,-0.3954659,-0.5861797",
             "Enabled": true,
             "Components": [
@@ -77,34 +77,41 @@
                 "__version": 1,
                 "BlendMode": "Normal",
                 "RenderOptions": {
-                  "GameLayer": true,
-                  "OverlayLayer": false,
+                  "GameLayer": false,
+                  "OverlayLayer": true,
                   "BloomLayer": false,
-                  "AfterUILayer": false
+                  "AfterUILayer": true
                 },
                 "Scale": 0.03,
                 "TextAlignment": "Center",
                 "TextScope": {
-                  "Text": "X",
+                  "Text": "\n\uD83D\uDD27",
                   "TextColor": "0.76279,0.15611,0.15611,1",
                   "FontName": "Poppins",
                   "FontSize": 110.53,
                   "FontWeight": 400,
+                  "FontItalic": false,
                   "LineHeight": 1,
+                  "LetterSpacing": 0,
+                  "WordSpacing": 0,
                   "Outline": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,0,1,1"
                   },
                   "Shadow": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,0,0,1",
                     "Offset": "4,4"
                   },
                   "OutlineUnder": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,1,0,1"
                   },
                   "ShadowUnder": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,0,0,1",
                     "Offset": "4,4"
@@ -1104,6 +1111,5 @@
   "__references": [
     "rust.v_rust_pistol#43970"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

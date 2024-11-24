@@ -51,8 +51,8 @@
           "rotations": {}
         },
         "RenderOptions": {
-          "GameLayer": true,
-           "OverlayLayer": false,
+          "GameLayer": false,
+          "OverlayLayer": true,
           "BloomLayer": false,
           "AfterUILayer": false
         },
@@ -94,8 +94,8 @@
               "rotations": {}
             },
             "RenderOptions": {
-              "GameLayer": true,
-              "OverlayLayer": false,
+              "GameLayer": false,
+              "OverlayLayer": true,
               "BloomLayer": false,
               "AfterUILayer": false
             },
@@ -855,6 +855,5 @@
   "__references": [
     "based.guerrilla#62188"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

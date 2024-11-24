@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Dxura.Darkrp.UI;
 using Sandbox.Events;
 
@@ -9,7 +10,7 @@ public partial class Player : IGameEventHandler<DamageGivenEvent>, IGameEventHan
 	/// <summary>
 	/// An accessor for health component if we have one.
 	/// </summary>
-	[Property, Group("State")]
+	[Property, Feature("Misc")]
 	[RequireComponent]
 	public HealthComponent HealthComponent { get; set; } = null!;
 	

@@ -51,8 +51,8 @@
           "rotations": {}
         },
         "RenderOptions": {
-          "GameLayer": true,
-           "OverlayLayer": false,
+          "GameLayer": false,
+          "OverlayLayer": true,
           "BloomLayer": false,
           "AfterUILayer": false
         },
@@ -94,8 +94,8 @@
               "rotations": {}
             },
             "RenderOptions": {
-              "GameLayer": true,
-              "OverlayLayer": false,
+              "GameLayer": false,
+              "OverlayLayer": true,
               "BloomLayer": false,
               "AfterUILayer": false
             },
@@ -846,6 +846,5 @@
   "__references": [
     "facepunch.v_m4a1#68031"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

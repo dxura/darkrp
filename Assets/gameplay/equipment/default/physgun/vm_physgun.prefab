@@ -41,8 +41,8 @@
           "rotations": {}
         },
         "RenderOptions": {
-          "GameLayer": true,
-           "OverlayLayer": false,
+          "GameLayer": false,
+          "OverlayLayer": true,
           "BloomLayer": false,
           "AfterUILayer": false
         },
@@ -77,10 +77,10 @@
                 "__version": 1,
                 "BlendMode": "Normal",
                 "RenderOptions": {
-                  "GameLayer": true,
-                  "OverlayLayer": false,
+                  "GameLayer": false,
+                  "OverlayLayer": true,
                   "BloomLayer": false,
-                  "AfterUILayer": false
+                  "AfterUILayer": true
                 },
                 "Scale": 0.03,
                 "TextAlignment": "Center",
@@ -90,21 +90,28 @@
                   "FontName": "Poppins",
                   "FontSize": 110.53,
                   "FontWeight": 400,
+                  "FontItalic": false,
                   "LineHeight": 1,
+                  "LetterSpacing": 0,
+                  "WordSpacing": 0,
                   "Outline": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,0,1,1"
                   },
                   "Shadow": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,0,0,1",
                     "Offset": "4,4"
                   },
                   "OutlineUnder": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,1,0,1"
                   },
                   "ShadowUnder": {
+                    "Enabled": false,
                     "Size": 4,
                     "Color": "0,0,0,1",
                     "Offset": "4,4"
@@ -1104,6 +1111,5 @@
   "__references": [
     "rust.v_rust_pistol#43970"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

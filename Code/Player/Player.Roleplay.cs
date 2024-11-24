@@ -10,6 +10,7 @@ public partial class Player
     /// </summary>
     [HostSync]
     [Order( -100 )]
+    [Property, Group("State")]
     public int Balance { get; set; } = 1000;
     
     [HostSync] [Property, Feature("Misc")] [JsonIgnore] public PlayerSeat? CurrentSeat { get; set; }

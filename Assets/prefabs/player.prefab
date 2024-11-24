@@ -24,6 +24,7 @@
           "go": "d5948881-7e0d-4ca0-8054-85c77a3cc5af",
           "component_type": "AnimationHelper"
         },
+        "Balance": 1000,
         "BloodEffect": {
           "_type": "gameobject",
           "prefab": "prefabs/impact_fx/impact_blood_mist.prefab"

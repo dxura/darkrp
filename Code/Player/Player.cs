@@ -2,6 +2,7 @@ namespace Dxura.Darkrp;
 
 public sealed partial class Player : Component
 {
+	
 	protected override void OnStart()
 	{
 		GameObject.Name = $"Player ({DisplayName})";

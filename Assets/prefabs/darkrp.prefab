@@ -28,7 +28,6 @@
         "Flags": 0,
         "Name": "HUD",
         "Enabled": true,
-        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Dxura.Darkrp.UI.MainHUD",
@@ -224,6 +223,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "HasUnsavedChanges": false,
   "__version": 1
 }
