@@ -21,15 +21,14 @@
       "__guid": "b2e7e684-83ce-498a-a376-2add6e90b79c",
       "Flags": 0,
       "Name": "Environment",
-      "Position": "-518.3613,-191.785,36.60261",
       "Enabled": true,
       "Children": [
         {
           "__guid": "928bc0fc-bc7f-41be-83d6-ef65bb0cc9c7",
           "Flags": 0,
           "Name": "Sun",
-          "Position": "309.0117,325.2531,32.7303",
-          "Rotation": "0.07304409,0.4341696,-0.1081741,0.8913248",
+          "Position": "0,0,1000",
+          "Rotation": "0,0.6087615,0,0.7933533",
           "Tags": "light_directional,light",
           "Enabled": true,
           "Components": [
@@ -40,186 +39,7 @@
               "FogStrength": 1,
               "LightColor": "1,0.9476,0.75814,1",
               "Shadows": true,
-              "SkyColor": "0.09767,0.09767,0.09767,1"
-            }
-          ]
-        },
-        {
-          "__guid": "82322bb9-65c8-4617-a536-3f2c4bc8c853",
-          "Flags": 0,
-          "Name": "Box",
-          "Position": "701.9158,-1791.355,-100.6026",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.MeshComponent",
-              "__guid": "7d7f5952-d6b9-4cff-94f5-df301351480d",
-              "Collision": "Mesh",
-              "Color": "1,1,1,1",
-              "HideInGame": false,
-              "IsTrigger": false,
-              "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
-                "Positions": [
-                  "-1975.554,-2417.594,64",
-                  "1075.765,-2417.594,64",
-                  "1075.765,2417.594,64",
-                  "-1975.554,2417.594,64",
-                  "-1975.554,2417.594,-64",
-                  "1075.765,2417.594,-64",
-                  "1075.765,-2417.594,-64",
-                  "-1975.554,-2417.594,-64"
-                ],
-                "TextureCoord": [
-                  "8.404414,18.88745",
-                  "-15.43402,-0.5",
-                  "8.404414,-18.88745",
-                  "-18.88745,-0.5",
-                  "-15.43402,-18.88745",
-                  "-8.404414,-0.5",
-                  "-15.43402,18.88745",
-                  "-18.88745,-0.5",
-                  "8.404414,-18.88745",
-                  "15.43402,0.5",
-                  "8.404414,18.88745",
-                  "18.88745,0.5",
-                  "-15.43402,18.88745",
-                  "8.404414,0.5",
-                  "-15.43402,-18.88745",
-                  "18.88745,0.5",
-                  "18.88745,-0.5",
-                  "-15.43402,0.5",
-                  "-18.88745,0.5",
-                  "15.43402,-0.5",
-                  "-18.88745,0.5",
-                  "8.404414,-0.5",
-                  "18.88745,-0.5",
-                  "-8.404414,0.5"
-                ],
-                "TextureUAxis": [
-                  "1,0,0",
-                  "1,0,-0",
-                  "0,-1,0",
-                  "0,1,0",
-                  "-1,0,0",
-                  "1,-0,0"
-                ],
-                "TextureVAxis": [
-                  "0,-1,0",
-                  "0,-1,0",
-                  "0,0,-1",
-                  "-0,0,-1",
-                  "0,0,-1",
-                  "-0,0,-1"
-                ],
-                "TextureScale": [
-                  "0.2499999,0.25",
-                  "0.2499999,0.25",
-                  "0.2500001,0.25",
-                  "0.2500001,0.25",
-                  "0.2499999,0.25",
-                  "0.2499999,0.25"
-                ],
-                "TextureOffset": [
-                  "289.7822,259.4404",
-                  "289.7822,259.4417",
-                  "259.4415,256.0001",
-                  "252.5585,256.0001",
-                  "222.2188,256.0001",
-                  "289.7812,256.0001"
-                ],
-                "MaterialIndex": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "EdgeFlags": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "Materials": [
-                  "materials/dev/reflectivity_30.vmat",
-                  "materials/dev/reflectivity_90.vmat",
-                  "materials/dev/reflectivity_60.vmat",
-                  "materials/dev/reflectivity_90b.vmat",
-                  "dev/helper/reflectivity_90b.vmat"
-                ]
-              },
-              "SmoothingAngle": 40,
-              "Static": true,
-              "SurfaceVelocity": "0,0,0"
-            }
-          ]
-        },
-        {
-          "__guid": "4c5c8f01-4080-4057-8c27-ab104c8a2b11",
-          "Flags": 0,
-          "Name": "Envmap Probe",
-          "Position": "274.2582,317.9064,-13.17073",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.EnvmapProbe",
-              "__guid": "145aa785-7953-45f9-87d1-39b6357c5c50",
-              "Bounds": {
-                "Mins": "-1000,-1000,-1000",
-                "Maxs": "1000,1000,1000"
-              },
-              "DelayBetweenUpdates": 0.1,
-              "Feathering": 0.02,
-              "FrameInterval": 5,
-              "MaxDistance": 512,
-              "MultiBounce": false,
-              "Projection": "Box",
-              "RenderDynamically": true,
-              "TintColor": "1,1,1,1",
-              "UpdateStrategy": "FrameInterval",
-              "ZFar": 4096,
-              "ZNear": 16
-            }
-          ]
-        },
-        {
-          "__guid": "5d8fba87-e4dc-4ef8-bb78-6b6222242a99",
-          "Flags": 0,
-          "Name": "Gradient Fog",
-          "Position": "264.8369,292.5444,63.54969",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.GradientFog",
-              "__guid": "d1f06fda-11b0-45f9-9bab-74f60b824242",
-              "Color": "0.88837,0.71152,0.44625,1",
-              "EndDistance": 16384,
-              "FalloffExponent": 1,
-              "Height": 128,
-              "StartDistance": 8192,
-              "VerticalFalloffExponent": 2
+              "SkyColor": "0.70698,0.70698,0.70698,1"
             }
           ]
         },
@@ -234,7 +54,7 @@
               "__type": "Sandbox.SkyBox2D",
               "__guid": "1547c864-ff73-42cf-8029-2510da54f185",
               "SkyIndirectLighting": true,
-              "SkyMaterial": "materials/sky/atmosphere_sky.vmat",
+              "SkyMaterial": "materials/skybox/skybox_workshop.vmat",
               "Tint": "1,1,1,1"
             }
           ]
@@ -242,72 +62,803 @@
       ]
     },
     {
-      "__guid": "f5d3dc9d-b217-4927-a409-cc724335c351",
+      "__guid": "bf764e54-bb77-47ba-a0d1-646b8e417914",
       "Flags": 0,
-      "Name": "Door Testing",
-      "Position": "-2316.384,-1460.883,1159.216",
+      "Name": "Setup",
       "Enabled": true,
       "Children": [
         {
-          "__guid": "36c2cbb4-0130-4ca5-8f20-6b37281dc207",
+          "__guid": "4e695f93-6142-44c6-9586-c97417d415bc",
           "Flags": 0,
-          "Name": "door (1)",
-          "Position": "1912.662,1281.718,-1158.216",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Tags": "noblockaudio",
+          "Name": "Spawns",
           "Enabled": true,
-          "NetworkMode": 1,
-          "__Prefab": "prefabs/door.prefab",
+          "Children": [
+            {
+              "__guid": "78b33f3a-38ec-49a1-bc7f-ed20f35951d4",
+              "Flags": 0,
+              "Name": "Spawn 2",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "2f0bb948-a1c2-4350-a481-30cd915ce015",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "5af4a66c-5596-44fd-b50d-4aff7d63fbfa",
+              "Flags": 0,
+              "Name": "Spawn 4",
+              "Position": "-50,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "8a9f953f-7975-41e4-a0c3-00430bd6ca7a",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "3819314d-2bea-458c-b845-104c3ee3dd61",
+              "Flags": 0,
+              "Name": "Spawn 3",
+              "Position": "0,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "802f67f3-3b50-46fc-973d-ec7cdbb04e61",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "e066d462-e103-4973-9402-f4fbbddc3dd7",
+              "Flags": 0,
+              "Name": "Spawn 6",
+              "Position": "-50,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "84bbb822-a222-442a-8af9-63e563f13507",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "2f69e818-a8fe-4faa-be8d-9d86ebdf4d3c",
+              "Flags": 0,
+              "Name": "Spawn 1",
+              "Position": "0,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "6e8312e2-b1dd-4c73-8679-f328edbe0bc9",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            },
+            {
+              "__guid": "0ad3d2aa-b786-4c98-a680-28e49b96b802",
+              "Flags": 0,
+              "Name": "Spawn 5",
+              "Position": "-50,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpawnPoint",
+                  "__guid": "a11f4027-f4ee-4ffc-bd3b-bacbcc87ac03",
+                  "Color": "0.8902,0.31765,0.05098,1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "562e6702-cd8d-4f5b-855c-17c24a89b55e",
+          "Flags": 0,
+          "Name": "darkrp",
+          "Enabled": true,
+          "__Prefab": "prefabs/darkrp.prefab",
           "__PrefabVariables": {}
         },
         {
-          "__guid": "6eb7d363-e31d-4f51-80cc-b1b6e0ddc499",
+          "__guid": "e101f592-e7da-4eea-9f99-77c2d82adab2",
           "Flags": 0,
-          "Name": "door",
-          "Position": "1784.662,1281.718,-1158.216",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Tags": "noblockaudio",
+          "Name": "Plane",
+          "Position": "0,0,-0.01",
+          "Scale": "100,100,1",
           "Enabled": true,
-          "NetworkMode": 1,
-          "__Prefab": "prefabs/door.prefab",
-          "__PrefabVariables": {}
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "27459a00-e0e8-413c-a036-0eba7b2eac53",
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "MaterialOverride": "dev/helper/reflectivity_90b.vmat",
+              "Model": "models/dev/plane.vmdl",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.06977,0.06977,0.06977,1"
+            },
+            {
+              "__type": "Sandbox.PlaneCollider",
+              "__guid": "3f991024-b527-40e0-a716-35da081f7163",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "100,100",
+              "Static": true,
+              "SurfaceVelocity": "0,0,0"
+            }
+          ]
         }
       ]
     },
     {
-      "__guid": "2f69e818-a8fe-4faa-be8d-9d86ebdf4d3c",
+      "__guid": "b39d09a1-f935-4312-97b6-1c1fef06ae8e",
       "Flags": 0,
-      "Name": "Spawn",
-      "Position": "-103.9082,100.0653,32",
+      "Name": "Tests",
       "Enabled": true,
-      "Components": [
+      "Children": [
         {
-          "__type": "Sandbox.SpawnPoint",
-          "__guid": "6e8312e2-b1dd-4c73-8679-f328edbe0bc9",
-          "Color": "0.8902,0.31765,0.05098,1"
+          "__guid": "3ab42894-15a6-4b3e-807b-c066705ede12",
+          "Flags": 0,
+          "Name": "Vehicle",
+          "Position": "608,544,-0.00003293157",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "73c398d7-3764-46c5-8e59-93a0b4d1b622",
+              "Flags": 0,
+              "Name": "Plane",
+              "Scale": "5,5,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "a6c85cc0-2faa-4e11-93fb-9d25cd7262a1",
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "MaterialOverride": "dev/helper/reflectivity_90b.vmat",
+                  "Model": "models/dev/plane.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.37209,0.37209,0.37209,1"
+                }
+              ]
+            },
+            {
+              "__guid": "0533cf89-8fb4-4814-80b2-db39b2277ddc",
+              "Flags": 0,
+              "Name": "Text",
+              "Position": "0,0,148.5278",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "3b2c30f5-a97a-4a27-bcfd-d8fb82eaa9c7",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 0.3,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Vehicle Test",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 64,
+                    "FontWeight": 800,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": true,
+                      "Size": 11.399989,
+                      "Color": "0,0,0,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "__guid": "1f5d88f1-baf7-4293-93a6-2da901650bff",
+              "Flags": 0,
+              "Name": "jeep",
+              "Position": "0,-96,32.00003",
+              "Tags": "vehicle",
+              "Enabled": true,
+              "NetworkOrphaned": 3,
+              "OwnerTransfer": 0,
+              "__Prefab": "prefabs/vehicles/jeep.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "00e8e706-4416-4d70-a249-697ad7c0ab38",
+              "Flags": 0,
+              "Name": "jeep",
+              "Position": "0,96,32.00003",
+              "Tags": "vehicle",
+              "Enabled": true,
+              "NetworkOrphaned": 3,
+              "OwnerTransfer": 0,
+              "__Prefab": "prefabs/vehicles/jeep.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "f7cb5905-3352-4392-8a72-28d97e35eb70",
+              "Flags": 0,
+              "Name": "jeep",
+              "Position": "0,0,32.00003",
+              "Tags": "vehicle",
+              "Enabled": true,
+              "NetworkOrphaned": 3,
+              "OwnerTransfer": 0,
+              "__Prefab": "prefabs/vehicles/jeep.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        },
+        {
+          "__guid": "9e0a3400-2395-4d7f-8e27-a5967084ddc8",
+          "Flags": 0,
+          "Name": "Door",
+          "Position": "608,-544,-0.00003293157",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "1eb47d2f-bc43-499c-a0a4-3db59b571cba",
+              "Flags": 0,
+              "Name": "Plane",
+              "Scale": "5,5,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "dfc2eb71-7000-468b-940b-309b61da8524",
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "MaterialOverride": "dev/helper/reflectivity_90b.vmat",
+                  "Model": "models/dev/plane.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.37209,0.37209,0.37209,1"
+                }
+              ]
+            },
+            {
+              "__guid": "b1d9983b-501f-43fd-9585-b9984846e64d",
+              "Flags": 0,
+              "Name": "Text",
+              "Position": "0,0,148.5278",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "325d16e6-f2ca-4223-b94f-8d27124d30d4",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 0.3,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Door Test",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 64,
+                    "FontWeight": 800,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": true,
+                      "Size": 11.399989,
+                      "Color": "0,0,0,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "__guid": "00c4a342-8f99-43d1-b15b-a057a6382357",
+              "Flags": 0,
+              "Name": "door (1)",
+              "Position": "0,0,0.9900234",
+              "Tags": "noblockaudio",
+              "Enabled": true,
+              "NetworkMode": 1,
+              "__Prefab": "prefabs/props/door.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "1593d731-ea64-414c-8fd0-7724b022a73a",
+              "Flags": 0,
+              "Name": "door",
+              "Position": "0,64,0.9900233",
+              "Tags": "noblockaudio",
+              "Enabled": true,
+              "NetworkMode": 1,
+              "__Prefab": "prefabs/props/door.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        },
+        {
+          "__guid": "76695d4e-c055-4c62-9168-ba7ad183358e",
+          "Flags": 0,
+          "Name": "Weapon",
+          "Position": "608,0,-0.00003293157",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "350564ea-0656-4543-ba40-25b730d767e6",
+              "Flags": 0,
+              "Name": "Plane",
+              "Scale": "5,5,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "22523b6f-5d05-4a44-8a02-c4fc02b0cb06",
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "MaterialOverride": "dev/helper/reflectivity_90b.vmat",
+                  "Model": "models/dev/plane.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.37209,0.37209,0.37209,1"
+                }
+              ]
+            },
+            {
+              "__guid": "ae69b65d-15ee-4adb-9343-6928b1407a7b",
+              "Flags": 0,
+              "Name": "Text",
+              "Position": "0,0,148.5278",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "6fb26bd5-b5dd-49b0-abfa-501971f87d0a",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 0.3,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Weapon Test",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 64,
+                    "FontWeight": 800,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": true,
+                      "Size": 11.399989,
+                      "Color": "0,0,0,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "f77bf4c4-ca4a-4918-aaf1-e2b880608b53",
+          "Flags": 0,
+          "Name": "Jail",
+          "Position": "-704,-544,-0.00003293157",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "39f927a2-89da-4b75-94f4-0699163b4b2d",
+              "Flags": 0,
+              "Name": "Plane",
+              "Scale": "5,5,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "0f1e8b41-e492-4248-a855-86501ed25140",
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "MaterialOverride": "dev/helper/reflectivity_90b.vmat",
+                  "Model": "models/dev/plane.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.37209,0.37209,0.37209,1"
+                }
+              ]
+            },
+            {
+              "__guid": "2650ce3d-17c3-4abc-bad5-19cecd04395e",
+              "Flags": 0,
+              "Name": "Text",
+              "Position": "0,0,148.5278",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "6a3a4124-d71b-4fd9-8944-3ac1fede933a",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 0.3,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Jail Test",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 64,
+                    "FontWeight": 800,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": true,
+                      "Size": 11.399989,
+                      "Color": "0,0,0,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "35f36a7a-c6d6-4226-9370-11efed57bc66",
+          "Flags": 0,
+          "Name": "Printer",
+          "Position": "-704,0,-0.00003293157",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "56dbc781-ec97-475b-b552-ce9b572d952f",
+              "Flags": 0,
+              "Name": "Plane",
+              "Scale": "5,5,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "a47eab3c-acdb-464e-a90e-35e64555aa0a",
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "MaterialOverride": "dev/helper/reflectivity_90b.vmat",
+                  "Model": "models/dev/plane.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.37209,0.37209,0.37209,1"
+                }
+              ]
+            },
+            {
+              "__guid": "49ee7339-2cfe-481f-b88e-41d3ea5fa378",
+              "Flags": 0,
+              "Name": "Text",
+              "Position": "0,0,148.5278",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "8a9ffc22-6e7e-456b-997b-f6c8026bf831",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 0.3,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Printer Test",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 64,
+                    "FontWeight": 800,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": true,
+                      "Size": 11.399989,
+                      "Color": "0,0,0,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "__guid": "835333ec-f091-4856-8702-e461383e39c4",
+              "Flags": 0,
+              "Name": "printer",
+              "Position": "32.00012,0,5.990038",
+              "Tags": "entity,printer",
+              "Enabled": true,
+              "NetworkMode": 1,
+              "OwnerTransfer": 0,
+              "__Prefab": "gameplay/entities/printer/printer.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "350a7340-0dbf-46ae-9df1-d304dd95ba1b",
+              "Flags": 0,
+              "Name": "printer (1)",
+              "Position": "32.00012,0,32.00003",
+              "Tags": "entity,printer",
+              "Enabled": true,
+              "NetworkMode": 1,
+              "OwnerTransfer": 0,
+              "__Prefab": "gameplay/entities/printer/printer.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "9b94a4c0-cb68-4508-8c91-7c1bf9b5a427",
+              "Flags": 0,
+              "Name": "printer (2)",
+              "Position": "32.00012,0,64.00003",
+              "Tags": "entity,printer",
+              "Enabled": true,
+              "NetworkMode": 1,
+              "OwnerTransfer": 0,
+              "__Prefab": "gameplay/entities/printer/printer.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "0962ae5d-5044-42dc-b82f-2e6709ccbddf",
+              "Flags": 0,
+              "Name": "printer (3)",
+              "Position": "32.00012,0,64.00003",
+              "Tags": "entity,printer",
+              "Enabled": true,
+              "NetworkMode": 1,
+              "OwnerTransfer": 0,
+              "__Prefab": "gameplay/entities/printer/printer.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
+        },
+        {
+          "__guid": "f72747e2-d13c-43c5-9834-781a7ea0bad3",
+          "Flags": 0,
+          "Name": "Lockpicking",
+          "Position": "-704,544,-0.00003293157",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "fe39e2aa-fb7a-40b9-8890-8b786ac6f5b2",
+              "Flags": 0,
+              "Name": "Plane",
+              "Scale": "5,5,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "e01a230f-a0d1-45fa-85cb-bec460669f5b",
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "MaterialOverride": "dev/helper/reflectivity_90b.vmat",
+                  "Model": "models/dev/plane.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.37209,0.37209,0.37209,1"
+                }
+              ]
+            },
+            {
+              "__guid": "bff3c65a-70a0-411f-b5fe-a3502ab58987",
+              "Flags": 0,
+              "Name": "Text",
+              "Position": "0,0,148.5278",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "355b846b-c41c-4373-8d3c-fc0b4cba357b",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 0.3,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Lockpicking Test",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 64,
+                    "FontWeight": 800,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": true,
+                      "Size": 11.399989,
+                      "Color": "0,0,0,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
-    },
-    {
-      "__guid": "1f5d88f1-baf7-4293-93a6-2da901650bff",
-      "Flags": 0,
-      "Name": "jeep",
-      "Position": "-984.7927,-120.3347,22.6981",
-      "Tags": "vehicle",
-      "Enabled": true,
-      "NetworkOrphaned": 3,
-      "OwnerTransfer": 0,
-      "__Prefab": "prefabs/vehicles/jeep.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "562e6702-cd8d-4f5b-855c-17c24a89b55e",
-      "Flags": 0,
-      "Name": "darkrp",
-      "Position": "0,0,2",
-      "Enabled": true,
-      "__Prefab": "prefabs/darkrp.prefab",
-      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
