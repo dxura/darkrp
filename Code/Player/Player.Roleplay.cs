@@ -1,8 +1,5 @@
 using System.Text.Json.Serialization;
-using GameSystems.Jobs;
-using SandbankDatabase;
 using Sandbox.Diagnostics;
-using Sandbox.Events;
 
 namespace Dxura.Darkrp;
 
@@ -13,7 +10,6 @@ public partial class Player
     /// </summary>
     [HostSync]
     [Order( -100 )]
-    [Saved]
     public int Balance { get; set; } = 1000;
     
     [HostSync] [Property, Feature("Misc")] [JsonIgnore] public PlayerSeat? CurrentSeat { get; set; }
@@ -47,7 +43,6 @@ public partial class Player
     {
         using var _ = Rpc.FilterInclude( Connection.Host );
         SetBalanceHost( amount );
-        Save();
     }
 
     [Broadcast]
@@ -55,14 +50,12 @@ public partial class Player
     {
         Assert.True( Networking.IsHost );
         Balance = amount;
-        Save();
     }
 
     public void GiveMoney( int amount )
     {
         using var _ = Rpc.FilterInclude( Connection.Host );
         GiveMoneyHost( amount );
-        Save();
     }
 
     [Broadcast]
@@ -70,7 +63,6 @@ public partial class Player
     {
         Assert.True( Networking.IsHost );
         Balance += amount;
-        Save();
     }
 
 

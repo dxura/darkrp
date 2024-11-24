@@ -1,5 +1,4 @@
 using GameSystems.Jobs;
-using SandbankDatabase;
 using Sandbox.Diagnostics;
 using Sandbox.Events;
 
@@ -31,7 +30,6 @@ public partial class Player : IRespawnable, IDescription
 	/// The player's name, which might have to persist if they leave
 	/// </summary>
 	[HostSync]
-	[Saved]
 	public string? SteamName { get; set; }
 	
 	/// <summary>
@@ -145,15 +143,6 @@ public partial class Player : IRespawnable, IDescription
 	{
 		GameObject.Root.Dispatch( new JobChangedEvent( before, after ) );
 	}
-
-	/// <summary>
-	/// Save this player's data.
-	/// </summary>
-	public void Save()
-	{
-		Sandbank.Insert("players", this);
-	}
-	
 
 	public void Teleport( Transform transform )
 	{
