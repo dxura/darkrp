@@ -108,12 +108,6 @@ public partial class Player : IRespawnable, IDescription
 			.Run();
 	}
 	
-	[Authority]
-	public void ClientInit()
-	{
-		Local = this;
-	}
-
 	[Broadcast( NetPermission.OwnerOnly )]
 	public void AssignJob( JobResource job )
 	{
@@ -121,7 +115,6 @@ public partial class Player : IRespawnable, IDescription
 		{
 			return;
 		}
-
 		
 		// Respect job caps
 		if ( job.MaxWorkers != 0 && GameUtils.GetPlayersByJob( job ).Count() >= job.MaxWorkers )
@@ -130,8 +123,8 @@ public partial class Player : IRespawnable, IDescription
 		}
 
 		Job = job;
-		Respawn(Random.Shared.FromList(Respawner.SpawnPoints), true );
-
+		
+		Respawn();
 
 		Scene.Dispatch( new JobAssignedEvent( this, job ) );
 	}
@@ -203,15 +196,6 @@ public partial class Player : IRespawnable, IDescription
 			SpawnPointTags.Add( tag );
 		}
 	}
-
-	public void OnRespawn()
-	{
-		Assert.True( Networking.IsHost );
-
-		OnHostRespawn();
-		OnClientRespawn();
-	}
-
 	private void OnHostRespawn()
 	{
 		Assert.True( Networking.IsHost );
@@ -239,6 +223,7 @@ public partial class Player : IRespawnable, IDescription
 		
 		TimeSinceLastRespawn = 0f;
 
+		ClearLoadout();
 		ResetBody();
 		Scene.Dispatch( new PlayerSpawnedEvent( this ) );
 	}
@@ -275,26 +260,15 @@ public partial class Player : IRespawnable, IDescription
 
 	public bool IsRespawning => RespawnState is RespawnState.Delayed;
 
-	private void Spawn( SpawnPointInfo spawnPoint )
-	{
-		RespawnState = RespawnState.Not;
-		OnRespawn();
-	}
-
-	public void Respawn(SpawnPointInfo spawnPoint, bool forceNew )
+	public void Respawn()
 	{
 		Log.Info(
-			$"Spawning player.. ( {GameObject.Name} ({DisplayName}, {Job}), {spawnPoint.Position}, [{string.Join( ", ", spawnPoint.Tags )}] )" );
+			$"Spawning player.. ( {GameObject.Name} ({DisplayName}, {Job}), {SpawnPosition}, [{string.Join( ", ", SpawnPointTags )}] )" );
+		
+		RespawnState = RespawnState.Not;
 
-		if ( forceNew || HealthComponent.State == LifeState.Dead )
-		{
-			Spawn( spawnPoint );
-		}
-		else
-		{
-			SetSpawnPoint( spawnPoint );
-			OnRespawn();
-		}
+		OnHostRespawn();
+		OnClientRespawn();
 	}
 
 	private void OnRespawnStateChanged( LifeState oldValue, LifeState newValue )

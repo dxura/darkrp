@@ -166,13 +166,14 @@ public partial class Player
 	
 	[Sync] private float EyeHeightOffset { get; set; }
 
-	public void OnStartController()
+	private void OnStartController()
 	{
 		TagBinder.BindTag( "no_shooting",
 			() => IsSprinting || TimeSinceSprintChanged < 0.25f || TimeSinceWeaponDeployed < 0.66f );
 		TagBinder.BindTag( "no_aiming",
 			() => IsSprinting || TimeSinceSprintChanged < 0.25f || TimeSinceGroundedChanged < 0.25f );
 	}
+	
 	private void OnUpdateController()
 	{
 		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * Global.CrouchLerpSpeed );

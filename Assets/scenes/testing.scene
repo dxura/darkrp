@@ -159,14 +159,6 @@
           ]
         },
         {
-          "__guid": "562e6702-cd8d-4f5b-855c-17c24a89b55e",
-          "Flags": 0,
-          "Name": "darkrp",
-          "Enabled": true,
-          "__Prefab": "prefabs/darkrp.prefab",
-          "__PrefabVariables": {}
-        },
-        {
           "__guid": "e101f592-e7da-4eea-9f99-77c2d82adab2",
           "Flags": 0,
           "Name": "Plane",
@@ -859,6 +851,14 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "a9fc4877-3c19-4a02-bef8-888b2c0022f3",
+      "Flags": 0,
+      "Name": "darkrp",
+      "Enabled": true,
+      "__Prefab": "prefabs/darkrp.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {

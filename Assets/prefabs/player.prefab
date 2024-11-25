@@ -39,6 +39,7 @@
           "go": "b03710d3-75bd-4111-b405-2974362db2c3"
         },
         "Bounciness": 0.3,
+        "Camera": null,
         "Deaths": 0,
         "FallDamageScale": 0.2,
         "FootstepBaseVolume": 5,

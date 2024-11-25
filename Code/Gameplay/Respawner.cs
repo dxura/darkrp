@@ -78,7 +78,7 @@ public class Respawner : Component, IGameEventHandler<PlayerJoinedEvent>
                     break;
 
                 case RespawnState.Immediate:
-                    player.Respawn(Random.Shared.FromList(SpawnPoints), true);
+                    player.Respawn();
                     break;
             }
         }
@@ -87,6 +87,8 @@ public class Respawner : Component, IGameEventHandler<PlayerJoinedEvent>
     // "Spawn" player when joined
     public void OnGameEvent(PlayerJoinedEvent eventArgs)
     {
-        eventArgs.Player.Respawn(Random.Shared.FromList(SpawnPoints), false);
+        var spawnPoint = Game.Random.FromList(SpawnPoints);
+        eventArgs.Player.SetSpawnPoint(spawnPoint);
+        eventArgs.Player.Respawn();
     }
 }

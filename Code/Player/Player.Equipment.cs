@@ -134,7 +134,7 @@ public partial class Player :
 		weapon?.Deploy();
 	}
 
-	public void ClearViewModel()
+	private void ClearViewModel()
 	{
 		foreach ( var weapon in Equipment )
 		{
@@ -142,7 +142,7 @@ public partial class Player :
 		}
 	}
 
-	public void CreateViewModel( bool playDeployEffects = true )
+	private void CreateViewModel( bool playDeployEffects = true )
 	{
 		if ( CameraMode != CameraMode.FirstPerson )
 		{
@@ -240,11 +240,11 @@ public partial class Player :
 
 	private void OnUpdateEquipment()
 	{
-		if ( IsProxy )
+		if (IsProxy)
 		{
 			return;
 		}
-
+		
 		if ( Input.Pressed( "Drop" ) && CurrentEquipment.IsValid() )
 		{
 			Drop( CurrentEquipment );

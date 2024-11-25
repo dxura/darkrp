@@ -6,6 +6,12 @@ public sealed partial class Player : Component
 	protected override void OnStart()
 	{
 		GameObject.Name = $"Player ({DisplayName})";
+
+		// Set Local reference if this is our player
+		if (!IsProxy)
+		{
+			Local = this;
+		}
 		
 		OnStartCamera();
 		OnStartController();

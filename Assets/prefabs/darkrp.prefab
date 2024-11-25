@@ -134,14 +134,14 @@
         ]
       },
       {
-        "__guid": "44d5a949-1e8e-455a-b057-bea7d6b24f26",
+        "__guid": "eee428f4-69a6-42ef-ae6b-65f5744eab7a",
         "Flags": 0,
         "Name": "Camera",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.CameraComponent",
-            "__guid": "51b6aa09-2510-419e-94ae-099ebe4e60a5",
+            "__guid": "854f28e4-adfb-4ce6-a4b1-d58c1ce3b507",
             "BackgroundColor": "0.33333,0.46275,0.52157,1",
             "ClearFlags": "All",
             "FieldOfView": 60,
@@ -158,21 +158,21 @@
           },
           {
             "__type": "Sandbox.Highlight",
-            "__guid": "aee27f05-1aed-457f-a4f7-3ea8c63f338d"
+            "__guid": "a55df077-ccbd-445f-8bd9-622ee02922da"
           },
           {
             "__type": "Dxura.Darkrp.ScreenShaker",
-            "__guid": "6e717477-b77f-47c0-935e-2b40e0d69272"
+            "__guid": "66f75654-d094-4f72-bbb4-93dac2cbd9ca"
           },
           {
             "__type": "Sandbox.WorldInput",
-            "__guid": "c193db8f-561e-4115-a9be-dcba1f77fec6",
+            "__guid": "a6e8c291-ef7b-43c6-b771-4d460d0c04e1",
             "LeftMouseAction": "Attack1",
             "RightMouseAction": "Attack2"
           },
           {
             "__type": "Sandbox.ColorAdjustments",
-            "__guid": "69c0e24c-560e-4876-9a7f-4e88914b7d07",
+            "__guid": "448e90a2-718d-4298-81a7-cf68ff32d0ba",
             "Brightness": 1,
             "Contrast": 1,
             "HueRotate": 0,
@@ -180,14 +180,19 @@
           },
           {
             "__type": "Sandbox.ChromaticAberration",
-            "__guid": "33dfa60b-0491-4e30-ba19-a5b95f82ff5d",
+            "__guid": "c97861aa-b1f7-4243-9dad-cfddf8e9dbe9",
             "Offset": "0,0,0",
             "Scale": 1
           },
           {
             "__type": "Sandbox.Pixelate",
-            "__guid": "7bc846c1-a851-47a3-8402-68cad480f4d0",
+            "__guid": "33724108-1c5c-47f6-ad64-28e3eb52dfea",
             "Scale": 0
+          },
+          {
+            "__type": "Sandbox.AudioListener",
+            "__guid": "ffbe1951-d3ca-4ee0-beda-cd4c6e43277f",
+            "UseCameraDirection": true
           }
         ]
       }

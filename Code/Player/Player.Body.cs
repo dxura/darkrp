@@ -72,7 +72,7 @@ public partial class Player
 	[Broadcast( NetPermission.HostOnly )]
 	private void UpdateBodyFromJob( JobResource job )
 	{
-		Renderer.Model = Game.Random.FromList( job.Models );
-		RefreshBody();
+		// Renderer.Model = Game.Random.FromList( job.Models );
+		// RefreshBody();
 	}
 }

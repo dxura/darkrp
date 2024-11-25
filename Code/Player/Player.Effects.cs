@@ -82,12 +82,6 @@ public partial class Player : IGameEventHandler<JobChangedEvent>
 
 	private void OnFixedUpdateEffects()
 	{
-		// Somehow this can happen?
-		if ( !Player.Local.IsValid() )
-		{
-			return;
-		}
-
 		if ( !IsOutlineVisible() )
 		{
 			Outline.Enabled = false;

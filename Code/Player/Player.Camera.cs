@@ -48,12 +48,12 @@ public partial class Player
 	}
 	
 	// These components are cached.
-	public CameraComponent Camera { get; set; } = null!;
-	public AudioListener AudioListener { get; set; } = null!;
-	private ColorAdjustments ColorAdjustments { get; set; } = null!;
-	private ScreenShaker ScreenShaker { get; set; } = null!;
-	private ChromaticAberration ChromaticAberration { get; set; } = null!;
-	private Pixelate Pixelate { get; set; } = null!;
+	public CameraComponent? Camera { get; set; }
+	public AudioListener? AudioListener { get; set; }
+	private ColorAdjustments? ColorAdjustments { get; set; }
+	private ScreenShaker? ScreenShaker { get; set; }
+	private ChromaticAberration? ChromaticAberration { get; set; }
+	private Pixelate? Pixelate { get; set; }
 
 	/// <summary>
 	/// The boom for this camera.
@@ -84,29 +84,28 @@ public partial class Player
 
 	private void OnStartCamera()
 	{
-		if (IsProxy)
-		{
-			return;
-		}
-		
-		Camera = Scene.Camera;
-		Camera.GameObject.SetParent(Boom);
-		
-		Pixelate = Camera.GameObject.Components.GetOrCreate<Pixelate>();
-		ChromaticAberration =  Camera.GameObject.Components.GetOrCreate<ChromaticAberration>();
-		AudioListener =  Camera.GameObject.Components.GetOrCreate<AudioListener>();
-		ScreenShaker =  Camera.GameObject.Components.GetOrCreate<ScreenShaker>();
-
-		// Optional
-		ColorAdjustments =  Camera.GameObject.Components.Get<ColorAdjustments>();
-		
 		OnModeChanged();
 		Boom.WorldRotation = EyeAngles.ToRotation();
+		
+		// Cache if local player
+		if (!IsProxy)
+		{
+			Camera = Scene.Camera;
+			Camera.GameObject.SetParent(Boom);
+		
+			Pixelate = Camera.GameObject.Components.GetOrCreate<Pixelate>();
+			ChromaticAberration =  Camera.GameObject.Components.GetOrCreate<ChromaticAberration>();
+			AudioListener =  Camera.GameObject.Components.GetOrCreate<AudioListener>();
+			ScreenShaker =  Camera.GameObject.Components.GetOrCreate<ScreenShaker>();
+
+			// Optional
+			ColorAdjustments = Camera.GameObject.Components.Get<ColorAdjustments>();
+		}
 	}
 	
 	private void OnUpdateCamera()
 	{
-		if ( IsProxy )
+		if (IsProxy )
 		{
 			return;
 		}
@@ -198,12 +197,9 @@ public partial class Player
 	[DeveloperCommand( "Toggle Third Person", "Player" )]
 	public static void ToggleThirdPerson()
 	{
-		if (Local != null)
-		{
-			Local.CameraMode = Local.CameraMode == CameraMode.FirstPerson
-				? CameraMode.ThirdPerson
-				: CameraMode.FirstPerson;
-		}
+		Local.CameraMode = Local.CameraMode == CameraMode.FirstPerson
+			? CameraMode.ThirdPerson
+			: CameraMode.FirstPerson;
 	}
 
 	/// <summary>
@@ -245,8 +241,7 @@ public partial class Player
 			return;
 		}
 
-		if ( CurrentEquipment?.Components.Get<ScopeWeaponComponent>( FindMode.EnabledInSelfAndDescendants ) is
-		    { } scope )
+		if ( CurrentEquipment?.Components.Get<ScopeWeaponComponent>( FindMode.EnabledInSelfAndDescendants ) is { } scope )
 		{
 			var fov = scope.GetFOV();
 			_fieldOfViewOffset -= fov;
@@ -274,7 +269,7 @@ public partial class Player
 			}
 		}
 
-		// deathcam, "zoom" at target.
+		// death cam, "zoom" at target.
 		if ( HealthComponent.State == LifeState.Dead )
 		{
 			_fieldOfViewOffset += AimFovOffset;
@@ -298,19 +293,18 @@ public partial class Player
 
 		Boom.LocalPosition = Vector3.Zero.WithZ( eyeHeight );
 
-		ApplyCameraEffects();
-		ScreenShaker?.Apply( Camera );
-
-		_targetFieldOfView = _targetFieldOfView.LerpTo( baseFov + _fieldOfViewOffset, Time.Delta * 5f );
-		Camera.FieldOfView = _targetFieldOfView;
-	}
-	
-	private void ApplyCameraEffects()
-	{
 		var timeSinceDamage = _timeSinceDamageTaken.Relative;
 		var shortDamageUi = timeSinceDamage.LerpInverse( 0.1f, 0.0f, true );
-		ChromaticAberration.Scale = shortDamageUi * 1f;
-		Pixelate.Scale = shortDamageUi * 0.2f;
+
+		if (Camera.IsValid() && ChromaticAberration != null && Pixelate != null)
+		{
+			ChromaticAberration.Scale = shortDamageUi * 1f;
+			Pixelate.Scale = shortDamageUi * 0.2f;
+			ScreenShaker?.Apply(Camera);
+
+			_targetFieldOfView = _targetFieldOfView.LerpTo(baseFov + _fieldOfViewOffset, Time.Delta * 5f);
+			Camera.FieldOfView = _targetFieldOfView;
+		}
 	}
 
 	private void ApplyRecoil()

@@ -23,7 +23,7 @@ partial class Player
 
 	private void OnFixedUpdateUsing()
 	{
-		if (HealthComponent.State != LifeState.Alive)
+		if (IsProxy || HealthComponent.State != LifeState.Alive)
 		{
 			return;
 		}

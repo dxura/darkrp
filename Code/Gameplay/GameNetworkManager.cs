@@ -106,8 +106,6 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 		{
 			player.Network.AssignOwnership( channel );
 		}
-
-		player.ClientInit();
 		
 		Scene.Dispatch( new PlayerJoinedEvent( player ) );
 	}
