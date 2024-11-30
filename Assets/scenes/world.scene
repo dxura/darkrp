@@ -1079,6 +1079,13 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "2bcb4895-b789-410e-b321-9ff4a346a6ed",
+      "Flags": 0,
+      "Name": "lights",
+      "Position": "-2906.095,431.0969,127.0185",
+      "Enabled": true
     }
   ],
   "SceneProperties": {
