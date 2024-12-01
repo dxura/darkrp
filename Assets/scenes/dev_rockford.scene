@@ -1,0 +1,226 @@
+{
+  "__guid": "6444a3aa-4be6-4274-8579-9a6b171a9340",
+  "GameObjects": [
+    {
+      "__guid": "001cb3b0-4d9d-4da7-9f2a-9b6e2d4f937a",
+      "Flags": 0,
+      "Name": "darkrp",
+      "Enabled": true,
+      "__Prefab": "prefabs/darkrp.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "119f663e-9ed4-4720-97dd-14960a314d25",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "67324279-d931-4fbd-ac61-83ab8b2a5ea9",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/rockford_city_v01.vmap",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "7a066300-6265-4dcb-a969-565dd278e65a",
+      "Flags": 0,
+      "Name": "Environment",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "7e9ddd15-8ab4-4b66-8abb-1bfe9513a49c",
+          "Flags": 0,
+          "Name": "Sun",
+          "Rotation": "-0.1042335,0.6892158,0.1072191,0.7089577",
+          "Tags": "light,light_directional",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "baef21de-dc6f-4d9f-9bb1-f77144a5ef50",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.94419,0.97767,1,1",
+              "Shadows": true,
+              "SkyColor": "0.2532,0.32006,0.35349,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9c98def8-fc26-4005-a795-e25818307fba",
+          "Flags": 0,
+          "Name": "2D Skybox",
+          "Tags": "skybox",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkyBox2D",
+              "__guid": "561aeef7-7489-4a75-b2e2-fb1175ea11c4",
+              "SkyIndirectLighting": true,
+              "SkyMaterial": "materials/skybox/skybox_sunrise_01.vmat",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.EnvmapProbe",
+              "__guid": "410ecd98-8d8f-4fbb-b26a-21a19ce5374f",
+              "Texture": "textures/cubemaps/default2.vtex",
+              "Bounds": {
+                "Mins": "-512,-512,-512",
+                "Maxs": "512,512,512"
+              },
+              "DelayBetweenUpdates": 0.1,
+              "Feathering": 0.02,
+              "FrameInterval": 5,
+              "MaxDistance": 512,
+              "MultiBounce": false,
+              "Projection": "Sphere",
+              "RenderDynamically": false,
+              "TintColor": "1,1,1,1",
+              "UpdateStrategy": "OnEnabled",
+              "ZFar": 4096,
+              "ZNear": 16
+            }
+          ]
+        },
+        {
+          "__guid": "fbac7e60-cb95-4d35-977e-171226c9a4c2",
+          "Flags": 0,
+          "Name": "Info",
+          "Position": "-3136,-672,224",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "b305241a-b8a7-4fa8-b37a-89776b90d442",
+              "Flags": 0,
+              "Name": "Cube",
+              "Position": "11.26025,0,-65.6946",
+              "Scale": "0.1999999,3.8,3.799999",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "c0d187d8-e8ce-4e0d-86d1-560e6d6a46ff",
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0,0,0,1"
+                }
+              ]
+            },
+            {
+              "__guid": "0ae72304-605b-43a8-bafc-22ba4ce79e6d",
+              "Flags": 0,
+              "Name": "Screen",
+              "Position": "2.675537,-0.00006103516,-55.93466",
+              "Rotation": "0,0,1,-0.00000004371139",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.WorldPanel",
+                  "__guid": "37617cdd-fd6a-4d50-8d39-97f218ccb3a7",
+                  "HorizontalAlign": "Center",
+                  "InteractionRange": 1000,
+                  "LookAtCamera": false,
+                  "PanelSize": "3671.699,3399.302",
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderScale": 1,
+                  "VerticalAlign": "Center"
+                },
+                {
+                  "__type": "Dxura.Darkrp.UI.Info",
+                  "__guid": "f8dd42c7-62ff-42d9-8a82-eb22b29ae0f6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "477b3f05-a59e-401d-bd43-102cc60c8a58",
+          "Flags": 0,
+          "Name": "Volumetric Fog",
+          "Position": "-2864.285,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.VolumetricFogVolume",
+              "__guid": "a77295f2-bd4a-4696-ae29-23dee3541afb",
+              "Bounds": {
+                "Mins": "-1544.6,-2254.5,-1500",
+                "Maxs": "3333.801,3155.502,1500"
+              },
+              "FalloffExponent": 1,
+              "Strength": 0.0059999973
+            }
+          ]
+        },
+        {
+          "__guid": "1590f8a7-0998-4eef-b935-985e51930bff",
+          "Flags": 0,
+          "Name": "Gradient Fog",
+          "Position": "0,0,83.30517",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.GradientFog",
+              "__guid": "09669421-9860-46aa-ab84-dc983f5a807b",
+              "Color": "0.90349,0.98605,0.98605,1",
+              "EndDistance": 4644.399,
+              "FalloffExponent": 6.699991,
+              "Height": 1631.5994,
+              "StartDistance": 64,
+              "VerticalFalloffExponent": 3.3999987
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": null,
+  "Description": null,
+  "__references": [],
+  "__version": 2
+}

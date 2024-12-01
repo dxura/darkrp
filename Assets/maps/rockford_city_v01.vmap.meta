@@ -1,0 +1,24 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Rockford City V 01",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "rockfordcityv01",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.car_dev#58005",
+        "facepunch.floor_grass_dirt_cliff_blend_a#18754"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/rockford_city_v01.vmap",
+        "ParentPackage": "dxura.darkrp"
+      }
+    }
+  }
+}
