@@ -188,54 +188,6 @@
       "Enabled": true,
       "Children": [
         {
-          "__guid": "aeb26e95-944d-4b43-af0f-f8e3536a6e96",
-          "Flags": 0,
-          "Name": "Props_Police",
-          "Enabled": true,
-          "Children": [
-            {
-              "__guid": "edd37096-e099-45cd-9e34-d1e4209925e8",
-              "Flags": 0,
-              "Name": "temp_door_001a_56_112_8_frame",
-              "Position": "-3387,755,72",
-              "Rotation": "0,-0,-0.7071068,0.7071068",
-              "Enabled": true,
-              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
-              "__PrefabVariables": {}
-            },
-            {
-              "__guid": "bc5fbb92-9b0d-4252-b0c2-e02fbbcf025d",
-              "Flags": 0,
-              "Name": "temp_door_001a_56_112_8_frame (1)",
-              "Position": "-3387,915,72",
-              "Rotation": "0,-0,-0.7071068,0.7071068",
-              "Enabled": true,
-              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
-              "__PrefabVariables": {}
-            },
-            {
-              "__guid": "b0d08368-df6e-44c5-aef0-fe8b78423b7e",
-              "Flags": 0,
-              "Name": "temp_door_001a_56_112_8_frame (9)",
-              "Position": "-2512,1031,72",
-              "Rotation": "0,0,1,-0.00000004371139",
-              "Enabled": true,
-              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
-              "__PrefabVariables": {}
-            },
-            {
-              "__guid": "e88da62c-ef66-4405-9307-bcfa4e60e944",
-              "Flags": 0,
-              "Name": "temp_door_001a_56_112_8_frame (8)",
-              "Position": "-2627,1031,72",
-              "Rotation": "0,0,1,-0.00000004371139",
-              "Enabled": true,
-              "__Prefab": "prefabs/props/doors/temp_door_001a_56_112_8_frame.prefab",
-              "__PrefabVariables": {}
-            }
-          ]
-        },
-        {
           "__guid": "daaea500-961c-43de-8975-86811800a19a",
           "Flags": 0,
           "Name": "Props_Hotel01",
